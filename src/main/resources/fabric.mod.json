@@ -44,11 +44,7 @@
         ]
     },
     "mixins": [
-        "bbs.mixins.json",
-        {
-            "config": "bbs.client.mixins.json",
-            "environment": "client"
-        }
+        "bbs.mixins.json"
     ],
     "accessWidener": "bbs.accesswidener",
     "depends": {
