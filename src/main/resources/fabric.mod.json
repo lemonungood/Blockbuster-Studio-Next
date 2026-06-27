@@ -1,0 +1,64 @@
+{
+    "schemaVersion": 1,
+    "id": "bbs-next",
+    "version": "${version}",
+    "name": "Blockbuster Studio Next",
+    "description": "下一代视频制作模组 - The next generation video production mod for Minecraft",
+    "authors": [
+        "McHorse",
+        "lemonungood"
+    ],
+    "contributors": [
+        "Chryfi (tracker clip)",
+        "FunkyFight (minor features and bug fixes)",
+        "ElGatoPro300 (bug fixes)",
+        "McMiro (Arabic translations)",
+        "Chunk7 (Chinese translations)",
+        "CheesyKirah (German translations)",
+        "aoa (Korean translations)",
+        "Nioum (French translations)",
+        "csabee (Hungarian translations)",
+        "Nikashi33 (Indonesian translations)",
+        "Legoego19 (Polish translations)",
+        "Fanyel (Portuguese translations)",
+        "El_Redstoniano (Spanish translations)",
+        "Sam Su~ (Thai translations)",
+        "Rüyaperest (Turkish translations)",
+        "Kirkus (Ukrainian translations)",
+        "Eleeter (Urdu translations)",
+        "Diobede (Vietnamese translations)"
+    ],
+    "contact": {
+        "homepage": "https://modrinth.com/mod/bbs-next",
+        "sources": "https://github.com/lemonungood/bbs-next"
+    },
+    "license": "MIT",
+    "icon": "assets/bbs/icon.png",
+    "environment": "*",
+    "entrypoints": {
+        "main": [
+            "mchorse.bbs_mod.BBSMod"
+        ],
+        "client": [
+            "mchorse.bbs_mod.BBSModClient"
+        ]
+    },
+    "mixins": [
+        "bbs.mixins.json",
+        {
+            "config": "bbs.client.mixins.json",
+            "environment": "client"
+        }
+    ],
+    "accessWidener": "bbs.accesswidener",
+    "depends": {
+        "fabricloader": ">=0.19.3",
+        "minecraft": "~26.2",
+        "java": ">=25",
+        "fabric-api": "*"
+    },
+    "recommends": {
+        "sodium": "*",
+        "iris": "*"
+    }
+}
