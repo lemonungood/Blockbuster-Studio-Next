@@ -1,0 +1,79 @@
+package mchorse.bbs_mod.utils;
+
+import com.mojang.authlib.GameProfile;
+import mchorse.bbs_mod.network.ClientNetwork;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.player.LocalPlayer;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.Level;
+
+public class PlayerUtils
+{
+    public static void teleport(double x, double y, double z, float yaw, float pitch)
+    {
+        teleport(x, y, z, yaw, yaw, pitch);
+    }
+
+    public static void teleport(double x, double y, double z, float yaw, float bodyYaw, float pitch)
+    {
+        LocalPlayer player = Minecraft.getInstance().player;
+
+        if (!ClientNetwork.isIsBBSModOnServer())
+        {
+            String command = "tp " + player.getGameProfile().getName() + " " + x + " " + y + " " + z + " " + yaw + " " + pitch;
+
+            player.networkHandler.sendCommand(command);
+        }
+        else
+        {
+            ClientNetwork.sendTeleport(x, y, z, yaw, bodyYaw, pitch);
+            player.setYaw(yaw);
+            player.setHeadYaw(yaw);
+            player.setBodyYaw(bodyYaw);
+            player.setPitch(pitch);
+        }
+    }
+
+    public static void teleport(double x, double y, double z)
+    {
+        LocalPlayer player = Minecraft.getInstance().player;
+
+        if (!ClientNetwork.isIsBBSModOnServer())
+        {
+            player.networkHandler.sendCommand("tp " + player.getGameProfile().getName() + " " + x + " " + y + " " + z);
+        }
+        else
+        {
+            ClientNetwork.sendTeleport(player, x, y, z);
+        }
+    }
+
+    public static class ProtectedAccess extends Player
+    {
+        public static TrackedData<Byte> getModelParts()
+        {
+            return PLAYER_MODEL_PARTS;
+        }
+
+        public ProtectedAccess(Level world, BlockPos pos, float yaw, GameProfile gameProfile)
+        {
+            super(world, pos, yaw, gameProfile);
+        }
+
+        @Override
+        public boolean isSpectator()
+        {
+            return false;
+        }
+
+        @Override
+        public boolean isCreative()
+        {
+            return false;
+        }
+    }
+}
+
+
