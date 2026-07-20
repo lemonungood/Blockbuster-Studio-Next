@@ -31,7 +31,7 @@ import net.fabricmc.fabric.api.client.rendering.v1.level.LevelRenderContext;
 import net.fabricmc.loader.api.FabricLoader;
 import net.irisshaders.iris.uniforms.custom.cached.CachedUniform;
 import net.minecraft.client.Minecraft;
-// [MC26.2] import net.minecraft.client.gui.framebuffer.Framebuffer;
+import mchorse.bbs_mod.client.Framebuffer;
 // [MC26.2] import net.minecraft.client.gui.framebuffer.WindowFramebuffer;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import com.mojang.blaze3d.vertex.VertexConsumer;
@@ -211,7 +211,7 @@ public class BBSRendering
     {
         Window window = Minecraft.getInstance().getWindow();
 
-        framebuffer = new WindowFramebuffer(window.getFramebufferWidth(), window.getFramebufferHeight());
+        framebuffer = new Framebuffer(window.getFramebufferWidth(), window.getFramebufferHeight());
     }
 
     public static void resizeExtraFramebuffers()
@@ -275,7 +275,7 @@ public class BBSRendering
                 framebuffer.resize(w, h, Minecraft.IS_SYSTEM_MAC);
             }
 
-            clientFramebuffer = mc.getFramebuffer();
+            clientFramebuffer = Framebuffer.window();
 
             reassignFramebuffer(framebuffer);
 
@@ -285,7 +285,7 @@ public class BBSRendering
         {
             reassignFramebuffer(clientFramebuffer);
 
-            mc.getFramebuffer().beginWrite(true);
+            Framebuffer.window().beginWrite(true);
 
             if (width != 0)
             {

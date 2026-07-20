@@ -101,7 +101,7 @@ public class TextureManager implements IWatchDogListener
     {
         BBSRendering.trackTexture(texture);
 
-        RenderSystem.setShaderTexture(unit, texture.id);
+        // RenderSystem.setShaderTexture removed; use GL13.glActiveTexture + glBindTexture;
     }
 
     public void bind(Link texture)

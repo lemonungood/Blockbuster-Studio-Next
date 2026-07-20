@@ -14,7 +14,7 @@ import mchorse.bbs_mod.utils.colors.Color;
 import mchorse.bbs_mod.utils.colors.Colors;
 import mchorse.bbs_mod.utils.joml.Vectors;
 import net.minecraft.client.Minecraft;
-// [MC 26.2 REMOVED] // [MC26.2] import com.mojang.blaze3d.shaders.ShaderProgram;
+import mchorse.bbs_mod.client.ShaderProgram;
 import net.minecraft.client.renderer.GameRenderer;
 // [MC 26.2 REMOVED] import net.minecraft.client.renderer.LightTexture;
 // [MC 26.2 REMOVED] import net.minecraft.client.renderer.texture.OverlayTexture;
@@ -127,5 +127,6 @@ public class ExtrudedFormRenderer extends FormRenderer<ExtrudedForm>
         }
     }
 }
+
 
 

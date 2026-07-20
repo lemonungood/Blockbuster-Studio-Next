@@ -30,7 +30,7 @@ import mchorse.bbs_mod.forms.renderers.TrailFormRenderer;
 import mchorse.bbs_mod.forms.renderers.VanillaParticleFormRenderer;
 import mchorse.bbs_mod.ui.framework.UIContext;
 import com.mojang.blaze3d.vertex.BufferBuilder;
-// [MC 26.2 REMOVED] import net.minecraft.client.renderer.rendertype.RenderTypes;
+import net.minecraft.client.renderer.rendertype.RenderTypes;
 // [MC 26.2 REMOVED] import net.minecraft.client.renderer.Sheets;
 // [MC 26.2 REMOVED] import net.minecraft.client.render.chunk.SectionBufferBuilderPool;
 import net.minecraft.client.resources.model.ModelBakery;

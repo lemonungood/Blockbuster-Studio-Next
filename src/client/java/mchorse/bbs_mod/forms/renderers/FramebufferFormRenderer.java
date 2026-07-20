@@ -13,7 +13,7 @@ import mchorse.bbs_mod.utils.MathUtils;
 import mchorse.bbs_mod.utils.Quad;
 import mchorse.bbs_mod.utils.colors.Color;
 import net.minecraft.client.Minecraft;
-// [MC 26.2 REMOVED] // [MC26.2] import com.mojang.blaze3d.shaders.ShaderProgram;
+import mchorse.bbs_mod.client.ShaderProgram;
 import com.mojang.blaze3d.vertex.BufferBuilder;
 // [MC 26.2 REMOVED] import com.mojang.blaze3d.vertex.BufferUploader;
 import net.minecraft.client.renderer.GameRenderer;
@@ -221,5 +221,6 @@ public class FramebufferFormRenderer extends FormRenderer<FramebufferForm>
         return consumer.vertex(matrix, x, y, 0F).color(color.r, color.g, color.b, color.a).texture(u, v).overlay(overlay).light(light).normal(normal, 0F, 0F, nz);
     }
 }
+
 
 

@@ -56,11 +56,11 @@ import mchorse.bbs_mod.utils.RayTracing;
 import mchorse.bbs_mod.utils.colors.Colors;
 import mchorse.bbs_mod.utils.joml.Matrices;
 import mchorse.bbs_mod.utils.keyframes.KeyframeChannel;
-// [MC 26.2 REMOVED] import net.fabricmc.fabric.api.client.rendering.v1.LevelRenderContext;
+import net.fabricmc.fabric.api.client.rendering.v1.level.LevelRenderContext;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.MouseHandler;
 // [MC26.2] import net.minecraft.client.renderer.GlUniform;
-// [MC 26.2 REMOVED] // [MC26.2] import net.minecraft.client.gl.ShaderProgram;
+// [MC 26.2 REMOVED] import mchorse.bbs_mod.client.ShaderProgram;
 import net.minecraft.client.Options;
 // [MC 26.2 REMOVED] import net.minecraft.client.util.InputUtil;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -601,7 +601,7 @@ public class UIFilmController extends UIElement
                 return true;
             }
 
-            InputUtil.Key utilKey = InputUtil.fromKeyCode(context.getKeyCode(), context.getScanCode());
+            int utilKey = context.getKeyCode();
 
             if (this.canControlWithKeyboard(utilKey))
             {
@@ -612,7 +612,7 @@ public class UIFilmController extends UIElement
         return super.subKeyPressed(context);
     }
 
-    private boolean canControlWithKeyboard(InputUtil.Key utilKey)
+    private boolean canControlWithKeyboard(int utilKey)
     {
         if (!ClientNetwork.isIsBBSModOnServer())
         {

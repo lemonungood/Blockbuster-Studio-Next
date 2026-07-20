@@ -27,7 +27,7 @@ import mchorse.bbs_mod.utils.PoseStackUtils;
 import mchorse.bbs_mod.utils.pose.Transform;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.Camera;
-// [MC 26.2 REMOVED] import com.mojang.blaze3d.vertex.VertexConsumer;
+import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.renderer.LevelRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;

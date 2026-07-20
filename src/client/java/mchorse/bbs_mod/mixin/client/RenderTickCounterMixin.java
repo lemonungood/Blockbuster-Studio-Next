@@ -4,16 +4,15 @@ import mchorse.bbs_mod.BBSModClient;
 import mchorse.bbs_mod.BBSSettings;
 import mchorse.bbs_mod.client.BBSRendering;
 import mchorse.bbs_mod.utils.VideoRecorder;
-import net.minecraft.client.RenderTickCounter;
-import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Shadow;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-@Mixin(RenderTickCounter.class)
+/**
+ * RenderTickCounter mixin - disabled in MC 26.2 because RenderTickCounter was removed.
+ * The new system uses DeltaTracker instead.
+ */
+// @Mixin target net.minecraft.client.RenderTickCounter was removed in MC 26.2
 public class RenderTickCounterMixin
 {
+    /* TODO: Re-implement using DeltaTracker or new tick system when needed.
     @Shadow
     public float tickDelta;
 
@@ -28,47 +27,7 @@ public class RenderTickCounterMixin
     @Inject(method = "beginRenderTick", at = @At("HEAD"), cancellable = true)
     public void onBeginRenderTick(long timeMillis, CallbackInfoReturnable<Integer> info)
     {
-        VideoRecorder videoRecorder = BBSModClient.getVideoRecorder();
-
-        if (videoRecorder.isRecording())
-        {
-            if (videoRecorder.getCounter() == 0)
-            {
-                this.tickDelta = 0;
-            }
-
-            if (this.heldFrames == 0)
-            {
-                this.lastFrameDuration = 20F / (float) BBSRendering.getVideoFrameRate();
-                this.prevTimeMillis = timeMillis;
-                this.tickDelta += this.lastFrameDuration;
-
-                int i = (int) this.tickDelta;
-
-                this.tickDelta -= (float) i;
-
-                videoRecorder.serverTicks += i;
-                BBSRendering.canRender = true;
-
-                info.setReturnValue(i);
-            }
-            else
-            {
-                BBSRendering.canRender = false;
-
-                info.setReturnValue(0);
-            }
-
-            this.heldFrames += 1;
-
-            if (this.heldFrames >= BBSSettings.videoSettings.heldFrames.get())
-            {
-                this.heldFrames = 0;
-            }
-        }
-        else
-        {
-            this.heldFrames = 0;
-        }
+        // ... video recording tick control logic
     }
+    */
 }

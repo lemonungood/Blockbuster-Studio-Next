@@ -5,7 +5,7 @@ import mchorse.bbs_mod.utils.pose.Pose;
 import mchorse.bbs_mod.utils.pose.PoseTransform;
 import mchorse.bbs_mod.utils.pose.Transform;
 import net.minecraft.client.model.geom.ModelPart;
-// [MC 26.2 REMOVED] import com.mojang.blaze3d.vertex.VertexConsumer;
+import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.renderer.entity.LivingEntityRenderer;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.world.entity.LivingEntity;

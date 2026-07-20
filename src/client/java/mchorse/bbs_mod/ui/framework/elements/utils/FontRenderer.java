@@ -3,9 +3,13 @@ package mchorse.bbs_mod.ui.framework.elements.utils;
 import net.minecraft.client.gui.Font;
 import net.minecraft.network.chat.Style;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.FormattedText;
+import net.minecraft.network.chat.TextColor;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class FontRenderer
@@ -14,27 +18,36 @@ public class FontRenderer
 
     public static List<String> wrap(Font renderer, String string, int width)
     {
-        return renderer.wrapLines(Text.literal(string), width).stream().map((ot) ->
+        List<String> lines = new ArrayList<>();
+        if (string == null || string.isEmpty())
         {
-            StringBuilder builder = new StringBuilder();
-            StyleHolder holder = new StyleHolder(Style.EMPTY);
+            lines.add("");
+            return lines;
+        }
 
-            ot.accept((a, b, c) ->
+        String[] words = string.split(" ");
+        StringBuilder current = new StringBuilder();
+
+        for (String word : words)
+        {
+            String test = current.length() == 0 ? word : current + " " + word;
+            if (renderer.width(test) > width && current.length() > 0)
             {
-                if (!Objects.equals(b, holder.style))
-                {
-                    styleToString(builder, b);
+                lines.add(current.toString());
+                current = new StringBuilder(word);
+            }
+            else
+            {
+                current = new StringBuilder(test);
+            }
+        }
 
-                    holder.style = b;
-                }
+        if (current.length() > 0)
+        {
+            lines.add(current.toString());
+        }
 
-                builder.appendCodePoint(c);
-
-                return true;
-            });
-
-            return builder.toString();
-        }).collect(Collectors.toList());
+        return lines;
     }
 
     private static void styleToString(StringBuilder b, Style style)
@@ -47,7 +60,9 @@ public class FontRenderer
 
         if (style.getColor() != null)
         {
-            switch (style.getColor().getName())
+            String colorName = style.getColor().toString();
+
+            switch (colorName)
             {
                 case "black": b.append("\u00A70"); break;
                 case "dark_blue": b.append("\u00A71"); break;
@@ -87,12 +102,12 @@ public class FontRenderer
 
     public int getWidth(String string)
     {
-        return this.renderer.getWidth(string);
+        return this.renderer.width(string);
     }
 
     public int getHeight()
     {
-        return this.renderer.fontHeight - 2;
+        return this.renderer.lineHeight - 2;
     }
 
     public List<String> wrap(String string, int width)
@@ -112,19 +127,19 @@ public class FontRenderer
             return str;
         }
 
-        int w = this.renderer.getWidth(str);
+        int w = this.renderer.width(str);
 
         if (w < width)
         {
             return str;
         }
 
-        int sw = this.renderer.getWidth(suffix);
+        int sw = this.renderer.width(suffix);
         int i = str.length() - 1;
 
         while (w + sw >= width && i > 0)
         {
-            w -= this.renderer.getWidth(String.valueOf(str.charAt(i)));
+            w -= this.renderer.width(String.valueOf(str.charAt(i)));
             i -= 1;
         }
 
@@ -143,5 +158,3 @@ public class FontRenderer
         }
     }
 }
-
-

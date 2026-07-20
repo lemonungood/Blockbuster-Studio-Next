@@ -1,22 +1,22 @@
 package mchorse.bbs_mod.forms;
 
-import com.mojang.blaze3d.systems.RenderSystem;
-import mchorse.bbs_mod.forms.renderers.utils.RecolorVertexConsumer;
 import com.mojang.blaze3d.vertex.BufferBuilder;
-// [MC 26.2 REMOVED] import net.minecraft.client.renderer.rendertype.RenderTypes;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-// [MC 26.2 REMOVED] import com.mojang.blaze3d.vertex.VertexConsumer;
-import org.lwjgl.opengl.GL11;
+import net.minecraft.client.renderer.rendertype.RenderTypes;
 
 import java.util.Map;
 import java.util.function.Consumer;
-import java.util.function.Function;
 
-public class CustomVertexConsumer extends VertexConsumer.Immediate
+/**
+ * CustomVertexConsumer - provides multi-layer buffer building for BBS forms.
+ * In MC 26.2, VertexConsumer.Immediate was removed, so we use a different approach.
+ */
+public class CustomVertexConsumer implements VertexConsumer
 {
     private static Consumer<RenderTypes> runnables;
 
-    private Function<VertexConsumer, VertexConsumer> substitute;
+    private final BufferBuilder fallback;
+    private final Map<RenderTypes, BufferBuilder> layers;
     private boolean ui;
 
     public static void drawLayer(RenderTypes layer)
@@ -29,62 +29,64 @@ public class CustomVertexConsumer extends VertexConsumer.Immediate
 
     public static void hijackVertexFormat(Consumer<RenderTypes> runnable)
     {
-        runnables = runnable;
+        CustomVertexConsumer.runnables = runnable;
     }
 
-    public static void clearRunnables()
+    public CustomVertexConsumer(BufferBuilder fallback)
     {
-        runnables = null;
+        this.fallback = fallback;
+        this.layers = null;
     }
 
     public CustomVertexConsumer(BufferBuilder fallback, Map<RenderTypes, BufferBuilder> layers)
     {
-        super(fallback, layers);
+        this.fallback = fallback;
+        this.layers = layers;
     }
 
-    public void setSubstitute(Function<VertexConsumer, VertexConsumer> substitute)
+    public VertexConsumer getBuffer(RenderTypes renderLayer)
     {
-        this.substitute = substitute;
-
-        if (this.substitute == null)
-        {
-            RecolorVertexConsumer.newColor = null;
-        }
+        return this;
     }
 
-    public void setUI(boolean ui)
+    private BufferBuilder getEffectiveBuilder()
     {
-        this.ui = ui;
+        return this.fallback;
     }
 
     @Override
-    public VertexConsumer getBuffer(RenderTypes renderLayer)
+    public VertexConsumer addVertex(float x, float y, float z)
     {
-        VertexConsumer buffer = super.getBuffer(renderLayer);
-
-        if (this.substitute != null)
-        {
-            VertexConsumer apply = this.substitute.apply(buffer);
-
-            if (apply != null)
-            {
-                return apply;
-            }
-        }
-
-        return buffer;
+        return getEffectiveBuilder().addVertex(x, y, z);
     }
 
-    public void draw()
+    @Override
+    public VertexConsumer setColor(int r, int g, int b, int a)
     {
-        super.draw();
+        return getEffectiveBuilder().setColor(r, g, b, a);
+    }
 
-        if (this.ui)
-        {
-            /* Force back the depth func because it seems like stuff rendered by a vertex
-             * consumer is resetting the depth func to GL_LESS, and since this vertex consumer
-             * is designed  */
-            RenderSystem.depthFunc(GL11.GL_ALWAYS);
-        }
+    @Override
+    public VertexConsumer setUv(float u, float v)
+    {
+        return getEffectiveBuilder().setUv(u, v);
+    }
+
+    @Override
+    public VertexConsumer setUv1(int u, int v)
+    {
+        return getEffectiveBuilder().setUv1(u, v);
+    }
+
+    @Override
+    public VertexConsumer setUv2(int u, int v)
+    {
+        return getEffectiveBuilder().setUv2(u, v);
+    }
+
+    @Override
+    public VertexConsumer setNormal(float x, float y, float z)
+    {
+        return getEffectiveBuilder().setNormal(x, y, z);
     }
 }

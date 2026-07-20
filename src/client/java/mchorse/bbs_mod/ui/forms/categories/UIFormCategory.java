@@ -27,7 +27,7 @@ import mchorse.bbs_mod.ui.utils.UIUtils;
 import mchorse.bbs_mod.ui.utils.icons.Icons;
 import mchorse.bbs_mod.utils.colors.Colors;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.player.PlayerInfo;
+import net.minecraft.client.multiplayer.PlayerInfo;
 
 import java.util.ArrayList;
 import java.util.Collection;

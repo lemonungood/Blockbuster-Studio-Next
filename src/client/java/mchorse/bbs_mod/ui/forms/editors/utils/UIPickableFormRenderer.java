@@ -22,7 +22,7 @@ import mchorse.bbs_mod.utils.Pair;
 import mchorse.bbs_mod.utils.colors.Colors;
 import net.minecraft.client.Minecraft;
 // [MC26.2] import net.minecraft.client.renderer.GlUniform;
-// [MC 26.2 REMOVED] // [MC26.2] import com.mojang.blaze3d.shaders.ShaderProgram;
+import mchorse.bbs_mod.client.ShaderProgram;
 // [MC 26.2 REMOVED] import net.minecraft.client.renderer.LightTexture;
 // [MC 26.2 REMOVED] import net.minecraft.client.renderer.texture.OverlayTexture;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -257,6 +257,7 @@ public class UIPickableFormRenderer extends UIFormRenderer
         }
     }
 }
+
 
 
 

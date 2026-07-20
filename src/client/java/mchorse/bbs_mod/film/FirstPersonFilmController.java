@@ -2,7 +2,7 @@ package mchorse.bbs_mod.film;
 
 import mchorse.bbs_mod.film.replays.Replay;
 import mchorse.bbs_mod.forms.entities.IEntity;
-// [MC 26.2 REMOVED] import net.fabricmc.fabric.api.client.rendering.v1.LevelRenderContext;
+import net.fabricmc.fabric.api.client.rendering.v1.level.LevelRenderContext;
 
 public class FirstPersonFilmController extends WorldFilmController
 {

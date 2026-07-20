@@ -27,7 +27,6 @@ import net.minecraft.client.renderer.entity.LivingEntityRenderer;
 import net.minecraft.client.model.EntityModel;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.Pose;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.nbt.CompoundTag;

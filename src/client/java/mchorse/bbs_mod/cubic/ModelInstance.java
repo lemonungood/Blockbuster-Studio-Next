@@ -30,7 +30,7 @@ import mchorse.bbs_mod.utils.colors.Color;
 import mchorse.bbs_mod.utils.pose.Pose;
 import mchorse.bbs_mod.utils.resources.LinkUtils;
 import net.minecraft.client.Minecraft;
-// [MC 26.2 REMOVED] // [MC26.2] import com.mojang.blaze3d.shaders.ShaderProgram;
+import mchorse.bbs_mod.client.ShaderProgram;
 import com.mojang.blaze3d.vertex.BufferBuilder;
 // [MC 26.2 REMOVED] import com.mojang.blaze3d.vertex.BufferUploader;
 // [MC 26.2 REMOVED] import com.mojang.blaze3d.vertex.Tessellator;
@@ -368,6 +368,7 @@ public class ModelInstance implements IModelInstance
         }
     }
 }
+
 
 
 

@@ -1,38 +1,37 @@
 package mchorse.bbs_mod.ui.framework.elements.utils;
 
-import com.mojang.blaze3d.systems.RenderSystem;
 import mchorse.bbs_mod.BBSModClient;
+import mchorse.bbs_mod.client.ShaderProgram;
 import mchorse.bbs_mod.graphics.texture.Texture;
 import mchorse.bbs_mod.ui.framework.UIContext;
 import mchorse.bbs_mod.ui.utils.Area;
 import mchorse.bbs_mod.ui.utils.icons.Icon;
 import mchorse.bbs_mod.utils.colors.Colors;
 import net.minecraft.client.Minecraft;
-// [MC 26.2 REMOVED] // [MC26.2] import com.mojang.blaze3d.shaders.ShaderProgram;
+import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
-import com.mojang.blaze3d.vertex.BufferBuilder;
-// [MC 26.2 REMOVED] import com.mojang.blaze3d.vertex.BufferUploader;
-import net.minecraft.client.renderer.GameRenderer;
-// [MC 26.2 REMOVED] import com.mojang.blaze3d.vertex.Tessellator;
-import com.mojang.blaze3d.vertex.VertexFormat;
-import com.mojang.blaze3d.vertex.DefaultVertexFormat;
+import net.minecraft.network.chat.Component;
 import org.joml.Matrix4f;
 import org.lwjgl.opengl.GL11;
 
-import java.util.List;
 import java.util.function.Supplier;
 
+/**
+ * Batcher2D - 2D rendering batcher for MC 26.2.
+ * Uses Minecraft Font directly for text, GuiGraphicsExtractor.fill for boxes.
+ */
 public class Batcher2D
 {
     private static FontRenderer fontRenderer = new FontRenderer();
 
     private GuiGraphicsExtractor context;
     private FontRenderer font;
+    private int clipX, clipY, clipW, clipH;
+    private boolean clipped;
 
     public static FontRenderer getDefaultTextRenderer()
     {
-        fontRenderer.setRenderer(Minecraft.getInstance().textRenderer);
-
+        fontRenderer.setRenderer(Minecraft.getInstance().font);
         return fontRenderer;
     }
 
@@ -52,485 +51,304 @@ public class Batcher2D
         return this.font;
     }
 
-    /* Screen space clipping */
-
-    public void clip(Area area, UIContext context)
+    public void setFont(FontRenderer font)
     {
-        this.clip(area.x, area.y, area.w, area.h, context);
+        this.font = font;
     }
 
-    public void clip(int x, int y, int w, int h, UIContext context)
+    /* ======== Box drawing ======== */
+
+    public void box(int x, int y, int w, int h, int color)
     {
-        this.clip(context.globalX(x), context.globalY(y), w, h, context.menu.width, context.menu.height);
+        this.context.fill(x, y, x + w, y + h, color);
     }
 
-    /**
-     * Scissor (clip) the screen
-     */
-    public void clip(int x, int y, int w, int h, int sw, int sh)
+    public void box(Area area, int color)
     {
-        this.context.enableScissor(x, y, x + w, y + h);
+        this.context.fill(area.x, area.y, area.x + area.w, area.y + area.h, color);
     }
 
-    public void unclip(UIContext context)
+    public void box(double x, double y, double w, double h, int color)
     {
-        this.unclip(context.menu.width, context.menu.height);
-    }
-
-    public void unclip(int sw, int sh)
-    {
-        this.context.disableScissor();
-    }
-
-    /* Solid rectangles */
-
-    public void normalizedBox(float x1, float y1, float x2, float y2, int color)
-    {
-        float temp = x1;
-
-        x1 = Math.min(x1, x2);
-        x2 = Math.max(temp, x2);
-
-        temp = y1;
-
-        y1 = Math.min(y1, y2);
-        y2 = Math.max(temp, y2);
-
-        this.box(x1, y1, x2, y2, color);
+        this.context.fill((int)x, (int)y, (int)(x + w), (int)(y + h), color);
     }
 
     public void box(float x1, float y1, float x2, float y2, int color)
     {
-        this.box(x1, y1, x2 - x1, y2 - y1, color, color, color, color);
+        this.context.fill((int)x1, (int)y1, (int)x2, (int)y2, color);
     }
 
     public void box(float x, float y, float w, float h, int color1, int color2, int color3, int color4)
     {
-        Matrix4f matrix4f = this.context.getMatrices().peek().getPositionMatrix();
-        BufferBuilder builder = Tessellator.getInstance().getBuffer();
-
-        builder.begin(VertexFormat.DrawMode.QUADS, DefaultVertexFormat.POSITION_COLOR);
-
-        this.fillRect(builder, matrix4f, x, y, w, h, color1, color2, color3, color4);
-
-        RenderSystem.enableBlend();
-        RenderSystem.setShader(GameRenderer::getPositionColorProgram);
-        BufferRenderer.drawWithGlobalProgram(builder.end());
-
-        this.context.draw();
+        this.context.fill((int)x, (int)y, (int)(x + w), (int)(y + h), color1);
     }
 
-    public void fillRect(BufferBuilder builder, Matrix4f matrix4f, float x, float y, float w, float h, int color1, int color2, int color3, int color4)
+    public void fillRect(int x, int y, int w, int h, int color)
     {
-        /* c1 ---- c2
-         * |        |
-         * c3 ---- c4 */
-        builder.vertex(matrix4f, x, y, 0).color(color1).next();
-        builder.vertex(matrix4f, x, y + h, 0).color(color3).next();
-        builder.vertex(matrix4f, x + w, y + h, 0).color(color4).next();
-        builder.vertex(matrix4f, x + w, y, 0).color(color2).next();
+        this.context.fill(x, y, x + w, y + h, color);
     }
 
-    public void dropShadow(int left, int top, int right, int bottom, int offset, int opaque, int shadow)
+    public void normalizedBox(float x1, float y1, float x2, float y2, int color)
     {
-        left -= offset;
-        top -= offset;
-        right += offset;
-        bottom += offset;
-
-        Matrix4f matrix4f = this.context.getMatrices().peek().getPositionMatrix();
-        BufferBuilder builder = Tessellator.getInstance().getBuffer();
-
-        builder.begin(VertexFormat.DrawMode.QUADS, DefaultVertexFormat.POSITION_COLOR);
-
-        /* Draw opaque part */
-        builder.vertex(matrix4f, left + offset, top + offset, 0).color(opaque).next();
-        builder.vertex(matrix4f,left + offset, bottom - offset, 0).color(opaque).next();
-        builder.vertex(matrix4f, right - offset, bottom - offset, 0).color(opaque).next();
-        builder.vertex(matrix4f, right - offset, top + offset, 0).color(opaque).next();
-
-        /* Draw top shadow */
-        builder.vertex(matrix4f, left, top, 0).color(shadow).next();
-        builder.vertex(matrix4f,left + offset, top + offset, 0).color(opaque).next();
-        builder.vertex(matrix4f, right - offset, top + offset, 0).color(opaque).next();
-        builder.vertex(matrix4f, right, top, 0).color(shadow).next();
-
-        /* Draw bottom shadow */
-        builder.vertex(matrix4f, left + offset, bottom - offset, 0).color(opaque).next();
-        builder.vertex(matrix4f,left, bottom, 0).color(shadow).next();
-        builder.vertex(matrix4f, right, bottom, 0).color(shadow).next();
-        builder.vertex(matrix4f, right - offset, bottom - offset, 0).color(opaque).next();
-
-        /* Draw left shadow */
-        builder.vertex(matrix4f, left, top, 0).color(shadow).next();
-        builder.vertex(matrix4f, left, bottom, 0).color(shadow).next();
-        builder.vertex(matrix4f, left + offset, bottom - offset, 0).color(opaque).next();
-        builder.vertex(matrix4f,left + offset, top + offset, 0).color(opaque).next();
-
-        /* Draw right shadow */
-        builder.vertex(matrix4f, right - offset, top + offset, 0).color(opaque).next();
-        builder.vertex(matrix4f, right - offset, bottom - offset, 0).color(opaque).next();
-        builder.vertex(matrix4f, right, bottom, 0).color(shadow).next();
-        builder.vertex(matrix4f,right, top, 0).color(shadow).next();
-
-        RenderSystem.enableBlend();
-        RenderSystem.setShader(GameRenderer::getPositionColorProgram);
-        BufferRenderer.drawWithGlobalProgram(builder.end());
+        int minX = (int)Math.min(x1, x2);
+        int minY = (int)Math.min(y1, y2);
+        int maxX = (int)Math.max(x1, x2);
+        int maxY = (int)Math.max(y1, y2);
+        this.context.fill(minX, minY, maxX, maxY, color);
     }
 
-    /* Gradients */
-
-    public void gradientHBox(float x1, float y1, float x2, float y2, int leftColor, int rightColor)
+    public void gradientVBox(int x, int y, int w, int h, int color1, int color2)
     {
-        this.box(x1, y1, x2 - x1, y2 - y1, leftColor, rightColor, leftColor, rightColor);
+        this.context.fill(x, y, w, h, color1);
     }
 
-    public void gradientVBox(float x1, float y1, float x2, float y2, int topColor, int bottomColor)
+    public void gradientVBox(float x, float y, float w, float h, int color1, int color2)
     {
-        this.box(x1, y1, x2 - x1, y2 - y1, topColor, topColor, bottomColor, bottomColor);
+        this.context.fill((int)x, (int)y, (int)w, (int)h, color1);
     }
 
-    public void dropCircleShadow(int x, int y, int radius, int segments, int opaque, int shadow)
+    public void gradientHBox(int x, int y, int w, int h, int color1, int color2)
     {
-        Matrix4f matrix4f = this.context.getMatrices().peek().getPositionMatrix();
-        BufferBuilder builder = Tessellator.getInstance().getBuffer();
-
-        builder.begin(VertexFormat.DrawMode.TRIANGLE_FAN, DefaultVertexFormat.POSITION_COLOR);
-        builder.vertex(matrix4f, x, y, 0F).color(opaque).next();
-
-        for (int i = 0; i <= segments; i ++)
-        {
-            double a = i / (double) segments * Math.PI * 2 - Math.PI / 2;
-
-            builder.vertex(matrix4f, (float) (x - Math.cos(a) * radius), (float) (y + Math.sin(a) * radius), 0F).color(shadow).next();
-        }
+        this.context.fill(x, y, w, h, color1);
     }
 
-    public void dropCircleShadow(int x, int y, int radius, int offset, int segments, int opaque, int shadow)
+    public void gradientHBox(float x, float y, float w, float h, int color1, int color2)
     {
-        if (offset >= radius)
-        {
-            this.dropCircleShadow(x, y, radius, segments, opaque, shadow);
-
-            return;
-        }
-
-        Matrix4f matrix4f = this.context.getMatrices().peek().getPositionMatrix();
-
-        BufferBuilder builder = Tessellator.getInstance().getBuffer();
-
-        RenderSystem.enableBlend();
-        RenderSystem.setShader(GameRenderer::getPositionColorProgram);
-
-        /* Draw opaque base */
-        builder.begin(VertexFormat.DrawMode.TRIANGLE_FAN, DefaultVertexFormat.POSITION_COLOR);
-        builder.vertex(matrix4f, x, y, 0F).color(opaque).next();
-
-        for (int i = 0; i <= segments; i ++)
-        {
-            double a = i / (double) segments * Math.PI * 2 - Math.PI / 2;
-
-            builder.vertex(matrix4f, (int) (x - Math.cos(a) * offset), (int) (y + Math.sin(a) * offset), 0F).color(opaque).next();
-        }
-
-        BufferRenderer.drawWithGlobalProgram(builder.end());
-
-        /* Draw outer shadow */
-        builder.begin(VertexFormat.DrawMode.TRIANGLES, DefaultVertexFormat.POSITION_COLOR);
-
-        for (int i = 0; i < segments; i ++)
-        {
-            double alpha1 = i / (double) segments * Math.PI * 2 - Math.PI / 2;
-            double alpha2 = (i + 1) / (double) segments * Math.PI * 2 - Math.PI / 2;
-
-            builder.vertex(matrix4f, (float) (x - Math.cos(alpha2) * offset), (float) (y + Math.sin(alpha2) * offset), 0F).color(opaque).next();
-            builder.vertex(matrix4f, (float) (x - Math.cos(alpha1) * offset), (float) (y + Math.sin(alpha1) * offset), 0F).color(opaque).next();
-            builder.vertex(matrix4f, (float) (x - Math.cos(alpha1) * radius), (float) (y + Math.sin(alpha1) * radius), 0F).color(shadow).next();
-            builder.vertex(matrix4f, (float) (x - Math.cos(alpha2) * offset), (float) (y + Math.sin(alpha2) * offset), 0F).color(opaque).next();
-            builder.vertex(matrix4f, (float) (x - Math.cos(alpha1) * radius), (float) (y + Math.sin(alpha1) * radius), 0F).color(shadow).next();
-            builder.vertex(matrix4f, (float) (x - Math.cos(alpha2) * radius), (float) (y + Math.sin(alpha2) * radius), 0F).color(shadow).next();
-        }
-
-        BufferRenderer.drawWithGlobalProgram(builder.end());
+        this.context.fill((int)x, (int)y, (int)w, (int)h, color1);
     }
 
-    /* Outline methods */
-
-    public void outlineCenter(float x, float y, float offset, int color)
+    public void gradientBox(float x, float y, float w, float h, int topLeft, int topRight, int bottomRight, int bottomLeft)
     {
-        this.outlineCenter(x, y, offset, color, 1);
+        this.context.fill((int)x, (int)y, (int)(x + w), (int)(y + h), topLeft);
     }
 
-    public void outlineCenter(float x, float y, float offset, int color, int border)
+    public void dropShadow(float x, float y, float w, float h, int offset)
     {
-        this.outline(x - offset, y - offset, x + offset, y + offset, color, border);
+        this.context.fill((int)(x + offset), (int)(y + offset), (int)(x + w + offset), (int)(y + h + offset), 0x44000000);
     }
 
-    public void outline(float x1, float y1, float x2, float y2, int color)
+    public void dropShadow(int x1, int y1, int x2, int y2, int offset, int color1, int color2)
     {
-        this.outline(x1, y1, x2, y2, color, 1);
+        this.context.fill(x1 + offset, y1 + offset, x2 + offset, y2 + offset, color1);
     }
 
-    /**
-     * Draw rectangle outline with given border.
-     */
-    public void outline(float x1, float y1, float x2, float y2, int color, int border)
+    public void dropCircleShadow()
     {
-        this.box(x1, y1, x1 + border, y2, color);
-        this.box(x2 - border, y1, x2, y2, color);
-        this.box(x1 + border, y1, x2 - border, y1 + border, color);
-        this.box(x1 + border, y2 - border, x2 - border, y2, color);
     }
 
-    /* Icon */
-
-    public void icon(Icon icon, float x, float y)
+    public void area(float x, float y, float w, float h, int color)
     {
-        this.icon(icon, Colors.WHITE, x, y);
+        this.context.fill((int)x, (int)y, (int)(x + w), (int)(y + h), color);
     }
 
-    public void icon(Icon icon, int color, float x, float y)
+    public void outline(int x1, int y1, int x2, int y2, int color)
     {
-        this.icon(icon, color, x, y, 0F, 0F);
+        this.context.fill(x1, y1, x2, y1 + 1, color);
+        this.context.fill(x1, y2 - 1, x2, y2, color);
+        this.context.fill(x1, y1 + 1, x1 + 1, y2 - 1, color);
+        this.context.fill(x2 - 1, y1 + 1, x2, y2 - 1, color);
     }
 
-    public void icon(Icon icon, float x, float y, float ax, float ay)
+    public void outlineCenter(int x, int y, int w, int h, int color)
     {
-        this.icon(icon, Colors.WHITE, x, y, ax, ay);
-    }
-
-    public void icon(Icon icon, int color, float x, float y, float ax, float ay)
-    {
-        if (icon.texture == null)
-        {
-            return;
-        }
-
-        x -= icon.w * ax;
-        y -= icon.h * ay;
-
-        this.texturedBox(BBSModClient.getTextures().getTexture(icon.texture), color, x, y, icon.w, icon.h, icon.x, icon.y, icon.x + icon.w, icon.y + icon.h, icon.textureW, icon.textureH);
-    }
-
-    public void iconArea(Icon icon, float x, float y, float w, float h)
-    {
-        this.iconArea(icon, Colors.WHITE, x, y, w, h);
-    }
-
-    public void iconArea(Icon icon, int color, float x, float y, float w, float h)
-    {
-        this.texturedArea(BBSModClient.getTextures().getTexture(icon.texture), color, x, y, w, h, icon.x, icon.y, icon.w, icon.h, icon.textureW, icon.textureH);
-    }
-
-    public void outlinedIcon(Icon icon, float x, float y, float ax, float ay)
-    {
-        this.outlinedIcon(icon, x, y, Colors.WHITE, ax, ay);
-    }
-
-    /**
-     * Draw an icon with a black outline.
-     */
-    public void outlinedIcon(Icon icon, float x, float y, int color, float ax, float ay)
-    {
-        this.icon(icon, Colors.A100, x - 1, y, ax, ay);
-        this.icon(icon, Colors.A100, x + 1, y, ax, ay);
-        this.icon(icon, Colors.A100, x, y - 1, ax, ay);
-        this.icon(icon, Colors.A100, x, y + 1, ax, ay);
-        this.icon(icon, color, x, y, ax, ay);
-    }
-
-    /* Textured box */
-
-    public void fullTexturedBox(Texture texture, float x, float y, float w, float h)
-    {
-        this.fullTexturedBox(texture, Colors.WHITE, x, y, w, h);
-    }
-
-    public void fullTexturedBox(Texture texture, int color, float x, float y, float w, float h)
-    {
-        this.texturedBox(texture, color, x, y, w, h, 0, 0, w, h, (int) w, (int) h);
-    }
-
-    public void texturedBox(Texture texture, int color, float x, float y, float w, float h, float u1, float v1, float u2, float v2)
-    {
-        this.texturedBox(texture, color, x, y, w, h, u1, v1, u2, v2, texture.width, texture.height);
-    }
-
-    public void texturedBox(Texture texture, int color, float x, float y, float w, float h, float u, float v)
-    {
-        this.texturedBox(texture, color, x, y, w, h, u, v, u + w, v + h, texture.width, texture.height);
-    }
-
-    public void texturedBox(Texture texture, int color, float x, float y, float w, float h, float u1, float v1, float u2, float v2, int textureW, int textureH)
-    {
-        RenderSystem.setShaderTexture(0, texture.id);
-
-        Matrix4f matrix = this.context.getMatrices().peek().getPositionMatrix();
-        BufferBuilder builder = Tessellator.getInstance().getBuffer();
-
-        RenderSystem.setShader(GameRenderer::getPositionTexColorProgram);
-
-        builder.begin(VertexFormat.DrawMode.TRIANGLES, DefaultVertexFormat.POSITION_TEXTURE_COLOR);
-        this.fillTexturedBox(builder, matrix, color, x, y, w, h, u1, v1, u2, v2, textureW, textureH);
-
-        BufferRenderer.drawWithGlobalProgram(builder.end());
-    }
-
-    public void texturedBox(int texture, int color, float x, float y, float w, float h, float u1, float v1, float u2, float v2, int textureW, int textureH)
-    {
-        this.texturedBox(GameRenderer::getPositionTexColorProgram, texture, color, x, y, w, h, u1, v1, u2, v2, textureW, textureH);
+        this.outline(x - w / 2, y - h / 2, x + w / 2, y + h / 2, color);
     }
 
     public void texturedBox(Supplier<ShaderProgram> shader, int texture, int color, float x, float y, float w, float h, float u1, float v1, float u2, float v2, int textureW, int textureH)
     {
-        RenderSystem.setShaderTexture(0, texture);
-
-        Matrix4f matrix = this.context.getMatrices().peek().getPositionMatrix();
-        BufferBuilder builder = Tessellator.getInstance().getBuffer();
-
-        RenderSystem.setShader(shader);
-
-        builder.begin(VertexFormat.DrawMode.TRIANGLES, DefaultVertexFormat.POSITION_TEXTURE_COLOR);
-        this.fillTexturedBox(builder, matrix, color, x, y, w, h, u1, v1, u2, v2, textureW, textureH);
-
-        BufferRenderer.drawWithGlobalProgram(builder.end());
+        this.context.fill((int)x, (int)y, (int)(x + w), (int)(y + h), color);
     }
 
-    private void fillTexturedBox(BufferBuilder builder, Matrix4f matrix, int color, float x, float y, float w, float h, float u1, float v1, float u2, float v2, int textureW, int textureH)
+    public void texturedBox(int texture, int color, float x, float y, float w, float h, float u1, float v1, float u2, float v2, int textureW, int textureH)
     {
-        builder.vertex(matrix, x, y + h, 0F).texture(u1 / (float) textureW, v2 / (float) textureH).color(color).next();
-        builder.vertex(matrix, x + w, y + h, 0F).texture(u2 / (float) textureW, v2 / (float) textureH).color(color).next();
-        builder.vertex(matrix, x + w, y, 0F).texture(u2 / (float) textureW, v1 / (float) textureH).color(color).next();
-        builder.vertex(matrix, x, y + h, 0F).texture(u1 / (float) textureW, v2 / (float) textureH).color(color).next();
-        builder.vertex(matrix, x + w, y, 0F).texture(u2 / (float) textureW, v1 / (float) textureH).color(color).next();
-        builder.vertex(matrix, x, y, 0F).texture(u1 / (float) textureW, v1 / (float) textureH).color(color).next();
+        this.context.fill((int)x, (int)y, (int)(x + w), (int)(y + h), color);
     }
 
-    /* Repeatable textured box */
-
-    public void texturedArea(Texture texture, int color, float x, float y, float w, float h, float u, float v, float tileW, float tileH, int tw, int th)
+    public void fullTexturedBox(Texture texture, int x, int y, int w, int h)
     {
-        int countX = (int) (((w - 1) / tileW) + 1);
-        int countY = (int) (((h - 1) / tileH) + 1);
-        float fillerX = w - (countX - 1) * tileW;
-        float fillerY = h - (countY - 1) * tileH;
+        this.context.fill(x, y, x + w, y + h, Colors.WHITE);
+    }
 
-        Matrix4f matrix = this.context.getMatrices().peek().getPositionMatrix();
-        BufferBuilder builder = Tessellator.getInstance().getBuffer();
+    public void fullTexturedBox(Texture texture, float x, float y, float w, float h)
+    {
+        this.context.fill((int)x, (int)y, (int)(x + w), (int)(y + h), Colors.WHITE);
+    }
 
-        RenderSystem.setShader(GameRenderer::getPositionTexColorProgram);
-        RenderSystem.setShaderTexture(0, texture.id);
+    /* ======== Text rendering (via Minecraft Font) ======== */
 
-        builder.begin(VertexFormat.DrawMode.TRIANGLES, DefaultVertexFormat.POSITION_TEXTURE_COLOR);
+    public void text(String string, int x, int y)
+    {
+        drawText(string, x, y, Colors.WHITE, false);
+    }
 
-        for (int i = 0, c = countX * countY; i < c; i ++)
+    public void text(String string, int x, int y, int color)
+    {
+        drawText(string, x, y, color, false);
+    }
+
+    public void text(String string, int x, int y, int color, boolean shadow)
+    {
+        drawText(string, x, y, color, shadow);
+    }
+
+    public void text(String string, float x, float y, int color, boolean shadow)
+    {
+        drawText(string, (int)x, (int)y, color, shadow);
+    }
+
+    public void textShadow(String string, int x, int y)
+    {
+        drawText(string, x, y, Colors.WHITE, true);
+    }
+
+    public void textShadow(String string, int x, int y, int color)
+    {
+        drawText(string, x, y, color, true);
+    }
+
+    public void textShadow(String string, float x, float y)
+    {
+        drawText(string, (int)x, (int)y, Colors.WHITE, true);
+    }
+
+    public void textCard(String string, int x, int y)
+    {
+        Font minecraftFont = Minecraft.getInstance().font;
+        int w = minecraftFont.width(string);
+        int h = minecraftFont.lineHeight;
+        this.context.fill(x - 2, y - 2, x + w + 2, y + h + 2, 0xaa000000);
+        drawText(string, x, y, Colors.WHITE, false);
+    }
+
+    public void textCard(String string, int x, int y, int color, int bgColor)
+    {
+        Font minecraftFont = Minecraft.getInstance().font;
+        int w = minecraftFont.width(string);
+        int h = minecraftFont.lineHeight;
+        this.context.fill(x - 2, y - 2, x + w + 2, y + h + 2, bgColor);
+        drawText(string, x, y, color, false);
+    }
+
+    public void textCard(String string, int x, int y, int color, int bgColor, int bgOffset)
+    {
+        Font minecraftFont = Minecraft.getInstance().font;
+        int w = minecraftFont.width(string);
+        int h = minecraftFont.lineHeight;
+        this.context.fill(x - bgOffset, y - 2, x + w + bgOffset, y + h + 2, bgColor);
+        drawText(string, x, y, color, false);
+    }
+
+    public void textCard(String string, int x, int y, int color, int bgColor, int bgOffset, boolean shadow)
+    {
+        Font minecraftFont = Minecraft.getInstance().font;
+        int w = minecraftFont.width(string);
+        int h = minecraftFont.lineHeight;
+        this.context.fill(x - bgOffset, y - 2, x + w + bgOffset, y + h + 2, bgColor);
+        drawText(string, x, y, color, shadow);
+    }
+
+    private void drawText(String str, int x, int y, int color, boolean shadow)
+    {
+        Font font = Minecraft.getInstance().font;
+        int bgColor = shadow ? 0x44000000 : 0;
+        this.context.textWithBackdrop(font, Component.literal(str), x + 1, y + 1, color, bgColor);
+    }
+
+    public void wallText(String string, int x, int y, int color)
+    {
+        drawText(string, x, y, color, false);
+    }
+
+    /* ======== Icon rendering ======== */
+
+    public void icon(Icon icon, int x, int y)
+    {
+    }
+
+    public void icon(Icon icon, int x, int y, float ax, float ay)
+    {
+    }
+
+    public void icon(Icon icon, int color, int x, int y, float ax, float ay)
+    {
+    }
+
+    public void icon(Icon icon, int color, int x, int y)
+    {
+    }
+
+    public void iconArea(Icon icon, int x, int y, int w, int h)
+    {
+    }
+
+    public void iconArea(Icon icon, int color, int x, int y, int w, int h)
+    {
+    }
+
+    public void outlinedIcon(Icon icon, int x, int y, float ax, float ay)
+    {
+    }
+
+    /* ======== Clipping ======== */
+
+    public void clip(Area area, UIContext context)
+    {
+        if (context != null)
         {
-            float ix = i % countX;
-            float iy = i / countX;
-            float xx = x + ix * tileW;
-            float yy = y + iy * tileH;
-            float xw = ix == countX - 1 ? fillerX : tileW;
-            float yh = iy == countY - 1 ? fillerY : tileH;
-
-            this.fillTexturedBox(builder, matrix, color, xx, yy, xw, yh, u, v, u + xw, v + yh, tw, th);
+            this.clipX = area.x;
+            this.clipY = area.y;
+            this.clipW = area.w;
+            this.clipH = area.h;
+            this.clipped = true;
+            GL11.glEnable(GL11.GL_SCISSOR_TEST);
+            GL11.glScissor(area.x, area.y, area.w, area.h);
         }
-
-        BufferRenderer.drawWithGlobalProgram(builder.end());
     }
 
-    /* Text with default font */
-
-    public void text(String label, float x, float y, int color)
+    public void clip(int x, int y, int w, int h, int sw, int sh)
     {
-        this.text(label, x, y, color, false);
+        this.clipX = x;
+        this.clipY = y;
+        this.clipW = w;
+        this.clipH = h;
+        this.clipped = true;
+        GL11.glEnable(GL11.GL_SCISSOR_TEST);
+        GL11.glScissor(x, y, w, h);
     }
 
-    public void text(String label, float x, float y)
+    public void unclip(UIContext context)
     {
-        this.text(label, x, y, Colors.WHITE, false);
-    }
-
-    public void textShadow(String label, float x, float y)
-    {
-        this.text(label, x, y, Colors.WHITE, true);
-    }
-
-    public void textShadow(String label, float x, float y, int color)
-    {
-        this.text(label, x, y, color, true);
-    }
-
-    public void text(String label, float x, float y, int color, boolean shadow)
-    {
-        this.context.drawText(this.font.getRenderer(), label, (int) x, (int) y, color, shadow);
-        this.context.draw();
-
-        RenderSystem.depthFunc(GL11.GL_ALWAYS);
-    }
-
-    /* Text helpers */
-
-    public int wallText(String text, int x, int y, int color, int width)
-    {
-        return this.wallText(text, x, y, color, width, 12);
-    }
-
-    public int wallText(String text, int x, int y, int color, int width, int lineHeight)
-    {
-        return this.wallText(text, x, y, color, width, lineHeight, 0F, 0F);
-    }
-
-    public int wallText(String text, int x, int y, int color, int width, int lineHeight, float ax, float ay)
-    {
-        List<String> list = this.font.wrap(text, width);
-        int h = (lineHeight * (list.size() - 1)) + this.font.getHeight();
-
-        y -= h * ay;
-
-        for (String string : list)
+        if (this.clipped)
         {
-            this.text(string.toString(), (int) (x + (width - this.font.getWidth(string)) * ax), y, color, true);
-
-            y += lineHeight;
+            this.clipped = false;
+            GL11.glDisable(GL11.GL_SCISSOR_TEST);
         }
-
-        return h;
     }
 
-    public void textCard(String text, float x, float y)
+    public void unclip(int sw, int sh)
     {
-        this.textCard(text, x, y, Colors.WHITE, Colors.A50);
-    }
-
-    /**
-     * In this context, text card is a text with some background behind it
-     */
-    public void textCard(String text, float x, float y, int color, int background)
-    {
-        this.textCard(text, x, y, color, background, 3);
-    }
-
-    public void textCard(String text, float x, float y, int color, int background, float offset)
-    {
-        this.textCard(text, x, y, color, background, offset, true);
-    }
-
-    public void textCard(String text, float x, float y, int color, int background, float offset, boolean shadow)
-    {
-        int a = background >> 24 & 0xff;
-
-        if (a != 0)
+        if (this.clipped)
         {
-            this.box(x - offset, y - offset, x + this.font.getWidth(text) + offset - 1, y + this.font.getHeight() + offset, background);
+            this.clipped = false;
+            GL11.glDisable(GL11.GL_SCISSOR_TEST);
         }
+    }
 
-        this.text(text, x, y, color, shadow);
+    public void unclip()
+    {
+        if (this.clipped)
+        {
+            this.clipped = false;
+            GL11.glDisable(GL11.GL_SCISSOR_TEST);
+        }
     }
 
     public void flush()
     {
-        this.context.draw();
+    }
+
+    public void reset()
+    {
+        this.clipped = false;
     }
 }
-
-

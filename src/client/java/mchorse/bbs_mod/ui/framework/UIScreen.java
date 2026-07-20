@@ -10,7 +10,7 @@ import mchorse.bbs_mod.ui.UIKeys;
 import mchorse.bbs_mod.ui.utils.IFileDropListener;
 import mchorse.bbs_mod.ui.utils.UIUtils;
 import mchorse.bbs_mod.utils.FFMpegUtils;
-// [MC 26.2 REMOVED] import net.fabricmc.fabric.api.client.rendering.v1.LevelRenderContext;
+import net.fabricmc.fabric.api.client.rendering.v1.level.LevelRenderContext;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.screens.Screen;

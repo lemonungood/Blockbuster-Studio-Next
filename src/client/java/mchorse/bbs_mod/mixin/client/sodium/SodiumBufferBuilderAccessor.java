@@ -1,13 +1,8 @@
-package mchorse.bbs_mod.mixin.client.sodium;
+package mchorse.bbs_mod.mixin.client;
 
-// Sodium API changed
-// Sodium API changed
-import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.gen.Accessor;
-
-@Mixin(SodiumBufferBuilder.class)
-public interface SodiumBufferBuilderAccessor
+/**
+ * DISABLED in MC 26.2 - mixin target class was removed.
+ */
+public class SodiumBufferBuilderAccessor
 {
-    @Accessor(value = "builder", remap = false)
-    public ExtendedBufferBuilder bbs$getBuilder();
 }

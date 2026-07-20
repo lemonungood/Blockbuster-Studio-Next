@@ -5,7 +5,7 @@ import mchorse.bbs_mod.bobj.BOBJLoader;
 import mchorse.bbs_mod.client.BBSRendering;
 import mchorse.bbs_mod.ui.framework.elements.utils.StencilMap;
 import mchorse.bbs_mod.utils.joml.Matrices;
-// [MC 26.2 REMOVED] // [MC26.2] import com.mojang.blaze3d.shaders.ShaderProgram;
+import mchorse.bbs_mod.client.ShaderProgram;
 import com.mojang.blaze3d.vertex.PoseStack;
 import org.joml.Matrix4f;
 import org.joml.Vector3f;
@@ -252,5 +252,6 @@ public class BOBJModelVAO
         GL30.glBindBuffer(GL30.GL_ELEMENT_ARRAY_BUFFER, currentElementArrayBuffer);
     }
 }
+
 
 

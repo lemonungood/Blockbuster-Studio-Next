@@ -1,18 +1,8 @@
 package mchorse.bbs_mod.mixin.client;
 
-import mchorse.bbs_mod.BBSModClient;
-// [MC 26.2 REMOVED] import net.minecraft.client.resources.ResourceReloadLogger;
-import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-
-@Mixin(ResourceReloadLogger.class)
+/**
+ * DISABLED in MC 26.2 - mixin target class was removed.
+ */
 public class ResourceReloadLoggerMixin
 {
-    @Inject(method = "finish", at = @At("TAIL"))
-    public void onOnFinishedLoading(CallbackInfo info)
-    {
-        BBSModClient.getSounds().deleteSounds();
-    }
 }

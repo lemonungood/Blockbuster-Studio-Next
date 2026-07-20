@@ -52,7 +52,7 @@ public class PlayerUtils
 
     public static class ProtectedAccess extends Player
     {
-        public static TrackedData<Byte> getModelParts()
+        public static EntityDataAccessor<Byte> getModelParts()
         {
             return PLAYER_MODEL_PARTS;
         }

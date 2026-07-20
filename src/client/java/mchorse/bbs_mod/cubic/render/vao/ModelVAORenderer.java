@@ -2,7 +2,7 @@ package mchorse.bbs_mod.cubic.render.vao;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 // [MC26.2] import net.minecraft.client.renderer.GlUniform;
-// [MC 26.2 REMOVED] // [MC26.2] import com.mojang.blaze3d.shaders.ShaderProgram;
+import mchorse.bbs_mod.client.ShaderProgram;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.blaze3d.vertex.PoseStack;
 import org.joml.Matrix4f;
@@ -96,5 +96,6 @@ public class ModelVAORenderer
         RenderSystem.setupShaderLights(shader);
     }
 }
+
 
 

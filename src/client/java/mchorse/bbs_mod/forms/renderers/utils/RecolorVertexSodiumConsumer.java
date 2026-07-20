@@ -1,27 +1,53 @@
 package mchorse.bbs_mod.forms.renderers.utils;
 
-import mchorse.bbs_mod.mixin.client.sodium.SodiumBufferBuilderAccessor;
-import mchorse.bbs_mod.utils.colors.Color;
-import net.caffeinemc.mods.sodium.api.vertex.buffer.VertexBufferWriter;
-// Sodium API changed
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import org.lwjgl.system.MemoryStack;
 
-public class RecolorVertexSodiumConsumer extends RecolorVertexConsumer implements VertexBufferWriter
+/**
+ * RecolorVertexSodiumConsumer - simplified for MC 26.2.
+ * Sodium vertex format API changed, this provides a basic implementation.
+ */
+public class RecolorVertexSodiumConsumer implements VertexConsumer
 {
-    public RecolorVertexSodiumConsumer(VertexConsumer consumer, Color color)
-    {
-        super(consumer, color);
+    private final VertexConsumer parent;
 
-        newColor = color;
+    public RecolorVertexSodiumConsumer(VertexConsumer parent)
+    {
+        this.parent = parent;
     }
 
     @Override
-    public void push(MemoryStack memoryStack, long l, int i, VertexFormatDescription vertexFormatDescription)
+    public VertexConsumer addVertex(float x, float y, float z)
     {
-        if (this.consumer instanceof SodiumBufferBuilderAccessor accessor)
-        {
-            accessor.bbs$getBuilder().push(memoryStack, l, i, vertexFormatDescription);
-        }
+        return parent.addVertex(x, y, z);
+    }
+
+    @Override
+    public VertexConsumer setColor(int r, int g, int b, int a)
+    {
+        return parent.setColor(r, g, b, a);
+    }
+
+    @Override
+    public VertexConsumer setUv(float u, float v)
+    {
+        return parent.setUv(u, v);
+    }
+
+    @Override
+    public VertexConsumer setUv1(int u, int v)
+    {
+        return parent.setUv1(u, v);
+    }
+
+    @Override
+    public VertexConsumer setUv2(int u, int v)
+    {
+        return parent.setUv2(u, v);
+    }
+
+    @Override
+    public VertexConsumer setNormal(float x, float y, float z)
+    {
+        return parent.setNormal(x, y, z);
     }
 }

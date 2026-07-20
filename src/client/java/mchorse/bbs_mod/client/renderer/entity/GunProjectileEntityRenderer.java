@@ -10,7 +10,7 @@ import mchorse.bbs_mod.utils.PoseStackUtils;
 import mchorse.bbs_mod.utils.interps.Lerps;
 import net.minecraft.client.Minecraft;
 // [MC 26.2 REMOVED] import net.minecraft.client.renderer.texture.OverlayTexture;
-// [MC 26.2 REMOVED] import com.mojang.blaze3d.vertex.VertexConsumer;
+import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import com.mojang.blaze3d.vertex.PoseStack;

@@ -1,6 +1,6 @@
 package mchorse.bbs_mod.mixin.client;
 
-// [MC 26.2 REMOVED] import com.mojang.blaze3d.vertex.VertexConsumer;
+import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.world.entity.Entity;

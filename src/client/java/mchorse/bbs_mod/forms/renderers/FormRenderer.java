@@ -17,7 +17,7 @@ import mchorse.bbs_mod.utils.colors.Colors;
 import mchorse.bbs_mod.utils.interps.Lerps;
 import mchorse.bbs_mod.utils.pose.Transform;
 // [MC26.2] import net.minecraft.client.renderer.GlUniform;
-// [MC 26.2 REMOVED] // [MC26.2] import com.mojang.blaze3d.shaders.ShaderProgram;
+import mchorse.bbs_mod.client.ShaderProgram;
 import net.minecraft.client.player.AbstractClientPlayer;
 // [MC 26.2 REMOVED] import net.minecraft.client.renderer.LightTexture;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -277,5 +277,6 @@ public abstract class FormRenderer <T extends Form>
         stack.pop();
     }
 }
+
 
 

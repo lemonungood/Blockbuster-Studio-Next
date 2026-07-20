@@ -17,7 +17,7 @@ import mchorse.bbs_mod.utils.colors.Colors;
 import mchorse.bbs_mod.utils.pose.Transform;
 import net.minecraft.client.Minecraft;
 // [MC26.2] import net.minecraft.client.renderer.GlUniform;
-// [MC 26.2 REMOVED] // [MC26.2] import com.mojang.blaze3d.shaders.ShaderProgram;
+import mchorse.bbs_mod.client.ShaderProgram;
 import com.mojang.blaze3d.vertex.PoseStack;
 import org.joml.Matrix4f;
 import org.lwjgl.opengl.GL11;
@@ -164,5 +164,6 @@ public class UISubtitleRenderer
         RenderSystem.enableCull();
     }
 }
+
 
 

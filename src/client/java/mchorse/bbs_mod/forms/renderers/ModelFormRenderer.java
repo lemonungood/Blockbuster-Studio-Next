@@ -37,7 +37,7 @@ import mchorse.bbs_mod.utils.joml.Vectors;
 import mchorse.bbs_mod.utils.pose.Pose;
 import mchorse.bbs_mod.utils.pose.PoseTransform;
 import net.minecraft.client.Minecraft;
-// [MC 26.2 REMOVED] // [MC26.2] import com.mojang.blaze3d.shaders.ShaderProgram;
+import mchorse.bbs_mod.client.ShaderProgram;
 import net.minecraft.client.player.AbstractClientPlayer;
 import net.minecraft.client.renderer.GameRenderer;
 // [MC 26.2 REMOVED] import net.minecraft.client.renderer.LightTexture;
@@ -650,5 +650,6 @@ public class ModelFormRenderer extends FormRenderer<ModelForm> implements ITicka
         }
     }
 }
+
 
 
