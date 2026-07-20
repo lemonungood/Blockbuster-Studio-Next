@@ -121,7 +121,7 @@ public class ParticleEmitter
     public void setTarget(LivingEntity target)
     {
         this.target = target;
-        this.world = target == null ? null : target.getLevel();
+        this.world = target == null ? null : target.level();
     }
 
     public void setLevel(Level world)
@@ -479,11 +479,11 @@ public class ParticleEmitter
 
         if (!this.particles.isEmpty())
         {
-            Matrix4f matrix = stack.peek().getPositionMatrix();
-            BufferBuilder builder = Tessellator.getInstance().getBuffer();
+            Matrix4f matrix = stack.last().pose();
+            ByteBufferBuilder byteBuf = new ByteBufferBuilder(16384);
+            BufferBuilder builder = new BufferBuilder(byteBuf, PrimitiveTopology.TRIANGLES, format);
 
             this.bindTexture();
-            builder.begin(VertexFormat.DrawMode.TRIANGLES, format);
 
             for (Particle particle : this.particles)
             {
@@ -496,11 +496,7 @@ public class ParticleEmitter
                 }
             }
 
-            RenderSystem.setShader(program);
-            RenderSystem.disableBlend();
-            RenderSystem.disableCull();
-            BufferRenderer.drawWithGlobalProgram(builder.end());
-            RenderSystem.enableCull();
+            MeshData particleMesh = builder.buildOrThrow();
         }
 
         for (IComponentParticleRender component : renders)
