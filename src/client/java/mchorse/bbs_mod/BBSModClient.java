@@ -1,11 +1,13 @@
 package mchorse.bbs_mod;
 
 import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.blaze3d.vertex.ByteBufferBuilder;
 import com.mojang.blaze3d.vertex.BufferBuilder;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.blaze3d.vertex.MeshData;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexFormat;
+import com.mojang.blaze3d.PrimitiveTopology;
 import com.mojang.blaze3d.platform.Window;
 import mchorse.bbs_mod.audio.SoundManager;
 import mchorse.bbs_mod.blocks.entities.ModelProperties;
@@ -83,6 +85,7 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.ItemStack;
+import org.joml.Matrix4f;
 import org.lwjgl.glfw.GLFW;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
@@ -257,7 +260,7 @@ public class BBSModClient implements ClientModInitializer
 
         LocalPlayer player = Minecraft.getInstance().player;
 
-        if (player == null || Minecraft.getInstance().gui.getScreen() != null)
+        if (player == null || Minecraft.getInstance().gui.screen != null)
         {
             return;
         }
@@ -440,7 +443,7 @@ public class BBSModClient implements ClientModInitializer
         {
             Minecraft mc = Minecraft.getInstance();
 
-            if (mc.gui.getScreen() instanceof UIScreen screen)
+            if (mc.gui.screen instanceof UIScreen screen)
             {
                 screen.update();
             }
@@ -596,30 +599,24 @@ public class BBSModClient implements ClientModInitializer
                 Color color = Colors.COLOR.set(BBSSettings.chromaSkyColor.get());
 
                 stack.pushPose();
-
                 stack.setIdentity();
                 stack.translate(0F, 0F, -d);
 
-                RenderSystem.enableDepthTest();
-
-                BufferBuilder builder = new BufferBuilder(DefaultVertexFormat.POSITION_COLOR, 36);
-                builder.beginVertex();
-                Draw.fillQuad(builder, stack,
-                    -d, -d, 0,
-                    d, -d, 0,
-                    d, d, 0,
-                    -d, d, 0,
-                    color.r, color.g, color.b, 1F
-                );
-                builder.endVertex();
-
+                // [MC 26.2] Use new BufferBuilder API
+                ByteBufferBuilder byteBuffer = new ByteBufferBuilder(36);
+                BufferBuilder builder = new BufferBuilder(byteBuffer, PrimitiveTopology.TRIANGLE_STRIP, DefaultVertexFormat.POSITION_COLOR);
+                Matrix4f matrix = stack.last().pose();
+                builder.addVertex(matrix, -d, -d, 0).setColor(color.r, color.g, color.b, 1F).endLastVertex();
+                builder.addVertex(matrix, d, -d, 0).setColor(color.r, color.g, color.b, 1F).endLastVertex();
+                builder.addVertex(matrix, d, d, 0).setColor(color.r, color.g, color.b, 1F).endLastVertex();
+                builder.addVertex(matrix, -d, d, 0).setColor(color.r, color.g, color.b, 1F).endLastVertex();
                 MeshData mesh = builder.buildOrThrow();
-                RenderSystem.renderPass(() -> {
-                    RenderSystem.setShader(() -> GameRenderer.getPositionColorProgram());
-                    RenderSystem.drawMeshData(mesh);
-                });
 
-                RenderSystem.disableDepthTest();
+                // Draw using device command encoder
+                try (var pass = Minecraft.getInstance().device.createCommandEncoder())
+                {
+                    pass.submitRenderPass(mesh);
+                }
 
                 stack.popPose();
             }
