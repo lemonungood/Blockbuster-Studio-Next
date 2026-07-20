@@ -33,7 +33,7 @@ import mchorse.bbs_mod.utils.PlayerUtils;
 import mchorse.bbs_mod.utils.RayTracing;
 import mchorse.bbs_mod.utils.colors.Colors;
 import mchorse.bbs_mod.utils.pose.Transform;
-// [MC 26.2 REMOVED] import net.fabricmc.fabric.api.client.rendering.v1.level.LevelRenderContext;
+// [MC 26.2 REMOVED] import net.fabricmc.fabric.api.client.rendering.v1.WorldRenderContext;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.Camera;
 import net.minecraft.world.phys.BlockHitResult;
@@ -370,7 +370,7 @@ public class UIModelBlockPanel extends UIDashboardPanel implements IFlightSuppor
     }
 
     @Override
-    public void renderInWorld(LevelRenderContext context)
+    public void renderInWorld(WorldRenderContext context)
     {
         super.renderInWorld(context);
 

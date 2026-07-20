@@ -1,5 +1,4 @@
-package mchorse.bbs_mod
-import net.fabricmc.fabric.api.client.rendering.v1.level.LevelRenderContext;.film;
+package mchorse.bbs_mod.film;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import io.netty.util.collection.IntObjectHashMap;
@@ -30,14 +29,12 @@ import mchorse.bbs_mod.utils.StringUtils;
 import mchorse.bbs_mod.utils.interps.Lerps;
 import mchorse.bbs_mod.utils.joml.Matrices;
 import mchorse.bbs_mod.utils.joml.Vectors;
-// [MC 26.2 REMOVED] import net.fabricmc.fabric.api.client.rendering.v1.LevelRenderContext;
+import net.fabricmc.fabric.api.client.rendering.v1.level.LevelRenderContext;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.client.Camera;
-// [MC 26.2 REMOVED] import net.minecraft.client.renderer.LightTexture;
-// [MC 26.2 REMOVED] import net.minecraft.client.renderer.texture.OverlayTexture;
-// [MC 26.2 REMOVED] import com.mojang.blaze3d.vertex.VertexConsumer;
+import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.MoverType;
@@ -130,8 +127,8 @@ public abstract class BaseFilmController
         BlockPos pos = BlockPos.ofFloored(position.x, position.y + 0.5D, position.z);
         int sky = entity.getLevel().getLightLevel(LightLayer.SKY, pos);
         int torch = entity.getLevel().getLightLevel(LightLayer.BLOCK, pos);
-        int light = LightmapTextureManager.pack(torch, sky);
-        int overlay = OverlayTexture.packUv(OverlayTexture.getU(0F), OverlayTexture.getV(entity.getHurtTimer() > 0));
+        int light = (sky & 0xFFFF) << 20 | (torch & 0xFFFF) << 4;
+        int overlay = entity.getHurtTimer() > 0 ? 655360 : 0;
 
         FormRenderingContext formContext = new FormRenderingContext()
             .set(FormRenderType.ENTITY, entity, stack, light, overlay, transition)

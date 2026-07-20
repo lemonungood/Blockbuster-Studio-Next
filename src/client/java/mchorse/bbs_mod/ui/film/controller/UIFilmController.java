@@ -1,8 +1,7 @@
-package mchorse.bbs_mod
-import net.fabricmc.fabric.api.client.rendering.v1.level.LevelRenderContext;.ui.film.controller;
+package mchorse.bbs_mod.ui.film.controller;
 
 import com.mojang.blaze3d.systems.RenderSystem;
-// [MC26.2] 
+// [MC26.2] import com.mojang.blaze3d.systems.VertexSorter;
 import io.netty.util.collection.IntObjectHashMap;
 import io.netty.util.collection.IntObjectMap;
 import mchorse.bbs_mod.BBSModClient;
@@ -61,9 +60,9 @@ import mchorse.bbs_mod.utils.keyframes.KeyframeChannel;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.MouseHandler;
 // [MC26.2] import net.minecraft.client.renderer.GlUniform;
-// [MC 26.2 REMOVED] // [MC26.2] import com.mojang.blaze3d.shaders.ShaderProgram;
+// [MC 26.2 REMOVED] // [MC26.2] import net.minecraft.client.gl.ShaderProgram;
 import net.minecraft.client.Options;
-// [MC 26.2 REMOVED] import org.lwjgl.glfw.GLFW;
+// [MC 26.2 REMOVED] import net.minecraft.client.util.InputUtil;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.level.Level;
@@ -602,7 +601,7 @@ public class UIFilmController extends UIElement
                 return true;
             }
 
-            int utilKey = InputUtil.fromKeyCode(context.getKeyCode(), context.getScanCode());
+            InputUtil.Key utilKey = InputUtil.fromKeyCode(context.getKeyCode(), context.getScanCode());
 
             if (this.canControlWithKeyboard(utilKey))
             {
@@ -613,7 +612,7 @@ public class UIFilmController extends UIElement
         return super.subKeyPressed(context);
     }
 
-    private boolean canControlWithKeyboard(int utilKey)
+    private boolean canControlWithKeyboard(InputUtil.Key utilKey)
     {
         if (!ClientNetwork.isIsBBSModOnServer())
         {
