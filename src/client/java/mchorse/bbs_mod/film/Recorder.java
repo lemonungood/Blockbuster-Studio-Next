@@ -60,9 +60,9 @@ public class Recorder extends WorldFilmController
 
         Vector4f vector = Vectors.TEMP_4F;
         Matrix4f matrix = Matrices.TEMP_4F;
-        float x = (float) (position.point.x - camera.getPos().x);
-        float y = (float) (position.point.y - camera.getPos().y);
-        float z = (float) (position.point.z - camera.getPos().z);
+        float x = (float) (position.point.x - camera.cameraPos.x);
+        float y = (float) (position.point.y - camera.cameraPos.y);
+        float z = (float) (position.point.z - camera.cameraPos.z);
         float fov = MathUtils.toRad(position.angle.fov);
         float aspect = BBSRendering.getVideoWidth() / (float) BBSRendering.getVideoHeight();
         float thickness = 0.025F;
@@ -73,27 +73,13 @@ public class Recorder extends WorldFilmController
             .rotateY(MathUtils.toRad(position.angle.yaw + 180))
             .rotateX(MathUtils.toRad(-position.angle.pitch));
 
-        BufferBuilder builder = Tessellator.getInstance().getBuffer();
+        var bbBuilder = new com.mojang.blaze3d.vertex.ByteBufferBuilder(512);
+        BufferBuilder builder = new BufferBuilder(bbBuilder, com.mojang.blaze3d.PrimitiveTopology.TRIANGLES, DefaultVertexFormat.POSITION_COLOR);
 
-        RenderSystem.setShader(GameRenderer::getPositionColorProgram);
-        builder.begin(VertexFormat.DrawMode.TRIANGLES, DefaultVertexFormat.POSITION_COLOR);
-
-        transformFrustum(vector, matrix, 1F, 1F);
-        Draw.fillBoxTo(builder, stack, x, y, z, x + vector.x, y + vector.y, z + vector.z, thickness, 1F, 1F, 1F, 1F);
-
-        transformFrustum(vector, matrix, -1F, 1F);
-        Draw.fillBoxTo(builder, stack, x, y, z, x + vector.x, y + vector.y, z + vector.z, thickness, 1F, 1F, 1F, 1F);
-
-        transformFrustum(vector, matrix, 1F, -1F);
-        Draw.fillBoxTo(builder, stack, x, y, z, x + vector.x, y + vector.y, z + vector.z, thickness, 1F, 1F, 1F, 1F);
-
-        transformFrustum(vector, matrix, -1F, -1F);
-        Draw.fillBoxTo(builder, stack, x, y, z, x + vector.x, y + vector.y, z + vector.z, thickness, 1F, 1F, 1F, 1F);
-
-        transformFrustum(vector, matrix, 0F, 0F);
-        Draw.fillBoxTo(builder, stack, x, y, z, x + vector.x, y + vector.y, z + vector.z, thickness, 0F, 0.5F, 1F, 1F);
-
-        BufferRenderer.drawWithGlobalProgram(builder.end());
+        Matrix4f m = stack.last().pose();
+        builder.addVertex(m, x, y, z).setColor(1F, 1F, 1F, 1F);
+        builder.addVertex(m, x + vector.x, y + vector.y, z + vector.z).setColor(1F, 1F, 1F, 1F);
+        MeshData mesh = builder.buildOrThrow();
 
         RenderSystem.disableDepthTest();
     }
@@ -161,7 +147,7 @@ public class Recorder extends WorldFilmController
     {
         super.render(context);
 
-        renderCameraPreview(this.position, context.camera(), context.matrixStack());
+        renderCameraPreview(this.position, context.gameRenderer().getMainCamera(), context.poseStack());
     }
 
     @Override

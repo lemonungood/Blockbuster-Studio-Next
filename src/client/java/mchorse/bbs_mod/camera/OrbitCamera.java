@@ -334,7 +334,7 @@ public class OrbitCamera
 
         if (this.velocityPosition.lengthSquared() > 0)
         {
-            float lastFrameDuration = Minecraft.getInstance().getLastFrameDuration() * 5F;
+            float lastFrameDuration = Minecraft.getInstance().getDeltaTracker().getGameTimeDeltaPartialTick(false) * 5F;
 
             this.position.add(this.rotateVector(this.velocityPosition.x, 0, this.velocityPosition.z)
                 .add(0, this.velocityPosition.y, 0)

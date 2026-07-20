@@ -56,10 +56,10 @@ public class FilmControllerContext
         this.entities = entities;
         this.entity = entity;
         this.replay = replay;
-        this.camera = context.camera();
-        this.stack = context.matrixStack();
-        this.consumers = context.consumers();
-        this.transition = context.tickDelta();
+        this.camera = context.gameRenderer().getMainCamera();
+        this.stack = context.poseStack();
+        this.consumers = null;
+        this.transition = Minecraft.getInstance().getDeltaTracker().getGameTimeDeltaPartialTick(false);
 
         return this;
     }

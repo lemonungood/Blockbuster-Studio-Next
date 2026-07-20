@@ -266,7 +266,7 @@ public class Films
 
     public void render(LevelRenderContext context)
     {
-        RenderSystem.enableDepthTest();
+        GL11.glEnable(GL11.GL_DEPTH_TEST);
 
         for (BaseFilmController controller : this.controllers)
         {
@@ -278,7 +278,7 @@ public class Films
             this.recorder.render(context);
         }
 
-        RenderSystem.disableDepthTest();
+        GL11.glDisable(GL11.GL_DEPTH_TEST);
     }
 
     public void renderHud(Batcher2D batcher2D, float tickDelta)

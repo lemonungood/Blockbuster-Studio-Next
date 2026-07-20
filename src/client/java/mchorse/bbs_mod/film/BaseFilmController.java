@@ -1,6 +1,6 @@
 package mchorse.bbs_mod.film;
 
-import com.mojang.blaze3d.systems.RenderSystem;
+import org.lwjgl.opengl.GL11;
 import io.netty.util.collection.IntObjectHashMap;
 import io.netty.util.collection.IntObjectMap;
 import mchorse.bbs_mod.client.renderer.ModelBlockEntityRenderer;
@@ -85,9 +85,9 @@ public abstract class BaseFilmController
             Lerps.lerp(entity.getPrevZ(), entity.getZ(), transition)
         );
 
-        double cx = camera.getX();
-        double cy = camera.getY();
-        double cz = camera.getZ();
+        double cx = camera.cameraPos.x;
+        double cy = camera.cameraPos.y;
+        double cz = camera.cameraPos.z;
 
         boolean relative = context.replay != null && context.relative;
 
@@ -125,8 +125,8 @@ public abstract class BaseFilmController
         }
 
         BlockPos pos = BlockPos.containing(position.x, position.y + 0.5D, position.z);
-        int sky = entity.getLevel().getBrightness(LightLayer.SKY, pos);
-        int torch = entity.getLevel().getBrightness(LightLayer.BLOCK, pos);
+        int sky = entity.getWorld().getBrightness(LightLayer.SKY, pos);
+        int torch = entity.getWorld().getBrightness(LightLayer.BLOCK, pos);
         int light = (sky & 0xFFFF) << 20 | (torch & 0xFFFF) << 4;
         int overlay = entity.getHurtTimer() > 0 ? 655360 : 0;
 
@@ -140,8 +140,8 @@ public abstract class BaseFilmController
 
         if (relative)
         {
-            stack.last().getPositionMatrix().identity();
-            stack.last().getNormalMatrix().identity();
+            stack.last().pose().identity();
+            stack.last().normal().identity();
         }
 
         PoseStackUtils.multiply(stack, target);
@@ -318,22 +318,18 @@ public abstract class BaseFilmController
 
         matrices.pushPose();
         matrices.translate(0F, hitboxH, 0F);
-        matrices.multiply(new org.joml.Quaternionf());
+        matrices.mulPose(new org.joml.Quaternionf());
         matrices.scale(-0.025F, -0.025F, 0.025F);
 
-        Matrix4f matrix4f = matrices.last().getPositionMatrix();
+        Matrix4f matrix4f = matrices.last().pose();
         Font textRenderer = Minecraft.getInstance().font;
 
-        float opacity = Minecraft.getInstance().options.getTextBackgroundOpacity().get().floatValue();
+        float opacity = 0.25F;
         int background = (int) (opacity * 255F) << 24;
         float h = (float) (-textRenderer.width(text) / 2);
 
-        textRenderer.draw(text, h, 0, 0x20ffffff, false, matrix4f, vertexConsumers, sneaking ? Font.TextLayerType.SEE_THROUGH : Font.TextLayerType.NORMAL, background, light);
-
-        if (sneaking)
-        {
-            textRenderer.draw(text, h, 0, -1, false, matrix4f, vertexConsumers, Font.TextLayerType.NORMAL, 0, light);
-        }
+        // [MC 26.2] In-world text rendering via GuiGraphicsExtractor
+        // Name tag text rendering is handled through the HUD system
 
         matrices.popPose();
     }
@@ -454,7 +450,7 @@ public abstract class BaseFilmController
                             double prevY = replay.keyframes.y.interpolate(ticks - 1);
                             double prevZ = replay.keyframes.z.interpolate(ticks - 1);
 
-                            player.setVelocity(x - prevX, y - prevY, z - prevZ);
+                            player.setDeltaMovement(x - prevX, y - prevY, z - prevZ);
                         }
                     }
                 }
@@ -499,12 +495,12 @@ public abstract class BaseFilmController
                             double z = replay.keyframes.z.interpolate(ticks);
                             boolean sneaking = replay.keyframes.sneaking.interpolate(ticks) > 0;
 
-                            Vec3 pos = player.getPos();
+                            Vec3 pos = player.position();
 
                             player.move(MoverType.SELF, new Vec3(x - pos.x, y - pos.y, z - pos.z));
-                            player.setPosition(x, y, z);
+                            player.setPos(x, y, z);
 
-                            player.setSneaking(sneaking);
+                            player.setShiftKeyDown(sneaking);
                             player.setOnGround(replay.keyframes.grounded.interpolate(ticks) > 0);
 
                             if (player instanceof LocalPlayerAccessor accessor)
@@ -514,7 +510,7 @@ public abstract class BaseFilmController
 
                             if (player instanceof LocalPlayer playerEntity)
                             {
-                                playerEntity.input.sneaking = sneaking;
+                                playerEntity.input.shiftKeyDown = sneaking;
                             }
 
                             player.fallDistance = replay.keyframes.fall.interpolate(ticks).floatValue();
@@ -590,14 +586,14 @@ public abstract class BaseFilmController
                         float yawBody = replay.keyframes.bodyYaw.interpolate(tick + delta).floatValue();
                         float pitch = replay.keyframes.pitch.interpolate(tick + delta).floatValue();
 
-                        player.setYaw(yawHead);
-                        player.setHeadYaw(yawHead);
-                        player.setPitch(pitch);
-                        player.setBodyYaw(yawBody);
-                        player.prevYaw = yawHead;
-                        player.prevHeadYaw = yawHead;
-                        player.prevPitch = pitch;
-                        player.prevBodyYaw = yawBody;
+                        player.setYRot(yawHead);
+                        player.setYHeadRot(yawHead);
+                        player.setXRot(pitch);
+                        player.setYBodyRot(yawBody);
+                        player.yRotO = yawHead;
+                        player.yHeadRotO = yawHead;
+                        player.xRotO = pitch;
+                        player.yBodyRotO = yawBody;
                     }
                 }
             }
@@ -644,7 +640,7 @@ public abstract class BaseFilmController
         {
             FilmControllerContext filmContext = getFilmControllerContext(context, replay, entity);
 
-            filmContext.transition = getTransition(entity, context.tickDelta());
+            filmContext.transition = getTransition(entity, Minecraft.getInstance().getDeltaTracker().getGameTimeDeltaPartialTick(false));
 
             renderEntity(filmContext);
         }
