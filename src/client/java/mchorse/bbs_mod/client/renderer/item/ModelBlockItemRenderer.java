@@ -14,7 +14,7 @@ import mchorse.bbs_mod.utils.PoseStackUtils;
 import mchorse.bbs_mod.utils.pose.Transform;
 // [MC 26.2 REMOVED] import net.fabricmc.fabric.api.client.rendering.v1.BuiltinItemRendererRegistry;
 import net.minecraft.client.Minecraft;
-// [MC 26.2 REMOVED] import net.minecraft.client.render.VertexConsumerProvider;
+// [MC 26.2 REMOVED] import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.world.item.ItemDisplayContext;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.world.item.ItemStack;
@@ -25,7 +25,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-public class ModelBlockItemRenderer implements BuiltinItemRendererRegistry.DynamicItemRenderer
+public class ModelBlockItemRenderer
 {
     private Map<ItemStack, Item> map = new HashMap<>();
 
@@ -49,7 +49,7 @@ public class ModelBlockItemRenderer implements BuiltinItemRendererRegistry.Dynam
     }
 
     @Override
-    public void render(ItemStack stack, ItemDisplayContext mode, PoseStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay)
+    public void render(ItemStack stack, ItemDisplayContext mode, PoseStack matrices, VertexConsumer vertexConsumers, int light, int overlay)
     {
         Item item = this.get(stack);
 

@@ -1,4 +1,5 @@
-package mchorse.bbs_mod.film;
+package mchorse.bbs_mod
+import net.fabricmc.fabric.api.client.rendering.v1.level.LevelRenderContext;.film;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import io.netty.util.collection.IntObjectHashMap;
@@ -34,9 +35,9 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.client.Camera;
-// [MC 26.2 REMOVED] import net.minecraft.client.render.LightmapTextureManager;
-// [MC 26.2 REMOVED] import net.minecraft.client.render.OverlayTexture;
-// [MC 26.2 REMOVED] import net.minecraft.client.render.VertexConsumerProvider;
+// [MC 26.2 REMOVED] import net.minecraft.client.renderer.LightTexture;
+// [MC 26.2 REMOVED] import net.minecraft.client.renderer.texture.OverlayTexture;
+// [MC 26.2 REMOVED] import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.MoverType;
@@ -313,7 +314,7 @@ public abstract class BaseFilmController
         return matrix;
     }
 
-    private static void renderNameTag(IEntity entity, Component text, PoseStack matrices, VertexConsumerProvider vertexConsumers, int light)
+    private static void renderNameTag(IEntity entity, Component text, PoseStack matrices, VertexConsumer vertexConsumers, int light)
     {
         boolean sneaking = !entity.isSneaking();
         float hitboxH = (float) entity.getPickingHitbox().h + 0.5F;

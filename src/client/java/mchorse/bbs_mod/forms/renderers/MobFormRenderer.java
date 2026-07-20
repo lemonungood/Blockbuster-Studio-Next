@@ -5,7 +5,7 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.brigadier.StringReader;
 import mchorse.bbs_mod.BBSModClient;
 import mchorse.bbs_mod.client.BBSShaders;
-import mchorse.bbs_mod.forms.CustomVertexConsumerProvider;
+import mchorse.bbs_mod.forms.CustomVertexConsumer;
 import mchorse.bbs_mod.forms.FormUtilsClient;
 import mchorse.bbs_mod.forms.ITickable;
 import mchorse.bbs_mod.forms.entities.IEntity;
@@ -21,8 +21,8 @@ import mchorse.bbs_mod.utils.pose.Pose;
 import mchorse.bbs_mod.utils.pose.Transform;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.player.OtherPlayer;
-// [MC 26.2 REMOVED] import net.minecraft.client.render.LightmapTextureManager;
+
+// [MC 26.2 REMOVED] import net.minecraft.client.renderer.LightTexture;
 import net.minecraft.client.renderer.entity.LivingEntityRenderer;
 import net.minecraft.client.model.EntityModel;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -31,7 +31,7 @@ import net.minecraft.world.entity.Pose;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.nbt.CompoundTag;
-// [MC26.2] import net.minecraft.nbt.StringTagParser;
+// [MC26.2] import net.minecraft.nbt.NbtUtils;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.resources.Identifier;
@@ -217,7 +217,7 @@ public class MobFormRenderer extends FormRenderer<MobForm> implements ITickable
             stack.push();
 
             Matrix4f uiMatrix = ModelFormRenderer.getUIMatrix(context, x1, y1, x2, y2);
-            CustomVertexConsumerProvider consumers = FormUtilsClient.getProvider();
+            CustomVertexConsumer consumers = FormUtilsClient.getProvider();
             float scale = this.form.uiScale.get();
             float width = this.entity.getWidth();
             float height = this.entity.getHeight();
@@ -238,7 +238,7 @@ public class MobFormRenderer extends FormRenderer<MobForm> implements ITickable
 
             BooleanHolder first = new BooleanHolder();
 
-            CustomVertexConsumerProvider.hijackVertexFormat((layer) ->
+            CustomVertexConsumer.hijackVertexFormat((layer) ->
             {
                 if (!first.bool)
                 {
@@ -253,7 +253,7 @@ public class MobFormRenderer extends FormRenderer<MobForm> implements ITickable
             consumers.draw();
             consumers.setUI(false);
 
-            CustomVertexConsumerProvider.clearRunnables();
+            CustomVertexConsumer.clearRunnables();
 
             stack.pop();
 
@@ -268,13 +268,13 @@ public class MobFormRenderer extends FormRenderer<MobForm> implements ITickable
 
         if (this.entity != null)
         {
-            CustomVertexConsumerProvider consumers = FormUtilsClient.getProvider();
+            CustomVertexConsumer consumers = FormUtilsClient.getProvider();
             int light = context.light;
             BooleanHolder first = new BooleanHolder();
 
             if (context.isPicking())
             {
-                CustomVertexConsumerProvider.hijackVertexFormat((layer) ->
+                CustomVertexConsumer.hijackVertexFormat((layer) ->
                 {
                     if (!first.bool)
                     {
@@ -290,7 +290,7 @@ public class MobFormRenderer extends FormRenderer<MobForm> implements ITickable
             }
             else
             {
-                CustomVertexConsumerProvider.hijackVertexFormat((layer) ->
+                CustomVertexConsumer.hijackVertexFormat((layer) ->
                 {
                     if (!first.bool)
                     {
@@ -324,7 +324,7 @@ public class MobFormRenderer extends FormRenderer<MobForm> implements ITickable
             currentPose = currentPoseOverlay = null;
 
             consumers.draw();
-            CustomVertexConsumerProvider.clearRunnables();
+            CustomVertexConsumer.clearRunnables();
 
             context.stack.pop();
 

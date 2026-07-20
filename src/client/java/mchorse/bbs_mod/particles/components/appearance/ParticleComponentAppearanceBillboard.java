@@ -15,7 +15,7 @@ import mchorse.bbs_mod.utils.interps.Lerps;
 import mchorse.bbs_mod.utils.joml.Matrices;
 import mchorse.bbs_mod.utils.joml.Vectors;
 import com.mojang.blaze3d.vertex.BufferBuilder;
-// [MC 26.2 REMOVED] import net.minecraft.client.render.LightmapTextureManager;
+// [MC 26.2 REMOVED] import net.minecraft.client.renderer.LightTexture;
 import com.mojang.blaze3d.vertex.VertexFormat;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import net.minecraft.client.renderer.LevelRenderer;

@@ -15,13 +15,13 @@ import mchorse.bbs_mod.utils.colors.Color;
 import mchorse.bbs_mod.utils.colors.Colors;
 import mchorse.bbs_mod.utils.joml.Vectors;
 import net.minecraft.client.Minecraft;
-// [MC 26.2 REMOVED] // [MC26.2] import net.minecraft.client.gl.ShaderProgram;
+// [MC 26.2 REMOVED] // [MC26.2] import com.mojang.blaze3d.shaders.ShaderProgram;
 import com.mojang.blaze3d.vertex.BufferBuilder;
-// [MC 26.2 REMOVED] import net.minecraft.client.render.BufferRenderer;
+// [MC 26.2 REMOVED] import com.mojang.blaze3d.vertex.BufferUploader;
 import net.minecraft.client.renderer.GameRenderer;
-// [MC 26.2 REMOVED] import net.minecraft.client.render.LightmapTextureManager;
-// [MC 26.2 REMOVED] import net.minecraft.client.render.OverlayTexture;
-// [MC 26.2 REMOVED] import net.minecraft.client.render.Tessellator;
+// [MC 26.2 REMOVED] import net.minecraft.client.renderer.LightTexture;
+// [MC 26.2 REMOVED] import net.minecraft.client.renderer.texture.OverlayTexture;
+// [MC 26.2 REMOVED] import com.mojang.blaze3d.vertex.Tessellator;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.blaze3d.vertex.VertexFormat;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
@@ -64,7 +64,7 @@ public class BillboardFormRenderer extends FormRenderer<BillboardForm>
 
         this.renderModel(format, GameRenderer::getRenderTypeEntityTranslucentProgram,
             stack,
-            OverlayTexture.DEFAULT_UV, LightmapTextureManager.MAX_LIGHT_COORDINATE, Colors.WHITE,
+            0, 15728880, Colors.WHITE,
             context.getTransition()
         );
 

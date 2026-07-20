@@ -18,7 +18,7 @@ import mchorse.bbs_mod.ui.framework.elements.overlay.UIOverlayPanel;
 import mchorse.bbs_mod.ui.utils.UI;
 import mchorse.bbs_mod.ui.utils.icons.Icons;
 import mchorse.bbs_mod.utils.colors.Colors;
-// [MC26.2] import net.minecraft.nbt.StringTagParser;
+// [MC26.2] import net.minecraft.nbt.NbtUtils;
 import net.minecraft.resources.Identifier;
 
 import java.util.List;

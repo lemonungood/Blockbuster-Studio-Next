@@ -1,7 +1,7 @@
 package mchorse.bbs_mod.utils;
 
 import com.mojang.blaze3d.systems.RenderSystem;
-// [MC26.2] import com.mojang.blaze3d.systems.VertexSorter;
+// [MC26.2] 
 import mchorse.bbs_mod.utils.joml.Vectors;
 import mchorse.bbs_mod.utils.pose.Transform;
 import com.mojang.blaze3d.vertex.PoseStack;

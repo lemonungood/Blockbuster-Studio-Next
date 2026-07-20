@@ -24,7 +24,7 @@ import mchorse.bbs_mod.particles.components.motion.ParticleComponentMotionDynami
 import mchorse.bbs_mod.particles.components.motion.ParticleComponentMotionParametric;
 import mchorse.bbs_mod.particles.components.rate.ParticleComponentRateInstant;
 import mchorse.bbs_mod.particles.components.rate.ParticleComponentRateSteady;
-import mchorse.bbs_mod.particles.components.shape.ParticleComponentShapeBox;
+import mchorse.bbs_mod.particles.components.shape.ParticleComponentShapeAABB;
 import mchorse.bbs_mod.particles.components.shape.ParticleComponentShapeDisc;
 import mchorse.bbs_mod.particles.components.shape.ParticleComponentShapeEntityAABB;
 import mchorse.bbs_mod.particles.components.shape.ParticleComponentShapePoint;

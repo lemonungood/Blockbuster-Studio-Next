@@ -3,7 +3,7 @@ package mchorse.bbs_mod.forms.renderers;
 import com.mojang.blaze3d.systems.RenderSystem;
 import mchorse.bbs_mod.client.BBSRendering;
 import mchorse.bbs_mod.client.BBSShaders;
-import mchorse.bbs_mod.forms.CustomVertexConsumerProvider;
+import mchorse.bbs_mod.forms.CustomVertexConsumer;
 import mchorse.bbs_mod.forms.FormUtilsClient;
 import mchorse.bbs_mod.forms.forms.ItemForm;
 import mchorse.bbs_mod.ui.framework.UIContext;
@@ -11,8 +11,8 @@ import mchorse.bbs_mod.utils.PoseStackUtils;
 import mchorse.bbs_mod.utils.colors.Color;
 import mchorse.bbs_mod.utils.joml.Vectors;
 import net.minecraft.client.Minecraft;
-// [MC 26.2 REMOVED] import net.minecraft.client.render.LightmapTextureManager;
-// [MC 26.2 REMOVED] import net.minecraft.client.render.OverlayTexture;
+// [MC 26.2 REMOVED] import net.minecraft.client.renderer.LightTexture;
+// [MC 26.2 REMOVED] import net.minecraft.client.renderer.texture.OverlayTexture;
 import com.mojang.blaze3d.vertex.PoseStack;
 import org.joml.Matrix4f;
 
@@ -28,7 +28,7 @@ public class ItemFormRenderer extends FormRenderer<ItemForm>
     {
         context.batcher.getContext().draw();
 
-        CustomVertexConsumerProvider consumers = FormUtilsClient.getProvider();
+        CustomVertexConsumer consumers = FormUtilsClient.getProvider();
         PoseStack matrices = context.batcher.getContext().getMatrices();
 
         Matrix4f uiMatrix = ModelFormRenderer.getUIMatrix(context, x1, y1, x2, y2);
@@ -44,7 +44,7 @@ public class ItemFormRenderer extends FormRenderer<ItemForm>
 
         consumers.setSubstitute(BBSRendering.getColorConsumer(set));
         consumers.setUI(true);
-        Minecraft.getInstance().getItemRenderer().renderItem(this.form.stack.get(), this.form.modelTransform.get(), LightmapTextureManager.MAX_BLOCK_LIGHT_COORDINATE, OverlayTexture.DEFAULT_UV, matrices, consumers, Minecraft.getInstance().world, 0);
+        Minecraft.getInstance().getItemRenderer().renderItem(this.form.stack.get(), this.form.modelTransform.get(), LightmapTextureManager.MAX_BLOCK_LIGHT_COORDINATE, 0, matrices, consumers, Minecraft.getInstance().world, 0);
         consumers.draw();
         consumers.setUI(false);
         consumers.setSubstitute(null);
@@ -55,14 +55,14 @@ public class ItemFormRenderer extends FormRenderer<ItemForm>
     @Override
     protected void render3D(FormRenderingContext context)
     {
-        CustomVertexConsumerProvider consumers = FormUtilsClient.getProvider();
+        CustomVertexConsumer consumers = FormUtilsClient.getProvider();
         int light = context.light;
 
         context.stack.push();
 
         if (context.isPicking())
         {
-            CustomVertexConsumerProvider.hijackVertexFormat((layer) ->
+            CustomVertexConsumer.hijackVertexFormat((layer) ->
             {
                 this.setupTarget(context, BBSShaders.getPickerModelsProgram());
                 RenderSystem.setShader(BBSShaders::getPickerModelsProgram);
@@ -72,7 +72,7 @@ public class ItemFormRenderer extends FormRenderer<ItemForm>
         }
         else
         {
-            CustomVertexConsumerProvider.hijackVertexFormat((l) -> RenderSystem.enableBlend());
+            CustomVertexConsumer.hijackVertexFormat((l) -> RenderSystem.enableBlend());
         }
 
         Color set = this.form.color.get();
@@ -85,7 +85,7 @@ public class ItemFormRenderer extends FormRenderer<ItemForm>
         consumers.draw();
         consumers.setSubstitute(null);
 
-        CustomVertexConsumerProvider.clearRunnables();
+        CustomVertexConsumer.clearRunnables();
 
         context.stack.pop();
 

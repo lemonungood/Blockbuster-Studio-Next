@@ -1,8 +1,9 @@
 package mchorse.bbs_mod.client;
 
 import mchorse.bbs_mod.BBSMod;
+import mchorse.bbs_mod.client.ShaderProgram;
 import net.minecraft.client.Minecraft;
-// [MC 26.2 REMOVED] // [MC26.2] import net.minecraft.client.gl.ShaderProgram;
+// [MC 26.2 REMOVED] // [MC26.2] import com.mojang.blaze3d.shaders.ShaderProgram;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import net.minecraft.server.packs.resources.Resource;
 import net.minecraft.server.packs.resources.ResourceProvider;

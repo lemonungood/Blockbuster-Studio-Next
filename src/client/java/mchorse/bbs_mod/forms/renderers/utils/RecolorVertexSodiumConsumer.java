@@ -3,7 +3,7 @@ package mchorse.bbs_mod.forms.renderers.utils;
 import mchorse.bbs_mod.mixin.client.sodium.SodiumBufferBuilderAccessor;
 import mchorse.bbs_mod.utils.colors.Color;
 import net.caffeinemc.mods.sodium.api.vertex.buffer.VertexBufferWriter;
-import net.caffeinemc.mods.sodium.api.vertex.format.VertexFormatDescription;
+// Sodium API changed
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import org.lwjgl.system.MemoryStack;
 

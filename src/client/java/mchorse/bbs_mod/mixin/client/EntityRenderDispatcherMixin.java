@@ -3,7 +3,7 @@ package mchorse.bbs_mod.mixin.client;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import mchorse.bbs_mod.client.renderer.MorphRenderer;
-// [MC 26.2 REMOVED] import net.minecraft.client.render.VertexConsumerProvider;
+// [MC 26.2 REMOVED] import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.LivingEntityRenderer;
@@ -20,12 +20,12 @@ public class EntityRenderDispatcherMixin
         method = "render",
         at = @At(
             value = "INVOKE",
-            target = "Lnet/minecraft/client/render/entity/EntityRenderer;render(Lnet/minecraft/entity/Entity;FFLnet/minecraft/client/util/math/PoseStack;Lnet/minecraft/client/render/VertexConsumerProvider;I)V"
+            target = "Lnet/minecraft/client/render/entity/EntityRenderer;render(Lnet/minecraft/entity/Entity;FFLnet/minecraft/client/util/math/PoseStack;Lnet/minecraft/client/render/VertexConsumer;I)V"
         )
     )
     private <E extends Entity> void wrapRender(
         EntityRenderer renderer, E entity, float yaw, float tickDelta,
-        PoseStack matrices, VertexConsumerProvider vcp, int light,
+        PoseStack matrices, VertexConsumer vcp, int light,
         Operation<Void> original
     ) {
         if (entity instanceof LivingEntity livingEntity)

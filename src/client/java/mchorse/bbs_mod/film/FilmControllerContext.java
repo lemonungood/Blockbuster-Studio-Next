@@ -5,9 +5,9 @@ import mchorse.bbs_mod.film.replays.Replay;
 import mchorse.bbs_mod.forms.entities.IEntity;
 import mchorse.bbs_mod.ui.framework.elements.utils.StencilMap;
 import mchorse.bbs_mod.utils.colors.Colors;
-// [MC 26.2 REMOVED] import net.fabricmc.fabric.api.client.rendering.v1.WorldRenderContext;
+// [MC 26.2 REMOVED] import net.fabricmc.fabric.api.client.rendering.v1.level.LevelRenderContext;
 import net.minecraft.client.Camera;
-// [MC 26.2 REMOVED] import net.minecraft.client.render.VertexConsumerProvider;
+// [MC 26.2 REMOVED] import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.blaze3d.vertex.PoseStack;
 
 public class FilmControllerContext
@@ -19,7 +19,7 @@ public class FilmControllerContext
     public Replay replay;
     public Camera camera;
     public PoseStack stack;
-    public VertexConsumerProvider consumers;
+    public VertexConsumer consumers;
     public StencilMap map;
 
     public float transition;
@@ -49,7 +49,7 @@ public class FilmControllerContext
         this.relative = false;
     }
 
-    public FilmControllerContext setup(IntObjectMap<IEntity> entities, IEntity entity, Replay replay, WorldRenderContext context)
+    public FilmControllerContext setup(IntObjectMap<IEntity> entities, IEntity entity, Replay replay, LevelRenderContext context)
     {
         this.reset();
 
@@ -64,7 +64,7 @@ public class FilmControllerContext
         return this;
     }
 
-    public FilmControllerContext setup(IntObjectMap<IEntity> entities, IEntity entity, Replay replay, Camera camera, PoseStack stack, VertexConsumerProvider consumers, float transition)
+    public FilmControllerContext setup(IntObjectMap<IEntity> entities, IEntity entity, Replay replay, Camera camera, PoseStack stack, VertexConsumer consumers, float transition)
     {
         this.reset();
 

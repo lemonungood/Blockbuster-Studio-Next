@@ -5,7 +5,7 @@ import mchorse.bbs_mod.utils.pose.Pose;
 import mchorse.bbs_mod.utils.pose.PoseTransform;
 import mchorse.bbs_mod.utils.pose.Transform;
 import net.minecraft.client.model.geom.ModelPart;
-// [MC 26.2 REMOVED] import net.minecraft.client.render.VertexConsumerProvider;
+// [MC 26.2 REMOVED] import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.renderer.entity.LivingEntityRenderer;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.world.entity.LivingEntity;
@@ -20,7 +20,7 @@ import java.util.Map;
 public abstract class LivingEntityRendererMixin
 {
     @Inject(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/entity/model/EntityModel;setAngles(Lnet/minecraft/entity/Entity;FFFFF)V", ordinal = 0, shift = At.Shift.AFTER))
-    public void onSetAngles(LivingEntity livingEntity, float f, float g, PoseStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i, CallbackInfo info)
+    public void onSetAngles(LivingEntity livingEntity, float f, float g, PoseStack matrixStack, VertexConsumer vertexConsumerProvider, int i, CallbackInfo info)
     {
         Pose pose = MobFormRenderer.getCurrentPose();
         Pose poseOverlay = MobFormRenderer.getCurrentPoseOverlay();
@@ -92,7 +92,7 @@ public abstract class LivingEntityRendererMixin
     }
 
     @Inject(method = "render", at = @At("TAIL"))
-    public void onRenderEnd(LivingEntity livingEntity, float f, float g, PoseStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i, CallbackInfo info)
+    public void onRenderEnd(LivingEntity livingEntity, float f, float g, PoseStack matrixStack, VertexConsumer vertexConsumerProvider, int i, CallbackInfo info)
     {
         for (Map.Entry<ModelPart, Transform> entry : MobFormRenderer.getCache().entrySet())
         {

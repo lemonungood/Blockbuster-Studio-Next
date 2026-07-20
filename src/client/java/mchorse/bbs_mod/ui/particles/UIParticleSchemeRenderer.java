@@ -10,10 +10,10 @@ import mchorse.bbs_mod.ui.framework.UIContext;
 import mchorse.bbs_mod.ui.framework.elements.utils.UIModelRenderer;
 import net.minecraft.client.Minecraft;
 import com.mojang.blaze3d.vertex.BufferBuilder;
-// [MC 26.2 REMOVED] import net.minecraft.client.render.BufferRenderer;
+// [MC 26.2 REMOVED] import com.mojang.blaze3d.vertex.BufferUploader;
 import net.minecraft.client.renderer.GameRenderer;
-// [MC 26.2 REMOVED] import net.minecraft.client.render.OverlayTexture;
-// [MC 26.2 REMOVED] import net.minecraft.client.render.Tessellator;
+// [MC 26.2 REMOVED] import net.minecraft.client.renderer.texture.OverlayTexture;
+// [MC 26.2 REMOVED] import com.mojang.blaze3d.vertex.Tessellator;
 import com.mojang.blaze3d.vertex.VertexFormat;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -72,7 +72,7 @@ public class UIParticleSchemeRenderer extends UIModelRenderer
 
         RenderSystem.enableBlend();
         RenderSystem.enableDepthTest();
-        this.emitter.render(DefaultVertexFormat.POSITION_TEXTURE_COLOR_LIGHT, GameRenderer::getParticleProgram, stack, OverlayTexture.DEFAULT_UV, context.getTransition());
+        this.emitter.render(DefaultVertexFormat.POSITION_TEXTURE_COLOR_LIGHT, GameRenderer::getParticleProgram, stack, 0, context.getTransition());
         RenderSystem.disableDepthTest();
         RenderSystem.disableBlend();
 

@@ -15,7 +15,7 @@ import mchorse.bbs_mod.cubic.data.model.ModelGroup;
 import mchorse.bbs_mod.cubic.model.ArmorSlot;
 import mchorse.bbs_mod.cubic.model.ArmorType;
 import mchorse.bbs_mod.cubic.model.bobj.BOBJModel;
-import mchorse.bbs_mod.forms.CustomVertexConsumerProvider;
+import mchorse.bbs_mod.forms.CustomVertexConsumer;
 import mchorse.bbs_mod.forms.FormUtilsClient;
 import mchorse.bbs_mod.forms.ITickable;
 import mchorse.bbs_mod.forms.entities.IEntity;
@@ -37,11 +37,11 @@ import mchorse.bbs_mod.utils.joml.Vectors;
 import mchorse.bbs_mod.utils.pose.Pose;
 import mchorse.bbs_mod.utils.pose.PoseTransform;
 import net.minecraft.client.Minecraft;
-// [MC 26.2 REMOVED] // [MC26.2] import net.minecraft.client.gl.ShaderProgram;
+// [MC 26.2 REMOVED] // [MC26.2] import com.mojang.blaze3d.shaders.ShaderProgram;
 import net.minecraft.client.player.AbstractClientPlayer;
 import net.minecraft.client.renderer.GameRenderer;
-// [MC 26.2 REMOVED] import net.minecraft.client.render.LightmapTextureManager;
-// [MC 26.2 REMOVED] import net.minecraft.client.render.OverlayTexture;
+// [MC 26.2 REMOVED] import net.minecraft.client.renderer.LightTexture;
+// [MC 26.2 REMOVED] import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.world.item.ItemDisplayContext;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -257,7 +257,7 @@ public class ModelFormRenderer extends FormRenderer<ModelForm> implements ITicka
                 ? GameRenderer::getRenderTypeEntityTranslucentCullProgram
                 : BBSShaders::getModel;
 
-            this.renderModel(this.entity, mainShader, stack, model, LightmapTextureManager.pack(15, 15), OverlayTexture.DEFAULT_UV, color, true, null, context.getTransition());
+            this.renderModel(this.entity, mainShader, stack, model, LightmapTextureManager.pack(15, 15), 0, color, true, null, context.getTransition());
 
             /* Render body parts */
             stack.push();
@@ -265,7 +265,7 @@ public class ModelFormRenderer extends FormRenderer<ModelForm> implements ITicka
             stack.peek().getNormalMatrix().scale(1F / Vectors.EMPTY_3F.x, -1F / Vectors.EMPTY_3F.y, 1F / Vectors.EMPTY_3F.z);
 
             this.renderBodyParts(new FormRenderingContext()
-                .set(FormRenderType.ENTITY, this.entity, stack, LightmapTextureManager.pack(15, 15), OverlayTexture.DEFAULT_UV, context.getTransition())
+                .set(FormRenderType.ENTITY, this.entity, stack, LightmapTextureManager.pack(15, 15), 0, context.getTransition())
                 .inUI());
 
             stack.pop();
@@ -332,19 +332,19 @@ public class ModelFormRenderer extends FormRenderer<ModelForm> implements ITicka
 
         if (matrix != null)
         {
-            CustomVertexConsumerProvider consumers = FormUtilsClient.getProvider();
+            CustomVertexConsumer consumers = FormUtilsClient.getProvider();
 
             stack.push();
             PoseStackUtils.multiply(stack, matrix);
             PoseStackUtils.applyTransform(stack, armorSlot.transform);
             stack.multiply(RotationAxis.POSITIVE_X.rotationDegrees(180F));
 
-            CustomVertexConsumerProvider.hijackVertexFormat((l) -> RenderSystem.enableBlend());
+            CustomVertexConsumer.hijackVertexFormat((l) -> RenderSystem.enableBlend());
 
             ActorEntityRenderer.armorRenderer.renderArmorSlot(stack, consumers, target, type.slot, type, light);
             consumers.draw();
 
-            CustomVertexConsumerProvider.clearRunnables();
+            CustomVertexConsumer.clearRunnables();
 
             stack.pop();
 
@@ -368,7 +368,7 @@ public class ModelFormRenderer extends FormRenderer<ModelForm> implements ITicka
 
             if (matrix != null)
             {
-                CustomVertexConsumerProvider consumers = FormUtilsClient.getProvider();
+                CustomVertexConsumer consumers = FormUtilsClient.getProvider();
 
                 stack.push();
                 PoseStackUtils.multiply(stack, matrix);
@@ -377,7 +377,7 @@ public class ModelFormRenderer extends FormRenderer<ModelForm> implements ITicka
                 stack.translate(0F, 0.125F, 0F);
                 PoseStackUtils.applyTransform(stack, armorSlot.transform);
 
-                CustomVertexConsumerProvider.hijackVertexFormat((l) -> RenderSystem.enableBlend());
+                CustomVertexConsumer.hijackVertexFormat((l) -> RenderSystem.enableBlend());
 
                 consumers.setSubstitute(BBSRendering.getColorConsumer(color));
 
@@ -397,7 +397,7 @@ public class ModelFormRenderer extends FormRenderer<ModelForm> implements ITicka
                 consumers.draw();
                 consumers.setSubstitute(null);
 
-                CustomVertexConsumerProvider.clearRunnables();
+                CustomVertexConsumer.clearRunnables();
 
                 stack.pop();
 
@@ -459,7 +459,7 @@ public class ModelFormRenderer extends FormRenderer<ModelForm> implements ITicka
             RenderSystem.enableDepthTest();
             RenderSystem.enableBlend();
 
-            this.renderModel(this.entity, mainShader, matrices, model, light, OverlayTexture.DEFAULT_UV, color, false, null, 0F);
+            this.renderModel(this.entity, mainShader, matrices, model, light, 0, color, false, null, 0F);
 
             for (ModelGroup group : model.getModel().getAllGroups())
             {

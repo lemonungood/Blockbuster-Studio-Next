@@ -3,7 +3,7 @@ package mchorse.bbs_mod.ui.particles.sections;
 import mchorse.bbs_mod.l10n.keys.IKey;
 import mchorse.bbs_mod.math.molang.MolangParser;
 import mchorse.bbs_mod.particles.components.shape.ParticleComponentShapeBase;
-import mchorse.bbs_mod.particles.components.shape.ParticleComponentShapeBox;
+import mchorse.bbs_mod.particles.components.shape.ParticleComponentShapeAABB;
 import mchorse.bbs_mod.particles.components.shape.ParticleComponentShapeDisc;
 import mchorse.bbs_mod.particles.components.shape.ParticleComponentShapeEntityAABB;
 import mchorse.bbs_mod.particles.components.shape.ParticleComponentShapePoint;

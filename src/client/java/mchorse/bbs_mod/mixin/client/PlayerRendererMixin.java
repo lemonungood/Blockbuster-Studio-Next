@@ -7,7 +7,7 @@ import mchorse.bbs_mod.forms.renderers.FormRenderer;
 import mchorse.bbs_mod.morphing.Morph;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.player.AbstractClientPlayer;
-// [MC 26.2 REMOVED] import net.minecraft.client.render.VertexConsumerProvider;
+// [MC 26.2 REMOVED] import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.renderer.entity.player.PlayerRenderer;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.world.InteractionHand;
@@ -22,7 +22,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class PlayerRendererMixin
 {
     @Inject(method = "render", at = @At("HEAD"), cancellable = true)
-    public void onRender(AbstractClientPlayer abstractLocalPlayer, float f, float g, PoseStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i, CallbackInfo info)
+    public void onRender(AbstractClientPlayer abstractLocalPlayer, float f, float g, PoseStack matrixStack, VertexConsumer vertexConsumerProvider, int i, CallbackInfo info)
     {
         if (MorphRenderer.renderPlayer(abstractLocalPlayer, f, g, matrixStack, vertexConsumerProvider, i))
         {
@@ -42,7 +42,7 @@ public class PlayerRendererMixin
     }
 
     @Inject(method = "renderArm", at = @At("HEAD"), cancellable = true)
-    public void onRenderArmBegin(PoseStack matrices, VertexConsumerProvider vertexConsumers, int light, AbstractClientPlayer player, ModelPart arm, ModelPart sleeve, CallbackInfo info)
+    public void onRenderArmBegin(PoseStack matrices, VertexConsumer vertexConsumers, int light, AbstractClientPlayer player, ModelPart arm, ModelPart sleeve, CallbackInfo info)
     {
         Morph morph = Morph.getMorph(player);
 

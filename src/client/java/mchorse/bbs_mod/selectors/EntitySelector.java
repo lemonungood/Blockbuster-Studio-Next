@@ -10,7 +10,7 @@ import mchorse.bbs_mod.utils.StringUtils;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
-// [MC26.2] import net.minecraft.nbt.StringTagParser;
+// [MC26.2] import net.minecraft.nbt.NbtUtils;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;

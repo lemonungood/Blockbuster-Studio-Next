@@ -2,7 +2,7 @@ package mchorse.bbs_mod.forms.renderers;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import mchorse.bbs_mod.client.BBSShaders;
-import mchorse.bbs_mod.forms.CustomVertexConsumerProvider;
+import mchorse.bbs_mod.forms.CustomVertexConsumer;
 import mchorse.bbs_mod.forms.FormUtilsClient;
 import mchorse.bbs_mod.forms.forms.LabelForm;
 import mchorse.bbs_mod.ui.framework.UIContext;
@@ -14,9 +14,9 @@ import mchorse.bbs_mod.utils.joml.Vectors;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import com.mojang.blaze3d.vertex.BufferBuilder;
-// [MC 26.2 REMOVED] import net.minecraft.client.render.BufferRenderer;
+// [MC 26.2 REMOVED] import com.mojang.blaze3d.vertex.BufferUploader;
 import net.minecraft.client.renderer.GameRenderer;
-// [MC 26.2 REMOVED] import net.minecraft.client.render.Tessellator;
+// [MC 26.2 REMOVED] import com.mojang.blaze3d.vertex.Tessellator;
 import com.mojang.blaze3d.vertex.VertexFormat;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -87,7 +87,7 @@ public class LabelFormRenderer extends FormRenderer<LabelForm>
         }
 
         Font renderer = Minecraft.getInstance().textRenderer;
-        CustomVertexConsumerProvider consumers = FormUtilsClient.getProvider();
+        CustomVertexConsumer consumers = FormUtilsClient.getProvider();
         float scale = 1F / 16F;
         int light = context.light;
 
@@ -97,7 +97,7 @@ public class LabelFormRenderer extends FormRenderer<LabelForm>
 
         if (context.isPicking())
         {
-            CustomVertexConsumerProvider.hijackVertexFormat((layer) ->
+            CustomVertexConsumer.hijackVertexFormat((layer) ->
             {
                 this.setupTarget(context, BBSShaders.getPickerModelsProgram());
                 RenderSystem.setShader(BBSShaders::getPickerModelsProgram);
@@ -115,7 +115,7 @@ public class LabelFormRenderer extends FormRenderer<LabelForm>
             this.renderLimitedString(context, consumers, renderer, light);
         }
 
-        CustomVertexConsumerProvider.clearRunnables();
+        CustomVertexConsumer.clearRunnables();
 
         RenderSystem.enableDepthTest();
         RenderSystem.enableCull();
@@ -123,7 +123,7 @@ public class LabelFormRenderer extends FormRenderer<LabelForm>
         context.stack.pop();
     }
 
-    private void renderString(FormRenderingContext context, CustomVertexConsumerProvider consumers, Font renderer, int light)
+    private void renderString(FormRenderingContext context, CustomVertexConsumer consumers, Font renderer, int light)
     {
         String content = StringUtils.processColoredText(this.form.text.get());
         float transition = context.getTransition();
@@ -175,7 +175,7 @@ public class LabelFormRenderer extends FormRenderer<LabelForm>
         this.renderShadow(context, x, y, w, h);
     }
 
-    private void renderLimitedString(FormRenderingContext context, CustomVertexConsumerProvider consumers, Font renderer, int light)
+    private void renderLimitedString(FormRenderingContext context, CustomVertexConsumer consumers, Font renderer, int light)
     {
         float transition = context.getTransition();
         int w = 0;

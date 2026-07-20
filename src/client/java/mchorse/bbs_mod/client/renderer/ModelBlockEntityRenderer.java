@@ -27,7 +27,7 @@ import mchorse.bbs_mod.utils.PoseStackUtils;
 import mchorse.bbs_mod.utils.pose.Transform;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.Camera;
-// [MC 26.2 REMOVED] import net.minecraft.client.render.VertexConsumerProvider;
+// [MC 26.2 REMOVED] import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.renderer.LevelRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
@@ -42,12 +42,12 @@ public class ModelBlockEntityRenderer implements BlockEntityRenderer
 {
     private static ActorEntity entity;
 
-    public static void renderShadow(VertexConsumerProvider provider, PoseStack matrices, float tickDelta, double x, double y, double z, float tx, float ty, float tz)
+    public static void renderShadow(VertexConsumer provider, PoseStack matrices, float tickDelta, double x, double y, double z, float tx, float ty, float tz)
     {
         renderShadow(provider, matrices, tickDelta, x, y, z, tx, ty, tz, 0.5F, 1F);
     }
 
-    public static void renderShadow(VertexConsumerProvider provider, PoseStack matrices, float tickDelta, double x, double y, double z, float tx, float ty, float tz, float radius, float opacity)
+    public static void renderShadow(VertexConsumer provider, PoseStack matrices, float tickDelta, double x, double y, double z, float tx, float ty, float tz, float radius, float opacity)
     {
         ClientLevel world = Minecraft.getInstance().world;
 
@@ -103,7 +103,7 @@ public class ModelBlockEntityRenderer implements BlockEntityRenderer
     }
 
     @Override
-    public void render(ModelBlockEntity entity, float tickDelta, PoseStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay)
+    public void render(ModelBlockEntity entity, float tickDelta, PoseStack matrices, VertexConsumer vertexConsumers, int light, int overlay)
     {
         Minecraft mc = Minecraft.getInstance();
         ModelProperties properties = entity.getProperties();

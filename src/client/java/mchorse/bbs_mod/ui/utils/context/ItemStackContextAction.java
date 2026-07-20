@@ -1,6 +1,6 @@
 package mchorse.bbs_mod.ui.utils.context;
 
-import mchorse.bbs_mod.forms.CustomVertexConsumerProvider;
+import mchorse.bbs_mod.forms.CustomVertexConsumer;
 import mchorse.bbs_mod.forms.FormUtilsClient;
 import mchorse.bbs_mod.l10n.keys.IKey;
 import mchorse.bbs_mod.ui.framework.UIContext;
@@ -29,7 +29,7 @@ public class ItemStackContextAction extends ContextAction
         if (this.stack != null && !this.stack.isEmpty())
         {
             PoseStack matrices = context.batcher.getContext().getMatrices();
-            CustomVertexConsumerProvider consumers = FormUtilsClient.getProvider();
+            CustomVertexConsumer consumers = FormUtilsClient.getProvider();
 
             matrices.push();
             consumers.setUI(true);

@@ -4,8 +4,8 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import mchorse.bbs_mod.BBSSettings;
 import mchorse.bbs_mod.client.BBSRendering;
 import mchorse.bbs_mod.utils.colors.Color;
-// [MC26.2] import net.minecraft.client.gui.framebuffer.Framebuffer;
-// [MC 26.2 REMOVED] import net.minecraft.client.render.RenderLayer;
+// [MC26.2] import com.mojang.blaze3d.opengl.FrameBufferCache;
+// [MC 26.2 REMOVED] import net.minecraft.client.renderer.rendertype.RenderTypes;
 import net.minecraft.client.renderer.LevelRenderer;
 import com.mojang.blaze3d.vertex.PoseStack;
 import org.joml.Matrix4f;
@@ -20,7 +20,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class LevelRendererMixin
 {
     @Shadow
-    public Framebuffer entityOutlinesFramebuffer;
+    public FrameBufferCache entityOutlinesFramebuffer;
 
     @Inject(method = "renderSky(Lnet/minecraft/client/util/math/PoseStack;Lorg/joml/Matrix4f;FLnet/minecraft/client/render/Camera;ZLjava/lang/Runnable;)V", at = @At("HEAD"), cancellable = true)
     public void onRenderSky(CallbackInfo info)
@@ -38,7 +38,7 @@ public class LevelRendererMixin
     }
 
     @Inject(method = "renderLayer", at = @At("HEAD"), cancellable = true)
-    public void onRenderLayer(RenderLayer renderLayer, PoseStack matrices, double cameraX, double cameraY, double cameraZ, Matrix4f positionMatrix, CallbackInfo info)
+    public void onRenderTypes(RenderTypes renderLayer, PoseStack matrices, double cameraX, double cameraY, double cameraZ, Matrix4f positionMatrix, CallbackInfo info)
     {
         if (BBSSettings.chromaSkyEnabled.get() && !BBSSettings.chromaSkyTerrain.get())
         {
@@ -49,9 +49,9 @@ public class LevelRendererMixin
     }
 
     @Inject(method = "renderLayer", at = @At("TAIL"))
-    public void onRenderChunkLayer(RenderLayer layer, PoseStack stack, double x, double y, double z, Matrix4f positionMatrix, CallbackInfo info)
+    public void onRenderChunkLayer(RenderTypes layer, PoseStack stack, double x, double y, double z, Matrix4f positionMatrix, CallbackInfo info)
     {
-        if (layer == RenderLayer.getSolid())
+        if (layer == RenderTypes.getSolid())
         {
             BBSRendering.onRenderChunkLayer(stack);
         }
@@ -66,7 +66,7 @@ public class LevelRendererMixin
     @Inject(at = @At("RETURN"), method = "onResized")
     private void onResized(CallbackInfo info)
     {
-        if (this.entityOutlinesFramebuffer == null)
+        if (this.entityOutlinesFrameBufferCache == null)
         {
             return;
         }

@@ -30,8 +30,8 @@ import mchorse.bbs_mod.forms.renderers.TrailFormRenderer;
 import mchorse.bbs_mod.forms.renderers.VanillaParticleFormRenderer;
 import mchorse.bbs_mod.ui.framework.UIContext;
 import com.mojang.blaze3d.vertex.BufferBuilder;
-// [MC 26.2 REMOVED] import net.minecraft.client.render.RenderLayer;
-// [MC 26.2 REMOVED] import net.minecraft.client.render.TexturedRenderLayers;
+// [MC 26.2 REMOVED] import net.minecraft.client.renderer.rendertype.RenderTypes;
+// [MC 26.2 REMOVED] import net.minecraft.client.renderer.Sheets;
 // [MC 26.2 REMOVED] import net.minecraft.client.render.chunk.SectionBufferBuilderPool;
 import net.minecraft.client.resources.model.ModelBakery;
 // [MC26.2] import net.minecraft.Util; -> use java.util.Objects or keep
@@ -46,35 +46,35 @@ import java.util.Stack;
 public class FormUtilsClient
 {
     private static Map<Class, IFormRendererFactory> map = new HashMap<>();
-    private static CustomVertexConsumerProvider customVertexConsumerProvider;
+    private static CustomVertexConsumer customVertexConsumer;
     private static Stack<Form> currentForm = new Stack<>();
 
     static
     {
         SectionBufferBuilderPool storage = new SectionBufferBuilderPool();
         SortedMap sortedMap = Util.make(new Object2ObjectLinkedOpenHashMap(), map -> {
-            map.put(TexturedRenderLayers.getEntitySolid(), storage.get(RenderLayer.getSolid()));
-            map.put(TexturedRenderLayers.getEntityCutout(), storage.get(RenderLayer.getCutout()));
-            map.put(TexturedRenderLayers.getBannerPatterns(), storage.get(RenderLayer.getCutoutMipped()));
-            map.put(TexturedRenderLayers.getEntityTranslucentCull(), storage.get(RenderLayer.getTranslucent()));
-            assignBufferBuilder(map, TexturedRenderLayers.getShieldPatterns());
-            assignBufferBuilder(map, TexturedRenderLayers.getBeds());
-            assignBufferBuilder(map, TexturedRenderLayers.getShulkerBoxes());
-            assignBufferBuilder(map, TexturedRenderLayers.getSign());
-            assignBufferBuilder(map, TexturedRenderLayers.getHangingSign());
-            map.put(TexturedRenderLayers.getChest(), new BufferBuilder(786432));
-            assignBufferBuilder(map, RenderLayer.getArmorGlint());
-            assignBufferBuilder(map, RenderLayer.getArmorEntityGlint());
-            assignBufferBuilder(map, RenderLayer.getGlint());
-            assignBufferBuilder(map, RenderLayer.getDirectGlint());
-            assignBufferBuilder(map, RenderLayer.getGlintTranslucent());
-            assignBufferBuilder(map, RenderLayer.getEntityGlint());
-            assignBufferBuilder(map, RenderLayer.getDirectEntityGlint());
-            assignBufferBuilder(map, RenderLayer.getWaterMask());
+            map.put(TexturedRenderTypess.getEntitySolid(), storage.get(RenderTypes.getSolid()));
+            map.put(TexturedRenderTypess.getEntityCutout(), storage.get(RenderTypes.getCutout()));
+            map.put(TexturedRenderTypess.getBannerPatterns(), storage.get(RenderTypes.getCutoutMipped()));
+            map.put(TexturedRenderTypess.getEntityTranslucentCull(), storage.get(RenderTypes.getTranslucent()));
+            assignBufferBuilder(map, TexturedRenderTypess.getShieldPatterns());
+            assignBufferBuilder(map, TexturedRenderTypess.getBeds());
+            assignBufferBuilder(map, TexturedRenderTypess.getShulkerBoxes());
+            assignBufferBuilder(map, TexturedRenderTypess.getSign());
+            assignBufferBuilder(map, TexturedRenderTypess.getHangingSign());
+            map.put(TexturedRenderTypess.getChest(), new BufferBuilder(786432));
+            assignBufferBuilder(map, RenderTypes.getArmorGlint());
+            assignBufferBuilder(map, RenderTypes.getArmorEntityGlint());
+            assignBufferBuilder(map, RenderTypes.getGlint());
+            assignBufferBuilder(map, RenderTypes.getDirectGlint());
+            assignBufferBuilder(map, RenderTypes.getGlintTranslucent());
+            assignBufferBuilder(map, RenderTypes.getEntityGlint());
+            assignBufferBuilder(map, RenderTypes.getDirectEntityGlint());
+            assignBufferBuilder(map, RenderTypes.getWaterMask());
             ModelBakery.BLOCK_DESTRUCTION_RENDER_LAYERS.forEach(renderLayer -> assignBufferBuilder(map, renderLayer));
         });
 
-        customVertexConsumerProvider = new CustomVertexConsumerProvider(new BufferBuilder(1536), sortedMap);
+        customVertexConsumer = new CustomVertexConsumer(new BufferBuilder(1536), sortedMap);
 
         register(BillboardForm.class, BillboardFormRenderer::new);
         register(ExtrudedForm.class, ExtrudedFormRenderer::new);
@@ -90,14 +90,14 @@ public class FormUtilsClient
         register(FramebufferForm.class, FramebufferFormRenderer::new);
     }
 
-    private static void assignBufferBuilder(Object2ObjectLinkedOpenHashMap<RenderLayer, BufferBuilder> builderStorage, RenderLayer layer)
+    private static void assignBufferBuilder(Object2ObjectLinkedOpenHashMap<RenderTypes, BufferBuilder> builderStorage, RenderTypes layer)
     {
         builderStorage.put(layer, new BufferBuilder(layer.getExpectedBufferSize()));
     }
 
-    public static CustomVertexConsumerProvider getProvider()
+    public static CustomVertexConsumer getProvider()
     {
-        return customVertexConsumerProvider;
+        return customVertexConsumer;
     }
 
     public static <T extends Form> void register(Class<T> clazz, IFormRendererFactory<T> function)

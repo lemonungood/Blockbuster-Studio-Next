@@ -9,8 +9,8 @@ import mchorse.bbs_mod.items.GunProperties;
 import mchorse.bbs_mod.utils.PoseStackUtils;
 import mchorse.bbs_mod.utils.interps.Lerps;
 import net.minecraft.client.Minecraft;
-// [MC 26.2 REMOVED] import net.minecraft.client.render.OverlayTexture;
-// [MC 26.2 REMOVED] import net.minecraft.client.render.VertexConsumerProvider;
+// [MC 26.2 REMOVED] import net.minecraft.client.renderer.texture.OverlayTexture;
+// [MC 26.2 REMOVED] import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -32,7 +32,7 @@ public class GunProjectileEntityRenderer extends EntityRenderer
     }
 
     @Override
-    public void render(GunProjectileEntity projectile, float yaw, float tickDelta, PoseStack matrices, VertexConsumerProvider vertexConsumers, int light)
+    public void render(GunProjectileEntity projectile, float yaw, float tickDelta, PoseStack matrices, VertexConsumer vertexConsumers, int light)
     {
         matrices.push();
 
@@ -50,7 +50,7 @@ public class GunProjectileEntityRenderer extends EntityRenderer
 
         RenderSystem.enableDepthTest();
         FormUtilsClient.render(projectile.getForm(), new FormRenderingContext()
-            .set(FormRenderType.ENTITY, projectile.getEntity(), matrices, light, OverlayTexture.DEFAULT_UV, tickDelta)
+            .set(FormRenderType.ENTITY, projectile.getEntity(), matrices, light, 0, tickDelta)
             .camera(Minecraft.getInstance().gameRenderer.getCamera()));
         RenderSystem.disableDepthTest();
 

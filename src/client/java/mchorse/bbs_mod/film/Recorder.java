@@ -17,14 +17,14 @@ import mchorse.bbs_mod.utils.MathUtils;
 import mchorse.bbs_mod.utils.PlayerUtils;
 import mchorse.bbs_mod.utils.joml.Matrices;
 import mchorse.bbs_mod.utils.joml.Vectors;
-// [MC 26.2 REMOVED] import net.fabricmc.fabric.api.client.rendering.v1.WorldRenderContext;
+// [MC 26.2 REMOVED] import net.fabricmc.fabric.api.client.rendering.v1.level.LevelRenderContext;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
 import com.mojang.blaze3d.vertex.BufferBuilder;
-// [MC 26.2 REMOVED] import net.minecraft.client.render.BufferRenderer;
+// [MC 26.2 REMOVED] import com.mojang.blaze3d.vertex.BufferUploader;
 import net.minecraft.client.Camera;
 import net.minecraft.client.renderer.GameRenderer;
-// [MC 26.2 REMOVED] import net.minecraft.client.render.Tessellator;
+// [MC 26.2 REMOVED] import com.mojang.blaze3d.vertex.Tessellator;
 import com.mojang.blaze3d.vertex.VertexFormat;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -157,7 +157,7 @@ public class Recorder extends WorldFilmController
         super.update();
     }
 
-    public void render(WorldRenderContext context)
+    public void render(LevelRenderContext context)
     {
         super.render(context);
 

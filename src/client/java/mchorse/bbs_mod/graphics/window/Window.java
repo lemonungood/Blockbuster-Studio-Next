@@ -6,7 +6,7 @@ import mchorse.bbs_mod.data.types.ListType;
 import mchorse.bbs_mod.data.types.MapType;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
-// [MC 26.2 REMOVED] import net.minecraft.client.util.InputUtil;
+// [MC 26.2 REMOVED] import org.lwjgl.glfw.GLFW;
 import org.lwjgl.glfw.GLFW;
 import org.lwjgl.system.MemoryUtil;
 

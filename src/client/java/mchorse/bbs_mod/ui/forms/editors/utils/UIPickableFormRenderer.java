@@ -22,9 +22,9 @@ import mchorse.bbs_mod.utils.Pair;
 import mchorse.bbs_mod.utils.colors.Colors;
 import net.minecraft.client.Minecraft;
 // [MC26.2] import net.minecraft.client.renderer.GlUniform;
-// [MC 26.2 REMOVED] // [MC26.2] import net.minecraft.client.gl.ShaderProgram;
-// [MC 26.2 REMOVED] import net.minecraft.client.render.LightmapTextureManager;
-// [MC 26.2 REMOVED] import net.minecraft.client.render.OverlayTexture;
+// [MC 26.2 REMOVED] // [MC26.2] import com.mojang.blaze3d.shaders.ShaderProgram;
+// [MC 26.2 REMOVED] import net.minecraft.client.renderer.LightTexture;
+// [MC 26.2 REMOVED] import net.minecraft.client.renderer.texture.OverlayTexture;
 import com.mojang.blaze3d.vertex.PoseStack;
 import org.joml.Matrix4f;
 
@@ -108,7 +108,7 @@ public class UIPickableFormRenderer extends UIFormRenderer
         this.formEditor.preFormRender(context, this.form);
 
         FormRenderingContext formContext = new FormRenderingContext()
-            .set(FormRenderType.PREVIEW, this.target == null ? this.entity : this.target, context.batcher.getContext().getMatrices(), LightmapTextureManager.pack(15, 15), OverlayTexture.DEFAULT_UV, context.getTransition())
+            .set(FormRenderType.PREVIEW, this.target == null ? this.entity : this.target, context.batcher.getContext().getMatrices(), LightmapTextureManager.pack(15, 15), 0, context.getTransition())
             .camera(this.camera)
             .modelRenderer();
 

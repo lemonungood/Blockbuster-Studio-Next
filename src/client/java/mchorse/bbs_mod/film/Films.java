@@ -20,7 +20,7 @@ import mchorse.bbs_mod.utils.CollectionUtils;
 import mchorse.bbs_mod.utils.clips.Clip;
 import mchorse.bbs_mod.utils.colors.Colors;
 import mchorse.bbs_mod.utils.keyframes.KeyframeChannel;
-// [MC 26.2 REMOVED] import net.fabricmc.fabric.api.client.rendering.v1.WorldRenderContext;
+// [MC 26.2 REMOVED] import net.fabricmc.fabric.api.client.rendering.v1.level.LevelRenderContext;
 import net.minecraft.client.Minecraft;
 
 import java.util.ArrayList;
@@ -264,7 +264,7 @@ public class Films
         }
     }
 
-    public void render(WorldRenderContext context)
+    public void render(LevelRenderContext context)
     {
         RenderSystem.enableDepthTest();
 
