@@ -55,21 +55,8 @@ public class UIColorPicker extends UIElement
 
     public static void renderAlphaPreviewQuad(Batcher2D batcher, int x1, int y1, int x2, int y2, Color color)
     {
-        Matrix4f matrix4f = batcher.getContext().getMatrices().peek().getPositionMatrix();
-        BufferBuilder builder = Tessellator.getInstance().getBuffer();
-
-        RenderSystem.setShader(GameRenderer::getPositionColorProgram);
-        RenderSystem.enableBlend();
-        builder.begin(VertexFormat.DrawMode.TRIANGLES, DefaultVertexFormat.POSITION_COLOR);
-
-        builder.vertex(matrix4f, x1, y1, 0F).color(color.r, color.g, color.b, 1).next();
-        builder.vertex(matrix4f, x1, y2, 0F).color(color.r, color.g, color.b, 1).next();
-        builder.vertex(matrix4f, x2, y1, 0F).color(color.r, color.g, color.b, 1).next();
-        builder.vertex(matrix4f, x2, y1, 0F).color(color.r, color.g, color.b, color.a).next();
-        builder.vertex(matrix4f, x1, y2, 0F).color(color.r, color.g, color.b, color.a).next();
-        builder.vertex(matrix4f, x2, y2, 0F).color(color.r, color.g, color.b, color.a).next();
-
-        BufferRenderer.drawWithGlobalProgram(builder.end());
+        int col = (int)(color.a * 255) << 24 | (int)(color.r * 255) << 16 | (int)(color.g * 255) << 8 | (int)(color.b * 255);
+        batcher.getContext().fillGradient(x1, y1, x2, y2, col, col);
     }
 
     public UIColorPicker(Consumer<Integer> callback)

@@ -447,20 +447,16 @@ public class ParticleEmitter
             this.setEmitterVariables(transition);
             this.setParticleVariables(this.uiParticle, transition);
 
-            Matrix4f matrix = stack.peek().getPositionMatrix();
-            BufferBuilder builder = Tessellator.getInstance().getBuffer();
-
-            builder.begin(VertexFormat.DrawMode.TRIANGLES, DefaultVertexFormat.POSITION_TEXTURE_COLOR);
+            Matrix4f matrix = stack.last().pose();
+            ByteBufferBuilder byteBuf = new ByteBufferBuilder(4096);
+            BufferBuilder builder = new BufferBuilder(byteBuf, PrimitiveTopology.TRIANGLES, DefaultVertexFormat.POSITION_TEXTURE_COLOR);
 
             for (IComponentParticleRender render : list)
             {
                 render.renderUI(this.uiParticle, builder, matrix, transition);
             }
 
-            RenderSystem.setShader(GameRenderer::getPositionTexColorProgram);
-            RenderSystem.disableCull();
-            BufferRenderer.drawWithGlobalProgram(builder.end());
-            RenderSystem.enableCull();
+            MeshData mesh = builder.buildOrThrow();
         }
     }
 

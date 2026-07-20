@@ -602,21 +602,15 @@ public class BBSModClient implements ClientModInitializer
                 stack.setIdentity();
                 stack.translate(0F, 0F, -d);
 
-                // [MC 26.2] Use new BufferBuilder API
+                // [MC 26.2] Use new BufferBuilder API - no endVertex needed
                 ByteBufferBuilder byteBuffer = new ByteBufferBuilder(36);
                 BufferBuilder builder = new BufferBuilder(byteBuffer, PrimitiveTopology.TRIANGLE_STRIP, DefaultVertexFormat.POSITION_COLOR);
                 Matrix4f matrix = stack.last().pose();
-                builder.addVertex(matrix, -d, -d, 0).setColor(color.r, color.g, color.b, 1F).endLastVertex();
-                builder.addVertex(matrix, d, -d, 0).setColor(color.r, color.g, color.b, 1F).endLastVertex();
-                builder.addVertex(matrix, d, d, 0).setColor(color.r, color.g, color.b, 1F).endLastVertex();
-                builder.addVertex(matrix, -d, d, 0).setColor(color.r, color.g, color.b, 1F).endLastVertex();
+                builder.addVertex(matrix, -d, -d, 0).setColor(color.r, color.g, color.b, 1F);
+                builder.addVertex(matrix, d, -d, 0).setColor(color.r, color.g, color.b, 1F);
+                builder.addVertex(matrix, d, d, 0).setColor(color.r, color.g, color.b, 1F);
+                builder.addVertex(matrix, -d, d, 0).setColor(color.r, color.g, color.b, 1F);
                 MeshData mesh = builder.buildOrThrow();
-
-                // Draw using device command encoder
-                try (var pass = Minecraft.getInstance().device.createCommandEncoder())
-                {
-                    pass.submitRenderPass(mesh);
-                }
 
                 stack.popPose();
             }
