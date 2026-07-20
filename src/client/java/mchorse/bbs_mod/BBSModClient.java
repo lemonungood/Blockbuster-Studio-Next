@@ -260,7 +260,7 @@ public class BBSModClient implements ClientModInitializer
 
         LocalPlayer player = Minecraft.getInstance().player;
 
-        if (player == null || Minecraft.getInstance().gui.screen != null)
+        if (player == null)
         {
             return;
         }
@@ -443,7 +443,7 @@ public class BBSModClient implements ClientModInitializer
         {
             Minecraft mc = Minecraft.getInstance();
 
-            if (mc.gui.screen instanceof UIScreen screen)
+            /* screen check removed in MC 26.2 */
             {
                 screen.update();
             }

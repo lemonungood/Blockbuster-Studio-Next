@@ -31,9 +31,10 @@ import mchorse.bbs_mod.utils.pose.Pose;
 import mchorse.bbs_mod.utils.resources.LinkUtils;
 import net.minecraft.client.Minecraft;
 import mchorse.bbs_mod.client.ShaderProgram;
+import com.mojang.blaze3d.vertex.ByteBufferBuilder;
 import com.mojang.blaze3d.vertex.BufferBuilder;
-// [MC 26.2 REMOVED] import com.mojang.blaze3d.vertex.BufferUploader;
-// [MC 26.2 REMOVED] import com.mojang.blaze3d.vertex.Tessellator;
+import com.mojang.blaze3d.PrimitiveTopology;
+import com.mojang.blaze3d.vertex.MeshData;
 import com.mojang.blaze3d.vertex.VertexFormat;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -343,11 +344,10 @@ public class ModelInstance implements IModelInstance
             {
                 RenderSystem.setShader(program);
 
-                BufferBuilder builder = Tessellator.getInstance().getBuffer();
-
-                builder.begin(VertexFormat.DrawMode.TRIANGLES, DefaultVertexFormat.POSITION_COLOR_TEXTURE_OVERLAY_LIGHT_NORMAL);
+                ByteBufferBuilder byteBuf = new ByteBufferBuilder(65536);
+                BufferBuilder builder = new BufferBuilder(byteBuf, PrimitiveTopology.TRIANGLES, DefaultVertexFormat.POSITION_COLOR_TEX_LIGHTMAP);
                 CubicRenderer.processRenderModel(renderProcessor, builder, stack, model);
-                BufferRenderer.drawWithGlobalProgram(builder.end());
+                MeshData meshData = builder.buildOrThrow();
             }
         }
         else if (this.model instanceof BOBJModel model)
@@ -356,14 +356,14 @@ public class ModelInstance implements IModelInstance
 
             if (vao != null)
             {
-                stack.push();
-                stack.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(180F));
+                stack.pushPose();
+                stack.mulPose(com.mojang.math.Axis.YP.rotationDegrees(180F));
 
                 vao.armature.setupMatrices();
                 vao.updateMesh(stencilMap);
                 vao.render(program.get(), stack, color.r, color.g, color.b, color.a, stencilMap, light, overlay);
 
-                stack.pop();
+                stack.popPose();
             }
         }
     }
