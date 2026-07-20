@@ -85,9 +85,9 @@ public abstract class BaseFilmController
             Lerps.lerp(entity.getPrevZ(), entity.getZ(), transition)
         );
 
-        double cx = camera.getPos().x;
-        double cy = camera.getPos().y;
-        double cz = camera.getPos().z;
+        double cx = camera.getPosition().x;
+        double cy = camera.getPosition().y;
+        double cz = camera.getPosition().z;
 
         boolean relative = context.replay != null && context.relative;
 
@@ -124,9 +124,9 @@ public abstract class BaseFilmController
             target = defaultMatrix;
         }
 
-        BlockPos pos = BlockPos.ofFloored(position.x, position.y + 0.5D, position.z);
-        int sky = entity.getLevel().getLightLevel(LightLayer.SKY, pos);
-        int torch = entity.getLevel().getLightLevel(LightLayer.BLOCK, pos);
+        BlockPos pos = BlockPos.containing(position.x, position.y + 0.5D, position.z);
+        int sky = entity.getLevel().getBrightness(LightLayer.SKY, pos);
+        int torch = entity.getLevel().getBrightness(LightLayer.BLOCK, pos);
         int light = (sky & 0xFFFF) << 20 | (torch & 0xFFFF) << 4;
         int overlay = entity.getHurtTimer() > 0 ? 655360 : 0;
 
@@ -136,12 +136,12 @@ public abstract class BaseFilmController
             .stencilMap(context.map)
             .color(context.color);
 
-        stack.push();
+        stack.pushPose();
 
         if (relative)
         {
-            stack.peek().getPositionMatrix().identity();
-            stack.peek().getNormalMatrix().identity();
+            stack.last().getPositionMatrix().identity();
+            stack.last().getNormalMatrix().identity();
         }
 
         PoseStackUtils.multiply(stack, target);
@@ -153,29 +153,29 @@ public abstract class BaseFilmController
             if (context.bone2 != null && context.map == null) renderAxes(context.bone2, context.local2, context.map, form, entity, transition, stack);
         }
 
-        stack.pop();
+        stack.popPose();
 
         if (!relative && context.map == null && opacity > 0F && context.shadowRadius > 0F)
         {
-            stack.push();
+            stack.pushPose();
             stack.translate(position.x - cx, position.y - cy, position.z - cz);
 
             ModelBlockEntityRenderer.renderShadow(context.consumers, stack, transition, position.x, position.y, position.z, 0F, 0F, 0F, context.shadowRadius, opacity);
 
-            stack.pop();
+            stack.popPose();
         }
 
         if (!relative && !context.nameTag.isEmpty() && context.map == null)
         {
-            stack.push();
+            stack.pushPose();
             stack.translate(position.x - cx, position.y - cy, position.z - cz);
 
-            renderNameTag(entity, Text.literal(StringUtils.processColoredText(context.nameTag)), stack, context.consumers, light);
+            renderNameTag(entity, net.minecraft.network.chat.Component.literal(StringUtils.processColoredText(context.nameTag)), stack, context.consumers, light);
 
-            stack.pop();
+            stack.popPose();
         }
 
-        RenderSystem.enableDepthTest();
+        GL11.glEnable(GL11.GL_DEPTH_TEST);
     }
 
     private static void renderAxes(String bone, boolean local, StencilMap stencilMap, Form form, IEntity entity, float transition, PoseStack stack)
@@ -186,7 +186,7 @@ public abstract class BaseFilmController
 
         if (matrix != null)
         {
-            stack.push();
+            stack.pushPose();
             PoseStackUtils.multiply(stack, matrix);
 
             if (stencilMap == null)
@@ -198,8 +198,8 @@ public abstract class BaseFilmController
                 Gizmo.INSTANCE.renderStencil(stack, stencilMap);
             }
 
-            RenderSystem.enableDepthTest();
-            stack.pop();
+            GL11.glEnable(GL11.GL_DEPTH_TEST);
+            stack.popPose();
         }
     }
 
@@ -316,17 +316,17 @@ public abstract class BaseFilmController
         boolean sneaking = !entity.isSneaking();
         float hitboxH = (float) entity.getPickingHitbox().h + 0.5F;
 
-        matrices.push();
+        matrices.pushPose();
         matrices.translate(0F, hitboxH, 0F);
-        matrices.multiply(Minecraft.getInstance().getEntityRenderDispatcher().getRotation());
+        matrices.multiply(new org.joml.Quaternionf());
         matrices.scale(-0.025F, -0.025F, 0.025F);
 
-        Matrix4f matrix4f = matrices.peek().getPositionMatrix();
-        Font textRenderer = Minecraft.getInstance().textRenderer;
+        Matrix4f matrix4f = matrices.last().getPositionMatrix();
+        Font textRenderer = Minecraft.getInstance().font;
 
-        float opacity = Minecraft.getInstance().options.getTextBackgroundOpacity(0.25F);
+        float opacity = Minecraft.getInstance().options.getTextBackgroundOpacity().get().floatValue();
         int background = (int) (opacity * 255F) << 24;
-        float h = (float) (-textRenderer.getWidth(text) / 2);
+        float h = (float) (-textRenderer.width(text) / 2);
 
         textRenderer.draw(text, h, 0, 0x20ffffff, false, matrix4f, vertexConsumers, sneaking ? Font.TextLayerType.SEE_THROUGH : Font.TextLayerType.NORMAL, background, light);
 
@@ -335,7 +335,7 @@ public abstract class BaseFilmController
             textRenderer.draw(text, h, 0, -1, false, matrix4f, vertexConsumers, Font.TextLayerType.NORMAL, 0, light);
         }
 
-        matrices.pop();
+        matrices.popPose();
     }
 
     /* Film controller */
@@ -370,7 +370,7 @@ public abstract class BaseFilmController
         {
             if (replay.enabled.get())
             {
-                Level world = Minecraft.getInstance().world;
+                Level world = Minecraft.getInstance().level;
                 IEntity entity = new StubEntity(world);
 
                 entity.setForm(FormUtils.copy(replay.form.get()));
@@ -434,7 +434,7 @@ public abstract class BaseFilmController
 
                     if (entityId != null)
                     {
-                        Entity anEntity = Minecraft.getInstance().world.getEntityById(entityId);
+                        Entity anEntity = Minecraft.getInstance().level.getEntityById(entityId);
 
                         if (anEntity instanceof ActorEntity actor)
                         {
@@ -490,7 +490,7 @@ public abstract class BaseFilmController
 
                     if (entityId != null)
                     {
-                        Entity anEntity = Minecraft.getInstance().world.getEntityById(entityId);
+                        Entity anEntity = Minecraft.getInstance().level.getEntityById(entityId);
 
                         if (anEntity instanceof Player player)
                         {
@@ -569,7 +569,7 @@ public abstract class BaseFilmController
 
                 if (entityId != null)
                 {
-                    Entity anEntity = Minecraft.getInstance().world.getEntityById(entityId);
+                    Entity anEntity = Minecraft.getInstance().level.getEntityById(entityId);
 
                     if (anEntity instanceof ActorEntity actor)
                     {
@@ -621,7 +621,7 @@ public abstract class BaseFilmController
 
     public void render(LevelRenderContext context)
     {
-        RenderSystem.enableDepthTest();
+        GL11.glEnable(GL11.GL_DEPTH_TEST);
 
         for (Map.Entry<Integer, IEntity> entry : this.entities.entrySet())
         {

@@ -66,11 +66,11 @@ public class ModelBlockItemRenderer
                 matrices.translate(0.5F, 0F, 0.5F);
                 PoseStackUtils.applyTransform(matrices, transform);
 
-                RenderSystem.enableDepthTest();
+                /* enableDepthTest removed */;
                 FormUtilsClient.render(form, new FormRenderingContext()
-                    .set(FormRenderType.fromModelMode(mode), item.formEntity, matrices, light, overlay, Minecraft.getInstance().getTickDelta())
-                    .camera(Minecraft.getInstance().gameRenderer.getCamera()));
-                RenderSystem.disableDepthTest();
+                    .set(FormRenderType.fromModelMode(mode), item.formEntity, matrices, light, overlay, Minecraft.getInstance().getDeltaTracker().getGameTimeDeltaPartialTick(false))
+                    .camera(/* Camera */ null));
+                /* disableDepthTest removed */;
 
                 matrices.pop();
             }
@@ -89,8 +89,8 @@ public class ModelBlockItemRenderer
             return this.map.get(stack);
         }
 
-        CompoundTag nbt = stack.getNbt();
-        ModelBlockEntity entity = new ModelBlockEntity(BlockPos.ORIGIN, BBSMod.MODEL_BLOCK.getDefaultState());
+        CompoundTag nbt = stack.getTag();
+        ModelBlockEntity entity = new ModelBlockEntity(BlockPos.ZERO, BBSMod.MODEL_BLOCK.defaultBlockState());
         Item item = new Item(entity);
 
         this.map.put(stack, item);
@@ -114,7 +114,7 @@ public class ModelBlockItemRenderer
         public Item(ModelBlockEntity entity)
         {
             this.entity = entity;
-            this.formEntity = new StubEntity(Minecraft.getInstance().world);
+            this.formEntity = new StubEntity(Minecraft.getInstance().level);
         }
     }
 }

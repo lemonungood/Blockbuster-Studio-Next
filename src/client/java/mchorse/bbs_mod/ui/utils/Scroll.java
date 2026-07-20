@@ -411,7 +411,7 @@ public class Scroll
 
         if (isInside)
         {
-            if (Minecraft.IS_SYSTEM_MAC)
+            if (/* IS_SYSTEM_MAC */ false)
             {
                 this.scrollBy(scroll * BBSSettings.scrollingSensitivity.get());
             }
@@ -450,7 +450,7 @@ public class Scroll
     {
         if (BBSSettings.scrollingSmoothness.get())
         {
-            float delta = Minecraft.getInstance().getLastFrameDuration();
+            float delta = Minecraft.getInstance().getDeltaTracker().getGameTimeDeltaPartialTick(false);
 
             /* The higher the FPS, the smaller the lerp factor is,
              * the lower the FPS, the bigger the factor is */

@@ -250,7 +250,7 @@ public class InputRenderer
             {
                 if (pressed.key == key)
                 {
-                    offset = pressed.increment(Batcher2D.getDefaultFont());
+                    offset = pressed.increment(Batcher2D.getDefaultTextRenderer());
                 }
                 else if (offset != -1000)
                 {
@@ -269,7 +269,7 @@ public class InputRenderer
             int x = last == null ? 0 : last.x + last.width + 18;
             PressedKey newKey = new PressedKey(key, x);
 
-            newKey.setupName(Minecraft.getInstance().textRenderer);
+            newKey.setupName(Minecraft.getInstance().font);
 
             if (newKey.x + newKey.width + offset > context.menu.width - offset * 2)
             {
@@ -308,7 +308,7 @@ public class InputRenderer
         public void setupName(Font font)
         {
             this.name = KeyCodes.getName(this.key);
-            this.width = font.getWidth(this.name) - 1;
+            this.width = font.width(this.name) - 1;
         }
 
         public float getFactor()

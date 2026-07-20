@@ -57,7 +57,7 @@ public class GunItemRenderer
             GunProperties properties = item.properties;
             Form form = properties.getForm(mode);
             Transform transform = properties.getTransform(mode);
-            boolean zoom = mode.isFirstPerson() && BBSModClient.getGunZoom() != null && properties.getZoomForm() != null;
+            boolean zoom = mode == ItemDisplayContext.FIRST_PERSON_RIGHT_HAND || mode == ItemDisplayContext.FIRST_PERSON_LEFT_HAND && BBSModClient.getGunZoom() != null && properties.getZoomForm() != null;
 
             if (zoom)
             {
@@ -80,11 +80,11 @@ public class GunItemRenderer
                 matrices.translate(0.5F, 0F, 0.5F);
                 PoseStackUtils.applyTransform(matrices, transform);
 
-                RenderSystem.enableDepthTest();
+                /* enableDepthTest removed */;
                 FormUtilsClient.render(form, new FormRenderingContext()
-                    .set(FormRenderType.fromModelMode(mode), item.formEntity, matrices, light, overlay, Minecraft.getInstance().getTickDelta())
-                    .camera(Minecraft.getInstance().gameRenderer.getCamera()));
-                RenderSystem.disableDepthTest();
+                    .set(FormRenderType.fromModelMode(mode), item.formEntity, matrices, light, overlay, Minecraft.getInstance().getDeltaTracker().getGameTimeDeltaPartialTick(false))
+                    .camera(/* Camera */ null));
+                /* disableDepthTest removed */;
 
                 matrices.pop();
             }
@@ -119,7 +119,7 @@ public class GunItemRenderer
         public Item(GunProperties properties)
         {
             this.properties = properties;
-            this.formEntity = new StubEntity(Minecraft.getInstance().world);
+            this.formEntity = new StubEntity(Minecraft.getInstance().level);
         }
     }
 }

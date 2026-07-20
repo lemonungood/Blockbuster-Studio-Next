@@ -152,12 +152,12 @@ public class UIDashboard extends UIBaseMenu
     public void copyCurrentEntityCamera()
     {
         Entity cameraEntity = Minecraft.getInstance().getCameraEntity();
-        Vec3 eyePos = cameraEntity.getEyePos();
+        Vec3 eyePos = cameraEntity.getEyePosition();
         Camera camera = new Camera();
 
-        camera.position.set(eyePos.getX(), eyePos.getY(), eyePos.getZ());
-        camera.rotation.set(MathUtils.toRad(cameraEntity.getPitch()), MathUtils.toRad(cameraEntity.getHeadYaw() - 180), 0);
-        camera.fov = MathUtils.toRad(Minecraft.getInstance().options.getFov().getValue().floatValue());
+        camera.position.set(eyePos.x(), eyePos.y(), eyePos.z());
+        camera.rotation.set(MathUtils.toRad(cameraEntity.getXRot()), MathUtils.toRad(cameraEntity.yHeadRot - 180), 0);
+        camera.fov = MathUtils.toRad(Minecraft.getInstance().options.fov().get().floatValue());
 
         this.orbit.setup(camera);
         this.camera.setup(BBSModClient.getCameraController().camera, 0F);
@@ -306,8 +306,8 @@ public class UIDashboard extends UIBaseMenu
         Link background = BBSSettings.backgroundImage.get();
         int color = BBSSettings.backgroundColor.get();
 
-        RenderSystem.enableBlend();
-        RenderSystem.defaultBlendFunc();
+        /* enableBlend removed */;
+        /* defaultBlendFunc removed */;
 
         if (background == null)
         {

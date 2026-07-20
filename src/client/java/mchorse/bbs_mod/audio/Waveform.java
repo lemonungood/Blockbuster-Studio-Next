@@ -255,7 +255,7 @@ public class Waveform
                 break;
             }
 
-            batcher.texturedBox(sprite, color, xOffset, y, spriteW, h, u1, 0, u2, sprite.height, sprite.width, sprite.height);
+            batcher.texturedBox(sprite.id, color, xOffset, y, spriteW, h, u1, 0, u2, sprite.height, sprite.width, sprite.height);
 
             timeOffset = timeEnd;
             xOffset += spriteW;

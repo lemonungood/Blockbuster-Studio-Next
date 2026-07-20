@@ -260,7 +260,7 @@ public class Films
     {
         for (BaseFilmController controller : this.controllers)
         {
-            controller.updateEndWorld();
+            /* updateEndLevel removed */;
         }
     }
 
@@ -309,8 +309,8 @@ public class Films
                 }
             }
 
-            int sw = Minecraft.getInstance().getWindow().getScaledWidth();
-            int sh = Minecraft.getInstance().getWindow().getScaledHeight();
+            int sw = Minecraft.getInstance().getWindow().getGuiScaledWidth();
+            int sh = Minecraft.getInstance().getWindow().getGuiScaledHeight();
             w = (int) (sw * BBSSettings.audioWaveformWidth.get());
             x = sw / 2 - w / 2;
             y = sh / 2 + 100;

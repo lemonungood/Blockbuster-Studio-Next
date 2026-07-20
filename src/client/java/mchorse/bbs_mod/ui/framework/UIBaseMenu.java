@@ -205,7 +205,7 @@ public abstract class UIBaseMenu
      */
     protected void closeMenu()
     {
-        Minecraft.getInstance().setScreen(null);
+        Minecraft.getInstance().gui.setScreen(null);
     }
 
     public void closeThisMenu()
@@ -220,7 +220,7 @@ public abstract class UIBaseMenu
 
     public void renderMenu(UIRenderingContext context, int mouseX, int mouseY)
     {
-        RenderSystem.depthFunc(GL11.GL_ALWAYS);
+        GL11.glDepthFunc(GL11.GL_ALWAYS);
 
         this.context.resetMatrix();
         this.context.setMouse(mouseX, mouseY);
@@ -243,7 +243,7 @@ public abstract class UIBaseMenu
             inputRenderer.render(this, mouseX, mouseY);
         }
 
-        RenderSystem.depthFunc(GL11.GL_LEQUAL);
+        GL11.glDepthFunc(GL11.GL_LEQUAL);
     }
 
     protected void preRenderMenu(UIRenderingContext context)
