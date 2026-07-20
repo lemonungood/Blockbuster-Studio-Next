@@ -85,9 +85,9 @@ public abstract class BaseFilmController
             Lerps.lerp(entity.getPrevZ(), entity.getZ(), transition)
         );
 
-        double cx = camera.getPosition().x;
-        double cy = camera.getPosition().y;
-        double cz = camera.getPosition().z;
+        double cx = camera.getX();
+        double cy = camera.getY();
+        double cz = camera.getZ();
 
         boolean relative = context.replay != null && context.relative;
 
