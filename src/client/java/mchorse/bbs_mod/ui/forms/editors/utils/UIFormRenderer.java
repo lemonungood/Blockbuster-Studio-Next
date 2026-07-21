@@ -6,6 +6,7 @@ import mchorse.bbs_mod.forms.renderers.FormRenderType;
 import mchorse.bbs_mod.forms.renderers.FormRenderingContext;
 import mchorse.bbs_mod.ui.framework.UIContext;
 import mchorse.bbs_mod.ui.framework.elements.utils.UIModelRenderer;
+import com.mojang.blaze3d.vertex.PoseStack;
 // [MC 26.2 REMOVED] import net.minecraft.client.renderer.LightTexture;
 // [MC 26.2 REMOVED] import net.minecraft.client.renderer.texture.OverlayTexture;
 
@@ -22,7 +23,7 @@ public class UIFormRenderer extends UIModelRenderer
         }
 
         FormRenderingContext formContext = new FormRenderingContext()
-            .set(FormRenderType.PREVIEW, this.entity, context.batcher.getContext().pose(), LightmapTextureManager.pack(15, 15), 0, context.getTransition())
+            .set(FormRenderType.PREVIEW, this.entity, new PoseStack(), 0xF000F0, 0, context.getTransition())
             .camera(this.camera)
             .modelRenderer();
 

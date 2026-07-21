@@ -23,7 +23,10 @@ import mchorse.bbs_mod.utils.keyframes.Keyframe;
 import mchorse.bbs_mod.utils.keyframes.KeyframeChannel;
 import mchorse.bbs_mod.utils.keyframes.KeyframeSegment;
 import mchorse.bbs_mod.utils.keyframes.factories.IKeyframeFactory;
+import com.mojang.blaze3d.PrimitiveTopology;
 import com.mojang.blaze3d.vertex.BufferBuilder;
+import com.mojang.blaze3d.vertex.ByteBufferBuilder;
+import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 // [MC 26.2 REMOVED] import com.mojang.blaze3d.vertex.BufferUploader;
 import net.minecraft.client.renderer.GameRenderer;
 // [MC 26.2 REMOVED] import com.mojang.blaze3d.vertex.Tessellator;
@@ -521,8 +524,8 @@ public class UIKeyframeGraph implements IUIKeyframeGraph
     @SuppressWarnings({"rawtypes", "IntegerDivisionInFloatingPointContext"})
     protected void renderGraph(UIContext context)
     {
-        BufferBuilder builder = Tessellator.getInstance().getBuffer();
-        Matrix4f matrix = context.batcher.getContext().pose().last().pose();
+        BufferBuilder builder = new BufferBuilder(new ByteBufferBuilder(4096), PrimitiveTopology.TRIANGLES, DefaultVertexFormat.POSITION_COLOR);
+        Matrix4f matrix = new Matrix4f();
 
         UIKeyframeSheet sheet = this.sheet;
         List keyframes = sheet.channel.getKeyframes();
@@ -552,7 +555,7 @@ public class UIKeyframeGraph implements IUIKeyframeGraph
                 if (interp == Interpolations.CONST)
                 {
                     lineBuilder.add(x, py);
-                    lineBuilder.pushPose();
+                    lineBuilder.push();
                 }
                 else if (interp != Interpolations.LINEAR)
                 {
@@ -585,7 +588,7 @@ public class UIKeyframeGraph implements IUIKeyframeGraph
                 int rx = this.keyframes.toGraphX(frame.getTick() + frame.rx);
                 int ry = this.toGraphY(sheet.channel.getFactory().getY(frame.getValue()) + frame.ry);
 
-                lineBuilder.pushPose();
+                lineBuilder.push();
                 lineBuilder.add(x, y);
                 lineBuilder.add(rx, ry);
 
@@ -597,7 +600,7 @@ public class UIKeyframeGraph implements IUIKeyframeGraph
                 int lx = this.keyframes.toGraphX(frame.getTick() - frame.lx);
                 int ly = this.toGraphY(sheet.channel.getFactory().getY(frame.getValue()) + frame.ly);
 
-                lineBuilder.pushPose();
+                lineBuilder.push();
                 lineBuilder.add(x, y);
                 lineBuilder.add(lx, ly);
 
@@ -606,7 +609,7 @@ public class UIKeyframeGraph implements IUIKeyframeGraph
 
             if (add)
             {
-                lineBuilder.pushPose();
+                lineBuilder.push();
                 lineBuilder.add(x, y);
             }
         }
@@ -614,7 +617,6 @@ public class UIKeyframeGraph implements IUIKeyframeGraph
         lineBuilder.render(context.batcher, SolidColorLineRenderer.get(Colors.COLOR.set(Colors.setA(sheet.color, 1F))));
 
         /* Render track bars (horizontal lines) */
-        builder.begin(VertexFormat.DrawMode.QUADS, DefaultVertexFormat.POSITION_COLOR);
 
         /* Draw keyframe handles (outer) */
         int forcedIndex = 0;
@@ -634,9 +636,9 @@ public class UIKeyframeGraph implements IUIKeyframeGraph
                 int y1 = y - 8 + (forcedIndex % 2 == 1 ? -4 : 0);
                 int color = sheet.selection.has(i) ? Colors.WHITE :  Colors.setA(Colors.mulRGB(sheet.color, 0.9F), 0.75F);
 
-                context.batcher.fillRect(builder, matrix, x1, y1 - 2, 1, 5, color, color, color, color);
-                context.batcher.fillRect(builder, matrix, x2, y1 - 2, 1, 5, color, color, color, color);
-                context.batcher.fillRect(builder, matrix, x1 + 1, y1, x2 - x1, 1, color, color, color, color);
+                context.batcher.fillRect(x1, y1 - 2, 1, 5, color);
+                context.batcher.fillRect(x2, y1 - 2, 1, 5, color);
+                context.batcher.fillRect(x1 + 1, y1, x2 - x1, 1, color);
 
                 forcedIndex += 1;
             }
@@ -711,9 +713,7 @@ public class UIKeyframeGraph implements IUIKeyframeGraph
             }
         }
 
-        RenderSystem.enableBlend();
-        RenderSystem.setShader(GameRenderer::getPositionColorProgram);
-        BufferRenderer.drawWithGlobalProgram(builder.end());
+        mchorse.bbs_mod.graphics.Draw.drawBuffer(builder);
     }
 
     @Override

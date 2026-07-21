@@ -10,7 +10,7 @@ public class ClientPacketCrusher extends PacketCrusher
     @Override
     protected void sendBuffer(Player entity, Identifier identifier, FriendlyByteBuf buf)
     {
-        ClientPlayNetworking.send(identifier, buf);
+        ClientPlayNetworking.send(new ServerNetwork.GenericPayload(identifier, buf));
     }
 }
 

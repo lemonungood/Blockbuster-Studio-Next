@@ -3,6 +3,7 @@ package mchorse.bbs_mod.ui.film.clips;
 import mchorse.bbs_mod.BBSModClient;
 import mchorse.bbs_mod.camera.clips.misc.CurveClip;
 import mchorse.bbs_mod.client.BBSRendering;
+import net.minecraft.client.Minecraft;
 import mchorse.bbs_mod.data.types.MapType;
 import mchorse.bbs_mod.l10n.keys.IKey;
 import mchorse.bbs_mod.ui.Keys;
@@ -41,7 +42,7 @@ public class UICurveClip extends UIClip<CurveClip>
     public static void offerCurveKeys(UIContext context, List<String> existing, Consumer<String> callback)
     {
         List<Label<String>> list = new ArrayList<>();
-        String language = BBSModClient.languageKey();
+        String language = Minecraft.getInstance().getLanguageManager().getSelected();
         Map<String, String> languageMap = BBSRendering.getShadersLanguageMap(language);
 
         for (ShaderCurves.ShaderVariable value : ShaderCurves.variableMap.values())

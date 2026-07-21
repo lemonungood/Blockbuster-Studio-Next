@@ -1,11 +1,9 @@
 package mchorse.bbs_mod.utils;
 
 import com.mojang.blaze3d.systems.RenderSystem;
-// [MC26.2] 
 import mchorse.bbs_mod.utils.joml.Vectors;
 import mchorse.bbs_mod.utils.pose.Transform;
 import com.mojang.blaze3d.vertex.PoseStack;
-import org.joml.Quaternionf;
 import org.joml.Matrix3f;
 import org.joml.Matrix4f;
 
@@ -13,44 +11,24 @@ public class PoseStackUtils
 {
     private static Matrix3f normal = new Matrix3f();
 
-    private static Matrix4f oldProjection = new Matrix4f();
     private static Matrix4f oldMV = new Matrix4f();
-    private static Matrix3f oldInverse = new Matrix3f();
 
     public static void scaleStack(PoseStack stack, float x, float y, float z)
     {
         stack.last().pose().scale(x, y, z);
-        stack.peek().getNormalMatrix().scale(x < 0F ? -1F : 1F, y < 0F ? -1F : 1F, z < 0F ? -1F : 1F);
+        stack.last().normal().scale(x < 0F ? -1F : 1F, y < 0F ? -1F : 1F, z < 0F ? -1F : 1F);
     }
 
     public static void cacheMatrices()
     {
-        /* Cache the global stuff */
-        oldProjection.set(new org.joml.Matrix4f());
-        oldMV.set(RenderSystem.getModelViewMatrix());
-        oldInverse.set(RenderSystem.getInverseViewRotationMatrix());
-
-        PoseStack renderStack = new PoseStack();
-
-        renderStack.pushPose();
-        renderStack.loadIdentity();
-        // applyModelView removed;
-        renderStack.popPose();
+        /* MC 26.2 removed the global projection / inverse-view-rotation accessors.
+           Only the model-view matrix is cached and restored. */
+        oldMV.set(RenderSystem.getModelViewMatrixCopy());
     }
 
     public static void restoreMatrices()
     {
-        /* Return back to orthographic projection */
-        RenderSystem.setProjectionMatrix(oldProjection, VertexSorter.BY_Z);
-        RenderSystem.setInverseViewRotationMatrix(oldInverse);
-
-        PoseStack renderStack = new PoseStack();
-
-        renderStack.pushPose();
-        renderStack.loadIdentity();
-        PoseStackUtils.multiply(renderStack, oldMV);
-        // applyModelView removed;
-        renderStack.popPose();
+        RenderSystem.getModelViewStack().set(oldMV);
     }
 
     public static void applyTransform(PoseStack stack, Transform transform)
@@ -77,7 +55,7 @@ public class PoseStackUtils
         normal.scale(Vectors.TEMP_3F);
 
         stack.last().pose().mul(matrix);
-        stack.peek().getNormalMatrix().mul(normal);
+        stack.last().normal().mul(normal);
     }
 
     public static void scaleBack(PoseStack matrices)
@@ -135,6 +113,3 @@ public class PoseStackUtils
         return m;
     }
 }
-
-
-

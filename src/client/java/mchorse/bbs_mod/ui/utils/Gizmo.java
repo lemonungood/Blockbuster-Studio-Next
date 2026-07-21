@@ -1,19 +1,15 @@
 package mchorse.bbs_mod.ui.utils;
 
-import com.mojang.blaze3d.systems.RenderSystem;
 import mchorse.bbs_mod.BBSSettings;
 import mchorse.bbs_mod.graphics.Draw;
 import mchorse.bbs_mod.ui.framework.elements.input.UIPropTransform;
 import mchorse.bbs_mod.ui.framework.elements.utils.StencilMap;
 import mchorse.bbs_mod.utils.Axis;
 import com.mojang.blaze3d.vertex.BufferBuilder;
-// [MC 26.2 REMOVED] import com.mojang.blaze3d.vertex.BufferUploader;
-import net.minecraft.client.renderer.GameRenderer;
-// [MC 26.2 REMOVED] import com.mojang.blaze3d.vertex.Tessellator;
-import com.mojang.blaze3d.vertex.VertexFormat;
+import com.mojang.blaze3d.vertex.ByteBufferBuilder;
+import com.mojang.blaze3d.PrimitiveTopology;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.blaze3d.vertex.PoseStack;
-import org.lwjgl.opengl.GL11;
 
 public class Gizmo
 {
@@ -120,9 +116,7 @@ public class Gizmo
         outlineSize *= scale;
         outlineOffset *= scale;
 
-        BufferBuilder builder = Tessellator.getInstance().getBuffer();
-
-        builder.begin(VertexFormat.DrawMode.TRIANGLES, DefaultVertexFormat.POSITION_COLOR);
+        BufferBuilder builder = new BufferBuilder(new ByteBufferBuilder(8192), PrimitiveTopology.TRIANGLES, DefaultVertexFormat.POSITION_COLOR);
 
         if (this.mode == Mode.ROTATE)
         {
@@ -183,12 +177,7 @@ public class Gizmo
             Draw.fillBox(builder, stack, -o, l, l, o, rr, rr, 0F, 1F, 1F); */
         }
 
-        RenderSystem.setShader(GameRenderer::getPositionColorProgram);
-        RenderSystem.depthFunc(GL11.GL_ALWAYS);
-
-        BufferRenderer.drawWithGlobalProgram(builder.end());
-
-        RenderSystem.depthFunc(GL11.GL_LEQUAL);
+        Draw.drawBuffer(builder);
     }
 
     public void renderStencil(PoseStack stack, StencilMap map)
@@ -206,9 +195,7 @@ public class Gizmo
         axisSize *= scale;
         axisOffset *= scale;
 
-        BufferBuilder builder = Tessellator.getInstance().getBuffer();
-
-        builder.begin(VertexFormat.DrawMode.TRIANGLES, DefaultVertexFormat.POSITION_COLOR);
+        BufferBuilder builder = new BufferBuilder(new ByteBufferBuilder(8192), PrimitiveTopology.TRIANGLES, DefaultVertexFormat.POSITION_COLOR);
 
         if (this.mode == Mode.ROTATE)
         {
@@ -245,10 +232,7 @@ public class Gizmo
             Draw.fillBox(builder, stack, -o, l, l, o, rr, rr, STENCIL_ZY / 255F, 0F, 0F); */
         }
 
-        RenderSystem.setShader(GameRenderer::getPositionColorProgram);
-        // disableDepthTest removed;
-
-        BufferRenderer.drawWithGlobalProgram(builder.end());
+        Draw.drawBuffer(builder);
     }
 
     public static enum Mode

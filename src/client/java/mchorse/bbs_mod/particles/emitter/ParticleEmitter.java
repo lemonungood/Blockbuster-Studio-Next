@@ -3,6 +3,7 @@ package mchorse.bbs_mod.particles.emitter;
 import com.mojang.blaze3d.PrimitiveTopology;
 import mchorse.bbs_mod.BBSModClient;
 import mchorse.bbs_mod.camera.Camera;
+import mchorse.bbs_mod.graphics.Draw;
 import mchorse.bbs_mod.graphics.texture.Texture;
 import mchorse.bbs_mod.math.IExpression;
 import mchorse.bbs_mod.math.Variable;
@@ -17,13 +18,13 @@ import mchorse.bbs_mod.utils.MathUtils;
 import mchorse.bbs_mod.utils.interps.Lerps;
 import mchorse.bbs_mod.client.ShaderProgram;
 import com.mojang.blaze3d.vertex.ByteBufferBuilder;
-import com.mojang.blaze3d.vertex.MeshData;
 import com.mojang.blaze3d.vertex.BufferBuilder;
 import com.mojang.blaze3d.vertex.VertexFormat;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
+import net.minecraft.client.renderer.RenderPipelines;
 import org.joml.Matrix3f;
 import org.joml.Matrix4f;
 import org.joml.Vector3d;
@@ -455,7 +456,7 @@ public class ParticleEmitter
                 render.renderUI(this.uiParticle, builder, matrix, transition);
             }
 
-            MeshData mesh = builder.buildOrThrow();
+            Draw.drawBuffer(builder, RenderPipelines.GUI_TEXTURED);
         }
     }
 
@@ -495,7 +496,7 @@ public class ParticleEmitter
                 }
             }
 
-            MeshData particleMesh = builder.buildOrThrow();
+            Draw.drawBuffer(builder, RenderPipelines.TRANSLUCENT_PARTICLE);
         }
 
         for (IComponentParticleRender component : renders)

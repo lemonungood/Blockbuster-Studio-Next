@@ -14,9 +14,11 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtOps;
+import net.minecraft.core.component.DataComponents;
 // [MC26.2] import net.minecraft.nbt.NbtUtils;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 
@@ -38,9 +40,9 @@ public class UIItemStackOverlayPanel extends UIOverlayPanel
 
     static
     {
-        for (ResourceKey<Item> key : BuiltInRegistries.ITEM.getAllKeys())
+        for (Identifier key : BuiltInRegistries.ITEM.keySet())
         {
-            itemIDs.add(key.getValue().toString());
+            itemIDs.add(key.toString());
         }
 
         itemIDs.sort(String::compareToIgnoreCase);
@@ -54,27 +56,27 @@ public class UIItemStackOverlayPanel extends UIOverlayPanel
         this.stack = stack.copy();
         this.name = new UITextbox(1000, (v) ->
         {
-            this.stack.setCustomName(Text.literal(v));
+            this.stack.set(DataComponents.CUSTOM_NAME, net.minecraft.network.chat.Component.literal(v));
             this.pickItemStack(this.stack);
             this.updateNbt();
         });
-        this.name.setText(stack.getName().getString());
+        this.name.setText(stack.getHoverName().getString());
         this.count = new UITrackpad((v) ->
         {
             this.stack.setCount(v.intValue());
             this.pickItemStack(this.stack);
             this.updateNbt();
         });
-        this.count.limit(1.0, stack.getMaxCount(), true).setValue(stack.getCount());
+        this.count.limit(1.0, stack.getOrDefault(DataComponents.MAX_STACK_SIZE, 64), true).setValue(stack.getCount());
         this.nbt = new UITextarea<>((v) ->
         {
             try
             {
-                CompoundTag nbtCompound = new StringTagReader(new StringReader(v)).parseCompound();
-                ItemStack itemStack = ItemStack.fromNbt(nbtCompound);
+                CompoundTag nbtCompound = net.minecraft.nbt.TagParser.parseCompoundFully(v);
+                ItemStack itemStack = ItemStack.CODEC.parse(NbtOps.INSTANCE, nbtCompound).result().orElse(ItemStack.EMPTY);
 
                 this.pickItemStack(itemStack);
-                this.itemList.list.setCurrentScroll(BuiltInRegistries.ITEM.getId(this.stack.getItem()).toString());
+                this.itemList.list.setCurrentScroll(BuiltInRegistries.ITEM.getKey(this.stack.getItem()).toString());
             }
             catch (Exception e)
             {
@@ -88,7 +90,7 @@ public class UIItemStackOverlayPanel extends UIOverlayPanel
         this.itemList.label(UIKeys.GENERAL_SEARCH).list.background();
         this.itemList.list.clear();
         this.itemList.list.add(itemIDs);
-        this.itemList.list.setCurrentScroll(BuiltInRegistries.ITEM.getId(stack.getItem()).toString());
+        this.itemList.list.setCurrentScroll(BuiltInRegistries.ITEM.getKey(stack.getItem()).toString());
 
         UIElement element = UI.column(5, 6, this.name, this.count);
 
@@ -101,7 +103,7 @@ public class UIItemStackOverlayPanel extends UIOverlayPanel
 
     private void updateNbt()
     {
-        this.nbt.setText((ItemStack.CODEC.encodeStart(NbtOps.INSTANCE, this.stack).result().get()).asString());
+        this.nbt.setText(ItemStack.CODEC.encodeStart(NbtOps.INSTANCE, this.stack).result().map(Object::toString).orElse("{}"));
     }
 
     private void pickItemStack(ItemStack itemStack)
@@ -114,7 +116,7 @@ public class UIItemStackOverlayPanel extends UIOverlayPanel
 
     private void setItem(String s)
     {
-        this.stack = new ItemStack(BuiltInRegistries.ITEM.get(new Identifier(s)));
+        this.stack = new ItemStack(BuiltInRegistries.ITEM.get(Identifier.parse(s)).orElseThrow().value(), 1);
 
         this.pickItemStack(this.stack);
         this.updateNbt();

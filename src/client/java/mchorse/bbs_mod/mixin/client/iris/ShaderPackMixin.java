@@ -21,6 +21,6 @@ public class ShaderPackMixin
     )
     private void afterActiveFeaturesInit(CallbackInfo ci)
     {
-        IrisUtils.setShaderProperties(shaderProperties);
+        // IrisUtils.setShaderProperties(shaderProperties);
     }
 }

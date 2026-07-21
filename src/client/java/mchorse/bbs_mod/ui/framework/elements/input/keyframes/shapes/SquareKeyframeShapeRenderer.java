@@ -25,7 +25,7 @@ public class SquareKeyframeShapeRenderer implements IKeyframeShapeRenderer
     @Override
     public void renderKeyframe(UIContext uiContext, BufferBuilder builder, Matrix4f matrix4f, int x, int y, int offset, int c)
     {
-        uiContext.batcher.fillRect(builder, matrix4f, x - offset, y - offset, offset * 2, offset * 2, c, c, c, c);
+        uiContext.batcher.fillRect(x - offset, y - offset, offset * 2, offset * 2, c);
     }
 }
 

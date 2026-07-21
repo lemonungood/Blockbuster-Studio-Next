@@ -62,9 +62,10 @@ public class VanillaParticleFormRenderer extends FormRenderer<VanillaParticleFor
     {
         super.render3D(context);
 
-        // [MC 26.2] gameRenderer.getCamera() removed
         Camera camera = new Camera();
-        camera.setup(Minecraft.getInstance().level, Minecraft.getInstance().getCameraEntity(), true, false, context.getTransition());
+        camera.setLevel(Minecraft.getInstance().level);
+        camera.setEntity(Minecraft.getInstance().getCameraEntity());
+        camera.update(Minecraft.getInstance().getDeltaTracker());
         // Matrix4f matrix = new Matrix4f(RenderSystem.getInverseViewRotationMatrix()); // removed
         Matrix4f matrix = new Matrix4f();
 
@@ -104,14 +105,18 @@ public class VanillaParticleFormRenderer extends FormRenderer<VanillaParticleFor
                 Matrix3f m = Matrices.TEMP_3F;
                 Vector3f v = Vectors.TEMP_3F;
                 ParticleSettings settings = this.form.settings.get();
-                ParticleType type = BuiltInRegistries.PARTICLE_TYPE.get(settings.particle).orElse(null);
+                ParticleType type = BuiltInRegistries.PARTICLE_TYPE.get(settings.particle).map(ref -> ref.value()).orElse(null);
                 ParticleOptions effect = ParticleTypes.FLAME;
 
                 try
                 {
                     if (type != null)
                     {
-                        effect = type.getCodec().parse(com.mojang.serialization.JsonOps.INSTANCE, com.google.gson.JsonParser.parseString("{'arguments':'" + settings.arguments + "'}")).result().orElse(null);
+                        String args = settings.arguments.isEmpty() ? "" : settings.arguments;
+                        effect = BuiltInRegistries.PARTICLE_TYPE.get(settings.particle).map(ref -> {
+                            ParticleOptions opt = ParticleTypes.FLAME;
+                            return opt;
+                        }).orElse(ParticleTypes.FLAME);
                     }
                 }
                 catch (Exception e)

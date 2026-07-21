@@ -14,6 +14,10 @@ import net.fabricmc.fabric.api.client.rendering.v1.level.LevelRenderContext;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.client.input.MouseButtonEvent;
+import net.minecraft.client.input.KeyEvent;
+import net.minecraft.client.input.CharacterEvent;
+import net.minecraft.client.renderer.state.gui.GuiRenderState;
 import net.minecraft.network.chat.Component;
 import org.lwjgl.glfw.GLFW;
 
@@ -31,12 +35,12 @@ public class UIScreen extends Screen implements IFileDropListener
 
     public static void open(UIBaseMenu menu)
     {
-        Minecraft.getInstance().setScreen(new UIScreen(Text.empty(), menu));
+        Minecraft.getInstance().gui.setScreen(new UIScreen(net.minecraft.network.chat.Component.empty(), menu));
     }
 
     public static UIBaseMenu getCurrentMenu()
     {
-        Screen currentScreen = Minecraft.getInstance().currentScreen;
+        Screen currentScreen = Minecraft.getInstance().gui.screen();
 
         if (currentScreen instanceof UIScreen uiScreen)
         {
@@ -53,7 +57,7 @@ public class UIScreen extends Screen implements IFileDropListener
         Minecraft mc = Minecraft.getInstance();
 
         this.menu = menu;
-        this.context = new UIRenderingContext(new GuiGraphicsExtractor(mc, mc.renderBuffers().bufferSource()));
+        this.context = new UIRenderingContext(new GuiGraphicsExtractor(mc, new GuiRenderState(), mc.getWindow().getGuiScaledWidth(), mc.getWindow().getGuiScaledHeight()));
 
         this.menu.context.setup(this.context);
     }
@@ -73,10 +77,8 @@ public class UIScreen extends Screen implements IFileDropListener
         this.menu.renderInWorld(context);
     }
 
-    @Override
     public void filesDragged(List<Path> paths)
     {
-        super.filesDragged(paths);
 
         String[] filePaths = new String[paths.size()];
         int i = 0;
@@ -94,38 +96,15 @@ public class UIScreen extends Screen implements IFileDropListener
     @Override
     public void removed()
     {
-        Minecraft.getInstance().options.getGuiScale().setValue(this.lastGuiScale);
-        Minecraft.getInstance().onResolutionChanged();
-
         super.removed();
-
         this.menu.onClose(null);
-
-        if (this.menu.canHideHUD())
-        {
-            Minecraft.getInstance().options.hudHidden = false;
-        }
     }
 
-    @Override
-    public void onDisplayed()
+    public void added()
     {
-        this.lastGuiScale = Minecraft.getInstance().options.getGuiScale().getValue();
-
-        Minecraft.getInstance().options.getGuiScale().setValue(BBSModClient.getGUIScale());
-        Minecraft.getInstance().onResolutionChanged();
-
-        super.onDisplayed();
-
+        super.added();
         this.menu.onOpen(null);
-
-        if (this.menu.canHideHUD())
-        {
-            Minecraft.getInstance().options.hudHidden = true;
-        }
     }
-
-    @Override
     public boolean shouldPause()
     {
         return this.menu.canPause();
@@ -140,17 +119,17 @@ public class UIScreen extends Screen implements IFileDropListener
     }
 
     @Override
-    public void resize(Minecraft client, int width, int height)
+    public void resize(int width, int height)
     {
-        super.resize(client, width, height);
+        super.resize(width, height);
 
         this.menu.resize(width, height);
     }
 
     @Override
-    public boolean mouseClicked(double mouseX, double mouseY, int button)
+    public boolean mouseClicked(MouseButtonEvent event, boolean inside)
     {
-        return this.menu.mouseClicked((int) mouseX, (int) mouseY, button);
+        return this.menu.mouseClicked((int) event.x(), (int) event.y(), event.buttonInfo().button());
     }
 
     @Override
@@ -160,41 +139,44 @@ public class UIScreen extends Screen implements IFileDropListener
     }
 
     @Override
-    public boolean mouseReleased(double mouseX, double mouseY, int button)
+    public boolean mouseReleased(MouseButtonEvent event)
     {
-        return this.menu.mouseReleased((int) mouseX, (int) mouseY, button);
+        return this.menu.mouseReleased((int) event.x(), (int) event.y(), event.buttonInfo().button());
     }
 
     @Override
-    public boolean keyPressed(int keyCode, int scanCode, int modifiers)
+    public boolean keyPressed(KeyEvent event)
     {
-        return this.menu.handleKey(keyCode, scanCode, BBSRendering.lastAction, modifiers);
+        return this.menu.handleKey(event.key(), event.scancode(), BBSRendering.lastAction, event.modifiers());
     }
 
     @Override
-    public boolean keyReleased(int keyCode, int scanCode, int modifiers)
+    public boolean keyReleased(KeyEvent event)
     {
-        return this.menu.handleKey(keyCode, scanCode, GLFW.GLFW_RELEASE, modifiers);
+        return this.menu.handleKey(event.key(), event.scancode(), GLFW.GLFW_RELEASE, event.modifiers());
     }
 
     @Override
-    public boolean charTyped(char chr, int modifiers)
+    public boolean charTyped(CharacterEvent event)
     {
-        this.menu.handleTextInput(chr);
+        if (!event.codepointAsString().isEmpty())
+        {
+            this.menu.handleTextInput(event.codepointAsString().charAt(0));
+        }
 
         return true;
     }
 
     @Override
-    public void renderBackground(GuiGraphicsExtractor context, int mouseX, int mouseY, float delta)
+    public void extractBackground(GuiGraphicsExtractor context, int mouseX, int mouseY, float delta)
     {}
 
     @Override
-    public void render(GuiGraphicsExtractor context, int mouseX, int mouseY, float delta)
+    public void extractRenderState(GuiGraphicsExtractor context, int mouseX, int mouseY, float delta)
     {
-        super.render(context, mouseX, mouseY, delta);
+        super.extractRenderState(context, mouseX, mouseY, delta);
 
-        this.menu.context.setTransition(this.client.getTickDelta());
+        this.menu.context.setTransition(this.minecraft.getDeltaTracker().getGameTimeDeltaPartialTick(true));
         this.menu.renderMenu(this.context, mouseX, mouseY);
         this.menu.context.render.executeRunnables();
     }

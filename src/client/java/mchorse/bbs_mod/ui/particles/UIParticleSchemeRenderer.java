@@ -1,6 +1,5 @@
 package mchorse.bbs_mod.ui.particles;
 
-import com.mojang.blaze3d.systems.RenderSystem;
 import mchorse.bbs_mod.graphics.Draw;
 import mchorse.bbs_mod.particles.ParticleScheme;
 import mchorse.bbs_mod.particles.components.expiration.ParticleComponentKillPlane;
@@ -8,15 +7,12 @@ import mchorse.bbs_mod.particles.emitter.ParticleEmitter;
 import mchorse.bbs_mod.ui.framework.UIBaseMenu;
 import mchorse.bbs_mod.ui.framework.UIContext;
 import mchorse.bbs_mod.ui.framework.elements.utils.UIModelRenderer;
-import net.minecraft.client.Minecraft;
 import com.mojang.blaze3d.vertex.BufferBuilder;
-// [MC 26.2 REMOVED] import com.mojang.blaze3d.vertex.BufferUploader;
-import net.minecraft.client.renderer.GameRenderer;
-// [MC 26.2 REMOVED] import net.minecraft.client.renderer.texture.OverlayTexture;
-// [MC 26.2 REMOVED] import com.mojang.blaze3d.vertex.Tessellator;
-import com.mojang.blaze3d.vertex.VertexFormat;
+import com.mojang.blaze3d.vertex.ByteBufferBuilder;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.blaze3d.PrimitiveTopology;
+import net.minecraft.client.renderer.RenderPipelines;
 import org.joml.Matrix4f;
 import org.joml.Vector3f;
 
@@ -62,19 +58,14 @@ public class UIParticleSchemeRenderer extends UIModelRenderer
         this.emitter.setupCameraProperties(this.camera);
         this.emitter.rotation.identity();
 
-        Minecraft.getInstance().gameRenderer.getLightmapTextureManager().enable();
+        /* LightmapTextureManager removed in MC 26.2 */
 
-        PoseStack stack = context.batcher.getContext().pose();
+        PoseStack stack = new PoseStack();
 
         stack.pushPose();
-        stack.loadIdentity();
-        stack.multiplyPositionMatrix(new Matrix4f(RenderSystem.getInverseViewRotationMatrix()).invert());
+        stack.setIdentity();
 
-        RenderSystem.enableBlend();
-        // enableDepthTest removed;
-        this.emitter.render(DefaultVertexFormat.POSITION_TEXTURE_COLOR_LIGHT, GameRenderer::getParticleProgram, stack, 0, context.getTransition());
-        // disableDepthTest removed;
-        RenderSystem.disableBlend();
+        this.emitter.render(DefaultVertexFormat.PARTICLE, () -> null, stack, 0, context.getTransition());
 
         stack.popPose();
 
@@ -88,30 +79,26 @@ public class UIParticleSchemeRenderer extends UIModelRenderer
 
     private void renderPlane(UIContext context, float a, float b, float c, float d)
     {
-        Matrix4f matrix = context.batcher.getContext().pose().last().pose();
-        BufferBuilder builder = Tessellator.getInstance().getBuffer();
+        Matrix4f matrix = new Matrix4f();
+        BufferBuilder builder = new BufferBuilder(new ByteBufferBuilder(256), PrimitiveTopology.TRIANGLES, DefaultVertexFormat.POSITION_COLOR);
         final float alpha = 0.5F;
-
-        builder.begin(VertexFormat.DrawMode.TRIANGLES, DefaultVertexFormat.POSITION_COLOR);
+        final int color = (int) (alpha * 255F);
 
         this.calculate(0, 0, a, b, c, d);
-        builder.vertex(matrix, this.vector.x, this.vector.y, this.vector.z).color(0, 1, 0, alpha).next();
+        builder.addVertex(matrix, this.vector.x, this.vector.y, this.vector.z).setColor(0, 255, 0, color);
         this.calculate(0, 1, a, b, c, d);
-        builder.vertex(matrix, this.vector.x, this.vector.y, this.vector.z).color(0, 1, 0, alpha).next();
+        builder.addVertex(matrix, this.vector.x, this.vector.y, this.vector.z).setColor(0, 255, 0, color);
         this.calculate(1, 0, a, b, c, d);
-        builder.vertex(matrix, this.vector.x, this.vector.y, this.vector.z).color(0, 1, 0, alpha).next();
+        builder.addVertex(matrix, this.vector.x, this.vector.y, this.vector.z).setColor(0, 255, 0, color);
 
         this.calculate(1, 0, a, b, c, d);
-        builder.vertex(matrix, this.vector.x, this.vector.y, this.vector.z).color(0, 1, 0, alpha).next();
+        builder.addVertex(matrix, this.vector.x, this.vector.y, this.vector.z).setColor(0, 255, 0, color);
         this.calculate(0, 1, a, b, c, d);
-        builder.vertex(matrix, this.vector.x, this.vector.y, this.vector.z).color(0, 1, 0, alpha).next();
+        builder.addVertex(matrix, this.vector.x, this.vector.y, this.vector.z).setColor(0, 255, 0, color);
         this.calculate(1, 1, a, b, c, d);
-        builder.vertex(matrix, this.vector.x, this.vector.y, this.vector.z).color(0, 1, 0, alpha).next();
+        builder.addVertex(matrix, this.vector.x, this.vector.y, this.vector.z).setColor(0, 255, 0, color);
 
-        RenderSystem.setShader(GameRenderer::getPositionColorProgram);
-        RenderSystem.disableCull();
-        BufferRenderer.drawWithGlobalProgram(builder.end());
-        RenderSystem.enableCull();
+        Draw.drawBuffer(builder, RenderPipelines.DEBUG_FILLED_BOX);
     }
 
     private void calculate(float i, float j, float a, float b, float c, float d)
@@ -145,9 +132,7 @@ public class UIParticleSchemeRenderer extends UIModelRenderer
 
         if (UIBaseMenu.renderAxes)
         {
-            Draw.coolerAxes(context.batcher.getContext().pose(), 1F, 0.01F, 1.01F, 0.02F);
+            Draw.coolerAxes(new PoseStack(), 1F, 0.01F, 1.01F, 0.02F);
         }
     }
 }
-
-

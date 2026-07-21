@@ -66,7 +66,7 @@ public class UISelectorsOverlayPanel extends UIOverlayPanel
 
             try
             {
-                this.current.entity = id.isEmpty() ? null : new Identifier(id);
+                this.current.entity = id.isEmpty() ? null : Identifier.parse(id);
             }
             catch (Exception e)
             {
@@ -91,7 +91,7 @@ public class UISelectorsOverlayPanel extends UIOverlayPanel
                 }
                 else
                 {
-                    this.current.nbt = (new StringTagReader(new StringReader(t))).parseCompound();
+                    this.current.nbt = net.minecraft.nbt.TagParser.parseCompoundFully(t);
                 }
 
                 BBSModClient.getSelectors().update();

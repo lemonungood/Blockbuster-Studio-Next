@@ -79,13 +79,13 @@ public class UIModelBlockPanel extends UIDashboardPanel implements IFlightSuppor
         this.keyDude.keys().register(Keys.MODEL_BLOCKS_MOVE_TO, () ->
         {
             Minecraft mc = Minecraft.getInstance();
-            Camera camera = mc.gameRenderer.getMainCamera();
-            BlockHitResult blockHitResult = RayTracing.rayTrace(mc.world, camera.position(), RayTracing.fromVector3f(this.mouseDirection), 512F);
+            Camera camera = mc.gameRenderer.mainCamera();
+            BlockHitResult blockHitResult = RayTracing.rayTrace(mc.level, camera.position(), RayTracing.fromVector3f(this.mouseDirection), 512F);
 
             if (blockHitResult.getType() != HitResult.Type.MISS)
             {
-                Vec3 hit = blockHitResult.position();
-                BlockPos pos = this.modelBlock.position();
+                Vec3 hit = blockHitResult.getLocation();
+                BlockPos pos = this.modelBlock.getBlockPos();
 
                 this.modelBlock.getProperties().getTransform().translate.set(hit.x - pos.getX() - 0.5F, hit.y - pos.getY(), hit.z - pos.getZ() - 0.5F);
                 this.fillData();
@@ -145,7 +145,7 @@ public class UIModelBlockPanel extends UIDashboardPanel implements IFlightSuppor
         this.global = new UIToggle(UIKeys.MODEL_BLOCKS_GLOBAL, (b) ->
         {
             this.modelBlock.getProperties().setGlobal(b.getValue());
-            Minecraft.getInstance().levelRenderer.reload();
+            /* 26.2: levelRenderer.allChanged() removed */
         });
         this.lookAt = new UIToggle(UIKeys.CAMERA_PANELS_LOOK_AT, (b) -> this.modelBlock.getProperties().setLookAt(b.getValue()));
 
@@ -169,7 +169,7 @@ public class UIModelBlockPanel extends UIDashboardPanel implements IFlightSuppor
     {
         if (this.modelBlock != null)
         {
-            BlockPos pos = this.modelBlock.position();
+            BlockPos pos = this.modelBlock.getBlockPos();
 
             PlayerUtils.teleport(pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D);
             UIUtils.playClick();
@@ -330,7 +330,7 @@ public class UIModelBlockPanel extends UIDashboardPanel implements IFlightSuppor
     {
         if (modelBlock != null)
         {
-            ClientNetwork.sendModelBlockForm(modelBlock.position(), modelBlock);
+            ClientNetwork.sendModelBlockForm(modelBlock.getBlockPos(), modelBlock);
         }
     }
 
@@ -374,12 +374,12 @@ public class UIModelBlockPanel extends UIDashboardPanel implements IFlightSuppor
     {
         super.renderInWorld(context);
 
-        Camera camera = context.camera();
+        Camera camera = Minecraft.getInstance().gameRenderer.mainCamera();
         Vec3 pos = camera.position();
 
         Minecraft mc = Minecraft.getInstance();
-        double x = mc.mouse.getX();
-        double y = mc.mouse.getY();
+        double x = mc.mouseHandler.xpos();
+        double y = mc.mouseHandler.ypos();
 
         this.mouseDirection.set(CameraUtils.getMouseDirection(
             new org.joml.Matrix4f(),
@@ -392,7 +392,7 @@ public class UIModelBlockPanel extends UIDashboardPanel implements IFlightSuppor
 
         for (ModelBlockEntity entity : this.modelBlocks.getList())
         {
-            BlockPos blockPos = entity.position();
+            BlockPos blockPos = entity.getBlockPos();
 
             if (!this.isEditing(entity))
             {
@@ -445,7 +445,7 @@ public class UIModelBlockPanel extends UIDashboardPanel implements IFlightSuppor
 
     private AABB getHitbox(ModelBlockEntity closest)
     {
-        BlockPos pos = closest.position();
+        BlockPos pos = closest.getBlockPos();
 
         return new AABB(pos.getX(), pos.getY(), pos.getZ(), 1D, 1D, 1D);
     }

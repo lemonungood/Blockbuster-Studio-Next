@@ -21,12 +21,13 @@ import mchorse.bbs_mod.utils.colors.Colors;
 import mchorse.bbs_mod.utils.interps.Lerps;
 import mchorse.bbs_mod.utils.MathUtils;
 import com.mojang.blaze3d.vertex.BufferBuilder;
-// [MC 26.2 REMOVED] import com.mojang.blaze3d.vertex.BufferUploader;
-// [MC 26.2 REMOVED] import com.mojang.blaze3d.vertex.Tessellator;
-import com.mojang.blaze3d.vertex.VertexFormat;
+import com.mojang.blaze3d.vertex.ByteBufferBuilder;
+import com.mojang.blaze3d.PrimitiveTopology;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import org.joml.Matrix4f;
 import org.joml.Vector2d;
+import mchorse.bbs_mod.graphics.Draw;
+import net.minecraft.client.renderer.RenderPipelines;
 
 public class UICurve extends UIElement
 {
@@ -256,26 +257,24 @@ public class UICurve extends UIElement
 
     private void drawGraph(UIContext context)
     {
-        Matrix4f matrix = context.batcher.getContext().pose().last().pose();
+        Matrix4f matrix = new Matrix4f();
         int c = this.curve.nodes.size();
 
-        BufferBuilder builder = Tessellator.getInstance().getBuffer();
-
-        builder.begin(VertexFormat.DrawMode.DEBUG_LINES, DefaultVertexFormat.POSITION_COLOR);
+        BufferBuilder builder = new BufferBuilder(new ByteBufferBuilder(512), PrimitiveTopology.DEBUG_LINES, DefaultVertexFormat.POSITION_COLOR);
 
         /* Top and bottom */
-        builder.vertex(matrix, this.area.x, this.graph.y, 0F).color(0.5F, 0.5F, 0.5F, 0.5F).next();
-        builder.vertex(matrix, this.area.ex(), this.graph.y, 0F).color(0.5F, 0.5F, 0.5F, 0.5F).next();
+        builder.addVertex(matrix, this.area.x, this.graph.y, 0F).setColor(127, 127, 127, 127);
+        builder.addVertex(matrix, this.area.ex(), this.graph.y, 0F).setColor(127, 127, 127, 127);
 
-        builder.vertex(matrix, this.area.x, this.graph.ey(), 0F).color(0.5F, 0.5F, 0.5F, 0.5F).next();
-        builder.vertex(matrix, this.area.ex(), this.graph.ey(), 0F).color(0.5F, 0.5F, 0.5F, 0.5F).next();
+        builder.addVertex(matrix, this.area.x, this.graph.ey(), 0F).setColor(127, 127, 127, 127);
+        builder.addVertex(matrix, this.area.ex(), this.graph.ey(), 0F).setColor(127, 127, 127, 127);
 
         /* Left and right */
-        builder.vertex(matrix, this.graph.x, this.area.y, 0F).color(0.5F, 0.5F, 0.5F, 0.5F).next();
-        builder.vertex(matrix, this.graph.x, this.area.ey(), 0F).color(0.5F, 0.5F, 0.5F, 0.5F).next();
+        builder.addVertex(matrix, this.graph.x, this.area.y, 0F).setColor(127, 127, 127, 127);
+        builder.addVertex(matrix, this.graph.x, this.area.ey(), 0F).setColor(127, 127, 127, 127);
 
-        builder.vertex(matrix, this.graph.ex(), this.area.y, 0F).color(0.5F, 0.5F, 0.5F, 0.5F).next();
-        builder.vertex(matrix, this.graph.ex(), this.area.ey(), 0F).color(0.5F, 0.5F, 0.5F, 0.5F).next();
+        builder.addVertex(matrix, this.graph.ex(), this.area.y, 0F).setColor(127, 127, 127, 127);
+        builder.addVertex(matrix, this.graph.ex(), this.area.ey(), 0F).setColor(127, 127, 127, 127);
 
         if (this.curve.type == ParticleCurveType.HERMITE && c >= 4)
         {
@@ -283,14 +282,14 @@ public class UICurve extends UIElement
             Vector2d last = this.getVector(c - 2, this.range.x, this.range.y);
 
             /* Hermite bounds */
-            builder.vertex(matrix, (float) first.x, this.graph.y, 0F).color(0.25F, 0.25F, 0.25F, 0.5F).next();
-            builder.vertex(matrix, (float) first.x, this.graph.ey(), 0F).color(0.25F, 0.25F, 0.25F, 0.5F).next();
+            builder.addVertex(matrix, (float) first.x, this.graph.y, 0F).setColor(64, 64, 64, 127);
+            builder.addVertex(matrix, (float) first.x, this.graph.ey(), 0F).setColor(64, 64, 64, 127);
 
-            builder.vertex(matrix, (float) last.x, this.graph.y, 0F).color(0.25F, 0.25F, 0.25F, 0.5F).next();
-            builder.vertex(matrix, (float) last.x, this.graph.ey(), 0F).color(0.25F, 0.25F, 0.25F, 0.5F).next();
+            builder.addVertex(matrix, (float) last.x, this.graph.y, 0F).setColor(64, 64, 64, 127);
+            builder.addVertex(matrix, (float) last.x, this.graph.ey(), 0F).setColor(64, 64, 64, 127);
         }
 
-        BufferRenderer.drawWithGlobalProgram(builder.end());
+        Draw.drawBuffer(builder, RenderPipelines.LINES_TRANSLUCENT);
 
         Color color = Colors.COLOR;
         LineBuilder line = new LineBuilder(0.75F);

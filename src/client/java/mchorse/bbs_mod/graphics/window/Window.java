@@ -19,7 +19,7 @@ public class Window
 
     public static long getWindow()
     {
-        return Minecraft.getInstance().getWindow().getWindow();
+        return Minecraft.getInstance().getWindow().handle();
     }
 
     public static void setVerticalScroll(int scroll)

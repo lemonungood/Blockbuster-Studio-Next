@@ -6,6 +6,8 @@ import mchorse.bbs_mod.ui.film.UIFilmPanel;
 import mchorse.bbs_mod.ui.framework.UIBaseMenu;
 import mchorse.bbs_mod.ui.framework.UIScreen;
 import net.minecraft.client.player.KeyboardInput;
+import net.minecraft.world.entity.player.Input;
+import net.minecraft.world.phys.Vec2;
 import org.lwjgl.glfw.GLFW;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -16,6 +18,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(KeyboardInput.class)
 public class KeyboardInputMixin
 {
+    @Shadow
+    protected Vec2 moveVector;
     private static float getMovementMultiplier(boolean positive, boolean negative)
     {
         return positive == negative ? 0F : (positive ? 1F : -1F);
@@ -33,19 +37,22 @@ public class KeyboardInputMixin
         ) {
             KeyboardInput input = (KeyboardInput) (Object) this;
 
-            input.pressingForward = Window.isKeyPressed(GLFW.GLFW_KEY_W);
-            input.pressingBack = Window.isKeyPressed(GLFW.GLFW_KEY_S);
-            input.pressingLeft = Window.isKeyPressed(GLFW.GLFW_KEY_A);
-            input.pressingRight = Window.isKeyPressed(GLFW.GLFW_KEY_D);
-            input.movementForward = getMovementMultiplier(input.pressingForward, input.pressingBack);
-            input.movementSideways = getMovementMultiplier(input.pressingLeft, input.pressingRight);
-            input.jumping = Window.isKeyPressed(GLFW.GLFW_KEY_SPACE);
-            input.sneaking = Window.isKeyPressed(GLFW.GLFW_KEY_LEFT_SHIFT);
+            boolean forward = Window.isKeyPressed(GLFW.GLFW_KEY_W);
+            boolean backward = Window.isKeyPressed(GLFW.GLFW_KEY_S);
+            boolean left = Window.isKeyPressed(GLFW.GLFW_KEY_A);
+            boolean right = Window.isKeyPressed(GLFW.GLFW_KEY_D);
+            boolean jump = Window.isKeyPressed(GLFW.GLFW_KEY_SPACE);
+            boolean shift = Window.isKeyPressed(GLFW.GLFW_KEY_LEFT_SHIFT);
+
+            input.keyPresses = new Input(forward, backward, left, right, jump, shift, false);
+
+            float forwardImpulse = getMovementMultiplier(forward, backward);
+            float leftImpulse = getMovementMultiplier(left, right);
+            this.moveVector = new Vec2(leftImpulse, forwardImpulse);
 
             if (slowDown)
             {
-                input.movementSideways *= slowDownFactor;
-                input.movementForward *= slowDownFactor;
+                this.moveVector = new Vec2(this.moveVector.x * slowDownFactor, this.moveVector.y * slowDownFactor);
             }
         }
     }

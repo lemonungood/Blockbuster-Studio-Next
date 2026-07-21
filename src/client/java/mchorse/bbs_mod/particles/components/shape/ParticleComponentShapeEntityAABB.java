@@ -19,7 +19,7 @@ public class ParticleComponentShapeEntityAABB extends ParticleComponentShapeBase
 
         if (emitter.target != null)
         {
-            AABB box = emitter.target.getBoundingAABB();
+            AABB box = emitter.target.getBoundingBox();
 
             w = (float) (box.maxX - box.minX);
             h = (float) (box.maxY - box.minY);

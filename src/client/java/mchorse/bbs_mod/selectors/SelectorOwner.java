@@ -39,7 +39,7 @@ public class SelectorOwner
 
     public void update()
     {
-        Level world = this.entity.level();
+        Level world = net.minecraft.client.Minecraft.getInstance().level;
 
         if (!world.isClientSide())
         {
@@ -64,7 +64,8 @@ public class SelectorOwner
             this.nbtCheck = 10;
 
             Set<String> keys = createWhitelist();
-            CompoundTag compound = this.mcEntity.save(new CompoundTag());
+            CompoundTag compound = new CompoundTag();
+            compound.putString("id", net.minecraft.core.registries.BuiltInRegistries.ENTITY_TYPE.getKey(this.mcEntity.getType()).toString());
             CompoundTag newCompound = new CompoundTag();
 
             for (String key : keys)

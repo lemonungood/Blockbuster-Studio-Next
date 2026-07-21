@@ -95,11 +95,11 @@ public class UIUtilityOverlayPanel extends UIOverlayPanel
 
         this.width = new UITrackpad((v) ->
         {
-            this.window.setWindowedSize((int) this.width.getValue(), (int) this.height.getValue());
+            this.window.setWindowed((int) this.width.getValue(), (int) this.height.getValue());
         });
         this.height = new UITrackpad((v) ->
         {
-            this.window.setWindowedSize((int) this.width.getValue(), (int) this.height.getValue());
+            this.window.setWindowed((int) this.width.getValue(), (int) this.height.getValue());
         });
 
         this.width.delayedInput().limit(2, 4096, true).values(2, 1, 10).setValue(this.window.getWidth());
@@ -197,7 +197,7 @@ public class UIUtilityOverlayPanel extends UIOverlayPanel
 
         for (String command : commands)
         {
-            Minecraft.getInstance().player.networkHandler.sendCommand(command);
+            Minecraft.getInstance().player.connection.sendCommand(command);
         }
     }
 

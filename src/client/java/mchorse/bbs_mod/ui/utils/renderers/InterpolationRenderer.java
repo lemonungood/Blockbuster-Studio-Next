@@ -67,21 +67,17 @@ public class InterpolationRenderer
         grid.add(x, y);
 
         /* Vertical middle */
-        grid.pushPose();
         grid.add(x + w / 2, y);
         grid.add(x + w / 2, y + h);
 
         /* Horizontal middle */
-        grid.pushPose();
         grid.add(x, y + h / 2);
         grid.add(x + w, y + h / 2);
 
         /* Padding */
-        grid.pushPose();
         grid.add(x, y + h - padding);
         grid.add(x + w, y + h - padding);
 
-        grid.pushPose();
         grid.add(x, y + padding);
         grid.add(x + w, y + padding);
 
@@ -89,7 +85,7 @@ public class InterpolationRenderer
 
         fg.a = 1F;
 
-        context.batcher.clip(x - 1, y, w + 10, h, context);
+        context.batcher.clip(x - 1, y, w + 10, h, 0, 0);
 
         /* Render the interpolation graph */
         LineBuilder line = new LineBuilder(0.75F);

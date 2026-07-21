@@ -28,9 +28,9 @@ public class ImmersiveMorphingCameraController implements ICameraController
         UIModelRenderer renderer = this.modelRenderer.get();
         LocalPlayer player = Minecraft.getInstance().player;
 
-        float bodyYaw = MathUtils.toRad(Lerps.lerp(player.yBodyRotO, player.bodyYaw, transition));
+        float bodyYaw = MathUtils.toRad(Lerps.lerp(player.yBodyRotO, player.yBodyRot, transition));
 
-        camera.position.set(player.prevX, player.prevY, player.prevZ);
+        camera.position.set(player.xOld, player.yOld, player.zOld);
         camera.position.lerp(new Vector3d(player.position().x, player.position().y, player.position().z), transition);
         camera.rotation.set(0, bodyYaw, 0);
 
@@ -40,7 +40,7 @@ public class ImmersiveMorphingCameraController implements ICameraController
 
             rotation.mul(2F);
             camera.position.add(rotation.x, rotation.y + 1F, rotation.z);
-            camera.setFov(Minecraft.getInstance().options.getFov().getValue());
+            camera.setFov(70.0F);
         }
         else
         {

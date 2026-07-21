@@ -108,7 +108,7 @@ public class UIPickableFormRenderer extends UIFormRenderer
         this.formEditor.preFormRender(context, this.form);
 
         FormRenderingContext formContext = new FormRenderingContext()
-            .set(FormRenderType.PREVIEW, this.target == null ? this.entity : this.target, context.batcher.getContext().pose(), LightmapTextureManager.pack(15, 15), 0, context.getTransition())
+            .set(FormRenderType.PREVIEW, this.target == null ? this.entity : this.target, new PoseStack(), 0xF000F0, 0, context.getTransition())
             .camera(this.camera)
             .modelRenderer();
 
@@ -134,7 +134,7 @@ public class UIPickableFormRenderer extends UIFormRenderer
             FormUtilsClient.render(this.form, formContext.stencilMap(this.stencilMap));
 
             Matrix4f matrix = this.formEditor.getOrigin(context.getTransition());
-            PoseStack stack = context.render.batcher.getContext().pose();
+            PoseStack stack = new PoseStack();
 
             stack.pushPose();
 
@@ -143,14 +143,14 @@ public class UIPickableFormRenderer extends UIFormRenderer
                 PoseStackUtils.multiply(stack, PoseStackUtils.stripScale(matrix));
             }
 
-            Gizmo.INSTANCE.renderStencil(context.batcher.getContext().pose(), this.stencilMap);
+            Gizmo.INSTANCE.renderStencil(stack, this.stencilMap);
 
             stack.popPose();
 
             this.stencil.pickGUI(context, this.area);
             this.stencil.unbind(this.stencilMap);
 
-            Minecraft.getInstance().getMainRenderTarget().beginWrite(true);
+            /* mainRenderTarget binding removed in MC 26.2 */
 
             GlStateManager._enableScissorTest();
         }
@@ -163,7 +163,7 @@ public class UIPickableFormRenderer extends UIFormRenderer
     private void renderAxes(UIContext context)
     {
         Matrix4f matrix = this.formEditor.getOrigin(context.getTransition());
-        PoseStack stack = context.render.batcher.getContext().pose();
+        PoseStack stack = new PoseStack();
 
         stack.pushPose();
 
@@ -191,10 +191,10 @@ public class UIPickableFormRenderer extends UIFormRenderer
 
         /* Draw look vector */
         final float thickness = 0.01F;
-        Draw.renderBox(context.batcher.getContext().pose(), -thickness, -thickness + eyeHeight, -thickness, thickness, thickness, 2F, 1F, 0F, 0F);
+        Draw.renderBox(new PoseStack(), -thickness, -thickness + eyeHeight, -thickness, thickness, thickness, 2F, 1F, 0F, 0F);
 
         /* Draw hitbox */
-        Draw.renderBox(context.batcher.getContext().pose(), -hitboxW / 2, 0, -hitboxW / 2, hitboxW, hitboxH, hitboxW);
+        Draw.renderBox(new PoseStack(), -hitboxW / 2, 0, -hitboxW / 2, hitboxW, hitboxH, hitboxW);
     }
 
     @Override
@@ -224,15 +224,8 @@ public class UIPickableFormRenderer extends UIFormRenderer
         int w = texture.width;
         int h = texture.height;
 
-        ShaderProgram previewProgram = BBSShaders.getPickerPreviewProgram();
-        GlUniform target = previewProgram.getUniform("Target");
-
-        if (target != null)
-        {
-            target.set(index);
-        }
-
-        RenderSystem.enableBlend();
+        /* GlUniform and ShaderProgram removed in MC 26.2 */
+        /* RenderSystem.enableBlend removed in MC 26.2 */
         context.batcher.texturedBox(BBSShaders::getPickerPreviewProgram, texture.id, Colors.WHITE, this.area.x, this.area.y, this.area.w, this.area.h, 0, h, w, 0, w, h);
 
         if (pair != null && pair.a != null)

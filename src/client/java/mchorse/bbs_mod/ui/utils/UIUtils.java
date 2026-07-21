@@ -4,7 +4,7 @@ import mchorse.bbs_mod.BBSMod;
 import mchorse.bbs_mod.BBSSettings;
 import mchorse.bbs_mod.utils.OS;
 import net.minecraft.client.Minecraft;
-// [MC 26.2 REMOVED] import net.minecraft.client.sound.SimpleSoundInstance;
+import net.minecraft.client.resources.sounds.SimpleSoundInstance;
 import net.minecraft.sounds.SoundEvents;
 
 import java.io.File;
@@ -98,11 +98,11 @@ public class UIUtils
     {
         if (BBSSettings.clickSound.get())
         {
-            Minecraft.getInstance().getSoundManager().play(SimpleSoundInstance.master(BBSMod.CLICK, pitch));
+            Minecraft.getInstance().getSoundManager().play(SimpleSoundInstance.forUI(BBSMod.CLICK, pitch));
         }
         else
         {
-            Minecraft.getInstance().getSoundManager().play(SimpleSoundInstance.master(SoundEvents.UI_BUTTON_CLICK, pitch));
+            Minecraft.getInstance().getSoundManager().play(SimpleSoundInstance.forUI(SoundEvents.UI_BUTTON_CLICK, pitch));
         }
     }
 }

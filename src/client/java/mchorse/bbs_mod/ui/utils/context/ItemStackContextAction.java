@@ -1,13 +1,10 @@
 package mchorse.bbs_mod.ui.utils.context;
 
-import mchorse.bbs_mod.forms.CustomVertexConsumer;
-import mchorse.bbs_mod.forms.FormUtilsClient;
 import mchorse.bbs_mod.l10n.keys.IKey;
 import mchorse.bbs_mod.ui.framework.UIContext;
 import mchorse.bbs_mod.ui.framework.elements.utils.FontRenderer;
 import mchorse.bbs_mod.ui.utils.icons.Icons;
 import mchorse.bbs_mod.utils.colors.Colors;
-import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.world.item.ItemStack;
 
 public class ItemStackContextAction extends ContextAction
@@ -28,20 +25,9 @@ public class ItemStackContextAction extends ContextAction
 
         if (this.stack != null && !this.stack.isEmpty())
         {
-            PoseStack matrices = context.batcher.getContext().pose();
-            CustomVertexConsumer consumers = FormUtilsClient.getProvider();
-
-            matrices.pushPose();
-            consumers.setUI(true);
-            context.batcher.getContext().drawItem(this.stack, x + 2, y + 2);
-            context.batcher.getContext().drawItemInSlot(context.batcher.getFont().getRenderer(), this.stack, x + 2, y + 2);
-            consumers.setUI(false);
-            matrices.popPose();
+            context.batcher.getContext().item(this.stack, x + 2, y + 2);
         }
 
         context.batcher.text(this.label.get(), x + 22, y + (h - font.getHeight()) / 2 + 1, Colors.WHITE, false);
     }
 }
-
-
-

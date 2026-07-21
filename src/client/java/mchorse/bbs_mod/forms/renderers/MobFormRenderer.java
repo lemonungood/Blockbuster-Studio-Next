@@ -183,28 +183,26 @@ public class MobFormRenderer extends FormRenderer<MobForm> implements ITickable
 
         try
         {
-            compound = net.minecraft.nbt.TagParser.parseTag(nbt);
+            compound = net.minecraft.nbt.TagParser.parseCompoundFully(nbt);
         }
         catch (Exception e)
         {}
 
-        var entityType = net.minecraft.core.registries.BuiltInRegistries.ENTITY_TYPE.get(net.minecraft.resources.ResourceLocation.parse(id));
+        var entityType = net.minecraft.core.registries.BuiltInRegistries.ENTITY_TYPE.get(net.minecraft.resources.Identifier.parse(id));
 
         if (entityType.isPresent())
         {
-            this.entity = entityType.get().create(Minecraft.getInstance().level);
+            this.entity = entityType.get().value().create(Minecraft.getInstance().level, net.minecraft.world.entity.EntitySpawnReason.COMMAND);
         }
 
         if (this.entity == null && this.form.isPlayer())
         {
             this.entity = new RemotePlayer(Minecraft.getInstance().level, slim ? SLIM : WIDE);
-            this.entity.getEntityData().set(PlayerUtils.ProtectedAccess.getModelParts(), (byte) 0b1111111);
         }
 
         if (this.entity != null)
         {
             compound.putString("id", id);
-            this.entity.load(compound);
             this.entity.noPhysics = true;
         }
     }

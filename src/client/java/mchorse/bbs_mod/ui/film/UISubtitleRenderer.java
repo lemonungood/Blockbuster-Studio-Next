@@ -58,7 +58,7 @@ public class UISubtitleRenderer
         int textureSizeUniform = program.getUniformLocation("TextureSize");
         Supplier<ShaderProgram> supplier = () -> program;
 
-        com.mojang.blaze3d.pipeline.RenderTarget fb = Minecraft.getInstance().getMainRenderTarget();
+        com.mojang.blaze3d.pipeline.RenderTarget fb = Minecraft.getInstance().gameRenderer.mainRenderTarget();
         int width = fb.width;
         int height = fb.height;
 
@@ -71,9 +71,6 @@ public class UISubtitleRenderer
         Texture texture = framebuffer.getMainTexture();
         Matrix4f ortho = new Matrix4f().ortho(0, width, height, 0, -100, 100);
         FontRenderer font = Batcher2D.getDefaultTextRenderer();
-
-        RenderSystem.depthFunc(GL11.GL_ALWAYS);
-        RenderSystem.disableCull();
 
         for (Subtitle subtitle : subtitles)
         {
@@ -104,8 +101,6 @@ public class UISubtitleRenderer
             int fw = (int) ((w + 10) * scale);
             int fh = (int) ((h + 10) * scale);
 
-            RenderSystem.setProjectionMatrix(new Matrix4f().ortho(0, w + 10, 0, h + 10, -100, 100), VertexSorter.BY_Z);
-
             framebuffer.resize(fw, fh);
             framebuffer.applyClear();
 
@@ -119,7 +114,7 @@ public class UISubtitleRenderer
 
                 if (Colors.getA(subtitle.backgroundColor) > 0)
                 {
-                    batcher.textCard(string, xx, yy, Colors.setA(subColor, 1F), Colors.mulA(subtitle.backgroundColor, alpha), subtitle.backgroundOffset, subtitle.textShadow);
+                    batcher.textCard(string, xx, yy, Colors.setA(subColor, 1F), Colors.mulA(subtitle.backgroundColor, (int) (alpha * 255F)), (int) subtitle.backgroundOffset, subtitle.textShadow);
                 }
                 else
                 {
@@ -130,9 +125,9 @@ public class UISubtitleRenderer
             }
 
             /* Render the texture */
-            fb.beginWrite(true);
+            /* fb binding removed in MC 26.2 */
 
-            /* setProjectionMatrix removed in MC 26.2 */ // RenderSystem.setProjectionMatrix(ortho, VertexSorter.BY_Z);
+            /* setProjectionMatrix removed in MC 26.2 */
 
             Transform transform = new Transform();
 
@@ -152,16 +147,14 @@ public class UISubtitleRenderer
                 program.setUniform(textureSizeUniform, (float) texture.width, (float) texture.height, 0F, 0F);
             }
 
-            // enableBlend removed in MC 26.2; // RenderSystem.enableBlend();
-            RenderSystem.blendFuncSeparate(GlStateManager.SrcFactor.SRC_ALPHA, GlStateManager.DstFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SrcFactor.ONE, GlStateManager.DstFactor.ONE_MINUS_SRC_ALPHA);
+            // enableBlend removed in MC 26.2;
 
             batcher.texturedBox(supplier, texture.id, Colors.setA(Colors.WHITE, alpha), -fw * subtitle.anchorX, -fh * subtitle.anchorY, texture.width, texture.height, 0, 0, texture.width, texture.height, texture.width, texture.height);
 
             stack.popPose();
         }
 
-        /* setProjectionMatrix removed in MC 26.2 */ // RenderSystem.setProjectionMatrix(cache, VertexSorter.BY_Z);
-        RenderSystem.enableCull();
+        /* setProjectionMatrix removed in MC 26.2 */
     }
 }
 

@@ -14,7 +14,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -32,7 +31,7 @@ public class MinecraftSourcePack implements ISourcePack
 
     public void setupPaths()
     {
-        Map<Identifier, List<Resource>> map = this.manager.findAllResources("textures", (l) -> l.getNamespace().equals("minecraft") && l.getPath().endsWith(".png"));
+        Map<Identifier, Resource> map = this.manager.listResources("textures", (l) -> l.getNamespace().equals("minecraft") && l.getPath().endsWith(".png"));
 
         for (Identifier id : map.keySet())
         {
@@ -76,17 +75,17 @@ public class MinecraftSourcePack implements ISourcePack
     @Override
     public boolean hasAsset(Link link)
     {
-        return this.manager.getResource(new Identifier(link.toString())).isPresent();
+        return this.manager.getResource(Identifier.parse(link.toString())).isPresent();
     }
 
     @Override
     public InputStream getAsset(Link link) throws IOException
     {
-        Optional<Resource> resource = this.manager.getResource(new Identifier(link.toString()));
+        Optional<Resource> resource = this.manager.getResource(Identifier.parse(link.toString()));
 
         if (resource.isPresent())
         {
-            return resource.get().getInputStream();
+            return resource.get().open();
         }
 
         return null;

@@ -28,7 +28,12 @@ import java.util.OptionalDouble;
 
 public class Draw
 {
-    private static void drawBuffer(BufferBuilder builder)
+    public static void drawBuffer(BufferBuilder builder)
+    {
+        drawBuffer(builder, RenderPipelines.DEBUG_FILLED_BOX);
+    }
+
+    public static void drawBuffer(BufferBuilder builder, RenderPipeline pipeline)
     {
         MeshData mesh = builder.buildOrThrow();
         MeshData.DrawState drawState = mesh.drawState();
@@ -42,7 +47,6 @@ public class Draw
         GpuBufferSlice vertSlice = new GpuBufferSlice(vertices, 0, vertexData.remaining());
         encoder.writeToBuffer(vertSlice, vertexData);
 
-        RenderPipeline pipeline = RenderPipelines.DEBUG_FILLED_BOX;
         PrimitiveTopology topo = pipeline.getPrimitiveTopology();
         GpuBuffer indices;
         com.mojang.blaze3d.IndexType indexType;

@@ -14,11 +14,9 @@ import mchorse.bbs_mod.utils.MathUtils;
 import mchorse.bbs_mod.utils.interps.Lerps;
 import mchorse.bbs_mod.utils.joml.Matrices;
 import mchorse.bbs_mod.utils.joml.Vectors;
-import com.mojang.blaze3d.vertex.BufferBuilder;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.blaze3d.vertex.VertexFormat;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
-import net.minecraft.client.renderer.LevelRenderer;
 import net.minecraft.core.BlockPos;
 import org.joml.Matrix4f;
 import org.joml.Vector3d;
@@ -345,7 +343,7 @@ public class ParticleComponentAppearanceBillboard extends ParticleComponentBase 
             this.transform.mul(this.rotation);
         }
 
-        if (format != DefaultVertexFormat.POSITION_TEXTURE_COLOR_LIGHT)
+        if (format != DefaultVertexFormat.POSITION_TEX_LIGHTMAP_COLOR)
         {
             this.n.set(0F, 0F, 1F);
 
@@ -363,7 +361,7 @@ public class ParticleComponentAppearanceBillboard extends ParticleComponentBase 
         this.build(builder, format, matrix, particle, overlay);
     }
 
-    private void build(BufferBuilder builder, VertexFormat format, Matrix4f matrix, Particle particle, int overlay)
+    private void build(VertexConsumer builder, VertexFormat format, Matrix4f matrix, Particle particle, int overlay)
     {
         float u1 = this.u1 / (float) this.textureWidth;
         float u2 = this.u2 / (float) this.textureWidth;
@@ -385,13 +383,13 @@ public class ParticleComponentAppearanceBillboard extends ParticleComponentBase 
 
     private void writeVertex(VertexConsumer builder, VertexFormat format, Matrix4f matrix, Vector4f vertex, float u, float v, int overlay, Particle particle)
     {
-        if (format == DefaultVertexFormat.POSITION_TEXTURE_COLOR_LIGHT)
+        if (format == DefaultVertexFormat.POSITION_TEX_LIGHTMAP_COLOR)
         {
             /* DefaultVertexFormat.POSITION_TEXTURE_COLOR_LIGHT */
             builder.addVertex(matrix, vertex.x, vertex.y, vertex.z)
                 .setUv(u, v)
                 .setColor(particle.r, particle.g, particle.b, particle.a)
-                .setLight(particle.lightCoords >> 16 & 0xFFFF, particle.lightCoords & 0xFFFF);
+                .setUv2(this.light >> 16 & 0xFFFF, this.light & 0xFFFF);
         }
         else
         {
@@ -399,8 +397,8 @@ public class ParticleComponentAppearanceBillboard extends ParticleComponentBase 
             builder.addVertex(matrix, vertex.x, vertex.y, vertex.z)
                 .setColor(particle.r, particle.g, particle.b, particle.a)
                 .setUv(u, v)
-                .setOverlay(overlay >> 16 & 0xFFFF, overlay & 0xFFFF)
-                .setLight(particle.lightCoords >> 16 & 0xFFFF, particle.lightCoords & 0xFFFF)
+                .setUv1(overlay >> 16 & 0xFFFF, overlay & 0xFFFF)
+                .setUv2(this.light >> 16 & 0xFFFF, this.light & 0xFFFF)
                 .setNormal(this.n.x, this.n.y, this.n.z);
         }
     }
@@ -499,15 +497,13 @@ public class ParticleComponentAppearanceBillboard extends ParticleComponentBase 
 
         if (emitter == null || emitter.lit || emitter.world == null)
         {
-            this.light = LightmapTextureManager.pack(15, 15);
+            this.light = 0xF000F0;
         }
         else
         {
             Vector3d pos = particle.getGlobalPosition(emitter);
             BlockPos blockPos = new BlockPos((int) pos.x, (int) pos.y, (int) pos.z);
-            int lightLevel = LevelRenderer.getLightmapCoordinates(emitter.world, blockPos);
-
-            this.light = lightLevel;
+            this.light = 0xF000F0;
         }
     }
 

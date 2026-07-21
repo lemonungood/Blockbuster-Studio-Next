@@ -31,6 +31,7 @@ import net.fabricmc.fabric.api.networking.v1.PlayerLookup;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.resources.Identifier;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
@@ -751,15 +752,18 @@ public class ServerNetwork
 
     /* --- MC 26.2 Networking Helpers --- */
 
-    private static final net.minecraft.network.protocol.common.custom.CustomPacketPayload.Type<GenericPayload> GENERIC_TYPE =
+    public static final net.minecraft.network.protocol.common.custom.CustomPacketPayload.Type<GenericPayload> GENERIC_TYPE =
         new net.minecraft.network.protocol.common.custom.CustomPacketPayload.Type<>(Identifier.bySeparator("bbs_n:generic", ':'));
+
+    public static final StreamCodec<FriendlyByteBuf, GenericPayload> GENERIC_STREAM_CODEC =
+        StreamCodec.ofMember(GenericPayload::write, GenericPayload::newGenericPayload);
 
     public static void setupNetworking()
     {
         // Register C2S payload type
         net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry.serverboundPlay().register(
             GENERIC_TYPE,
-            net.minecraft.network.codec.StreamCodec.ofMember(GenericPayload::write, GenericPayload::newGenericPayload)
+            GENERIC_STREAM_CODEC
         );
         // Register receiver
         net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking.registerGlobalReceiver(

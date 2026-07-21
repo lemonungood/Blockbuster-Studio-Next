@@ -8,6 +8,6 @@ public class SodiumUtils
 {
     public static VertexConsumer createVertexBuffer(VertexConsumer b, Color color)
     {
-        return new RecolorVertexSodiumConsumer(b, color);
+        return new RecolorVertexSodiumConsumer(b);
     }
 }

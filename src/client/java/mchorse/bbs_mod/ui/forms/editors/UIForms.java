@@ -78,7 +78,7 @@ public class UIForms extends UIList<UIForms.FormEntry>
         {
             x += this.area.w - 40;
 
-            context.batcher.clip(x, y, 40, 20, context);
+            context.batcher.clip(x, y, 40, 20, 0, 0);
 
             y -= 10;
 

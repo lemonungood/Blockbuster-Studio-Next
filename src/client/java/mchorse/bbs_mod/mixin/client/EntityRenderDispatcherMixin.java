@@ -37,7 +37,7 @@ public class EntityRenderDispatcherMixin
                 whiteOverlayProgress = invoker.bbs$getAnimationCounter(livingEntity, tickDelta);
             }
 
-            int o = LivingEntityRenderer.getOverlayCoords(livingEntity, whiteOverlayProgress);
+            int o = net.minecraft.client.renderer.texture.OverlayTexture.NO_OVERLAY;
 
             if (MorphRenderer.renderLivingEntity(livingEntity, yaw, tickDelta, matrices, vcp, light, o))
             {

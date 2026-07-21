@@ -32,9 +32,9 @@ public class UIBlockStateEditor extends UIElement
 
     static
     {
-        for (ResourceKey<Block> key : BuiltInRegistries.BLOCK.getAllKeys())
+        for (Identifier key : BuiltInRegistries.BLOCK.keySet())
         {
-            blockIDs.add(key.getValue().toString());
+            blockIDs.add(key.toString());
         }
 
         blockIDs.sort(String::compareToIgnoreCase);
@@ -63,13 +63,13 @@ public class UIBlockStateEditor extends UIElement
         this.blockState = blockState;
 
         this.fillPropertiesEditor(blockState);
-        this.blockList.list.setCurrentScroll(BuiltInRegistries.BLOCK.getId(blockState.getBlock()).toString());
+        this.blockList.list.setCurrentScroll(BuiltInRegistries.BLOCK.getKey(blockState.getBlock()).toString());
     }
 
     private void setBlock(String blockID)
     {
-        Identifier id = new Identifier(blockID);
-        BlockState blockState = BuiltInRegistries.BLOCK.get(id).getDefaultState();
+        Identifier id = net.minecraft.resources.Identifier.parse(blockID);
+        BlockState blockState = BuiltInRegistries.BLOCK.get(id).map(ref -> ref.value().defaultBlockState()).orElse(null);
 
         this.acceptBlockState(blockState);
         this.fillPropertiesEditor(blockState);
@@ -91,17 +91,17 @@ public class UIBlockStateEditor extends UIElement
 
         for (Property p : state.getProperties())
         {
-            UIButton button = new UIButton(IKey.constant(state.get(p).toString()), (b) ->
+            UIButton button = new UIButton(IKey.constant(state.getValue(p).toString()), (b) ->
             {
                 this.getContext().replaceContextMenu((menu) ->
                 {
-                    for (Object v : p.getValues())
+                    for (Object v : p.getPossibleValues())
                     {
                         IKey raw = IKey.constant(v.toString());
 
                         menu.action(Icons.BLOCK, raw, () ->
                         {
-                            this.acceptBlockState(this.blockState.with(p, (Comparable) v));
+                            this.acceptBlockState(this.blockState.setValue(p, (Comparable) v));
 
                             b.label = raw;
                         });

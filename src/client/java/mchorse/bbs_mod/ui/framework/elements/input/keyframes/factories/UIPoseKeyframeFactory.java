@@ -126,7 +126,7 @@ public class UIPoseKeyframeFactory extends UIKeyframeFactory<Pose>
 
         private String getGroup(PoseTransform transform)
         {
-            return CollectionUtils.getKey(this.pose().transforms, transform);
+            return CollectionUtils.getKey(this.keyframe.getValue().transforms, transform);
         }
 
         @Override
