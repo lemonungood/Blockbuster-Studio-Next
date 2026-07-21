@@ -1,0 +1,1099 @@
+WARNING: A restricted method in java.lang.System has been called
+WARNING: java.lang.System::load has been called by net.rubygrapefruit.platform.internal.NativeLibraryLoader in an unnamed module (file:/C:/Users/hechengyu/.gradle/wrapper/dists/gradle-9.5.1-bin/iq79hdu3mqx29lgffhp8bfmx/gradle-9.5.1/lib/native-platform-0.22-milestone-29.jar)
+WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+
+> Configure project :
+Fabric Loom: 1.17.16
+
+> Task :compileJava UP-TO-DATE
+> Task :processResources UP-TO-DATE
+> Task :classes UP-TO-DATE
+
+> Task :compileClientJava
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\utils\VideoRecorder.java:9: 警告: Unsafe是内部专用 API, 可能会在未来发行版中删除
+import sun.misc.Unsafe;
+               ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\particles\emitter\ParticleEmitter.java:23: 错误: 找不到符号
+import com.mojang.blaze3d.vertex.VertexFormat.Mode;
+                                             ^
+  符号:   类 Mode
+  位置: 类 VertexFormat
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\utils\Scroll.java:453: 错误: 找不到符号
+            float delta = Minecraft.getInstance().getFrameTime();
+                                                 ^
+  符号:   方法 getFrameTime()
+  位置: 类 Minecraft
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\BBSModClient.java:447: 错误: screen 在 Gui 中是 private 访问控制
+            if (mc.gui.screen != null)
+                      ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\BBSModClient.java:449: 错误: screen 在 Gui 中是 private 访问控制
+                mc.gui.screen.tick();
+                      ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\utils\VideoRecorder.java:156: 警告: Unsafe是内部专用 API, 可能会在未来发行版中删除
+            Unsafe unsafe = UnsafeUtils.getUnsafe();
+            ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\utils\VideoRecorder.java:164: 警告: [removal] Unsafe 中的 objectFieldOffset(Field) 已过时, 且标记为待删除
+                    os = (OutputStream) unsafe.getObject(os, unsafe.objectFieldOffset(outField));
+                                                                   ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\utils\VideoRecorder.java:164: 警告: [removal] Unsafe 中的 getObject(Object,long) 已过时, 且标记为待删除
+                    os = (OutputStream) unsafe.getObject(os, unsafe.objectFieldOffset(outField));
+                                              ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\renderer\item\ModelBlockItemRenderer.java:92: 错误: 不兼容的类型: 推论变量 T 具有不兼容的上限
+        net.minecraft.nbt.CompoundTag data = stack.get(net.minecraft.core.component.DataComponents.BLOCK_ENTITY_DATA);
+                                                      ^
+    上限：CompoundTag,Object
+    下限：TypedEntityData<BlockEntityType<?>>
+  其中, T是类型变量:
+    T扩展已在方法 <T>get(DataComponentType<? extends T>)中声明的Object
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\BaseFilmController.java:514: 错误: 找不到符号
+                                playerEntity.input.shiftKeyDown = sneaking;
+                                                  ^
+  符号:   变量 shiftKeyDown
+  位置: 类型为ClientInput的变量 input
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\BaseFilmController.java:644: 错误: 找不到符号
+            filmContext.transition = getTransition(entity, Minecraft.getInstance().getFrameTime());
+                                                                                  ^
+  符号:   方法 getFrameTime()
+  位置: 类 Minecraft
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\Recorder.java:58: 错误: 找不到符号
+        float x = (float) (position.point.x - camera.getPosition().x);
+                                                    ^
+  符号:   方法 getPosition()
+  位置: 类型为Camera的变量 camera
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\Recorder.java:59: 错误: 找不到符号
+        float y = (float) (position.point.y - camera.getPosition().y);
+                                                    ^
+  符号:   方法 getPosition()
+  位置: 类型为Camera的变量 camera
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\Recorder.java:60: 错误: 找不到符号
+        float z = (float) (position.point.z - camera.getPosition().z);
+                                                    ^
+  符号:   方法 getPosition()
+  位置: 类型为Camera的变量 camera
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\Recorder.java:76: 错误: 无法将类 BufferBuilder中的构造器 BufferBuilder应用到给定类型;
+        BufferBuilder builder = new BufferBuilder(4096);
+                                ^
+  需要: ByteBufferBuilder,PrimitiveTopology,VertexFormat
+  找到:    int
+  原因: 实际参数列表和形式参数列表长度不同
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\Recorder.java:77: 错误: 找不到符号
+        builder.begin(DefaultVertexFormat.POSITION_COLOR);
+               ^
+  符号:   方法 begin(VertexFormat)
+  位置: 类型为BufferBuilder的变量 builder
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\Recorder.java:81: 错误: 找不到符号
+        builder.end();
+               ^
+  符号:   方法 end()
+  位置: 类型为BufferBuilder的变量 builder
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\Recorder.java:82: 错误: 找不到符号
+        RenderSystem.disableDepthTest();
+                    ^
+  符号:   方法 disableDepthTest()
+  位置: 类 RenderSystem
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\Recorder.java:148: 错误: 找不到符号
+        renderCameraPreview(this.position, Minecraft.getInstance().gameRenderer.getMainCamera(), context.poseStack());
+                                                                               ^
+  符号:   方法 getMainCamera()
+  位置: 类型为GameRenderer的变量 gameRenderer
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\FilmControllerContext.java:72: 错误: 找不到符号
+        this.camera = Minecraft.getInstance().gameRenderer.getMainCamera();
+                                                          ^
+  符号:   方法 getMainCamera()
+  位置: 类型为GameRenderer的变量 gameRenderer
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\particles\emitter\ParticleEmitter.java:456: 错误: 找不到符号
+            BufferBuilder builder = new BufferBuilder(byteBuf, Mode.TRIANGLES, DefaultVertexFormat.POSITION_TEX_COLOR);
+                                                               ^
+  符号:   变量 Mode
+  位置: 类 ParticleEmitter
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\particles\emitter\ParticleEmitter.java:488: 错误: 找不到符号
+            BufferBuilder builder = new BufferBuilder(byteBuf, Mode.TRIANGLES, format);
+                                                               ^
+  符号:   变量 Mode
+  位置: 类 ParticleEmitter
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\categories\UIFormCategory.java:132: 错误: 找不到符号
+                                if (entry.getUuid().equals(Minecraft.getInstance().player.getUUID()))
+                                         ^
+  符号:   方法 getUuid()
+  位置: 类型为PlayerInfo的变量 entry
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\categories\UIFormCategory.java:137: 错误: 找不到符号
+                                newMenu.action(Icons.ARROW_RIGHT, IKey.constant(entry.getPlayerName()), () ->
+                                                                                     ^
+  符号:   方法 getPlayerName()
+  位置: 类型为PlayerInfo的变量 entry
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\categories\UIFormCategory.java:139: 错误: 找不到符号
+                                    ClientNetwork.sendSharedForm(this.selected, entry.getUuid());
+                                                                                     ^
+  符号:   方法 getUuid()
+  位置: 类型为PlayerInfo的变量 entry
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\cubic\ModelInstance.java:348: 错误: 找不到符号
+                BufferBuilder builder = new BufferBuilder(byteBuf, VertexFormat.Mode.TRIANGLES, DefaultVertexFormat.POSITION_COLOR_TEX_LIGHTMAP);
+                                                                               ^
+  符号:   变量 Mode
+  位置: 类 VertexFormat
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\UIFilmPanel.java:955: 错误: 找不到符号
+            int value = Minecraft.getInstance().options.getRenderDistance().get();
+                                                       ^
+  符号:   方法 getRenderDistance()
+  位置: 类型为Options的变量 options
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\UIFilmPreview.java:375: 错误: 找不到符号
+        net.minecraft.client.Camera mcCamera = Minecraft.getInstance().gameRenderer.getCamera();
+                                                                                   ^
+  符号:   方法 getCamera()
+  位置: 类型为GameRenderer的变量 gameRenderer
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\UIFilmPreview.java:381: 错误: 找不到符号
+        stack.multiply(com.mojang.math.Axis.XN.rotationDegrees(mcCamera.getPitch()));
+                                                                       ^
+  符号:   方法 getPitch()
+  位置: 类型为Camera的变量 mcCamera
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\UIFilmPreview.java:382: 错误: 找不到符号
+        stack.multiply(com.mojang.math.Axis.YP.rotationDegrees(mcCamera.getYaw()));
+                                                                       ^
+  符号:   方法 getYaw()
+  位置: 类型为Camera的变量 mcCamera
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:219: 错误: 找不到符号
+            GLFW.glfwSetInputMode(window.getWindow(), GLFW.GLFW_CURSOR, GLFW.GLFW_CURSOR_DISABLED);
+                                        ^
+  符号:   方法 getWindow()
+  位置: 类型为Window的变量 window
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:223: 错误: 找不到符号
+            GLFW.glfwSetInputMode(window.getWindow(), GLFW.GLFW_CURSOR, GLFW.GLFW_CURSOR_NORMAL);
+                                        ^
+  符号:   方法 getWindow()
+  位置: 类型为Window的变量 window
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:1031: 错误: 无法将类 RenderSystem中的方法 setProjectionMatrix应用到给定类型;
+        RenderSystem.setProjectionMatrix(this.panel.lastProjection);
+                    ^
+  需要: GpuBufferSlice,ProjectionType
+  找到:    Matrix4f
+  原因: 实际参数列表和形式参数列表长度不同
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:1121: 错误: 找不到符号
+                Recorder.renderCameraPreview(this.panel.getRunner().position(), Minecraft.getInstance().gameRenderer.getCamera(), context.poseStack());
+                                                                   ^
+  符号:   方法 position()
+  位置: 类 RunnerCameraController
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:1121: 错误: 找不到符号
+                Recorder.renderCameraPreview(this.panel.getRunner().position(), Minecraft.getInstance().gameRenderer.getCamera(), context.poseStack());
+                                                                                                                    ^
+  符号:   方法 getCamera()
+  位置: 类型为GameRenderer的变量 gameRenderer
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:1201: 错误: 找不到符号
+                    .transition(isPlaying ? Minecraft.getInstance().getFrameTime() : 0)
+                                                                   ^
+  符号:   方法 getFrameTime()
+  位置: 类 Minecraft
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:1213: 错误: 找不到符号
+                .transition(isPlaying ? Minecraft.getInstance().getFrameTime() : 0)
+                                                               ^
+  符号:   方法 getFrameTime()
+  位置: 类 Minecraft
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:1225: 错误: 找不到符号
+        Minecraft.getInstance().getMainRenderTarget().beginWrite(true);
+                               ^
+  符号:   方法 getMainRenderTarget()
+  位置: 类 Minecraft
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\ContentType.java:35: 错误: 找不到符号
+        if (Minecraft.getInstance().isSingleplayer())
+                                   ^
+  符号:   方法 isSingleplayer()
+  位置: 类 Minecraft
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\FilmEditorController.java:175: 错误: 找不到符号
+                    float tick = ticks + this.getTransition(entity, context.transition);
+                                                                           ^
+  符号:   变量 transition
+  位置: 类型为LevelRenderContext的变量 context
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\FilmEditorController.java:184: 错误: 找不到符号
+                        entity.setyRotO(entity.getYRot());
+                                              ^
+  符号:   方法 getYRot()
+  位置: 类型为IEntity的变量 entity
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\FilmEditorController.java:185: 错误: 找不到符号
+                        entity.setyHeadRotO(entity.getYHeadRot());
+                                                  ^
+  符号:   方法 getYHeadRot()
+  位置: 类型为IEntity的变量 entity
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\FilmEditorController.java:186: 错误: 找不到符号
+                        entity.setyBodyRotO(entity.getYBodyRot());
+                                                  ^
+  符号:   方法 getYBodyRot()
+  位置: 类型为IEntity的变量 entity
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\FilmEditorController.java:187: 错误: 找不到符号
+                        entity.setxRotO(entity.getXRot());
+                                              ^
+  符号:   方法 getXRot()
+  位置: 类型为IEntity的变量 entity
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\FilmEditorController.java:248: 错误: 找不到符号
+            .transition(this.getTransition(entity, context.tickDelta()))
+                                                          ^
+  符号:   方法 tickDelta()
+  位置: 类型为LevelRenderContext的变量 context
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\OrbitFilmCameraController.java:210: 错误: 找不到符号
+            float renderYaw = MathUtils.toRad(-Lerps.lerp(entity.getyBodyRotO(), entity.getYBodyRot(), transition) + 180F);
+                                                                ^
+  符号:   方法 getyBodyRotO()
+  位置: 类型为IEntity的变量 entity
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\OrbitFilmCameraController.java:210: 错误: 找不到符号
+            float renderYaw = MathUtils.toRad(-Lerps.lerp(entity.getyBodyRotO(), entity.getYBodyRot(), transition) + 180F);
+                                                                                       ^
+  符号:   方法 getYBodyRot()
+  位置: 类型为IEntity的变量 entity
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\keyframes\graphs\UIKeyframeDopeSheet.java:544: 错误: 找不到符号
+        BufferBuilder builder = Tessellator.getInstance().getBuffer();
+                                ^
+  符号:   变量 Tessellator
+  位置: 类 UIKeyframeDopeSheet
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\keyframes\graphs\UIKeyframeDopeSheet.java:545: 错误: 找不到符号
+        Matrix4f matrix = context.batcher.getContext().pose().last().pose();
+                                                             ^
+  符号:   方法 last()
+  位置: 类 Matrix3x2fStack
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\keyframes\graphs\UIKeyframeDopeSheet.java:564: 错误: 找不到符号
+            builder.begin(VertexFormat.DrawMode.QUADS, DefaultVertexFormat.POSITION_COLOR);
+                                      ^
+  符号:   变量 DrawMode
+  位置: 类 VertexFormat
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\keyframes\graphs\UIKeyframeDopeSheet.java:566: 错误: 无法将类 Batcher2D中的方法 fillRect应用到给定类型;
+            context.batcher.fillRect(builder, matrix, area.x, my - 1, area.w, 2, cc, cc, cc, cc);
+                           ^
+  需要: int,int,int,int,int
+  找到:    BufferBuilder,Matrix4f,int,int,int,int,int,int,int,int
+  原因: 实际参数列表和形式参数列表长度不同
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\keyframes\graphs\UIKeyframeDopeSheet.java:573: 错误: 无法将类 Batcher2D中的方法 fillRect应用到给定类型;
+                context.batcher.fillRect(builder, matrix, area.x, y, area.w, (int) this.trackHeight, c | Colors.A25, c | Colors.A25, c, c);
+                               ^
+  需要: int,int,int,int,int
+  找到:    BufferBuilder,Matrix4f,int,int,int,int,int,int,int,int
+  原因: 实际参数列表和形式参数列表长度不同
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\keyframes\graphs\UIKeyframeDopeSheet.java:587: 错误: 无法将类 Batcher2D中的方法 fillRect应用到给定类型;
+                    context.batcher.fillRect(builder, matrix, xx, my - 2, this.keyframes.toGraphX(frame.getTick()) - xx, 4, c, c, c, c);
+                                   ^
+  需要: int,int,int,int,int
+  找到:    BufferBuilder,Matrix4f,int,int,int,int,int,int,int,int
+  原因: 实际参数列表和形式参数列表长度不同
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\keyframes\graphs\UIKeyframeDopeSheet.java:594: 错误: 无法将类 Batcher2D中的方法 fillRect应用到给定类型;
+                    context.batcher.fillRect(builder, matrix, xx - 2, my + 5, xxx - xx + 4, 2, c, c, c, c);
+                                   ^
+  需要: int,int,int,int,int
+  找到:    BufferBuilder,Matrix4f,int,int,int,int,int,int,int,int
+  原因: 实际参数列表和形式参数列表长度不同
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\keyframes\graphs\UIKeyframeDopeSheet.java:614: 错误: 无法将类 Batcher2D中的方法 fillRect应用到给定类型;
+                    context.batcher.fillRect(builder, matrix, x1, y1 - 2, 1, 5, color, color, color, color);
+                                   ^
+  需要: int,int,int,int,int
+  找到:    BufferBuilder,Matrix4f,int,int,int,int,int,int,int,int
+  原因: 实际参数列表和形式参数列表长度不同
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\keyframes\graphs\UIKeyframeDopeSheet.java:615: 错误: 无法将类 Batcher2D中的方法 fillRect应用到给定类型;
+                    context.batcher.fillRect(builder, matrix, x2, y1 - 2, 1, 5, color, color, color, color);
+                                   ^
+  需要: int,int,int,int,int
+  找到:    BufferBuilder,Matrix4f,int,int,int,int,int,int,int,int
+  原因: 实际参数列表和形式参数列表长度不同
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\keyframes\graphs\UIKeyframeDopeSheet.java:616: 错误: 无法将类 Batcher2D中的方法 fillRect应用到给定类型;
+                    context.batcher.fillRect(builder, matrix, x1 + 1, y1, x2 - x1, 1, color, color, color, color);
+                                   ^
+  需要: int,int,int,int,int
+  找到:    BufferBuilder,Matrix4f,int,int,int,int,int,int,int,int
+  原因: 实际参数列表和形式参数列表长度不同
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\keyframes\graphs\UIKeyframeDopeSheet.java:654: 错误: 找不到符号
+            RenderSystem.enableBlend();
+                        ^
+  符号:   方法 enableBlend()
+  位置: 类 RenderSystem
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\keyframes\graphs\UIKeyframeDopeSheet.java:655: 错误: 方法引用无效
+            RenderSystem.setShader(GameRenderer::getPositionColorProgram);
+                                   ^
+  找不到符号
+    符号:   方法 getPositionColorProgram()
+    位置: 类 GameRenderer
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\keyframes\graphs\UIKeyframeDopeSheet.java:656: 错误: 找不到符号
+            BufferRenderer.drawWithGlobalProgram(builder.end());
+            ^
+  符号:   变量 BufferRenderer
+  位置: 类 UIKeyframeDopeSheet
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\keyframes\graphs\UIKeyframeDopeSheet.java:656: 错误: 找不到符号
+            BufferRenderer.drawWithGlobalProgram(builder.end());
+                                                        ^
+  符号:   方法 end()
+  位置: 类型为BufferBuilder的变量 builder
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\utils\Scale.java:214: 错误: 找不到符号
+            factor += this.direction.position(this.area, this.anchor);
+                                    ^
+  符号:   方法 position(Area,float)
+  位置: 类型为ScrollDirection的变量 direction
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\utils\Scale.java:227: 错误: 找不到符号
+            mouse -= this.direction.position(this.area, this.anchor);
+                                   ^
+  符号:   方法 position(Area,float)
+  位置: 类型为ScrollDirection的变量 direction
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\utils\Scale.java:239: 错误: 找不到符号
+        return this.from(this.direction.position(this.area, this.inverse ? 1 : 0));
+                                       ^
+  符号:   方法 position(Area,int)
+  位置: 类型为ScrollDirection的变量 direction
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\utils\Scale.java:246: 错误: 找不到符号
+        return this.from(this.direction.position(this.area, this.inverse ? 0 : 1));
+                                       ^
+  符号:   方法 position(Area,int)
+  位置: 类型为ScrollDirection的变量 direction
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\utils\Scale.java:352: 错误: 找不到符号
+                double shift = this.direction.position(this.area, this.anchor) - this.direction.position(this.area, newAnchor);
+                                             ^
+  符号:   方法 position(Area,float)
+  位置: 类型为ScrollDirection的变量 direction
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\utils\Scale.java:352: 错误: 找不到符号
+                double shift = this.direction.position(this.area, this.anchor) - this.direction.position(this.area, newAnchor);
+                                                                                               ^
+  符号:   方法 position(Area,float)
+  位置: 类型为ScrollDirection的变量 direction
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\utils\Scale.java:358: 错误: 找不到符号
+                double shift = this.direction.position(this.area, this.anchor) - this.direction.position(this.area, newAnchor);
+                                             ^
+  符号:   方法 position(Area,float)
+  位置: 类型为ScrollDirection的变量 direction
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\utils\Scale.java:358: 错误: 找不到符号
+                double shift = this.direction.position(this.area, this.anchor) - this.direction.position(this.area, newAnchor);
+                                                                                               ^
+  符号:   方法 position(Area,float)
+  位置: 类型为ScrollDirection的变量 direction
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\utils\Scale.java:368: 错误: 找不到符号
+        double diff = this.from(this.direction.position(this.area, newAnchor)) - this.from(this.direction.position(this.area, 0F));
+                                              ^
+  符号:   方法 position(Area,float)
+  位置: 类型为ScrollDirection的变量 direction
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\utils\Scale.java:368: 错误: 找不到符号
+        double diff = this.from(this.direction.position(this.area, newAnchor)) - this.from(this.direction.position(this.area, 0F));
+                                                                                                         ^
+  符号:   方法 position(Area,float)
+  位置: 类型为ScrollDirection的变量 direction
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\UITrackpad.java:717: 错误: 找不到符号
+                    Window.moveCursor(ww - (int) (factor * borderPadding), (int) mc.mouse.getY());
+                                                                                   ^
+  符号:   变量 mouse
+  位置: 类型为Minecraft的变量 mc
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\UITrackpad.java:725: 错误: 找不到符号
+                    Window.moveCursor((int) (factor * borderPadding), (int) mc.mouse.getY());
+                                                                              ^
+  符号:   变量 mouse
+  位置: 类型为Minecraft的变量 mc
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\UITrackpad.java:766: 错误: 无法将类 Batcher2D中的方法 outlineCenter应用到给定类型;
+            context.batcher.outlineCenter(this.initialX, this.initialY, 4, Colors.WHITE);
+                           ^
+  需要: int,int,int,int,int
+  找到:    int,int,int,int
+  原因: 实际参数列表和形式参数列表长度不同
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\replays\UIReplayList.java:565: 错误: 找不到符号
+        BlockPos blockPos = modelBlock.blockPosition();
+                                      ^
+  符号:   方法 blockPosition()
+  位置: 类型为ModelBlockEntity的变量 modelBlock
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\replays\UIReplayList.java:718: 错误: 对于clip(int,int,int,int,UIContext), 找不到合适的方法
+            context.batcher.clip(x, y, 40, 20, context);
+                           ^
+    方法 Batcher2D.clip(Area,UIContext)不适用
+      (实际参数列表和形式参数列表长度不同)
+    方法 Batcher2D.clip(int,int,int,int,int,int)不适用
+      (实际参数列表和形式参数列表长度不同)
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\UIClips.java:260: 错误: 找不到符号
+            if (this.factory.getAllKeys().contains(Link.bbs("keyframe")))
+                            ^
+  符号:   方法 getAllKeys()
+  位置: 类型为IFactory<Clip,ClipFactoryData>的变量 factory
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\UIClips.java:352: 错误: 找不到符号
+            for (Link type : this.factory.getAllKeys())
+                                         ^
+  符号:   方法 getAllKeys()
+  位置: 类型为IFactory<Clip,ClipFactoryData>的变量 factory
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:92: 错误: 找不到符号
+        BufferBuilder builder = Tessellator.getInstance().getBuffer();
+                                ^
+  符号:   变量 Tessellator
+  位置: 类 UIClipRenderer<T>
+  其中, T是类型变量:
+    T扩展已在类 UIClipRenderer中声明的Clip
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:93: 错误: 找不到符号
+        Matrix4f matrix = context.batcher.getContext().pose().last().pose();
+                                                             ^
+  符号:   方法 last()
+  位置: 类 Matrix3x2fStack
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:95: 错误: 找不到符号
+        builder.begin(VertexFormat.DrawMode.TRIANGLES, DefaultVertexFormat.POSITION_COLOR);
+                                  ^
+  符号:   变量 DrawMode
+  位置: 类 VertexFormat
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:109: 错误: 找不到符号
+        BufferRenderer.drawWithGlobalProgram(builder.end());
+        ^
+  符号:   变量 BufferRenderer
+  位置: 类 UIClipRenderer<T>
+  其中, T是类型变量:
+    T扩展已在类 UIClipRenderer中声明的Clip
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:109: 错误: 找不到符号
+        BufferRenderer.drawWithGlobalProgram(builder.end());
+                                                    ^
+  符号:   方法 end()
+  位置: 类型为BufferBuilder的变量 builder
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:127: 错误: 找不到符号
+                builder.vertex(matrix, prevPoint.x, y2, 0F).color(c).next();
+                       ^
+  符号:   方法 vertex(Matrix4f,float,int,float)
+  位置: 类型为BufferBuilder的变量 builder
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:128: 错误: 找不到符号
+                builder.vertex(matrix, point.x, point.y, 0F).color(c).next();
+                       ^
+  符号:   方法 vertex(Matrix4f,float,float,float)
+  位置: 类型为BufferBuilder的变量 builder
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:129: 错误: 找不到符号
+                builder.vertex(matrix, prevPoint.x, prevPoint.y, 0F).color(c).next();
+                       ^
+  符号:   方法 vertex(Matrix4f,float,float,float)
+  位置: 类型为BufferBuilder的变量 builder
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:131: 错误: 找不到符号
+                builder.vertex(matrix, point.x, y2, 0F).color(c).next();
+                       ^
+  符号:   方法 vertex(Matrix4f,float,int,float)
+  位置: 类型为BufferBuilder的变量 builder
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:132: 错误: 找不到符号
+                builder.vertex(matrix, point.x, point.y, 0F).color(c).next();
+                       ^
+  符号:   方法 vertex(Matrix4f,float,float,float)
+  位置: 类型为BufferBuilder的变量 builder
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:133: 错误: 找不到符号
+                builder.vertex(matrix, prevPoint.x, y2, 0F).color(c).next();
+                       ^
+  符号:   方法 vertex(Matrix4f,float,int,float)
+  位置: 类型为BufferBuilder的变量 builder
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:144: 错误: 找不到符号
+            builder.vertex(matrix, point.x, y2, 0F).color(c).next();
+                   ^
+  符号:   方法 vertex(Matrix4f,float,int,float)
+  位置: 类型为BufferBuilder的变量 builder
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:145: 错误: 找不到符号
+            builder.vertex(matrix, x2, point.y, 0F).color(c).next();
+                   ^
+  符号:   方法 vertex(Matrix4f,int,float,float)
+  位置: 类型为BufferBuilder的变量 builder
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:146: 错误: 找不到符号
+            builder.vertex(matrix, point.x, point.y, 0F).color(c).next();
+                   ^
+  符号:   方法 vertex(Matrix4f,float,float,float)
+  位置: 类型为BufferBuilder的变量 builder
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:148: 错误: 找不到符号
+            builder.vertex(matrix, x2, y2, 0F).color(c).next();
+                   ^
+  符号:   方法 vertex(Matrix4f,int,int,float)
+  位置: 类型为BufferBuilder的变量 builder
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:149: 错误: 找不到符号
+            builder.vertex(matrix, x2, point.y, 0F).color(c).next();
+                   ^
+  符号:   方法 vertex(Matrix4f,int,float,float)
+  位置: 类型为BufferBuilder的变量 builder
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:150: 错误: 找不到符号
+            builder.vertex(matrix, point.x, y2, 0F).color(c).next();
+                   ^
+  符号:   方法 vertex(Matrix4f,float,int,float)
+  位置: 类型为BufferBuilder的变量 builder
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:162: 错误: 找不到符号
+        builder.vertex(matrix, point.x, point.y, 0F).color(c).next();
+               ^
+  符号:   方法 vertex(Matrix4f,float,float,float)
+  位置: 类型为BufferBuilder的变量 builder
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:166: 错误: 找不到符号
+        builder.vertex(matrix, point.x, y2, 0F).color(c).next();
+               ^
+  符号:   方法 vertex(Matrix4f,float,int,float)
+  位置: 类型为BufferBuilder的变量 builder
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:167: 错误: 找不到符号
+        builder.vertex(matrix, point.x, point.y, 0F).color(c).next();
+               ^
+  符号:   方法 vertex(Matrix4f,float,float,float)
+  位置: 类型为BufferBuilder的变量 builder
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:172: 错误: 找不到符号
+        builder.vertex(matrix, point.x, point.y, 0F).color(c).next();
+               ^
+  符号:   方法 vertex(Matrix4f,float,float,float)
+  位置: 类型为BufferBuilder的变量 builder
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:173: 错误: 找不到符号
+        builder.vertex(matrix, previous.x, y2, 0F).color(c).next();
+               ^
+  符号:   方法 vertex(Matrix4f,float,int,float)
+  位置: 类型为BufferBuilder的变量 builder
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:174: 错误: 找不到符号
+        builder.vertex(matrix, point.x, y2, 0F).color(c).next();
+               ^
+  符号:   方法 vertex(Matrix4f,float,int,float)
+  位置: 类型为BufferBuilder的变量 builder
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:177: 错误: 找不到符号
+        builder.vertex(matrix, point.x, point.y, 0F).color(c).next();
+               ^
+  符号:   方法 vertex(Matrix4f,float,float,float)
+  位置: 类型为BufferBuilder的变量 builder
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:178: 错误: 找不到符号
+        builder.vertex(matrix, previous.x, previous.y, 0F).color(c).next();
+               ^
+  符号:   方法 vertex(Matrix4f,float,float,float)
+  位置: 类型为BufferBuilder的变量 builder
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:179: 错误: 找不到符号
+        builder.vertex(matrix, previous.x, y2, 0F).color(c).next();
+               ^
+  符号:   方法 vertex(Matrix4f,float,int,float)
+  位置: 类型为BufferBuilder的变量 builder
+注: D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\BBSModClient.java使用或覆盖了已过时的 API。
+注: 有关详细信息, 请使用 -Xlint:deprecation 重新编译。
+注: 某些输入文件使用了未经检查或不安全的操作。
+注: 有关详细信息, 请使用 -Xlint:unchecked 重新编译。
+注: 某些消息已经过简化; 请使用 -Xdiags:verbose 重新编译以获得完整输出
+100 个错误
+4 个警告
+
+> Task :compileClientJava FAILED
+
+[Incubating] Problems report is available at: file:///D:/DEV/bbs_clean/build/reports/problems/problems-report.html
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':compileClientJava' (registered by plugin class 'org.gradle.api.plugins.JavaBasePlugin').
+> Compilation failed; see the compiler output below.
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\Recorder.java:76: 错误: 无法将类 BufferBuilder中的构造器 BufferBuilder应用到给定类型;
+          BufferBuilder builder = new BufferBuilder(4096);
+                                  ^
+    需要: ByteBufferBuilder,PrimitiveTopology,VertexFormat
+    找到:    int
+    原因: 实际参数列表和形式参数列表长度不同
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:1031: 错误: 无法将类 RenderSystem中的方法 setProjectionMatrix应用到给定类型;
+          RenderSystem.setProjectionMatrix(this.panel.lastProjection);
+                      ^
+    需要: GpuBufferSlice,ProjectionType
+    找到:    Matrix4f
+    原因: 实际参数列表和形式参数列表长度不同
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\keyframes\graphs\UIKeyframeDopeSheet.java:566: 错误: 无法将类 Batcher2D中的方法 fillRect应用到给定类型;
+              context.batcher.fillRect(builder, matrix, area.x, my - 1, area.w, 2, cc, cc, cc, cc);
+                             ^
+    需要: int,int,int,int,int
+    找到:    BufferBuilder,Matrix4f,int,int,int,int,int,int,int,int
+    原因: 实际参数列表和形式参数列表长度不同
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\keyframes\graphs\UIKeyframeDopeSheet.java:573: 错误: 无法将类 Batcher2D中的方法 fillRect应用到给定类型;
+                  context.batcher.fillRect(builder, matrix, area.x, y, area.w, (int) this.trackHeight, c | Colors.A25, c | Colors.A25, c, c);
+                                 ^
+    需要: int,int,int,int,int
+    找到:    BufferBuilder,Matrix4f,int,int,int,int,int,int,int,int
+    原因: 实际参数列表和形式参数列表长度不同
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\keyframes\graphs\UIKeyframeDopeSheet.java:587: 错误: 无法将类 Batcher2D中的方法 fillRect应用到给定类型;
+                      context.batcher.fillRect(builder, matrix, xx, my - 2, this.keyframes.toGraphX(frame.getTick()) - xx, 4, c, c, c, c);
+                                     ^
+    需要: int,int,int,int,int
+    找到:    BufferBuilder,Matrix4f,int,int,int,int,int,int,int,int
+    原因: 实际参数列表和形式参数列表长度不同
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\keyframes\graphs\UIKeyframeDopeSheet.java:594: 错误: 无法将类 Batcher2D中的方法 fillRect应用到给定类型;
+                      context.batcher.fillRect(builder, matrix, xx - 2, my + 5, xxx - xx + 4, 2, c, c, c, c);
+                                     ^
+    需要: int,int,int,int,int
+    找到:    BufferBuilder,Matrix4f,int,int,int,int,int,int,int,int
+    原因: 实际参数列表和形式参数列表长度不同
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\keyframes\graphs\UIKeyframeDopeSheet.java:614: 错误: 无法将类 Batcher2D中的方法 fillRect应用到给定类型;
+                      context.batcher.fillRect(builder, matrix, x1, y1 - 2, 1, 5, color, color, color, color);
+                                     ^
+    需要: int,int,int,int,int
+    找到:    BufferBuilder,Matrix4f,int,int,int,int,int,int,int,int
+    原因: 实际参数列表和形式参数列表长度不同
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\keyframes\graphs\UIKeyframeDopeSheet.java:615: 错误: 无法将类 Batcher2D中的方法 fillRect应用到给定类型;
+                      context.batcher.fillRect(builder, matrix, x2, y1 - 2, 1, 5, color, color, color, color);
+                                     ^
+    需要: int,int,int,int,int
+    找到:    BufferBuilder,Matrix4f,int,int,int,int,int,int,int,int
+    原因: 实际参数列表和形式参数列表长度不同
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\keyframes\graphs\UIKeyframeDopeSheet.java:616: 错误: 无法将类 Batcher2D中的方法 fillRect应用到给定类型;
+                      context.batcher.fillRect(builder, matrix, x1 + 1, y1, x2 - x1, 1, color, color, color, color);
+                                     ^
+    需要: int,int,int,int,int
+    找到:    BufferBuilder,Matrix4f,int,int,int,int,int,int,int,int
+    原因: 实际参数列表和形式参数列表长度不同
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\UITrackpad.java:766: 错误: 无法将类 Batcher2D中的方法 outlineCenter应用到给定类型;
+              context.batcher.outlineCenter(this.initialX, this.initialY, 4, Colors.WHITE);
+                             ^
+    需要: int,int,int,int,int
+    找到:    int,int,int,int
+    原因: 实际参数列表和形式参数列表长度不同
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\replays\UIReplayList.java:718: 错误: 对于clip(int,int,int,int,UIContext), 找不到合适的方法
+              context.batcher.clip(x, y, 40, 20, context);
+                             ^
+      方法 Batcher2D.clip(Area,UIContext)不适用
+        (实际参数列表和形式参数列表长度不同)
+      方法 Batcher2D.clip(int,int,int,int,int,int)不适用
+        (实际参数列表和形式参数列表长度不同)
+  注: 有关详细信息, 请使用 -Xlint:deprecation 重新编译。
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\keyframes\graphs\UIKeyframeDopeSheet.java:655: 错误: 方法引用无效
+              RenderSystem.setShader(GameRenderer::getPositionColorProgram);
+                                     ^
+    找不到符号
+      符号:   方法 getPositionColorProgram()
+      位置: 类 GameRenderer
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\particles\emitter\ParticleEmitter.java:23: 错误: 找不到符号
+  import com.mojang.blaze3d.vertex.VertexFormat.Mode;
+                                               ^
+    符号:   类 Mode
+    位置: 类 VertexFormat
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\BaseFilmController.java:514: 错误: 找不到符号
+                                  playerEntity.input.shiftKeyDown = sneaking;
+                                                    ^
+    符号:   变量 shiftKeyDown
+    位置: 类型为ClientInput的变量 input
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\particles\emitter\ParticleEmitter.java:456: 错误: 找不到符号
+              BufferBuilder builder = new BufferBuilder(byteBuf, Mode.TRIANGLES, DefaultVertexFormat.POSITION_TEX_COLOR);
+                                                                 ^
+    符号:   变量 Mode
+    位置: 类 ParticleEmitter
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\particles\emitter\ParticleEmitter.java:488: 错误: 找不到符号
+              BufferBuilder builder = new BufferBuilder(byteBuf, Mode.TRIANGLES, format);
+                                                                 ^
+    符号:   变量 Mode
+    位置: 类 ParticleEmitter
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\cubic\ModelInstance.java:348: 错误: 找不到符号
+                  BufferBuilder builder = new BufferBuilder(byteBuf, VertexFormat.Mode.TRIANGLES, DefaultVertexFormat.POSITION_COLOR_TEX_LIGHTMAP);
+                                                                                 ^
+    符号:   变量 Mode
+    位置: 类 VertexFormat
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\FilmEditorController.java:175: 错误: 找不到符号
+                      float tick = ticks + this.getTransition(entity, context.transition);
+                                                                             ^
+    符号:   变量 transition
+    位置: 类型为LevelRenderContext的变量 context
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\keyframes\graphs\UIKeyframeDopeSheet.java:544: 错误: 找不到符号
+          BufferBuilder builder = Tessellator.getInstance().getBuffer();
+                                  ^
+    符号:   变量 Tessellator
+    位置: 类 UIKeyframeDopeSheet
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\keyframes\graphs\UIKeyframeDopeSheet.java:564: 错误: 找不到符号
+              builder.begin(VertexFormat.DrawMode.QUADS, DefaultVertexFormat.POSITION_COLOR);
+                                        ^
+    符号:   变量 DrawMode
+    位置: 类 VertexFormat
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\keyframes\graphs\UIKeyframeDopeSheet.java:656: 错误: 找不到符号
+              BufferRenderer.drawWithGlobalProgram(builder.end());
+              ^
+    符号:   变量 BufferRenderer
+    位置: 类 UIKeyframeDopeSheet
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\UITrackpad.java:717: 错误: 找不到符号
+                      Window.moveCursor(ww - (int) (factor * borderPadding), (int) mc.mouse.getY());
+                                                                                     ^
+    符号:   变量 mouse
+    位置: 类型为Minecraft的变量 mc
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\UITrackpad.java:725: 错误: 找不到符号
+                      Window.moveCursor((int) (factor * borderPadding), (int) mc.mouse.getY());
+                                                                                ^
+    符号:   变量 mouse
+    位置: 类型为Minecraft的变量 mc
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:92: 错误: 找不到符号
+          BufferBuilder builder = Tessellator.getInstance().getBuffer();
+                                  ^
+    符号:   变量 Tessellator
+    位置: 类 UIClipRenderer<T>
+    其中, T是类型变量:
+      T扩展已在类 UIClipRenderer中声明的Clip
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:95: 错误: 找不到符号
+          builder.begin(VertexFormat.DrawMode.TRIANGLES, DefaultVertexFormat.POSITION_COLOR);
+                                    ^
+    符号:   变量 DrawMode
+    位置: 类 VertexFormat
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:109: 错误: 找不到符号
+          BufferRenderer.drawWithGlobalProgram(builder.end());
+          ^
+    符号:   变量 BufferRenderer
+    位置: 类 UIClipRenderer<T>
+    其中, T是类型变量:
+      T扩展已在类 UIClipRenderer中声明的Clip
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\BBSModClient.java:447: 错误: screen 在 Gui 中是 private 访问控制
+              if (mc.gui.screen != null)
+                        ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\BBSModClient.java:449: 错误: screen 在 Gui 中是 private 访问控制
+                  mc.gui.screen.tick();
+                        ^
+  注: 有关详细信息, 请使用 -Xlint:unchecked 重新编译。
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\utils\VideoRecorder.java:164: 警告: [removal] Unsafe 中的 objectFieldOffset(Field) 已过时, 且标记为待删除
+                      os = (OutputStream) unsafe.getObject(os, unsafe.objectFieldOffset(outField));
+                                                                     ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\utils\VideoRecorder.java:164: 警告: [removal] Unsafe 中的 getObject(Object,long) 已过时, 且标记为待删除
+                      os = (OutputStream) unsafe.getObject(os, unsafe.objectFieldOffset(outField));
+                                                ^
+  注: 某些输入文件使用了未经检查或不安全的操作。
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\utils\Scroll.java:453: 错误: 找不到符号
+              float delta = Minecraft.getInstance().getFrameTime();
+                                                   ^
+    符号:   方法 getFrameTime()
+    位置: 类 Minecraft
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\BaseFilmController.java:644: 错误: 找不到符号
+              filmContext.transition = getTransition(entity, Minecraft.getInstance().getFrameTime());
+                                                                                    ^
+    符号:   方法 getFrameTime()
+    位置: 类 Minecraft
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\Recorder.java:58: 错误: 找不到符号
+          float x = (float) (position.point.x - camera.getPosition().x);
+                                                      ^
+    符号:   方法 getPosition()
+    位置: 类型为Camera的变量 camera
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\Recorder.java:59: 错误: 找不到符号
+          float y = (float) (position.point.y - camera.getPosition().y);
+                                                      ^
+    符号:   方法 getPosition()
+    位置: 类型为Camera的变量 camera
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\Recorder.java:60: 错误: 找不到符号
+          float z = (float) (position.point.z - camera.getPosition().z);
+                                                      ^
+    符号:   方法 getPosition()
+    位置: 类型为Camera的变量 camera
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\Recorder.java:77: 错误: 找不到符号
+          builder.begin(DefaultVertexFormat.POSITION_COLOR);
+                 ^
+    符号:   方法 begin(VertexFormat)
+    位置: 类型为BufferBuilder的变量 builder
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\Recorder.java:81: 错误: 找不到符号
+          builder.end();
+                 ^
+    符号:   方法 end()
+    位置: 类型为BufferBuilder的变量 builder
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\Recorder.java:82: 错误: 找不到符号
+          RenderSystem.disableDepthTest();
+                      ^
+    符号:   方法 disableDepthTest()
+    位置: 类 RenderSystem
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\Recorder.java:148: 错误: 找不到符号
+          renderCameraPreview(this.position, Minecraft.getInstance().gameRenderer.getMainCamera(), context.poseStack());
+                                                                                 ^
+    符号:   方法 getMainCamera()
+    位置: 类型为GameRenderer的变量 gameRenderer
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\FilmControllerContext.java:72: 错误: 找不到符号
+          this.camera = Minecraft.getInstance().gameRenderer.getMainCamera();
+                                                            ^
+    符号:   方法 getMainCamera()
+    位置: 类型为GameRenderer的变量 gameRenderer
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\categories\UIFormCategory.java:132: 错误: 找不到符号
+                                  if (entry.getUuid().equals(Minecraft.getInstance().player.getUUID()))
+                                           ^
+    符号:   方法 getUuid()
+    位置: 类型为PlayerInfo的变量 entry
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\categories\UIFormCategory.java:137: 错误: 找不到符号
+                                  newMenu.action(Icons.ARROW_RIGHT, IKey.constant(entry.getPlayerName()), () ->
+                                                                                       ^
+    符号:   方法 getPlayerName()
+    位置: 类型为PlayerInfo的变量 entry
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\categories\UIFormCategory.java:139: 错误: 找不到符号
+                                      ClientNetwork.sendSharedForm(this.selected, entry.getUuid());
+                                                                                       ^
+    符号:   方法 getUuid()
+    位置: 类型为PlayerInfo的变量 entry
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\UIFilmPanel.java:955: 错误: 找不到符号
+              int value = Minecraft.getInstance().options.getRenderDistance().get();
+                                                         ^
+    符号:   方法 getRenderDistance()
+    位置: 类型为Options的变量 options
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\UIFilmPreview.java:375: 错误: 找不到符号
+          net.minecraft.client.Camera mcCamera = Minecraft.getInstance().gameRenderer.getCamera();
+                                                                                     ^
+    符号:   方法 getCamera()
+    位置: 类型为GameRenderer的变量 gameRenderer
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\UIFilmPreview.java:381: 错误: 找不到符号
+          stack.multiply(com.mojang.math.Axis.XN.rotationDegrees(mcCamera.getPitch()));
+                                                                         ^
+    符号:   方法 getPitch()
+    位置: 类型为Camera的变量 mcCamera
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\UIFilmPreview.java:382: 错误: 找不到符号
+          stack.multiply(com.mojang.math.Axis.YP.rotationDegrees(mcCamera.getYaw()));
+                                                                         ^
+    符号:   方法 getYaw()
+    位置: 类型为Camera的变量 mcCamera
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:219: 错误: 找不到符号
+              GLFW.glfwSetInputMode(window.getWindow(), GLFW.GLFW_CURSOR, GLFW.GLFW_CURSOR_DISABLED);
+                                          ^
+    符号:   方法 getWindow()
+    位置: 类型为Window的变量 window
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:223: 错误: 找不到符号
+              GLFW.glfwSetInputMode(window.getWindow(), GLFW.GLFW_CURSOR, GLFW.GLFW_CURSOR_NORMAL);
+                                          ^
+    符号:   方法 getWindow()
+    位置: 类型为Window的变量 window
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:1121: 错误: 找不到符号
+                  Recorder.renderCameraPreview(this.panel.getRunner().position(), Minecraft.getInstance().gameRenderer.getCamera(), context.poseStack());
+                                                                     ^
+    符号:   方法 position()
+    位置: 类 RunnerCameraController
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:1121: 错误: 找不到符号
+                  Recorder.renderCameraPreview(this.panel.getRunner().position(), Minecraft.getInstance().gameRenderer.getCamera(), context.poseStack());
+                                                                                                                      ^
+    符号:   方法 getCamera()
+    位置: 类型为GameRenderer的变量 gameRenderer
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:1201: 错误: 找不到符号
+                      .transition(isPlaying ? Minecraft.getInstance().getFrameTime() : 0)
+                                                                     ^
+    符号:   方法 getFrameTime()
+    位置: 类 Minecraft
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:1213: 错误: 找不到符号
+                  .transition(isPlaying ? Minecraft.getInstance().getFrameTime() : 0)
+                                                                 ^
+    符号:   方法 getFrameTime()
+    位置: 类 Minecraft
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:1225: 错误: 找不到符号
+          Minecraft.getInstance().getMainRenderTarget().beginWrite(true);
+                                 ^
+    符号:   方法 getMainRenderTarget()
+    位置: 类 Minecraft
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\ContentType.java:35: 错误: 找不到符号
+          if (Minecraft.getInstance().isSingleplayer())
+                                     ^
+    符号:   方法 isSingleplayer()
+    位置: 类 Minecraft
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\FilmEditorController.java:184: 错误: 找不到符号
+                          entity.setyRotO(entity.getYRot());
+                                                ^
+    符号:   方法 getYRot()
+    位置: 类型为IEntity的变量 entity
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\FilmEditorController.java:185: 错误: 找不到符号
+                          entity.setyHeadRotO(entity.getYHeadRot());
+                                                    ^
+    符号:   方法 getYHeadRot()
+    位置: 类型为IEntity的变量 entity
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\FilmEditorController.java:186: 错误: 找不到符号
+                          entity.setyBodyRotO(entity.getYBodyRot());
+                                                    ^
+    符号:   方法 getYBodyRot()
+    位置: 类型为IEntity的变量 entity
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\FilmEditorController.java:187: 错误: 找不到符号
+                          entity.setxRotO(entity.getXRot());
+                                                ^
+    符号:   方法 getXRot()
+    位置: 类型为IEntity的变量 entity
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\FilmEditorController.java:248: 错误: 找不到符号
+              .transition(this.getTransition(entity, context.tickDelta()))
+                                                            ^
+    符号:   方法 tickDelta()
+    位置: 类型为LevelRenderContext的变量 context
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\OrbitFilmCameraController.java:210: 错误: 找不到符号
+              float renderYaw = MathUtils.toRad(-Lerps.lerp(entity.getyBodyRotO(), entity.getYBodyRot(), transition) + 180F);
+                                                                  ^
+    符号:   方法 getyBodyRotO()
+    位置: 类型为IEntity的变量 entity
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\OrbitFilmCameraController.java:210: 错误: 找不到符号
+              float renderYaw = MathUtils.toRad(-Lerps.lerp(entity.getyBodyRotO(), entity.getYBodyRot(), transition) + 180F);
+                                                                                         ^
+    符号:   方法 getYBodyRot()
+    位置: 类型为IEntity的变量 entity
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\keyframes\graphs\UIKeyframeDopeSheet.java:545: 错误: 找不到符号
+          Matrix4f matrix = context.batcher.getContext().pose().last().pose();
+                                                               ^
+    符号:   方法 last()
+    位置: 类 Matrix3x2fStack
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\keyframes\graphs\UIKeyframeDopeSheet.java:654: 错误: 找不到符号
+              RenderSystem.enableBlend();
+                          ^
+    符号:   方法 enableBlend()
+    位置: 类 RenderSystem
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\keyframes\graphs\UIKeyframeDopeSheet.java:656: 错误: 找不到符号
+              BufferRenderer.drawWithGlobalProgram(builder.end());
+                                                          ^
+    符号:   方法 end()
+    位置: 类型为BufferBuilder的变量 builder
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\utils\Scale.java:214: 错误: 找不到符号
+              factor += this.direction.position(this.area, this.anchor);
+                                      ^
+    符号:   方法 position(Area,float)
+    位置: 类型为ScrollDirection的变量 direction
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\utils\Scale.java:227: 错误: 找不到符号
+              mouse -= this.direction.position(this.area, this.anchor);
+                                     ^
+    符号:   方法 position(Area,float)
+    位置: 类型为ScrollDirection的变量 direction
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\utils\Scale.java:239: 错误: 找不到符号
+          return this.from(this.direction.position(this.area, this.inverse ? 1 : 0));
+                                         ^
+    符号:   方法 position(Area,int)
+    位置: 类型为ScrollDirection的变量 direction
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\utils\Scale.java:246: 错误: 找不到符号
+          return this.from(this.direction.position(this.area, this.inverse ? 0 : 1));
+                                         ^
+    符号:   方法 position(Area,int)
+    位置: 类型为ScrollDirection的变量 direction
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\utils\Scale.java:352: 错误: 找不到符号
+                  double shift = this.direction.position(this.area, this.anchor) - this.direction.position(this.area, newAnchor);
+                                               ^
+    符号:   方法 position(Area,float)
+    位置: 类型为ScrollDirection的变量 direction
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\utils\Scale.java:352: 错误: 找不到符号
+                  double shift = this.direction.position(this.area, this.anchor) - this.direction.position(this.area, newAnchor);
+                                                                                                 ^
+    符号:   方法 position(Area,float)
+    位置: 类型为ScrollDirection的变量 direction
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\utils\Scale.java:358: 错误: 找不到符号
+                  double shift = this.direction.position(this.area, this.anchor) - this.direction.position(this.area, newAnchor);
+                                               ^
+    符号:   方法 position(Area,float)
+    位置: 类型为ScrollDirection的变量 direction
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\utils\Scale.java:358: 错误: 找不到符号
+                  double shift = this.direction.position(this.area, this.anchor) - this.direction.position(this.area, newAnchor);
+                                                                                                 ^
+    符号:   方法 position(Area,float)
+    位置: 类型为ScrollDirection的变量 direction
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\utils\Scale.java:368: 错误: 找不到符号
+          double diff = this.from(this.direction.position(this.area, newAnchor)) - this.from(this.direction.position(this.area, 0F));
+                                                ^
+    符号:   方法 position(Area,float)
+    位置: 类型为ScrollDirection的变量 direction
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\utils\Scale.java:368: 错误: 找不到符号
+          double diff = this.from(this.direction.position(this.area, newAnchor)) - this.from(this.direction.position(this.area, 0F));
+                                                                                                           ^
+    符号:   方法 position(Area,float)
+    位置: 类型为ScrollDirection的变量 direction
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\replays\UIReplayList.java:565: 错误: 找不到符号
+          BlockPos blockPos = modelBlock.blockPosition();
+                                        ^
+    符号:   方法 blockPosition()
+    位置: 类型为ModelBlockEntity的变量 modelBlock
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\UIClips.java:260: 错误: 找不到符号
+              if (this.factory.getAllKeys().contains(Link.bbs("keyframe")))
+                              ^
+    符号:   方法 getAllKeys()
+    位置: 类型为IFactory<Clip,ClipFactoryData>的变量 factory
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\UIClips.java:352: 错误: 找不到符号
+              for (Link type : this.factory.getAllKeys())
+                                           ^
+    符号:   方法 getAllKeys()
+    位置: 类型为IFactory<Clip,ClipFactoryData>的变量 factory
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:93: 错误: 找不到符号
+          Matrix4f matrix = context.batcher.getContext().pose().last().pose();
+                                                               ^
+    符号:   方法 last()
+    位置: 类 Matrix3x2fStack
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:109: 错误: 找不到符号
+          BufferRenderer.drawWithGlobalProgram(builder.end());
+                                                      ^
+    符号:   方法 end()
+    位置: 类型为BufferBuilder的变量 builder
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:127: 错误: 找不到符号
+                  builder.vertex(matrix, prevPoint.x, y2, 0F).color(c).next();
+                         ^
+    符号:   方法 vertex(Matrix4f,float,int,float)
+    位置: 类型为BufferBuilder的变量 builder
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:128: 错误: 找不到符号
+                  builder.vertex(matrix, point.x, point.y, 0F).color(c).next();
+                         ^
+    符号:   方法 vertex(Matrix4f,float,float,float)
+    位置: 类型为BufferBuilder的变量 builder
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:129: 错误: 找不到符号
+                  builder.vertex(matrix, prevPoint.x, prevPoint.y, 0F).color(c).next();
+                         ^
+    符号:   方法 vertex(Matrix4f,float,float,float)
+    位置: 类型为BufferBuilder的变量 builder
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:131: 错误: 找不到符号
+                  builder.vertex(matrix, point.x, y2, 0F).color(c).next();
+                         ^
+    符号:   方法 vertex(Matrix4f,float,int,float)
+    位置: 类型为BufferBuilder的变量 builder
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:132: 错误: 找不到符号
+                  builder.vertex(matrix, point.x, point.y, 0F).color(c).next();
+                         ^
+    符号:   方法 vertex(Matrix4f,float,float,float)
+    位置: 类型为BufferBuilder的变量 builder
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:133: 错误: 找不到符号
+                  builder.vertex(matrix, prevPoint.x, y2, 0F).color(c).next();
+                         ^
+    符号:   方法 vertex(Matrix4f,float,int,float)
+    位置: 类型为BufferBuilder的变量 builder
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:144: 错误: 找不到符号
+              builder.vertex(matrix, point.x, y2, 0F).color(c).next();
+                     ^
+    符号:   方法 vertex(Matrix4f,float,int,float)
+    位置: 类型为BufferBuilder的变量 builder
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:145: 错误: 找不到符号
+              builder.vertex(matrix, x2, point.y, 0F).color(c).next();
+                     ^
+    符号:   方法 vertex(Matrix4f,int,float,float)
+    位置: 类型为BufferBuilder的变量 builder
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:146: 错误: 找不到符号
+              builder.vertex(matrix, point.x, point.y, 0F).color(c).next();
+                     ^
+    符号:   方法 vertex(Matrix4f,float,float,float)
+    位置: 类型为BufferBuilder的变量 builder
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:148: 错误: 找不到符号
+              builder.vertex(matrix, x2, y2, 0F).color(c).next();
+                     ^
+    符号:   方法 vertex(Matrix4f,int,int,float)
+    位置: 类型为BufferBuilder的变量 builder
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:149: 错误: 找不到符号
+              builder.vertex(matrix, x2, point.y, 0F).color(c).next();
+                     ^
+    符号:   方法 vertex(Matrix4f,int,float,float)
+    位置: 类型为BufferBuilder的变量 builder
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:150: 错误: 找不到符号
+              builder.vertex(matrix, point.x, y2, 0F).color(c).next();
+                     ^
+    符号:   方法 vertex(Matrix4f,float,int,float)
+    位置: 类型为BufferBuilder的变量 builder
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:162: 错误: 找不到符号
+          builder.vertex(matrix, point.x, point.y, 0F).color(c).next();
+                 ^
+    符号:   方法 vertex(Matrix4f,float,float,float)
+    位置: 类型为BufferBuilder的变量 builder
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:166: 错误: 找不到符号
+          builder.vertex(matrix, point.x, y2, 0F).color(c).next();
+                 ^
+    符号:   方法 vertex(Matrix4f,float,int,float)
+    位置: 类型为BufferBuilder的变量 builder
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:167: 错误: 找不到符号
+          builder.vertex(matrix, point.x, point.y, 0F).color(c).next();
+                 ^
+    符号:   方法 vertex(Matrix4f,float,float,float)
+    位置: 类型为BufferBuilder的变量 builder
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:172: 错误: 找不到符号
+          builder.vertex(matrix, point.x, point.y, 0F).color(c).next();
+                 ^
+    符号:   方法 vertex(Matrix4f,float,float,float)
+    位置: 类型为BufferBuilder的变量 builder
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:173: 错误: 找不到符号
+          builder.vertex(matrix, previous.x, y2, 0F).color(c).next();
+                 ^
+    符号:   方法 vertex(Matrix4f,float,int,float)
+    位置: 类型为BufferBuilder的变量 builder
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:174: 错误: 找不到符号
+          builder.vertex(matrix, point.x, y2, 0F).color(c).next();
+                 ^
+    符号:   方法 vertex(Matrix4f,float,int,float)
+    位置: 类型为BufferBuilder的变量 builder
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:177: 错误: 找不到符号
+          builder.vertex(matrix, point.x, point.y, 0F).color(c).next();
+                 ^
+    符号:   方法 vertex(Matrix4f,float,float,float)
+    位置: 类型为BufferBuilder的变量 builder
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:178: 错误: 找不到符号
+          builder.vertex(matrix, previous.x, previous.y, 0F).color(c).next();
+                 ^
+    符号:   方法 vertex(Matrix4f,float,float,float)
+    位置: 类型为BufferBuilder的变量 builder
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:179: 错误: 找不到符号
+          builder.vertex(matrix, previous.x, y2, 0F).color(c).next();
+                 ^
+    符号:   方法 vertex(Matrix4f,float,int,float)
+    位置: 类型为BufferBuilder的变量 builder
+  注: D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\BBSModClient.java使用或覆盖了已过时的 API。
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\utils\VideoRecorder.java:9: 警告: Unsafe是内部专用 API, 可能会在未来发行版中删除
+  import sun.misc.Unsafe;
+                 ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\utils\VideoRecorder.java:156: 警告: Unsafe是内部专用 API, 可能会在未来发行版中删除
+              Unsafe unsafe = UnsafeUtils.getUnsafe();
+              ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\renderer\item\ModelBlockItemRenderer.java:92: 错误: 不兼容的类型: 推论变量 T 具有不兼容的上限
+          net.minecraft.nbt.CompoundTag data = stack.get(net.minecraft.core.component.DataComponents.BLOCK_ENTITY_DATA);
+                                                        ^
+      上限：CompoundTag,Object
+      下限：TypedEntityData<BlockEntityType<?>>
+    其中, T是类型变量:
+      T扩展已在方法 <T>get(DataComponentType<? extends T>)中声明的Object
+  注: 某些消息已经过简化; 请使用 -Xdiags:verbose 重新编译以获得完整输出
+  100 个错误
+  4 个警告
+
+* Try:
+> Check your code and dependencies to fix the compilation error(s)
+> Run with --scan to get full insights from a Build Scan (powered by Develocity).
+
+BUILD FAILED in 8s
+3 actionable tasks: 1 executed, 2 up-to-date

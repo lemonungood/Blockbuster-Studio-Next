@@ -67,21 +67,21 @@ public class InterpolationRenderer
         grid.add(x, y);
 
         /* Vertical middle */
-        grid.push();
+        grid.pushPose();
         grid.add(x + w / 2, y);
         grid.add(x + w / 2, y + h);
 
         /* Horizontal middle */
-        grid.push();
+        grid.pushPose();
         grid.add(x, y + h / 2);
         grid.add(x + w, y + h / 2);
 
         /* Padding */
-        grid.push();
+        grid.pushPose();
         grid.add(x, y + h - padding);
         grid.add(x + w, y + h - padding);
 
-        grid.push();
+        grid.pushPose();
         grid.add(x, y + padding);
         grid.add(x + w, y + padding);
 

@@ -99,7 +99,7 @@ public class UILookClip extends UIClip<LookClip>
     private void rayTrace(boolean center)
     {
         Camera camera = this.editor.getCamera();
-        Level world = Minecraft.getInstance().world;
+        Level world = Minecraft.getInstance().level;
 
         HitResult result = RayTracing.rayTraceEntity(world, camera, 128);
 
@@ -112,7 +112,7 @@ public class UILookClip extends UIClip<LookClip>
         }
         else if (!center && result instanceof EntityHitResult ehr && ehr.getType() != HitResult.Type.MISS)
         {
-            Vec3 vec = ehr.getPos();
+            Vec3 vec = ehr.getLocation();
 
             BaseValue.edit(this.clip.block, (block) -> block.get().set(vec.x, vec.y, vec.z));
             this.fillData();

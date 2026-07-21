@@ -211,7 +211,7 @@ public abstract class UIModelRenderer extends UIElement
         this.setupPosition();
         this.setupViewport(context);
 
-        PoseStack stack = context.render.batcher.getContext().getMatrices();
+        PoseStack stack = context.render.batcher.getContext().pose();
 
         /* Cache the global stuff */
         PoseStackUtils.cacheMatrices();
@@ -220,7 +220,7 @@ public abstract class UIModelRenderer extends UIElement
         RenderSystem.setInverseViewRotationMatrix(new Matrix3f(this.camera.view).invert());
 
         /* Rendering begins... */
-        stack.push();
+        stack.pushPose();
         PoseStackUtils.multiply(stack, this.camera.view);
         stack.translate(-this.camera.position.x, -this.camera.position.y, -this.camera.position.z);
         PoseStackUtils.multiply(stack, this.transform);
@@ -238,9 +238,9 @@ public abstract class UIModelRenderer extends UIElement
 
         this.renderUserModel(context);
 
-        DiffuseLighting.disableGuiDepthLighting();
+        // DiffuseLighting removed
 
-        stack.pop();
+        stack.popPose();
 
         /* Return back to orthographic projection */
         Minecraft mc = Minecraft.getInstance();
@@ -346,7 +346,7 @@ public abstract class UIModelRenderer extends UIElement
      */
     protected void renderGrid(UIContext context)
     {
-        Matrix4f matrix4f = context.batcher.getContext().getMatrices().peek().getPositionMatrix();
+        Matrix4f matrix4f = context.batcher.getContext().pose().last().pose();
         BufferBuilder builder = Tessellator.getInstance().getBuffer();
 
         RenderSystem.setShader(GameRenderer::getPositionColorProgram);

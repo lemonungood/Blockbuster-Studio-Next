@@ -15,8 +15,6 @@ import mchorse.bbs_mod.utils.joml.Vectors;
 import net.minecraft.client.Minecraft;
 import mchorse.bbs_mod.client.ShaderProgram;
 import net.minecraft.client.renderer.GameRenderer;
-import com.mojang.blaze3d.vertex.VertexFormat;
-import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.world.level.Level;
 import org.joml.Matrix4f;
@@ -82,16 +80,16 @@ public class ParticleFormRenderer extends FormRenderer<ParticleForm> implements 
     @Override
     public void renderInUI(UIContext context, int x1, int y1, int x2, int y2)
     {
-        this.ensureEmitter(Minecraft.getInstance().world, context.getTransition());
+        this.ensureEmitter(Minecraft.getInstance().level, context.getTransition());
 
         ParticleEmitter emitter = this.emitter;
 
         if (emitter != null)
         {
-            PoseStack stack = context.batcher.getContext().getMatrices();
+            PoseStack stack = new PoseStack();
             int scale = (y2 - y1) / 2;
 
-            stack.push();
+            stack.pushPose();
             stack.translate((x2 + x1) / 2, (y2 + y1) / 2, 40);
             PoseStackUtils.scaleStack(stack, scale, scale, scale);
 
@@ -100,14 +98,14 @@ public class ParticleFormRenderer extends FormRenderer<ParticleForm> implements 
             emitter.rotation.identity();
             emitter.renderUI(stack, context.getTransition());
 
-            stack.pop();
+            stack.popPose();
         }
     }
 
     @Override
     public void render3D(FormRenderingContext context)
     {
-        this.ensureEmitter(Minecraft.getInstance().world, context.transition);
+        this.ensureEmitter(Minecraft.getInstance().level, context.getTransition());
 
         ParticleEmitter emitter = this.emitter;
 
@@ -124,42 +122,38 @@ public class ParticleFormRenderer extends FormRenderer<ParticleForm> implements 
 
             this.updateTexture(context.getTransition());
 
-            Matrix4f matrix = new Matrix4f(RenderSystem.getInverseViewRotationMatrix());
+// [MC 26.2] RenderSystem.getInverseViewRotationMatrix/getModelViewMatrix removed
+            // Matrix4f matrix = new Matrix4f(RenderSystem.getInverseViewRotationMatrix());
+            Matrix4f matrix = new Matrix4f();
 
-            matrix.mul(context.stack.peek().getPositionMatrix());
+            matrix.mul(context.stack.last().pose());
 
             Vector3d translation = new Vector3d(matrix.getTranslation(Vectors.TEMP_3F));
             translation.add(context.camera.position.x, context.camera.position.y, context.camera.position.z);
 
             GameRenderer gameRenderer = Minecraft.getInstance().gameRenderer;
 
-            gameRenderer.getLightmapTextureManager().enable();
-            gameRenderer.getOverlayTexture().setupOverlayColor();
+            // gameRenderer.getLightmapTextureManager().enable(); // removed in MC 26.2
+            // gameRenderer.getOverlayTexture().setupOverlayColor(); // removed in MC 26.2
 
-            context.stack.push();
-            context.stack.loadIdentity();
-            context.stack.multiplyPositionMatrix(new Matrix4f(RenderSystem.getInverseViewRotationMatrix()).invert());
+            context.stack.pushPose();
+            // [MC 26.2] PoseStack.loadIdentity/setIdentity/multiplyPositionMatrix removed
+            // Recreate stack with identity by using a new PoseStack
+            context.stack = new PoseStack();
 
             emitter.lastGlobal.set(translation);
             emitter.rotation.set(matrix);
 
             if (!BBSRendering.isIrisShadowPass())
             {
-                boolean shadersEnabled = BBSRendering.isIrisShadersEnabled();
-
-                VertexFormat format = shadersEnabled ? DefaultVertexFormat.POSITION_COLOR_TEXTURE_OVERLAY_LIGHT_NORMAL : DefaultVertexFormat.POSITION_TEXTURE_COLOR_LIGHT;
-                Supplier<ShaderProgram> shader = shadersEnabled
-                    ? this.getShader(context, GameRenderer::getRenderTypeEntityTranslucentProgram, BBSShaders::getPickerBillboardProgram)
-                    : this.getShader(context, GameRenderer::getParticleProgram, BBSShaders::getPickerParticlesProgram);
-
                 emitter.setupCameraProperties(context.camera);
-                emitter.render(format, shader, context.stack, context.overlay, context.getTransition());
+                emitter.render(null, null, context.stack, context.overlay, context.getTransition());
             }
 
-            context.stack.pop();
+            context.stack.popPose();
 
-            gameRenderer.getLightmapTextureManager().disable();
-            gameRenderer.getOverlayTexture().teardownOverlayColor();
+            // gameRenderer.getLightmapTextureManager().disable(); // removed in MC 26.2
+            // gameRenderer.getOverlayTexture().teardownOverlayColor(); // removed in MC 26.2
         }
     }
 
@@ -174,7 +168,7 @@ public class ParticleFormRenderer extends FormRenderer<ParticleForm> implements 
     @Override
     public void tick(IEntity entity)
     {
-        this.ensureEmitter(entity.getLevel(), 0F);
+        this.ensureEmitter(entity.getWorld(), 0F);
 
         if (this.emitter != null)
         {

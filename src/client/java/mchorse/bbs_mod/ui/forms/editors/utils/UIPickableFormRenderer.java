@@ -108,7 +108,7 @@ public class UIPickableFormRenderer extends UIFormRenderer
         this.formEditor.preFormRender(context, this.form);
 
         FormRenderingContext formContext = new FormRenderingContext()
-            .set(FormRenderType.PREVIEW, this.target == null ? this.entity : this.target, context.batcher.getContext().getMatrices(), LightmapTextureManager.pack(15, 15), 0, context.getTransition())
+            .set(FormRenderType.PREVIEW, this.target == null ? this.entity : this.target, context.batcher.getContext().pose(), LightmapTextureManager.pack(15, 15), 0, context.getTransition())
             .camera(this.camera)
             .modelRenderer();
 
@@ -134,23 +134,23 @@ public class UIPickableFormRenderer extends UIFormRenderer
             FormUtilsClient.render(this.form, formContext.stencilMap(this.stencilMap));
 
             Matrix4f matrix = this.formEditor.getOrigin(context.getTransition());
-            PoseStack stack = context.render.batcher.getContext().getMatrices();
+            PoseStack stack = context.render.batcher.getContext().pose();
 
-            stack.push();
+            stack.pushPose();
 
             if (matrix != null)
             {
                 PoseStackUtils.multiply(stack, PoseStackUtils.stripScale(matrix));
             }
 
-            Gizmo.INSTANCE.renderStencil(context.batcher.getContext().getMatrices(), this.stencilMap);
+            Gizmo.INSTANCE.renderStencil(context.batcher.getContext().pose(), this.stencilMap);
 
-            stack.pop();
+            stack.popPose();
 
             this.stencil.pickGUI(context, this.area);
             this.stencil.unbind(this.stencilMap);
 
-            Minecraft.getInstance().getFramebuffer().beginWrite(true);
+            Minecraft.getInstance().getMainRenderTarget().beginWrite(true);
 
             GlStateManager._enableScissorTest();
         }
@@ -163,9 +163,9 @@ public class UIPickableFormRenderer extends UIFormRenderer
     private void renderAxes(UIContext context)
     {
         Matrix4f matrix = this.formEditor.getOrigin(context.getTransition());
-        PoseStack stack = context.render.batcher.getContext().getMatrices();
+        PoseStack stack = context.render.batcher.getContext().pose();
 
-        stack.push();
+        stack.pushPose();
 
         if (matrix != null)
         {
@@ -175,12 +175,12 @@ public class UIPickableFormRenderer extends UIFormRenderer
         /* Draw axes */
         if (UIBaseMenu.renderAxes)
         {
-            RenderSystem.disableDepthTest();
+            // disableDepthTest removed;
             Gizmo.INSTANCE.render(stack);
-            RenderSystem.enableDepthTest();
+            // enableDepthTest removed;
         }
 
-        stack.pop();
+        stack.popPose();
     }
 
     private void renderFormHitbox(UIContext context)
@@ -191,10 +191,10 @@ public class UIPickableFormRenderer extends UIFormRenderer
 
         /* Draw look vector */
         final float thickness = 0.01F;
-        Draw.renderBox(context.batcher.getContext().getMatrices(), -thickness, -thickness + eyeHeight, -thickness, thickness, thickness, 2F, 1F, 0F, 0F);
+        Draw.renderBox(context.batcher.getContext().pose(), -thickness, -thickness + eyeHeight, -thickness, thickness, thickness, 2F, 1F, 0F, 0F);
 
         /* Draw hitbox */
-        Draw.renderBox(context.batcher.getContext().getMatrices(), -hitboxW / 2, 0, -hitboxW / 2, hitboxW, hitboxH, hitboxW);
+        Draw.renderBox(context.batcher.getContext().pose(), -hitboxW / 2, 0, -hitboxW / 2, hitboxW, hitboxH, hitboxW);
     }
 
     @Override

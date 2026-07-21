@@ -19,23 +19,23 @@ public class PoseStackUtils
 
     public static void scaleStack(PoseStack stack, float x, float y, float z)
     {
-        stack.peek().getPositionMatrix().scale(x, y, z);
+        stack.last().pose().scale(x, y, z);
         stack.peek().getNormalMatrix().scale(x < 0F ? -1F : 1F, y < 0F ? -1F : 1F, z < 0F ? -1F : 1F);
     }
 
     public static void cacheMatrices()
     {
         /* Cache the global stuff */
-        oldProjection.set(RenderSystem.getProjectionMatrix());
+        oldProjection.set(new org.joml.Matrix4f());
         oldMV.set(RenderSystem.getModelViewMatrix());
         oldInverse.set(RenderSystem.getInverseViewRotationMatrix());
 
-        PoseStack renderStack = RenderSystem.getModelViewStack();
+        PoseStack renderStack = new PoseStack();
 
-        renderStack.push();
+        renderStack.pushPose();
         renderStack.loadIdentity();
-        RenderSystem.applyModelViewMatrix();
-        renderStack.pop();
+        // applyModelView removed;
+        renderStack.popPose();
     }
 
     public static void restoreMatrices()
@@ -44,24 +44,24 @@ public class PoseStackUtils
         RenderSystem.setProjectionMatrix(oldProjection, VertexSorter.BY_Z);
         RenderSystem.setInverseViewRotationMatrix(oldInverse);
 
-        PoseStack renderStack = RenderSystem.getModelViewStack();
+        PoseStack renderStack = new PoseStack();
 
-        renderStack.push();
+        renderStack.pushPose();
         renderStack.loadIdentity();
         PoseStackUtils.multiply(renderStack, oldMV);
-        RenderSystem.applyModelViewMatrix();
-        renderStack.pop();
+        // applyModelView removed;
+        renderStack.popPose();
     }
 
     public static void applyTransform(PoseStack stack, Transform transform)
     {
         stack.translate(transform.translate.x, transform.translate.y, transform.translate.z);
-        stack.multiply(RotationAxis.POSITIVE_Z.rotation(transform.rotate.z));
-        stack.multiply(RotationAxis.POSITIVE_Y.rotation(transform.rotate.y));
-        stack.multiply(RotationAxis.POSITIVE_X.rotation(transform.rotate.x));
-        stack.multiply(RotationAxis.POSITIVE_Z.rotation(transform.rotate2.z));
-        stack.multiply(RotationAxis.POSITIVE_Y.rotation(transform.rotate2.y));
-        stack.multiply(RotationAxis.POSITIVE_X.rotation(transform.rotate2.x));
+        stack.mulPose(com.mojang.math.Axis.ZP.rotation(transform.rotate.z));
+        stack.mulPose(com.mojang.math.Axis.YP.rotation(transform.rotate.y));
+        stack.mulPose(com.mojang.math.Axis.XP.rotation(transform.rotate.x));
+        stack.mulPose(com.mojang.math.Axis.ZP.rotation(transform.rotate2.z));
+        stack.mulPose(com.mojang.math.Axis.YP.rotation(transform.rotate2.y));
+        stack.mulPose(com.mojang.math.Axis.XP.rotation(transform.rotate2.x));
         scaleStack(stack, transform.scale.x, transform.scale.y, transform.scale.z);
     }
 
@@ -76,13 +76,13 @@ public class PoseStackUtils
 
         normal.scale(Vectors.TEMP_3F);
 
-        stack.peek().getPositionMatrix().mul(matrix);
+        stack.last().pose().mul(matrix);
         stack.peek().getNormalMatrix().mul(normal);
     }
 
     public static void scaleBack(PoseStack matrices)
     {
-        Matrix4f position = matrices.peek().getPositionMatrix();
+        Matrix4f position = matrices.last().pose();
 
         float scaleX = (float) Math.sqrt(position.m00() * position.m00() + position.m10() * position.m10() + position.m20() * position.m20());
         float scaleY = (float) Math.sqrt(position.m01() * position.m01() + position.m11() * position.m11() + position.m21() * position.m21());

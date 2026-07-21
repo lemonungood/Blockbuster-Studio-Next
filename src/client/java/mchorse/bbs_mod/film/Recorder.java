@@ -10,7 +10,6 @@ import mchorse.bbs_mod.film.replays.Inventory;
 import mchorse.bbs_mod.film.replays.ReplayKeyframes;
 import mchorse.bbs_mod.forms.FormUtils;
 import mchorse.bbs_mod.forms.forms.Form;
-import mchorse.bbs_mod.graphics.Draw;
 import mchorse.bbs_mod.morphing.Morph;
 import mchorse.bbs_mod.network.ClientNetwork;
 import mchorse.bbs_mod.utils.MathUtils;
@@ -20,14 +19,13 @@ import mchorse.bbs_mod.utils.joml.Vectors;
 import net.fabricmc.fabric.api.client.rendering.v1.level.LevelRenderContext;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
-import com.mojang.blaze3d.vertex.BufferBuilder;
-// [MC 26.2 REMOVED] import net.minecraft.client.render.BufferRenderer;
 import net.minecraft.client.Camera;
-import net.minecraft.client.renderer.GameRenderer;
-// [MC 26.2 REMOVED] import net.minecraft.client.render.Tessellator;
-import com.mojang.blaze3d.vertex.VertexFormat;
-import com.mojang.blaze3d.vertex.DefaultVertexFormat;
+import com.mojang.blaze3d.PrimitiveTopology;
 import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.blaze3d.vertex.BufferBuilder;
+import com.mojang.blaze3d.vertex.ByteBufferBuilder;
+import com.mojang.blaze3d.vertex.DefaultVertexFormat;
+import com.mojang.blaze3d.vertex.MeshData;
 import org.joml.Matrix4f;
 import org.joml.Vector3d;
 import org.joml.Vector4f;
@@ -60,12 +58,11 @@ public class Recorder extends WorldFilmController
 
         Vector4f vector = Vectors.TEMP_4F;
         Matrix4f matrix = Matrices.TEMP_4F;
-        float x = (float) (position.point.x - camera.cameraPos.x);
-        float y = (float) (position.point.y - camera.cameraPos.y);
-        float z = (float) (position.point.z - camera.cameraPos.z);
+        float x = (float) (position.point.x - camera.position().x);
+        float y = (float) (position.point.y - camera.position().y);
+        float z = (float) (position.point.z - camera.position().z);
         float fov = MathUtils.toRad(position.angle.fov);
         float aspect = BBSRendering.getVideoWidth() / (float) BBSRendering.getVideoHeight();
-        float thickness = 0.025F;
 
         perspective.identity().perspective(fov, aspect, 0.001F, 100F).invert();
 
@@ -73,15 +70,19 @@ public class Recorder extends WorldFilmController
             .rotateY(MathUtils.toRad(position.angle.yaw + 180))
             .rotateX(MathUtils.toRad(-position.angle.pitch));
 
-        var bbBuilder = new com.mojang.blaze3d.vertex.ByteBufferBuilder(512);
-        BufferBuilder builder = new BufferBuilder(bbBuilder, com.mojang.blaze3d.PrimitiveTopology.TRIANGLES, DefaultVertexFormat.POSITION_COLOR);
+        transformFrustum(vector, matrix, 1F, 1F);
+        transformFrustum(vector, matrix, -1F, 1F);
+        transformFrustum(vector, matrix, 1F, -1F);
+        transformFrustum(vector, matrix, -1F, -1F);
 
+        float thickness = 0.025F;
+        ByteBufferBuilder byteBuf = new ByteBufferBuilder(4096);
+        BufferBuilder builder = new BufferBuilder(byteBuf, PrimitiveTopology.LINES, DefaultVertexFormat.POSITION_COLOR);
         Matrix4f m = stack.last().pose();
         builder.addVertex(m, x, y, z).setColor(1F, 1F, 1F, 1F);
         builder.addVertex(m, x + vector.x, y + vector.y, z + vector.z).setColor(1F, 1F, 1F, 1F);
         MeshData mesh = builder.buildOrThrow();
-
-        RenderSystem.disableDepthTest();
+        // RenderSystem.disableDepthTest() removed in MC 26.2
     }
 
     private static void transformFrustum(Vector4f vector, Matrix4f matrix, float x, float y)
@@ -124,11 +125,11 @@ public class Recorder extends WorldFilmController
         if (this.lastPosition == null)
         {
             this.lastPosition = new Vector3d(player.getX(), player.getY(), player.getZ());
-            this.lastRotation = new Vector4f(player.getYaw(), player.getPitch(), player.getHeadYaw(), player.getBodyYaw());
+            this.lastRotation = new Vector4f(player.getYRot(), player.getXRot(), player.getYHeadRot(), player.yBodyRotO);
             this.inventory.fromPlayer(player);
 
             this.hp = player.getHealth();
-            this.hunger = player.getHungerManager().getSaturationLevel();
+            this.hunger = player.getFoodData().getSaturationLevel();
             this.xpLevel = player.experienceLevel;
             this.xpProgress = player.experienceProgress;
         }
@@ -147,7 +148,7 @@ public class Recorder extends WorldFilmController
     {
         super.render(context);
 
-        renderCameraPreview(this.position, context.gameRenderer().getMainCamera(), context.poseStack());
+        renderCameraPreview(this.position, Minecraft.getInstance().gameRenderer.mainCamera(), context.poseStack());
     }
 
     @Override
@@ -166,5 +167,3 @@ public class Recorder extends WorldFilmController
         super.shutdown();
     }
 }
-
-

@@ -32,31 +32,24 @@ public class BBSShaders
 
     public static void setup()
     {
-        if (model != null) model.close();
-        if (subtitles != null) subtitles.close();
-        if (subtitles != null) subtitles.close();
-
-        if (pickerPreview != null) pickerPreview.close();
-        if (pickerBillboard != null) pickerBillboard.close();
-        if (pickerBillboardNoShading != null) pickerBillboardNoShading.close();
-        if (pickerParticles != null) pickerParticles.close();
-        if (pickerModels != null) pickerModels.close();
+        // [MC 26.2] ShaderProgram no longer has close(); model field reused via reassignment
+        // Also ShaderProgram constructor changed to (Identifier, VertexFormat) - no resource loading
 
         try
         {
             ResourceProvider factory = new ProxyResourceProvider(Minecraft.getInstance().getResourceManager());
 
-            model = new ShaderProgram(factory, "model", DefaultVertexFormat.POSITION_COLOR_TEXTURE_OVERLAY_LIGHT_NORMAL);
-            multiLink = new ShaderProgram(factory, "multilink", DefaultVertexFormat.POSITION_TEXTURE_COLOR);
-            subtitles = new ShaderProgram(factory, "subtitles", DefaultVertexFormat.POSITION_TEXTURE_COLOR);
+            model = new ShaderProgram(Identifier.parse("bbs:model"), DefaultVertexFormat.POSITION_COLOR_TEX_LIGHTMAP);
+            multiLink = new ShaderProgram(Identifier.parse("bbs:multilink"), DefaultVertexFormat.POSITION_TEX_COLOR);
+            subtitles = new ShaderProgram(Identifier.parse("bbs:subtitles"), DefaultVertexFormat.POSITION_TEX_COLOR);
 
-            pickerPreview = new ShaderProgram(factory, "picker_preview", DefaultVertexFormat.POSITION_TEXTURE_COLOR);
-            pickerBillboard = new ShaderProgram(factory, "picker_billboard", DefaultVertexFormat.POSITION_COLOR_TEXTURE_OVERLAY_LIGHT_NORMAL);
-            pickerBillboardNoShading = new ShaderProgram(factory, "picker_billboard_no_shading", DefaultVertexFormat.POSITION_TEXTURE_LIGHT_COLOR);
-            pickerParticles = new ShaderProgram(factory, "picker_particles", DefaultVertexFormat.POSITION_COLOR_TEXTURE_LIGHT);
-            pickerModels = new ShaderProgram(factory, "picker_models", DefaultVertexFormat.POSITION_COLOR_TEXTURE_OVERLAY_LIGHT_NORMAL);
+            pickerPreview = new ShaderProgram(Identifier.parse("bbs:picker_preview"), DefaultVertexFormat.POSITION_TEX_COLOR);
+            pickerBillboard = new ShaderProgram(Identifier.parse("bbs:picker_billboard"), DefaultVertexFormat.POSITION_COLOR_TEX_LIGHTMAP);
+            pickerBillboardNoShading = new ShaderProgram(Identifier.parse("bbs:picker_billboard_no_shading"), DefaultVertexFormat.POSITION_COLOR_TEX_LIGHTMAP);
+            pickerParticles = new ShaderProgram(Identifier.parse("bbs:picker_particles"), DefaultVertexFormat.POSITION_COLOR_TEX_LIGHTMAP);
+            pickerModels = new ShaderProgram(Identifier.parse("bbs:picker_models"), DefaultVertexFormat.POSITION_COLOR_TEX_LIGHTMAP);
         }
-        catch (IOException e)
+        catch (Exception e)
         {
             e.printStackTrace();
         }
@@ -116,7 +109,7 @@ public class BBSShaders
         {
             if (id.getPath().contains("/core/"))
             {
-                return this.manager.getResource(new Identifier(BBSMod.MOD_ID, id.getPath()));
+                return this.manager.getResource(Identifier.parse(BBSMod.MOD_ID + ":" + id.getPath()));
             }
 
             return this.manager.getResource(id);

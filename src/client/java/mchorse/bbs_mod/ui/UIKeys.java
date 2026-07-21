@@ -933,7 +933,7 @@ public class UIKeys
         .load(BBSMod.getFactoryActionClips().getStringKeys());
 
     public static final KeyCollection C_CURVE_TYPE = new KeyCollection("bbs.ui.snowstorm.curves.types.^")
-        .load(EnumUtils.getKeys(ParticleCurveType.class, (c) -> c.id));
+        .load(EnumUtils.getAllKeys(ParticleCurveType.class, (c) -> c.id));
     public static final KeyCollection C_INTERPOLATION = new KeyCollection("interpolations.^")
         .load(Interpolations.MAP.keySet());
 

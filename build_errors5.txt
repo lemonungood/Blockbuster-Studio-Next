@@ -1,0 +1,633 @@
+WARNING: A restricted method in java.lang.System has been called
+WARNING: java.lang.System::load has been called by net.rubygrapefruit.platform.internal.NativeLibraryLoader in an unnamed module (file:/C:/Users/hechengyu/.gradle/wrapper/dists/gradle-9.5.1-bin/iq79hdu3mqx29lgffhp8bfmx/gradle-9.5.1/lib/native-platform-0.22-milestone-29.jar)
+WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+
+> Configure project :
+Fabric Loom: 1.17.16
+
+> Task :compileJava UP-TO-DATE
+> Task :processResources UP-TO-DATE
+> Task :classes UP-TO-DATE
+
+> Task :compileClientJava
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\text\UITextarea.java:524: 错误: 需要';'
+        this.undo.pushPose()Undo(undo);
+                            ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\text\UITextarea.java:1103: 错误: 需要';'
+            this.undo.pushPose()Undo(undo);
+                                ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\text\UITextarea.java:1132: 错误: 需要';'
+                this.undo.pushPose()Undo(undo);
+                                    ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\UIScrollView.java:45: 错误: 需要';'
+        stack.pushPose()Viewport(this.area);
+                        ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\UIScrollView.java:69: 错误: 需要';'
+        stack.popPose()Viewport();
+                       ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\utils\UIModelRenderer.java:214: 错误: 需要';'
+        PoseStack stack = context.render.batcher.getContext().pose()();
+                                                                    ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\utils\UIModelRenderer.java:223: 错误: 需要';'
+        stack.pushPose()();
+                        ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\utils\UIModelRenderer.java:243: 错误: 需要';'
+        stack.popPose()();
+                       ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\utils\UIModelRenderer.java:349: 错误: 需要';'
+        Matrix4f matrix4f = context.batcher.getContext().pose()().peek().position()itionMatrix();
+                                                               ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\utils\UIModelRenderer.java:349: 错误: 需要';'
+        Matrix4f matrix4f = context.batcher.getContext().pose()().peek().position()itionMatrix();
+                                                                                   ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\utils\UIViewportStack.java:76: 错误: 需要';'
+            this.viewportStack.pushPose()(child);
+                                         ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\utils\UIViewportStack.java:76: 错误: 不是语句
+            this.viewportStack.pushPose()(child);
+                                          ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\utils\UIViewportStack.java:76: 错误: 需要';'
+            this.viewportStack.pushPose()(child);
+                                               ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\utils\UIViewportStack.java:85: 错误: 需要';'
+            this.viewportStack.pushPose()(child);
+                                         ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\utils\UIViewportStack.java:85: 错误: 不是语句
+            this.viewportStack.pushPose()(child);
+                                          ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\utils\UIViewportStack.java:85: 错误: 需要';'
+            this.viewportStack.pushPose()(child);
+                                               ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\utils\UIViewportStack.java:102: 错误: 需要';'
+        this.viewportStack.popPose()();
+                                    ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\UIBaseMenu.java:97: 错误: 需要';'
+        this.context.pushPose()Viewport(this.viewport);
+                               ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\UIBaseMenu.java:99: 错误: 需要';'
+        this.context.popPose()Viewport();
+                              ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\UIBaseMenu.java:113: 错误: 需要';'
+            this.context.pushPose()Viewport(this.viewport);
+                                   ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\UIBaseMenu.java:117: 错误: 需要';'
+            this.context.popPose()Viewport();
+                                  ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\UIBaseMenu.java:133: 错误: 需要';'
+            this.context.pushPose()Viewport(this.viewport);
+                                   ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\UIBaseMenu.java:137: 错误: 需要';'
+            this.context.popPose()Viewport();
+                                  ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\UIBaseMenu.java:153: 错误: 需要';'
+            this.context.pushPose()Viewport(this.viewport);
+                                   ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\UIBaseMenu.java:157: 错误: 需要';'
+            this.context.popPose()Viewport();
+                                  ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\UIBaseMenu.java:233: 错误: 需要';'
+            this.context.pushPose()Viewport(this.viewport);
+                                   ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\UIBaseMenu.java:237: 错误: 需要';'
+            this.context.popPose()Viewport();
+                                  ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\UIBaseMenu.java:279: 错误: 需要';'
+            stack.pushPose()Viewport(this.area);
+                            ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\UIBaseMenu.java:285: 错误: 需要';'
+            stack.popPose()Viewport();
+                           ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\UIContext.java:352: 错误: 需要';'
+        int target = direction.position()ition(original.area, 0) - direction.position()ition(scroll.area, 0);
+                                         ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\UIContext.java:352: 错误: 不是语句
+        int target = direction.position()ition(original.area, 0) - direction.position()ition(scroll.area, 0);
+                                                                 ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\UIContext.java:352: 错误: 需要';'
+        int target = direction.position()ition(original.area, 0) - direction.position()ition(scroll.area, 0);
+                                                                                       ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\UIContext.java:524: 错误: 需要';'
+        this.viewportStack.pushPose()Viewport(viewport);
+                                     ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\UIContext.java:530: 错误: 需要';'
+        this.viewportStack.popPose()Viewport();
+                                    ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\model_blocks\camera\ImmersiveModelBlockCameraController.java:29: 错误: 需要';'
+        BlockPos pos = this.modelBlock.position()();
+                                                 ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\model_blocks\UIModelBlockEditorMenu.java:104: 错误: 需要')'或','
+        this.orbitCameraController.camera.position.set(player.position()().x, player.position()().y + 1D, player.position()().z);
+                                                                        ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\model_blocks\UIModelBlockEditorMenu.java:104: 错误: 不是语句
+        this.orbitCameraController.camera.position.set(player.position()().x, player.position()().y + 1D, player.position()().z);
+                                                                           ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\model_blocks\UIModelBlockEditorMenu.java:104: 错误: 需要';'
+        this.orbitCameraController.camera.position.set(player.position()().x, player.position()().y + 1D, player.position()().z);
+                                                                            ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\model_blocks\UIModelBlockEditorMenu.java:104: 错误: 需要';'
+        this.orbitCameraController.camera.position.set(player.position()().x, player.position()().y + 1D, player.position()().z);
+                                                                                               ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\model_blocks\UIModelBlockEditorMenu.java:104: 错误: 不是语句
+        this.orbitCameraController.camera.position.set(player.position()().x, player.position()().y + 1D, player.position()().z);
+                                                                                                    ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\model_blocks\UIModelBlockEditorMenu.java:104: 错误: 需要';'
+        this.orbitCameraController.camera.position.set(player.position()().x, player.position()().y + 1D, player.position()().z);
+                                                                                                        ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\model_blocks\UIModelBlockEditorMenu.java:104: 错误: 需要';'
+        this.orbitCameraController.camera.position.set(player.position()().x, player.position()().y + 1D, player.position()().z);
+                                                                                                                           ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\model_blocks\UIModelBlockEditorMenu.java:104: 错误: 不是语句
+        this.orbitCameraController.camera.position.set(player.position()().x, player.position()().y + 1D, player.position()().z);
+                                                                                                                              ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\model_blocks\UIModelBlockEditorMenu.java:104: 错误: 需要';'
+        this.orbitCameraController.camera.position.set(player.position()().x, player.position()().y + 1D, player.position()().z);
+                                                                                                                               ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\model_blocks\UIModelBlockPanel.java:82: 错误: 需要';'
+            Camera camera = mc.gameRenderer.getMainCamera()();
+                                                           ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\model_blocks\UIModelBlockPanel.java:83: 错误: 需要')'或','
+            BlockHitResult blockHitResult = RayTracing.rayTrace(mc.world, camera.position()(), RayTracing.fromVector3f(this.mouseDirection), 512F);
+                                                                                           ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\model_blocks\UIModelBlockPanel.java:83: 错误: 需要';'
+            BlockHitResult blockHitResult = RayTracing.rayTrace(mc.world, camera.position()(), RayTracing.fromVector3f(this.mouseDirection), 512F);
+                                                                                                                                           ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\model_blocks\UIModelBlockPanel.java:87: 错误: 需要';'
+                Vec3 hit = blockHitResult.position()();
+                                                    ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\model_blocks\UIModelBlockPanel.java:88: 错误: 需要';'
+                BlockPos pos = this.modelBlock.position()();
+                                                         ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\model_blocks\UIModelBlockPanel.java:172: 错误: 需要';'
+            BlockPos pos = this.modelBlock.position()();
+                                                     ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\model_blocks\UIModelBlockPanel.java:333: 错误: 需要')'或','
+            ClientNetwork.sendModelBlockForm(modelBlock.position()(), modelBlock);
+                                                                  ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\model_blocks\UIModelBlockPanel.java:333: 错误: 不是语句
+            ClientNetwork.sendModelBlockForm(modelBlock.position()(), modelBlock);
+                                                                      ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\model_blocks\UIModelBlockPanel.java:333: 错误: 需要';'
+            ClientNetwork.sendModelBlockForm(modelBlock.position()(), modelBlock);
+                                                                                ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\model_blocks\UIModelBlockPanel.java:378: 错误: 需要';'
+        Vec3 pos = camera.position()();
+                                    ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\model_blocks\UIModelBlockPanel.java:386: 错误: 需要')'或','
+            context.poseStack()().peek().position()itionMatrix(),
+                               ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\model_blocks\UIModelBlockPanel.java:386: 错误: 需要';'
+            context.poseStack()().peek().position()itionMatrix(),
+                                                   ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\model_blocks\UIModelBlockPanel.java:386: 错误: 需要';'
+            context.poseStack()().peek().position()itionMatrix(),
+                                                                ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\model_blocks\UIModelBlockPanel.java:387: 错误: 不是语句
+            (int) x, (int) y, 0, 0, mc.getWindow().getWidth(), mc.getWindow().getHeight()
+             ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\model_blocks\UIModelBlockPanel.java:387: 错误: 需要';'
+            (int) x, (int) y, 0, 0, mc.getWindow().getWidth(), mc.getWindow().getHeight()
+                ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\model_blocks\UIModelBlockPanel.java:387: 错误: 不是语句
+            (int) x, (int) y, 0, 0, mc.getWindow().getWidth(), mc.getWindow().getHeight()
+                  ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\model_blocks\UIModelBlockPanel.java:387: 错误: 需要';'
+            (int) x, (int) y, 0, 0, mc.getWindow().getWidth(), mc.getWindow().getHeight()
+                   ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\model_blocks\UIModelBlockPanel.java:387: 错误: 不是语句
+            (int) x, (int) y, 0, 0, mc.getWindow().getWidth(), mc.getWindow().getHeight()
+                      ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\model_blocks\UIModelBlockPanel.java:387: 错误: 需要';'
+            (int) x, (int) y, 0, 0, mc.getWindow().getWidth(), mc.getWindow().getHeight()
+                         ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\model_blocks\UIModelBlockPanel.java:387: 错误: 不是语句
+            (int) x, (int) y, 0, 0, mc.getWindow().getWidth(), mc.getWindow().getHeight()
+                           ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\model_blocks\UIModelBlockPanel.java:387: 错误: 需要';'
+            (int) x, (int) y, 0, 0, mc.getWindow().getWidth(), mc.getWindow().getHeight()
+                            ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\model_blocks\UIModelBlockPanel.java:387: 错误: 需要';'
+            (int) x, (int) y, 0, 0, mc.getWindow().getWidth(), mc.getWindow().getHeight()
+                                                             ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\model_blocks\UIModelBlockPanel.java:387: 错误: 需要';'
+            (int) x, (int) y, 0, 0, mc.getWindow().getWidth(), mc.getWindow().getHeight()
+                                                                                         ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\model_blocks\UIModelBlockPanel.java:395: 错误: 需要';'
+            BlockPos blockPos = entity.position()();
+                                                 ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\model_blocks\UIModelBlockPanel.java:399: 错误: 需要';'
+                context.poseStack()().pushPose()();
+                                   ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\model_blocks\UIModelBlockPanel.java:399: 错误: 需要';'
+                context.poseStack()().pushPose()();
+                                                ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\model_blocks\UIModelBlockPanel.java:400: 错误: 需要';'
+                context.poseStack()().translate(blockPos.getX() - pos.x, blockPos.getY() - pos.y, blockPos.getZ() - pos.z);
+                                   ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\model_blocks\UIModelBlockPanel.java:404: 错误: 需要')'或','
+                    Draw.renderBox(context.poseStack()(), 0D, 0D, 0D, 1D, 1D, 1D, 0, 0.5F, 1F);
+                                                      ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\model_blocks\UIModelBlockPanel.java:408: 错误: 需要')'或','
+                    Draw.renderBox(context.poseStack()(), 0D, 0D, 0D, 1D, 1D, 1D);
+                                                      ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\model_blocks\UIModelBlockPanel.java:411: 错误: 需要';'
+                context.poseStack()().popPose()();
+                                   ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\model_blocks\UIModelBlockPanel.java:411: 错误: 需要';'
+                context.poseStack()().popPose()();
+                                               ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\model_blocks\UIModelBlockPanel.java:448: 错误: 需要';'
+        BlockPos pos = closest.position()();
+                                         ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\morphing\camera\ImmersiveMorphingCameraController.java:34: 错误: 需要')'或','
+        camera.position.lerp(new Vector3d(player.position()().x, player.position()().y, player.position()().z), transition);
+                                                           ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\morphing\camera\ImmersiveMorphingCameraController.java:34: 错误: 不是语句
+        camera.position.lerp(new Vector3d(player.position()().x, player.position()().y, player.position()().z), transition);
+                                                              ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\morphing\camera\ImmersiveMorphingCameraController.java:34: 错误: 需要';'
+        camera.position.lerp(new Vector3d(player.position()().x, player.position()().y, player.position()().z), transition);
+                                                               ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\morphing\camera\ImmersiveMorphingCameraController.java:34: 错误: 需要';'
+        camera.position.lerp(new Vector3d(player.position()().x, player.position()().y, player.position()().z), transition);
+                                                                                  ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\morphing\camera\ImmersiveMorphingCameraController.java:34: 错误: 不是语句
+        camera.position.lerp(new Vector3d(player.position()().x, player.position()().y, player.position()().z), transition);
+                                                                                     ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\morphing\camera\ImmersiveMorphingCameraController.java:34: 错误: 需要';'
+        camera.position.lerp(new Vector3d(player.position()().x, player.position()().y, player.position()().z), transition);
+                                                                                      ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\morphing\camera\ImmersiveMorphingCameraController.java:34: 错误: 需要';'
+        camera.position.lerp(new Vector3d(player.position()().x, player.position()().y, player.position()().z), transition);
+                                                                                                         ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\morphing\camera\ImmersiveMorphingCameraController.java:34: 错误: 不是语句
+        camera.position.lerp(new Vector3d(player.position()().x, player.position()().y, player.position()().z), transition);
+                                                                                                            ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\morphing\camera\ImmersiveMorphingCameraController.java:34: 错误: 需要';'
+        camera.position.lerp(new Vector3d(player.position()().x, player.position()().y, player.position()().z), transition);
+                                                                                                             ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\morphing\camera\ImmersiveMorphingCameraController.java:34: 错误: 不是语句
+        camera.position.lerp(new Vector3d(player.position()().x, player.position()().y, player.position()().z), transition);
+                                                                                                                ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\morphing\camera\ImmersiveMorphingCameraController.java:34: 错误: 需要';'
+        camera.position.lerp(new Vector3d(player.position()().x, player.position()().y, player.position()().z), transition);
+                                                                                                                          ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\particles\UIParticleSchemeRenderer.java:67: 错误: 需要';'
+        PoseStack stack = context.batcher.getContext().pose()();
+                                                             ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\particles\UIParticleSchemeRenderer.java:69: 错误: 需要';'
+        stack.pushPose()();
+                        ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\particles\UIParticleSchemeRenderer.java:79: 错误: 需要';'
+        stack.popPose()();
+                       ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\particles\UIParticleSchemeRenderer.java:91: 错误: 需要';'
+        Matrix4f matrix = context.batcher.getContext().pose()().peek().position()itionMatrix();
+                                                             ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\particles\UIParticleSchemeRenderer.java:91: 错误: 需要';'
+        Matrix4f matrix = context.batcher.getContext().pose()().peek().position()itionMatrix();
+                                                                                 ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\particles\UIParticleSchemeRenderer.java:148: 错误: 需要')'或','
+            Draw.coolerAxes(context.batcher.getContext().pose()(), 1F, 0.01F, 1.01F, 0.02F);
+                                                               ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\particles\utils\UICurve.java:259: 错误: 需要';'
+        Matrix4f matrix = context.batcher.getContext().pose()().peek().position()itionMatrix();
+                                                             ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\particles\utils\UICurve.java:259: 错误: 需要';'
+        Matrix4f matrix = context.batcher.getContext().pose()().peek().position()itionMatrix();
+                                                                                 ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\UIKeys.java:936: 错误: 需要')'或','
+        .load(EnumUtils.getAllKeys()(ParticleCurveType.class, (c) -> c.id));
+                                    ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\UIKeys.java:936: 错误: 需要<标识符>
+        .load(EnumUtils.getAllKeys()(ParticleCurveType.class, (c) -> c.id));
+                                                       ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\UIKeys.java:936: 错误: 需要<标识符>
+        .load(EnumUtils.getAllKeys()(ParticleCurveType.class, (c) -> c.id));
+                                                            ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\utility\UIUtilityOverlayPanel.java:166: 错误: 需要';'
+                    syncService.pushPose()ChangedFiles(BBSSettings.cdnToken.get());
+                                          ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\utils\context\ItemStackContextAction.java:31: 错误: 需要';'
+            PoseStack matrices = context.batcher.getContext().pose()();
+                                                                    ^
+100 个错误
+
+> Task :compileClientJava FAILED
+
+[Incubating] Problems report is available at: file:///D:/DEV/bbs_clean/build/reports/problems/problems-report.html
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':compileClientJava' (registered by plugin class 'org.gradle.api.plugins.JavaBasePlugin').
+> Compilation failed; see the compiler output below.
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\utils\UIViewportStack.java:76: 错误: 不是语句
+              this.viewportStack.pushPose()(child);
+                                            ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\utils\UIViewportStack.java:85: 错误: 不是语句
+              this.viewportStack.pushPose()(child);
+                                            ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\UIContext.java:352: 错误: 不是语句
+          int target = direction.position()ition(original.area, 0) - direction.position()ition(scroll.area, 0);
+                                                                   ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\model_blocks\UIModelBlockEditorMenu.java:104: 错误: 不是语句
+          this.orbitCameraController.camera.position.set(player.position()().x, player.position()().y + 1D, player.position()().z);
+                                                                             ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\model_blocks\UIModelBlockEditorMenu.java:104: 错误: 不是语句
+          this.orbitCameraController.camera.position.set(player.position()().x, player.position()().y + 1D, player.position()().z);
+                                                                                                      ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\model_blocks\UIModelBlockEditorMenu.java:104: 错误: 不是语句
+          this.orbitCameraController.camera.position.set(player.position()().x, player.position()().y + 1D, player.position()().z);
+                                                                                                                                ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\model_blocks\UIModelBlockPanel.java:333: 错误: 不是语句
+              ClientNetwork.sendModelBlockForm(modelBlock.position()(), modelBlock);
+                                                                        ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\model_blocks\UIModelBlockPanel.java:387: 错误: 不是语句
+              (int) x, (int) y, 0, 0, mc.getWindow().getWidth(), mc.getWindow().getHeight()
+               ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\model_blocks\UIModelBlockPanel.java:387: 错误: 不是语句
+              (int) x, (int) y, 0, 0, mc.getWindow().getWidth(), mc.getWindow().getHeight()
+                    ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\model_blocks\UIModelBlockPanel.java:387: 错误: 不是语句
+              (int) x, (int) y, 0, 0, mc.getWindow().getWidth(), mc.getWindow().getHeight()
+                        ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\model_blocks\UIModelBlockPanel.java:387: 错误: 不是语句
+              (int) x, (int) y, 0, 0, mc.getWindow().getWidth(), mc.getWindow().getHeight()
+                             ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\morphing\camera\ImmersiveMorphingCameraController.java:34: 错误: 不是语句
+          camera.position.lerp(new Vector3d(player.position()().x, player.position()().y, player.position()().z), transition);
+                                                                ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\morphing\camera\ImmersiveMorphingCameraController.java:34: 错误: 不是语句
+          camera.position.lerp(new Vector3d(player.position()().x, player.position()().y, player.position()().z), transition);
+                                                                                       ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\morphing\camera\ImmersiveMorphingCameraController.java:34: 错误: 不是语句
+          camera.position.lerp(new Vector3d(player.position()().x, player.position()().y, player.position()().z), transition);
+                                                                                                              ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\morphing\camera\ImmersiveMorphingCameraController.java:34: 错误: 不是语句
+          camera.position.lerp(new Vector3d(player.position()().x, player.position()().y, player.position()().z), transition);
+                                                                                                                  ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\model_blocks\UIModelBlockEditorMenu.java:104: 错误: 需要')'或','
+          this.orbitCameraController.camera.position.set(player.position()().x, player.position()().y + 1D, player.position()().z);
+                                                                          ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\model_blocks\UIModelBlockPanel.java:83: 错误: 需要')'或','
+              BlockHitResult blockHitResult = RayTracing.rayTrace(mc.world, camera.position()(), RayTracing.fromVector3f(this.mouseDirection), 512F);
+                                                                                             ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\model_blocks\UIModelBlockPanel.java:333: 错误: 需要')'或','
+              ClientNetwork.sendModelBlockForm(modelBlock.position()(), modelBlock);
+                                                                    ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\model_blocks\UIModelBlockPanel.java:386: 错误: 需要')'或','
+              context.poseStack()().peek().position()itionMatrix(),
+                                 ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\model_blocks\UIModelBlockPanel.java:404: 错误: 需要')'或','
+                      Draw.renderBox(context.poseStack()(), 0D, 0D, 0D, 1D, 1D, 1D, 0, 0.5F, 1F);
+                                                        ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\model_blocks\UIModelBlockPanel.java:408: 错误: 需要')'或','
+                      Draw.renderBox(context.poseStack()(), 0D, 0D, 0D, 1D, 1D, 1D);
+                                                        ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\morphing\camera\ImmersiveMorphingCameraController.java:34: 错误: 需要')'或','
+          camera.position.lerp(new Vector3d(player.position()().x, player.position()().y, player.position()().z), transition);
+                                                             ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\particles\UIParticleSchemeRenderer.java:148: 错误: 需要')'或','
+              Draw.coolerAxes(context.batcher.getContext().pose()(), 1F, 0.01F, 1.01F, 0.02F);
+                                                                 ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\UIKeys.java:936: 错误: 需要')'或','
+          .load(EnumUtils.getAllKeys()(ParticleCurveType.class, (c) -> c.id));
+                                      ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\text\UITextarea.java:524: 错误: 需要';'
+          this.undo.pushPose()Undo(undo);
+                              ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\text\UITextarea.java:1103: 错误: 需要';'
+              this.undo.pushPose()Undo(undo);
+                                  ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\text\UITextarea.java:1132: 错误: 需要';'
+                  this.undo.pushPose()Undo(undo);
+                                      ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\UIScrollView.java:45: 错误: 需要';'
+          stack.pushPose()Viewport(this.area);
+                          ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\UIScrollView.java:69: 错误: 需要';'
+          stack.popPose()Viewport();
+                         ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\utils\UIModelRenderer.java:214: 错误: 需要';'
+          PoseStack stack = context.render.batcher.getContext().pose()();
+                                                                      ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\utils\UIModelRenderer.java:223: 错误: 需要';'
+          stack.pushPose()();
+                          ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\utils\UIModelRenderer.java:243: 错误: 需要';'
+          stack.popPose()();
+                         ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\utils\UIModelRenderer.java:349: 错误: 需要';'
+          Matrix4f matrix4f = context.batcher.getContext().pose()().peek().position()itionMatrix();
+                                                                 ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\utils\UIModelRenderer.java:349: 错误: 需要';'
+          Matrix4f matrix4f = context.batcher.getContext().pose()().peek().position()itionMatrix();
+                                                                                     ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\utils\UIViewportStack.java:76: 错误: 需要';'
+              this.viewportStack.pushPose()(child);
+                                           ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\utils\UIViewportStack.java:76: 错误: 需要';'
+              this.viewportStack.pushPose()(child);
+                                                 ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\utils\UIViewportStack.java:85: 错误: 需要';'
+              this.viewportStack.pushPose()(child);
+                                           ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\utils\UIViewportStack.java:85: 错误: 需要';'
+              this.viewportStack.pushPose()(child);
+                                                 ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\utils\UIViewportStack.java:102: 错误: 需要';'
+          this.viewportStack.popPose()();
+                                      ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\UIBaseMenu.java:97: 错误: 需要';'
+          this.context.pushPose()Viewport(this.viewport);
+                                 ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\UIBaseMenu.java:99: 错误: 需要';'
+          this.context.popPose()Viewport();
+                                ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\UIBaseMenu.java:113: 错误: 需要';'
+              this.context.pushPose()Viewport(this.viewport);
+                                     ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\UIBaseMenu.java:117: 错误: 需要';'
+              this.context.popPose()Viewport();
+                                    ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\UIBaseMenu.java:133: 错误: 需要';'
+              this.context.pushPose()Viewport(this.viewport);
+                                     ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\UIBaseMenu.java:137: 错误: 需要';'
+              this.context.popPose()Viewport();
+                                    ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\UIBaseMenu.java:153: 错误: 需要';'
+              this.context.pushPose()Viewport(this.viewport);
+                                     ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\UIBaseMenu.java:157: 错误: 需要';'
+              this.context.popPose()Viewport();
+                                    ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\UIBaseMenu.java:233: 错误: 需要';'
+              this.context.pushPose()Viewport(this.viewport);
+                                     ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\UIBaseMenu.java:237: 错误: 需要';'
+              this.context.popPose()Viewport();
+                                    ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\UIBaseMenu.java:279: 错误: 需要';'
+              stack.pushPose()Viewport(this.area);
+                              ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\UIBaseMenu.java:285: 错误: 需要';'
+              stack.popPose()Viewport();
+                             ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\UIContext.java:352: 错误: 需要';'
+          int target = direction.position()ition(original.area, 0) - direction.position()ition(scroll.area, 0);
+                                           ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\UIContext.java:352: 错误: 需要';'
+          int target = direction.position()ition(original.area, 0) - direction.position()ition(scroll.area, 0);
+                                                                                         ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\UIContext.java:524: 错误: 需要';'
+          this.viewportStack.pushPose()Viewport(viewport);
+                                       ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\UIContext.java:530: 错误: 需要';'
+          this.viewportStack.popPose()Viewport();
+                                      ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\model_blocks\camera\ImmersiveModelBlockCameraController.java:29: 错误: 需要';'
+          BlockPos pos = this.modelBlock.position()();
+                                                   ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\model_blocks\UIModelBlockEditorMenu.java:104: 错误: 需要';'
+          this.orbitCameraController.camera.position.set(player.position()().x, player.position()().y + 1D, player.position()().z);
+                                                                              ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\model_blocks\UIModelBlockEditorMenu.java:104: 错误: 需要';'
+          this.orbitCameraController.camera.position.set(player.position()().x, player.position()().y + 1D, player.position()().z);
+                                                                                                 ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\model_blocks\UIModelBlockEditorMenu.java:104: 错误: 需要';'
+          this.orbitCameraController.camera.position.set(player.position()().x, player.position()().y + 1D, player.position()().z);
+                                                                                                          ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\model_blocks\UIModelBlockEditorMenu.java:104: 错误: 需要';'
+          this.orbitCameraController.camera.position.set(player.position()().x, player.position()().y + 1D, player.position()().z);
+                                                                                                                             ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\model_blocks\UIModelBlockEditorMenu.java:104: 错误: 需要';'
+          this.orbitCameraController.camera.position.set(player.position()().x, player.position()().y + 1D, player.position()().z);
+                                                                                                                                 ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\model_blocks\UIModelBlockPanel.java:82: 错误: 需要';'
+              Camera camera = mc.gameRenderer.getMainCamera()();
+                                                             ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\model_blocks\UIModelBlockPanel.java:83: 错误: 需要';'
+              BlockHitResult blockHitResult = RayTracing.rayTrace(mc.world, camera.position()(), RayTracing.fromVector3f(this.mouseDirection), 512F);
+                                                                                                                                             ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\model_blocks\UIModelBlockPanel.java:87: 错误: 需要';'
+                  Vec3 hit = blockHitResult.position()();
+                                                      ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\model_blocks\UIModelBlockPanel.java:88: 错误: 需要';'
+                  BlockPos pos = this.modelBlock.position()();
+                                                           ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\model_blocks\UIModelBlockPanel.java:172: 错误: 需要';'
+              BlockPos pos = this.modelBlock.position()();
+                                                       ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\model_blocks\UIModelBlockPanel.java:333: 错误: 需要';'
+              ClientNetwork.sendModelBlockForm(modelBlock.position()(), modelBlock);
+                                                                                  ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\model_blocks\UIModelBlockPanel.java:378: 错误: 需要';'
+          Vec3 pos = camera.position()();
+                                      ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\model_blocks\UIModelBlockPanel.java:386: 错误: 需要';'
+              context.poseStack()().peek().position()itionMatrix(),
+                                                     ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\model_blocks\UIModelBlockPanel.java:386: 错误: 需要';'
+              context.poseStack()().peek().position()itionMatrix(),
+                                                                  ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\model_blocks\UIModelBlockPanel.java:387: 错误: 需要';'
+              (int) x, (int) y, 0, 0, mc.getWindow().getWidth(), mc.getWindow().getHeight()
+                  ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\model_blocks\UIModelBlockPanel.java:387: 错误: 需要';'
+              (int) x, (int) y, 0, 0, mc.getWindow().getWidth(), mc.getWindow().getHeight()
+                     ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\model_blocks\UIModelBlockPanel.java:387: 错误: 需要';'
+              (int) x, (int) y, 0, 0, mc.getWindow().getWidth(), mc.getWindow().getHeight()
+                           ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\model_blocks\UIModelBlockPanel.java:387: 错误: 需要';'
+              (int) x, (int) y, 0, 0, mc.getWindow().getWidth(), mc.getWindow().getHeight()
+                              ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\model_blocks\UIModelBlockPanel.java:387: 错误: 需要';'
+              (int) x, (int) y, 0, 0, mc.getWindow().getWidth(), mc.getWindow().getHeight()
+                                                               ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\model_blocks\UIModelBlockPanel.java:387: 错误: 需要';'
+              (int) x, (int) y, 0, 0, mc.getWindow().getWidth(), mc.getWindow().getHeight()
+                                                                                           ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\model_blocks\UIModelBlockPanel.java:395: 错误: 需要';'
+              BlockPos blockPos = entity.position()();
+                                                   ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\model_blocks\UIModelBlockPanel.java:399: 错误: 需要';'
+                  context.poseStack()().pushPose()();
+                                     ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\model_blocks\UIModelBlockPanel.java:399: 错误: 需要';'
+                  context.poseStack()().pushPose()();
+                                                  ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\model_blocks\UIModelBlockPanel.java:400: 错误: 需要';'
+                  context.poseStack()().translate(blockPos.getX() - pos.x, blockPos.getY() - pos.y, blockPos.getZ() - pos.z);
+                                     ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\model_blocks\UIModelBlockPanel.java:411: 错误: 需要';'
+                  context.poseStack()().popPose()();
+                                     ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\model_blocks\UIModelBlockPanel.java:411: 错误: 需要';'
+                  context.poseStack()().popPose()();
+                                                 ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\model_blocks\UIModelBlockPanel.java:448: 错误: 需要';'
+          BlockPos pos = closest.position()();
+                                           ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\morphing\camera\ImmersiveMorphingCameraController.java:34: 错误: 需要';'
+          camera.position.lerp(new Vector3d(player.position()().x, player.position()().y, player.position()().z), transition);
+                                                                 ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\morphing\camera\ImmersiveMorphingCameraController.java:34: 错误: 需要';'
+          camera.position.lerp(new Vector3d(player.position()().x, player.position()().y, player.position()().z), transition);
+                                                                                    ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\morphing\camera\ImmersiveMorphingCameraController.java:34: 错误: 需要';'
+          camera.position.lerp(new Vector3d(player.position()().x, player.position()().y, player.position()().z), transition);
+                                                                                        ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\morphing\camera\ImmersiveMorphingCameraController.java:34: 错误: 需要';'
+          camera.position.lerp(new Vector3d(player.position()().x, player.position()().y, player.position()().z), transition);
+                                                                                                           ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\morphing\camera\ImmersiveMorphingCameraController.java:34: 错误: 需要';'
+          camera.position.lerp(new Vector3d(player.position()().x, player.position()().y, player.position()().z), transition);
+                                                                                                               ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\morphing\camera\ImmersiveMorphingCameraController.java:34: 错误: 需要';'
+          camera.position.lerp(new Vector3d(player.position()().x, player.position()().y, player.position()().z), transition);
+                                                                                                                            ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\particles\UIParticleSchemeRenderer.java:67: 错误: 需要';'
+          PoseStack stack = context.batcher.getContext().pose()();
+                                                               ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\particles\UIParticleSchemeRenderer.java:69: 错误: 需要';'
+          stack.pushPose()();
+                          ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\particles\UIParticleSchemeRenderer.java:79: 错误: 需要';'
+          stack.popPose()();
+                         ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\particles\UIParticleSchemeRenderer.java:91: 错误: 需要';'
+          Matrix4f matrix = context.batcher.getContext().pose()().peek().position()itionMatrix();
+                                                               ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\particles\UIParticleSchemeRenderer.java:91: 错误: 需要';'
+          Matrix4f matrix = context.batcher.getContext().pose()().peek().position()itionMatrix();
+                                                                                   ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\particles\utils\UICurve.java:259: 错误: 需要';'
+          Matrix4f matrix = context.batcher.getContext().pose()().peek().position()itionMatrix();
+                                                               ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\particles\utils\UICurve.java:259: 错误: 需要';'
+          Matrix4f matrix = context.batcher.getContext().pose()().peek().position()itionMatrix();
+                                                                                   ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\UIKeys.java:936: 错误: 需要<标识符>
+          .load(EnumUtils.getAllKeys()(ParticleCurveType.class, (c) -> c.id));
+                                                         ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\UIKeys.java:936: 错误: 需要<标识符>
+          .load(EnumUtils.getAllKeys()(ParticleCurveType.class, (c) -> c.id));
+                                                              ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\utility\UIUtilityOverlayPanel.java:166: 错误: 需要';'
+                      syncService.pushPose()ChangedFiles(BBSSettings.cdnToken.get());
+                                            ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\utils\context\ItemStackContextAction.java:31: 错误: 需要';'
+              PoseStack matrices = context.batcher.getContext().pose()();
+                                                                      ^
+  100 个错误
+
+* Try:
+> Check your code and dependencies to fix the compilation error(s)
+> Run with --scan to get full insights from a Build Scan (powered by Develocity).
+
+BUILD FAILED in 8s
+3 actionable tasks: 1 executed, 2 up-to-date

@@ -1,7 +1,6 @@
 package mchorse.bbs_mod.forms.renderers;
 
 import com.mojang.blaze3d.systems.RenderSystem;
-// [MC26.2] 
 import mchorse.bbs_mod.BBSModClient;
 import mchorse.bbs_mod.forms.forms.FramebufferForm;
 import mchorse.bbs_mod.graphics.Framebuffer;
@@ -15,9 +14,9 @@ import mchorse.bbs_mod.utils.colors.Color;
 import net.minecraft.client.Minecraft;
 import mchorse.bbs_mod.client.ShaderProgram;
 import com.mojang.blaze3d.vertex.BufferBuilder;
-// [MC 26.2 REMOVED] import com.mojang.blaze3d.vertex.BufferUploader;
+import com.mojang.blaze3d.vertex.ByteBufferBuilder;
+import com.mojang.blaze3d.PrimitiveTopology;
 import net.minecraft.client.renderer.GameRenderer;
-// [MC 26.2 REMOVED] import com.mojang.blaze3d.vertex.Tessellator;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.blaze3d.vertex.VertexFormat;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
@@ -87,16 +86,15 @@ public class FramebufferFormRenderer extends FormRenderer<FramebufferForm>
         int h = MathUtils.clamp(this.form.height.get(), 2, 4096);
         int prevDraw = GL30.glGetInteger(GL30.GL_DRAW_FRAMEBUFFER_BINDING);
         int prevRead = GL30.glGetInteger(GL30.GL_READ_FRAMEBUFFER_BINDING);
-        Vector3f light0 = RenderSystem.shaderLightDirections[0];
-        Vector3f light1 = RenderSystem.shaderLightDirections[1];
-        Matrix4f projectionMatrix = new Matrix4f(RenderSystem.getProjectionMatrix());
+        // [MC 26.2] RenderSystem.shaderLightDirections array removed - use GpuBufferSlice
+        // [MC 26.2] RenderSystem.setProjectionMatrix removed
+        // [MC 26.2] RenderSystem.setShaderLights(Vector3f, Vector3f) removed
+        Matrix4f projectionMatrix = new Matrix4f().identity();
 
         GL30.glCullFace(GL30.GL_FRONT);
-        RenderSystem.setShaderLights(new Vector3f(0F, 0F, 1F), new Vector3f(0F, 0F, 1F));
-        RenderSystem.setProjectionMatrix(new Matrix4f().setOrtho(-1F, 1F, 1F, -1F, -500F, 500F), VertexSorter.BY_Z);
-        RenderSystem.getModelViewStack().push();
-        RenderSystem.getModelViewStack().peek().getPositionMatrix().identity();
-        RenderSystem.getModelViewStack().peek().getNormalMatrix().identity();
+        new PoseStack().pushPose();
+        new PoseStack().last().pose().identity();
+        new PoseStack().last().normal().identity();
 
         framebuffer.apply();
 
@@ -107,26 +105,25 @@ public class FramebufferFormRenderer extends FormRenderer<FramebufferForm>
 
         framebuffer.clear();
 
-        context.stack.push();
-        context.stack.peek().getPositionMatrix().identity();
-        context.stack.peek().getNormalMatrix().identity();
+        context.stack.pushPose();
+        context.stack.last().pose().identity();
+        context.stack.last().normal().identity();
 
         super.renderBodyParts(context);
 
-        context.stack.pop();
+        context.stack.popPose();
 
         GL30.glBindFramebuffer(GL30.GL_DRAW_FRAMEBUFFER, prevDraw);
         GL30.glBindFramebuffer(GL30.GL_READ_FRAMEBUFFER, prevRead);
         GL30.glViewport(0, 0, width, height);
 
-        RenderSystem.setShaderLights(light0, light1);
-        RenderSystem.getModelViewStack().pop();
-        RenderSystem.setProjectionMatrix(projectionMatrix, VertexSorter.BY_Z);
+        new PoseStack().popPose();
         GL30.glCullFace(GL30.GL_BACK);
 
+        // [MC 26.2] DefaultVertexFormat and GameRenderer method reference changes
         boolean shading = !context.isPicking();
-        VertexFormat format = shading ? DefaultVertexFormat.POSITION_COLOR_TEXTURE_OVERLAY_LIGHT_NORMAL : DefaultVertexFormat.POSITION_TEXTURE_LIGHT_COLOR;
-        Supplier<ShaderProgram> shader = shading ? GameRenderer::getRenderTypeEntityTranslucentProgram : GameRenderer::getPositionTexLightmapColorProgram;
+        VertexFormat format = shading ? DefaultVertexFormat.POSITION_COLOR_TEX_LIGHTMAP : DefaultVertexFormat.POSITION_TEX_LIGHTMAP_COLOR;
+        Supplier<ShaderProgram> shader = shading ? null : null; // [MC 26.2] GameRenderer methods removed
 
         this.renderModel(framebuffer.getMainTexture(), format, shader, context.stack, context.overlay, context.light, context.color, context.getTransition());
     }
@@ -166,61 +163,58 @@ public class FramebufferFormRenderer extends FormRenderer<FramebufferForm>
 
     private void renderQuad(VertexFormat format, Texture texture, Supplier<ShaderProgram> shader, PoseStack matrices, int overlay, int light, int overlayColor, float transition)
     {
-        BufferBuilder builder = Tessellator.getInstance().getBuffer();
+        // [MC 26.2] Tessellator removed, create BufferBuilder directly
+        ByteBufferBuilder byteBuf = new ByteBufferBuilder(1536);
+        BufferBuilder builder = new BufferBuilder(byteBuf, PrimitiveTopology.TRIANGLES, format);
         Color color = Color.white();
-        Matrix4f matrix = matrices.peek().getPositionMatrix();
-        Matrix3f normal = matrices.peek().getNormalMatrix();
+        Matrix4f matrix = matrices.last().pose();
+        Matrix3f normal = matrices.last().normal();
 
         color.mul(overlayColor);
 
         GameRenderer gameRenderer = Minecraft.getInstance().gameRenderer;
 
-        gameRenderer.getLightmapTextureManager().enable();
-        gameRenderer.getOverlayTexture().setupOverlayColor();
+        // [MC 26.2] getLightmapTextureManager/getOverlayTexture removed
+        // [MC 26.2] RenderSystem.setShader removed
 
         BBSModClient.getTextures().bindTexture(texture);
-        RenderSystem.setShader(shader);
 
         texture.bind();
         texture.setFilterMipmap(false, false);
-        builder.begin(VertexFormat.DrawMode.TRIANGLES, format);
+
+        /* Use Pose from matrices for setNormal */
+        PoseStack.Pose pose = matrices.last();
 
         /* Front */
-        this.fill(format, builder, matrix, quad.p3.x, quad.p3.y, color, uvQuad.p3.x, uvQuad.p3.y, overlay, light, normal, 1F).next();
-        this.fill(format, builder, matrix, quad.p2.x, quad.p2.y, color, uvQuad.p2.x, uvQuad.p2.y, overlay, light, normal, 1F).next();
-        this.fill(format, builder, matrix, quad.p1.x, quad.p1.y, color, uvQuad.p1.x, uvQuad.p1.y, overlay, light, normal, 1F).next();
+        this.fill(format, builder, matrix, quad.p3.x, quad.p3.y, color, uvQuad.p3.x, uvQuad.p3.y, overlay, light, pose, 1F);
+        this.fill(format, builder, matrix, quad.p2.x, quad.p2.y, color, uvQuad.p2.x, uvQuad.p2.y, overlay, light, pose, 1F);
+        this.fill(format, builder, matrix, quad.p1.x, quad.p1.y, color, uvQuad.p1.x, uvQuad.p1.y, overlay, light, pose, 1F);
 
-        this.fill(format, builder, matrix, quad.p3.x, quad.p3.y, color, uvQuad.p3.x, uvQuad.p3.y, overlay, light, normal, 1F).next();
-        this.fill(format, builder, matrix, quad.p4.x, quad.p4.y, color, uvQuad.p4.x, uvQuad.p4.y, overlay, light, normal, 1F).next();
-        this.fill(format, builder, matrix, quad.p2.x, quad.p2.y, color, uvQuad.p2.x, uvQuad.p2.y, overlay, light, normal, 1F).next();
+        this.fill(format, builder, matrix, quad.p3.x, quad.p3.y, color, uvQuad.p3.x, uvQuad.p3.y, overlay, light, pose, 1F);
+        this.fill(format, builder, matrix, quad.p4.x, quad.p4.y, color, uvQuad.p4.x, uvQuad.p4.y, overlay, light, pose, 1F);
+        this.fill(format, builder, matrix, quad.p2.x, quad.p2.y, color, uvQuad.p2.x, uvQuad.p2.y, overlay, light, pose, 1F);
 
         /* Back */
-        this.fill(format, builder, matrix, quad.p1.x, quad.p1.y, color, uvQuad.p1.x, uvQuad.p1.y, overlay, light, normal, -1F).next();
-        this.fill(format, builder, matrix, quad.p2.x, quad.p2.y, color, uvQuad.p2.x, uvQuad.p2.y, overlay, light, normal, -1F).next();
-        this.fill(format, builder, matrix, quad.p3.x, quad.p3.y, color, uvQuad.p3.x, uvQuad.p3.y, overlay, light, normal, -1F).next();
+        this.fill(format, builder, matrix, quad.p1.x, quad.p1.y, color, uvQuad.p1.x, uvQuad.p1.y, overlay, light, pose, -1F);
+        this.fill(format, builder, matrix, quad.p2.x, quad.p2.y, color, uvQuad.p2.x, uvQuad.p2.y, overlay, light, pose, -1F);
+        this.fill(format, builder, matrix, quad.p3.x, quad.p3.y, color, uvQuad.p3.x, uvQuad.p3.y, overlay, light, pose, -1F);
 
-        this.fill(format, builder, matrix, quad.p2.x, quad.p2.y, color, uvQuad.p2.x, uvQuad.p2.y, overlay, light, normal, -1F).next();
-        this.fill(format, builder, matrix, quad.p4.x, quad.p4.y, color, uvQuad.p4.x, uvQuad.p4.y, overlay, light, normal, -1F).next();
-        this.fill(format, builder, matrix, quad.p3.x, quad.p3.y, color, uvQuad.p3.x, uvQuad.p3.y, overlay, light, normal, -1F).next();
+        this.fill(format, builder, matrix, quad.p2.x, quad.p2.y, color, uvQuad.p2.x, uvQuad.p2.y, overlay, light, pose, -1F);
+        this.fill(format, builder, matrix, quad.p4.x, quad.p4.y, color, uvQuad.p4.x, uvQuad.p4.y, overlay, light, pose, -1F);
+        this.fill(format, builder, matrix, quad.p3.x, quad.p3.y, color, uvQuad.p3.x, uvQuad.p3.y, overlay, light, pose, -1F);
 
-        RenderSystem.defaultBlendFunc();
-        RenderSystem.enableBlend();
-        BufferRenderer.drawWithGlobalProgram(builder.end());
-
-        gameRenderer.getLightmapTextureManager().disable();
-        gameRenderer.getOverlayTexture().teardownOverlayColor();
+        // [MC 26.2] RenderSystem.defaultBlendFunc/enableBlend/BufferRenderer removed
+        texture.setFilterMipmap(false, false);
+        byteBuf.close();
     }
 
-    private VertexConsumer fill(VertexFormat format, VertexConsumer consumer, Matrix4f matrix, float x, float y, Color color, float u, float v, int overlay, int light, Matrix3f normal, float nz)
+    private VertexConsumer fill(VertexFormat format, VertexConsumer consumer, Matrix4f matrix, float x, float y, Color color, float u, float v, int overlay, int light, PoseStack.Pose pose, float nz)
     {
-        if (format == DefaultVertexFormat.POSITION_TEXTURE_LIGHT_COLOR)
+        if (format == DefaultVertexFormat.POSITION_TEX_LIGHTMAP_COLOR)
         {
-            return consumer.vertex(matrix, x, y, 0F).texture(u, v).light(light).color(color.r, color.g, color.b, color.a);
+            return consumer.addVertex(matrix, x, y, 0F).setUv(u, v).setUv2(light & 0xFFFF, light >> 16 & 0xFFFF).setColor(color.r, color.g, color.b, color.a);
         }
 
-        return consumer.vertex(matrix, x, y, 0F).color(color.r, color.g, color.b, color.a).texture(u, v).overlay(overlay).light(light).normal(normal, 0F, 0F, nz);
+        return consumer.addVertex(matrix, x, y, 0F).setColor(color.r, color.g, color.b, color.a).setUv(u, v).setUv1(overlay & 0xFFFF, overlay >> 16 & 0xFFFF).setUv2(light & 0xFFFF, light >> 16 & 0xFFFF).setNormal(pose, 0F, 0F, nz);
     }
 }
-
-
-

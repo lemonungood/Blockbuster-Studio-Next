@@ -126,7 +126,7 @@ public class ClientNetwork
 
             client.execute(() ->
             {
-                Entity entity = client.world.getEntityById(id);
+                Entity entity = client.world.getEntity(id);
                 Morph morph = Morph.getMorph(entity);
 
                 if (morph != null)
@@ -208,7 +208,7 @@ public class ClientNetwork
 
         client.execute(() ->
         {
-            Entity entity = client.world.getEntityById(id);
+            Entity entity = client.world.getEntity(id);
             Morph morph = Morph.getMorph(entity);
 
             if (morph != null && morph.getForm() != null)
@@ -282,7 +282,7 @@ public class ClientNetwork
 
             client.execute(() ->
             {
-                Entity entity = client.world.getEntityById(entityId);
+                Entity entity = client.world.getEntity(entityId);
 
                 if (entity instanceof IEntityFormProvider provider)
                 {
@@ -324,7 +324,7 @@ public class ClientNetwork
 
         client.execute(() ->
         {
-            Entity entity = client.world.getEntityById(entityId);
+            Entity entity = client.world.getEntity(entityId);
 
             if (entity instanceof GunProjectileEntity projectile)
             {
@@ -499,7 +499,7 @@ public class ClientNetwork
 
     public static void sendTeleport(Player entity, double x, double y, double z)
     {
-        sendTeleport(x, y, z, entity.getHeadYaw(), entity.getHeadYaw(), entity.getPitch());
+        sendTeleport(x, y, z, entity.getYHeadRot(), entity.getYHeadRot(), entity.getXRot());
     }
 
     public static void sendTeleport(double x, double y, double z, float yaw, float bodyYaw, float pitch)

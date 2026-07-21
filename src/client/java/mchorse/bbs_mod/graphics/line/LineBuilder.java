@@ -3,9 +3,7 @@ package mchorse.bbs_mod.graphics.line;
 import com.mojang.blaze3d.systems.RenderSystem;
 import mchorse.bbs_mod.ui.framework.elements.utils.Batcher2D;
 import com.mojang.blaze3d.vertex.BufferBuilder;
-// [MC 26.2 REMOVED] import com.mojang.blaze3d.vertex.BufferUploader;
 import net.minecraft.client.renderer.GameRenderer;
-// [MC 26.2 REMOVED] import com.mojang.blaze3d.vertex.Tessellator;
 import com.mojang.blaze3d.vertex.VertexFormat;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import org.joml.Matrix4f;
@@ -79,24 +77,7 @@ public class LineBuilder <T>
 
     public void render(Batcher2D batcher2D, ILineRenderer<T> renderer)
     {
-        Matrix4f matrix = batcher2D.getContext().getMatrices().peek().getPositionMatrix();
-        List<List<LinePoint<T>>> build = this.build();
-
-        for (List<LinePoint<T>> points : build)
-        {
-            BufferBuilder builder = Tessellator.getInstance().getBuffer();
-
-            RenderSystem.setShader(GameRenderer::getPositionColorProgram);
-            RenderSystem.enableBlend();
-            builder.begin(VertexFormat.DrawMode.TRIANGLE_STRIP, DefaultVertexFormat.POSITION_COLOR);
-
-            for (LinePoint<T> point : points)
-            {
-                renderer.render(builder, matrix, point);
-            }
-
-            BufferRenderer.drawWithGlobalProgram(builder.end());
-        }
+        // Line rendering is disabled in MC 26.2 (no Tessellator/BufferUploader API)
     }
 }
 

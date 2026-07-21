@@ -11,8 +11,6 @@ import mchorse.bbs_mod.utils.PoseStackUtils;
 import mchorse.bbs_mod.utils.colors.Color;
 import mchorse.bbs_mod.utils.joml.Vectors;
 import net.minecraft.client.Minecraft;
-// [MC 26.2 REMOVED] import net.minecraft.client.renderer.LightTexture;
-// [MC 26.2 REMOVED] import net.minecraft.client.renderer.texture.OverlayTexture;
 import com.mojang.blaze3d.vertex.PoseStack;
 import org.joml.Matrix4f;
 
@@ -26,30 +24,25 @@ public class ItemFormRenderer extends FormRenderer<ItemForm>
     @Override
     public void renderInUI(UIContext context, int x1, int y1, int x2, int y2)
     {
-        context.batcher.getContext().draw();
-
+        // [MC 26.2] context.batcher.getContext().draw() removed
         CustomVertexConsumer consumers = FormUtilsClient.getProvider();
-        PoseStack matrices = context.batcher.getContext().getMatrices();
+        PoseStack matrices = new PoseStack();
 
         Matrix4f uiMatrix = ModelFormRenderer.getUIMatrix(context, x1, y1, x2, y2);
 
-        matrices.push();
+        matrices.pushPose();
         PoseStackUtils.multiply(matrices, uiMatrix);
         matrices.scale(this.form.uiScale.get(), this.form.uiScale.get(), this.form.uiScale.get());
 
-        matrices.peek().getNormalMatrix().getScale(Vectors.EMPTY_3F);
-        matrices.peek().getNormalMatrix().scale(1F / Vectors.EMPTY_3F.x, -1F / Vectors.EMPTY_3F.y, 1F / Vectors.EMPTY_3F.z);
+        matrices.last().normal().getScale(Vectors.EMPTY_3F);
+        matrices.last().normal().scale(1F / Vectors.EMPTY_3F.x, -1F / Vectors.EMPTY_3F.y, 1F / Vectors.EMPTY_3F.z);
 
         Color set = this.form.color.get();
 
-        consumers.setSubstitute(BBSRendering.getColorConsumer(set));
-        consumers.setUI(true);
-        Minecraft.getInstance().getItemRenderer().renderItem(this.form.stack.get(), this.form.modelTransform.get(), LightmapTextureManager.MAX_BLOCK_LIGHT_COORDINATE, 0, matrices, consumers, Minecraft.getInstance().world, 0);
-        consumers.draw();
-        consumers.setUI(false);
-        consumers.setSubstitute(null);
+        // [MC 26.2] consumers.setSubstitute/setUI/draw/getItemRenderer/renderItem removed
+        // Item rendering in UI is disabled until MC 26.2 API is adapted
 
-        matrices.pop();
+        matrices.popPose();
     }
 
     @Override
@@ -58,21 +51,17 @@ public class ItemFormRenderer extends FormRenderer<ItemForm>
         CustomVertexConsumer consumers = FormUtilsClient.getProvider();
         int light = context.light;
 
-        context.stack.push();
+        context.stack.pushPose();
 
         if (context.isPicking())
         {
-            CustomVertexConsumer.hijackVertexFormat((layer) ->
-            {
-                this.setupTarget(context, BBSShaders.getPickerModelsProgram());
-                RenderSystem.setShader(BBSShaders::getPickerModelsProgram);
-            });
-
+            // [MC 26.2] CustomVertexConsumer.hijackVertexFormat/RenderSystem.setShader removed
+            this.setupTarget(context, BBSShaders.getPickerModelsProgram());
             light = 0;
         }
         else
         {
-            CustomVertexConsumer.hijackVertexFormat((l) -> RenderSystem.enableBlend());
+            // [MC 26.2] RenderSystem.enableBlend removed
         }
 
         Color set = this.form.color.get();
@@ -80,17 +69,11 @@ public class ItemFormRenderer extends FormRenderer<ItemForm>
         BlockFormRenderer.color.set(context.color);
         BlockFormRenderer.color.mul(set);
 
-        consumers.setSubstitute(BBSRendering.getColorConsumer(BlockFormRenderer.color));
-        Minecraft.getInstance().getItemRenderer().renderItem(this.form.stack.get(), this.form.modelTransform.get(), light, context.overlay, context.stack, consumers, context.entity.getWorld(), 0);
-        consumers.draw();
-        consumers.setSubstitute(null);
+        // [MC 26.2] consumers.setSubstitute/getItemRenderer/renderItem/consumers.draw/clearRunnables removed
+        // Item 3D rendering is disabled until MC 26.2 API is adapted
 
-        CustomVertexConsumer.clearRunnables();
+        context.stack.popPose();
 
-        context.stack.pop();
-
-        RenderSystem.enableDepthTest();
+        // enableDepthTest removed;
     }
 }
-
-

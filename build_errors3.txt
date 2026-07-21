@@ -1,0 +1,633 @@
+WARNING: A restricted method in java.lang.System has been called
+WARNING: java.lang.System::load has been called by net.rubygrapefruit.platform.internal.NativeLibraryLoader in an unnamed module (file:/C:/Users/hechengyu/.gradle/wrapper/dists/gradle-9.5.1-bin/iq79hdu3mqx29lgffhp8bfmx/gradle-9.5.1/lib/native-platform-0.22-milestone-29.jar)
+WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+
+> Configure project :
+Fabric Loom: 1.17.16
+
+> Task :compileJava UP-TO-DATE
+> Task :processResources UP-TO-DATE
+> Task :classes UP-TO-DATE
+
+> Task :compileClientJava
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\LabelFormRenderer.java:164: 错误: 需要')'或','
+            context.stack.peek().position()itionMatrix(),
+                                           ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\LabelFormRenderer.java:164: 错误: 需要';'
+            context.stack.peek().position()itionMatrix(),
+                                                        ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\LabelFormRenderer.java:165: 错误: 不是语句
+            consumers,
+            ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\LabelFormRenderer.java:165: 错误: 需要';'
+            consumers,
+                     ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\LabelFormRenderer.java:166: 错误: 不是语句
+            Font.TextLayerType.NORMAL,
+                              ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\LabelFormRenderer.java:166: 错误: 需要';'
+            Font.TextLayerType.NORMAL,
+                                     ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\LabelFormRenderer.java:168: 错误: 不是语句
+            light
+            ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\LabelFormRenderer.java:168: 错误: 需要';'
+            light
+                 ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\ModelFormRenderer.java:271: 错误: 需要';'
+            stack.popPose()();
+                           ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\ModelFormRenderer.java:272: 错误: 需要';'
+            stack.popPose()();
+                           ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\ModelFormRenderer.java:373: 错误: 需要';'
+                stack.pushPose()();
+                                ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\ModelFormRenderer.java:389: 错误: 需要';'
+                    stack.pushPose()();
+                                    ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\ModelFormRenderer.java:393: 错误: 需要';'
+                    stack.popPose()();
+                                   ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\ModelFormRenderer.java:402: 错误: 需要';'
+                stack.popPose()();
+                               ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\ModelFormRenderer.java:449: 错误: 需要';'
+            matrices.pushPose()();
+                               ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\ModelFormRenderer.java:469: 错误: 需要';'
+            matrices.popPose()();
+                              ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\ModelFormRenderer.java:531: 错误: 需要';'
+        context.stack.pushPose()();
+                                ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\ModelFormRenderer.java:537: 错误: 需要';'
+            context.stack.pushPose()();
+                                    ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\ModelFormRenderer.java:550: 错误: 需要';'
+            context.stack.popPose()();
+                                   ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\ModelFormRenderer.java:554: 错误: 需要';'
+        context.stack.popPose()();
+                               ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\ModelFormRenderer.java:564: 错误: 需要';'
+        stack.pushPose()();
+                        ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\ModelFormRenderer.java:566: 错误: 需要')'或','
+        oo.set(stack.peek().position()itionMatrix());
+                                      ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\ModelFormRenderer.java:566: 错误: 需要';'
+        oo.set(stack.peek().position()itionMatrix());
+                                                   ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\ModelFormRenderer.java:567: 错误: 需要';'
+        stack.popPose()();
+                       ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\ModelFormRenderer.java:569: 错误: 需要';'
+        stack.pushPose()();
+                        ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\ModelFormRenderer.java:571: 错误: 需要')'或','
+        mm.set(stack.peek().position()itionMatrix());
+                                      ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\ModelFormRenderer.java:571: 错误: 需要';'
+        mm.set(stack.peek().position()itionMatrix());
+                                                   ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\ModelFormRenderer.java:592: 错误: 需要';'
+            stack.pushPose()();
+                            ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\ModelFormRenderer.java:594: 错误: 需要')'或','
+            matrix.set(stack.peek().position()itionMatrix());
+                                              ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\ModelFormRenderer.java:594: 错误: 需要';'
+            matrix.set(stack.peek().position()itionMatrix());
+                                                           ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\ModelFormRenderer.java:595: 错误: 需要';'
+            stack.popPose()();
+                           ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\ModelFormRenderer.java:597: 错误: 需要';'
+            stack.pushPose()();
+                            ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\ModelFormRenderer.java:599: 错误: 需要')'或','
+            o.set(stack.peek().position()itionMatrix());
+                                         ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\ModelFormRenderer.java:599: 错误: 需要';'
+            o.set(stack.peek().position()itionMatrix());
+                                                      ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\ModelFormRenderer.java:600: 错误: 需要';'
+            stack.popPose()();
+                           ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\ModelFormRenderer.java:616: 错误: 需要';'
+                stack.pushPose()();
+                                ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\ModelFormRenderer.java:631: 错误: 需要';'
+                stack.popPose()();
+                               ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\ModelFormRenderer.java:637: 错误: 需要';'
+        stack.popPose()();
+                       ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\ParticleFormRenderer.java:91: 错误: 需要';'
+            PoseStack stack = context.batcher.getContext().pose()();
+                                                                 ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\ParticleFormRenderer.java:94: 错误: 需要';'
+            stack.pushPose()();
+                            ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\TrailFormRenderer.java:166: 错误: 需要';'
+        stack.pushPose()();
+                        ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\VanillaParticleFormRenderer.java:64: 错误: 需要';'
+        Camera camera = Minecraft.getInstance().gameRenderer.getMainCamera()();
+                                                                            ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\VanillaParticleFormRenderer.java:71: 错误: 需要')'或','
+        translation.add(camera.position()().x, camera.position()().y, camera.position()().z);
+                                         ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\VanillaParticleFormRenderer.java:71: 错误: 不是语句
+        translation.add(camera.position()().x, camera.position()().y, camera.position()().z);
+                                            ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\VanillaParticleFormRenderer.java:71: 错误: 需要';'
+        translation.add(camera.position()().x, camera.position()().y, camera.position()().z);
+                                             ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\VanillaParticleFormRenderer.java:71: 错误: 需要';'
+        translation.add(camera.position()().x, camera.position()().y, camera.position()().z);
+                                                                ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\VanillaParticleFormRenderer.java:71: 错误: 不是语句
+        translation.add(camera.position()().x, camera.position()().y, camera.position()().z);
+                                                                   ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\VanillaParticleFormRenderer.java:71: 错误: 需要';'
+        translation.add(camera.position()().x, camera.position()().y, camera.position()().z);
+                                                                    ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\VanillaParticleFormRenderer.java:71: 错误: 需要';'
+        translation.add(camera.position()().x, camera.position()().y, camera.position()().z);
+                                                                                       ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\VanillaParticleFormRenderer.java:71: 错误: 不是语句
+        translation.add(camera.position()().x, camera.position()().y, camera.position()().z);
+                                                                                          ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\VanillaParticleFormRenderer.java:71: 错误: 需要';'
+        translation.add(camera.position()().x, camera.position()().y, camera.position()().z);
+                                                                                           ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\VanillaParticleFormRenderer.java:72: 错误: 需要';'
+        context.stack.pushPose()();
+                                ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\sections\ParticleFormSection.java:26: 错误: 需要')'
+        for (String key : BBSModClient.getParticles().getAllKeys()())
+                                                                  ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\sections\ParticleFormSection.java:26: 错误: 需要->
+        for (String key : BBSModClient.getParticles().getAllKeys()())
+                                                                    ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\graphics\Draw.java:82: 错误: 需要';'
+        Matrix4f matrix4f = stack.peek().position()itionMatrix();
+                                                   ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\graphics\Draw.java:96: 错误: 需要';'
+        Matrix4f matrix4f = stack.peek().position()itionMatrix();
+                                                   ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\graphics\Draw.java:197: 错误: 需要';'
+        Matrix4f mat = stack.peek().position()itionMatrix();
+                                              ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\graphics\line\LineBuilder.java:41: 错误: 需要';'
+            this.pushPose()();
+                           ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\graphics\line\LineBuilder.java:53: 错误: 需要';'
+        return this.pushPose()(new Line<>());
+                              ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\graphics\line\LineBuilder.java:53: 错误: 需要';'
+        return this.pushPose()(new Line<>());
+                                           ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\graphics\line\LineBuilder.java:82: 错误: 需要';'
+        Matrix4f matrix = batcher2D.getContext().pose()().peek().position()itionMatrix();
+                                                       ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\graphics\line\LineBuilder.java:82: 错误: 需要';'
+        Matrix4f matrix = batcher2D.getContext().pose()().peek().position()itionMatrix();
+                                                                           ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\mixin\client\CameraMixin.java:30: 错误: 需要';'
+            Vector3d position = controller.position()ition();
+                                                     ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\selectors\EntitySelector.java:56: 错误: 需要')'或','
+            String a = StringUtils.plainText(displayName.getVisualOrderText()());
+                                                                             ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\selectors\EntitySelector.java:66: 错误: 需要')'
+        for (String key : source.getAllKeys()())
+                                             ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\selectors\EntitySelector.java:66: 错误: 需要->
+        for (String key : source.getAllKeys()())
+                                               ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\dashboard\textures\UIPixelsEditor.java:249: 错误: 需要';'
+            this.undoManager.pushPose()Undo(this.pixelsUndo);
+                                       ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\dashboard\textures\UITextureEditor.java:140: 错误: 需要';'
+        this.undoManager.pushPose()Undo(pixelsUndo);
+                                   ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:93: 错误: 需要';'
+        Matrix4f matrix = context.batcher.getContext().pose()().peek().position()itionMatrix();
+                                                             ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:93: 错误: 需要';'
+        Matrix4f matrix = context.batcher.getContext().pose()().peek().position()itionMatrix();
+                                                                                 ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\UILookClip.java:115: 错误: 需要';'
+            Vec3 vec = ehr.position()();
+                                     ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\UIPathClip.java:79: 错误: 需要';'
+        this.position = this.position()ition(index);
+                                       ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\UIPathClip.java:122: 错误: 需要';'
+        this.position = this.position()ition(index);
+                                       ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:157: 错误: 需要')'或','
+                this.panel.replayEditor.moveReplay(result.position()().x, result.position()().y, result.position()().z);
+                                                                    ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:157: 错误: 不是语句
+                this.panel.replayEditor.moveReplay(result.position()().x, result.position()().y, result.position()().z);
+                                                                       ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:157: 错误: 需要';'
+                this.panel.replayEditor.moveReplay(result.position()().x, result.position()().y, result.position()().z);
+                                                                        ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:157: 错误: 需要';'
+                this.panel.replayEditor.moveReplay(result.position()().x, result.position()().y, result.position()().z);
+                                                                                           ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:157: 错误: 不是语句
+                this.panel.replayEditor.moveReplay(result.position()().x, result.position()().y, result.position()().z);
+                                                                                              ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:157: 错误: 需要';'
+                this.panel.replayEditor.moveReplay(result.position()().x, result.position()().y, result.position()().z);
+                                                                                               ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:157: 错误: 需要';'
+                this.panel.replayEditor.moveReplay(result.position()().x, result.position()().y, result.position()().z);
+                                                                                                                  ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:157: 错误: 不是语句
+                this.panel.replayEditor.moveReplay(result.position()().x, result.position()().y, result.position()().z);
+                                                                                                                     ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:157: 错误: 需要';'
+                this.panel.replayEditor.moveReplay(result.position()().x, result.position()().y, result.position()().z);
+                                                                                                                      ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:765: 错误: 需要')'或','
+            distance = (float) position.distance(result.position()().x, result.position()().y, result.position()().z) - 0.1F;
+                                                                  ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:765: 错误: 不是语句
+            distance = (float) position.distance(result.position()().x, result.position()().y, result.position()().z) - 0.1F;
+                                                                     ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:765: 错误: 需要';'
+            distance = (float) position.distance(result.position()().x, result.position()().y, result.position()().z) - 0.1F;
+                                                                      ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:765: 错误: 需要';'
+            distance = (float) position.distance(result.position()().x, result.position()().y, result.position()().z) - 0.1F;
+                                                                                         ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:765: 错误: 不是语句
+            distance = (float) position.distance(result.position()().x, result.position()().y, result.position()().z) - 0.1F;
+                                                                                            ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:765: 错误: 需要';'
+            distance = (float) position.distance(result.position()().x, result.position()().y, result.position()().z) - 0.1F;
+                                                                                             ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:765: 错误: 需要';'
+            distance = (float) position.distance(result.position()().x, result.position()().y, result.position()().z) - 0.1F;
+                                                                                                                ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:765: 错误: 不是语句
+            distance = (float) position.distance(result.position()().x, result.position()().y, result.position()().z) - 0.1F;
+                                                                                                                   ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:765: 错误: 需要';'
+            distance = (float) position.distance(result.position()().x, result.position()().y, result.position()().z) - 0.1F;
+                                                                                                                    ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:1035: 错误: 需要';'
+        PoseStack worldStack = this.worldRendercontext.poseStack()();
+                                                                  ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:1037: 错误: 需要';'
+        worldStack.pushPose()();
+                             ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:1041: 错误: 需要';'
+        worldStack.popPose()();
+                            ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:1121: 错误: 需要')'或','
+                Recorder.renderCameraPreview(this.panel.getRunner().position()ition(), context.camera(), context.poseStack()());
+                                                                              ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:1121: 错误: 需要';'
+                Recorder.renderCameraPreview(this.panel.getRunner().position()ition(), context.camera(), context.poseStack()());
+                                                                                     ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:1121: 错误: 需要';'
+                Recorder.renderCameraPreview(this.panel.getRunner().position()ition(), context.camera(), context.poseStack()());
+                                                                                                       ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:1121: 错误: 需要';'
+                Recorder.renderCameraPreview(this.panel.getRunner().position()ition(), context.camera(), context.poseStack()());
+                                                                                                                            ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\replays\UIReplayList.java:474: 错误: 需要';'
+        Vec3 p = blockHitResult.position()();
+                                          ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\replays\UIReplayList.java:565: 错误: 需要';'
+        BlockPos blockPos = modelBlock.position()();
+                                                 ^
+100 个错误
+
+> Task :compileClientJava FAILED
+
+[Incubating] Problems report is available at: file:///D:/DEV/bbs_clean/build/reports/problems/problems-report.html
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':compileClientJava' (registered by plugin class 'org.gradle.api.plugins.JavaBasePlugin').
+> Compilation failed; see the compiler output below.
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\LabelFormRenderer.java:165: 错误: 不是语句
+              consumers,
+              ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\LabelFormRenderer.java:166: 错误: 不是语句
+              Font.TextLayerType.NORMAL,
+                                ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\LabelFormRenderer.java:168: 错误: 不是语句
+              light
+              ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\VanillaParticleFormRenderer.java:71: 错误: 不是语句
+          translation.add(camera.position()().x, camera.position()().y, camera.position()().z);
+                                              ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\VanillaParticleFormRenderer.java:71: 错误: 不是语句
+          translation.add(camera.position()().x, camera.position()().y, camera.position()().z);
+                                                                     ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\VanillaParticleFormRenderer.java:71: 错误: 不是语句
+          translation.add(camera.position()().x, camera.position()().y, camera.position()().z);
+                                                                                            ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:157: 错误: 不是语句
+                  this.panel.replayEditor.moveReplay(result.position()().x, result.position()().y, result.position()().z);
+                                                                         ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:157: 错误: 不是语句
+                  this.panel.replayEditor.moveReplay(result.position()().x, result.position()().y, result.position()().z);
+                                                                                                ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:157: 错误: 不是语句
+                  this.panel.replayEditor.moveReplay(result.position()().x, result.position()().y, result.position()().z);
+                                                                                                                       ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:765: 错误: 不是语句
+              distance = (float) position.distance(result.position()().x, result.position()().y, result.position()().z) - 0.1F;
+                                                                       ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:765: 错误: 不是语句
+              distance = (float) position.distance(result.position()().x, result.position()().y, result.position()().z) - 0.1F;
+                                                                                              ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:765: 错误: 不是语句
+              distance = (float) position.distance(result.position()().x, result.position()().y, result.position()().z) - 0.1F;
+                                                                                                                     ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\LabelFormRenderer.java:164: 错误: 需要')'或','
+              context.stack.peek().position()itionMatrix(),
+                                             ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\ModelFormRenderer.java:566: 错误: 需要')'或','
+          oo.set(stack.peek().position()itionMatrix());
+                                        ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\ModelFormRenderer.java:571: 错误: 需要')'或','
+          mm.set(stack.peek().position()itionMatrix());
+                                        ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\ModelFormRenderer.java:594: 错误: 需要')'或','
+              matrix.set(stack.peek().position()itionMatrix());
+                                                ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\ModelFormRenderer.java:599: 错误: 需要')'或','
+              o.set(stack.peek().position()itionMatrix());
+                                           ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\VanillaParticleFormRenderer.java:71: 错误: 需要')'或','
+          translation.add(camera.position()().x, camera.position()().y, camera.position()().z);
+                                           ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\selectors\EntitySelector.java:56: 错误: 需要')'或','
+              String a = StringUtils.plainText(displayName.getVisualOrderText()());
+                                                                               ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:157: 错误: 需要')'或','
+                  this.panel.replayEditor.moveReplay(result.position()().x, result.position()().y, result.position()().z);
+                                                                      ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:765: 错误: 需要')'或','
+              distance = (float) position.distance(result.position()().x, result.position()().y, result.position()().z) - 0.1F;
+                                                                    ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:1121: 错误: 需要')'或','
+                  Recorder.renderCameraPreview(this.panel.getRunner().position()ition(), context.camera(), context.poseStack()());
+                                                                                ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\LabelFormRenderer.java:164: 错误: 需要';'
+              context.stack.peek().position()itionMatrix(),
+                                                          ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\LabelFormRenderer.java:165: 错误: 需要';'
+              consumers,
+                       ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\LabelFormRenderer.java:166: 错误: 需要';'
+              Font.TextLayerType.NORMAL,
+                                       ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\LabelFormRenderer.java:168: 错误: 需要';'
+              light
+                   ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\ModelFormRenderer.java:271: 错误: 需要';'
+              stack.popPose()();
+                             ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\ModelFormRenderer.java:272: 错误: 需要';'
+              stack.popPose()();
+                             ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\ModelFormRenderer.java:373: 错误: 需要';'
+                  stack.pushPose()();
+                                  ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\ModelFormRenderer.java:389: 错误: 需要';'
+                      stack.pushPose()();
+                                      ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\ModelFormRenderer.java:393: 错误: 需要';'
+                      stack.popPose()();
+                                     ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\ModelFormRenderer.java:402: 错误: 需要';'
+                  stack.popPose()();
+                                 ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\ModelFormRenderer.java:449: 错误: 需要';'
+              matrices.pushPose()();
+                                 ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\ModelFormRenderer.java:469: 错误: 需要';'
+              matrices.popPose()();
+                                ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\ModelFormRenderer.java:531: 错误: 需要';'
+          context.stack.pushPose()();
+                                  ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\ModelFormRenderer.java:537: 错误: 需要';'
+              context.stack.pushPose()();
+                                      ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\ModelFormRenderer.java:550: 错误: 需要';'
+              context.stack.popPose()();
+                                     ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\ModelFormRenderer.java:554: 错误: 需要';'
+          context.stack.popPose()();
+                                 ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\ModelFormRenderer.java:564: 错误: 需要';'
+          stack.pushPose()();
+                          ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\ModelFormRenderer.java:566: 错误: 需要';'
+          oo.set(stack.peek().position()itionMatrix());
+                                                     ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\ModelFormRenderer.java:567: 错误: 需要';'
+          stack.popPose()();
+                         ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\ModelFormRenderer.java:569: 错误: 需要';'
+          stack.pushPose()();
+                          ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\ModelFormRenderer.java:571: 错误: 需要';'
+          mm.set(stack.peek().position()itionMatrix());
+                                                     ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\ModelFormRenderer.java:592: 错误: 需要';'
+              stack.pushPose()();
+                              ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\ModelFormRenderer.java:594: 错误: 需要';'
+              matrix.set(stack.peek().position()itionMatrix());
+                                                             ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\ModelFormRenderer.java:595: 错误: 需要';'
+              stack.popPose()();
+                             ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\ModelFormRenderer.java:597: 错误: 需要';'
+              stack.pushPose()();
+                              ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\ModelFormRenderer.java:599: 错误: 需要';'
+              o.set(stack.peek().position()itionMatrix());
+                                                        ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\ModelFormRenderer.java:600: 错误: 需要';'
+              stack.popPose()();
+                             ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\ModelFormRenderer.java:616: 错误: 需要';'
+                  stack.pushPose()();
+                                  ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\ModelFormRenderer.java:631: 错误: 需要';'
+                  stack.popPose()();
+                                 ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\ModelFormRenderer.java:637: 错误: 需要';'
+          stack.popPose()();
+                         ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\ParticleFormRenderer.java:91: 错误: 需要';'
+              PoseStack stack = context.batcher.getContext().pose()();
+                                                                   ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\ParticleFormRenderer.java:94: 错误: 需要';'
+              stack.pushPose()();
+                              ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\TrailFormRenderer.java:166: 错误: 需要';'
+          stack.pushPose()();
+                          ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\VanillaParticleFormRenderer.java:64: 错误: 需要';'
+          Camera camera = Minecraft.getInstance().gameRenderer.getMainCamera()();
+                                                                              ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\VanillaParticleFormRenderer.java:71: 错误: 需要';'
+          translation.add(camera.position()().x, camera.position()().y, camera.position()().z);
+                                               ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\VanillaParticleFormRenderer.java:71: 错误: 需要';'
+          translation.add(camera.position()().x, camera.position()().y, camera.position()().z);
+                                                                  ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\VanillaParticleFormRenderer.java:71: 错误: 需要';'
+          translation.add(camera.position()().x, camera.position()().y, camera.position()().z);
+                                                                      ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\VanillaParticleFormRenderer.java:71: 错误: 需要';'
+          translation.add(camera.position()().x, camera.position()().y, camera.position()().z);
+                                                                                         ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\VanillaParticleFormRenderer.java:71: 错误: 需要';'
+          translation.add(camera.position()().x, camera.position()().y, camera.position()().z);
+                                                                                             ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\VanillaParticleFormRenderer.java:72: 错误: 需要';'
+          context.stack.pushPose()();
+                                  ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\sections\ParticleFormSection.java:26: 错误: 需要')'
+          for (String key : BBSModClient.getParticles().getAllKeys()())
+                                                                    ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\sections\ParticleFormSection.java:26: 错误: 需要->
+          for (String key : BBSModClient.getParticles().getAllKeys()())
+                                                                      ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\graphics\Draw.java:82: 错误: 需要';'
+          Matrix4f matrix4f = stack.peek().position()itionMatrix();
+                                                     ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\graphics\Draw.java:96: 错误: 需要';'
+          Matrix4f matrix4f = stack.peek().position()itionMatrix();
+                                                     ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\graphics\Draw.java:197: 错误: 需要';'
+          Matrix4f mat = stack.peek().position()itionMatrix();
+                                                ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\graphics\line\LineBuilder.java:41: 错误: 需要';'
+              this.pushPose()();
+                             ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\graphics\line\LineBuilder.java:53: 错误: 需要';'
+          return this.pushPose()(new Line<>());
+                                ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\graphics\line\LineBuilder.java:53: 错误: 需要';'
+          return this.pushPose()(new Line<>());
+                                             ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\graphics\line\LineBuilder.java:82: 错误: 需要';'
+          Matrix4f matrix = batcher2D.getContext().pose()().peek().position()itionMatrix();
+                                                         ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\graphics\line\LineBuilder.java:82: 错误: 需要';'
+          Matrix4f matrix = batcher2D.getContext().pose()().peek().position()itionMatrix();
+                                                                             ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\mixin\client\CameraMixin.java:30: 错误: 需要';'
+              Vector3d position = controller.position()ition();
+                                                       ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\selectors\EntitySelector.java:66: 错误: 需要')'
+          for (String key : source.getAllKeys()())
+                                               ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\selectors\EntitySelector.java:66: 错误: 需要->
+          for (String key : source.getAllKeys()())
+                                                 ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\dashboard\textures\UIPixelsEditor.java:249: 错误: 需要';'
+              this.undoManager.pushPose()Undo(this.pixelsUndo);
+                                         ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\dashboard\textures\UITextureEditor.java:140: 错误: 需要';'
+          this.undoManager.pushPose()Undo(pixelsUndo);
+                                     ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:93: 错误: 需要';'
+          Matrix4f matrix = context.batcher.getContext().pose()().peek().position()itionMatrix();
+                                                               ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:93: 错误: 需要';'
+          Matrix4f matrix = context.batcher.getContext().pose()().peek().position()itionMatrix();
+                                                                                   ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\UILookClip.java:115: 错误: 需要';'
+              Vec3 vec = ehr.position()();
+                                       ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\UIPathClip.java:79: 错误: 需要';'
+          this.position = this.position()ition(index);
+                                         ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\UIPathClip.java:122: 错误: 需要';'
+          this.position = this.position()ition(index);
+                                         ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:157: 错误: 需要';'
+                  this.panel.replayEditor.moveReplay(result.position()().x, result.position()().y, result.position()().z);
+                                                                          ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:157: 错误: 需要';'
+                  this.panel.replayEditor.moveReplay(result.position()().x, result.position()().y, result.position()().z);
+                                                                                             ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:157: 错误: 需要';'
+                  this.panel.replayEditor.moveReplay(result.position()().x, result.position()().y, result.position()().z);
+                                                                                                 ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:157: 错误: 需要';'
+                  this.panel.replayEditor.moveReplay(result.position()().x, result.position()().y, result.position()().z);
+                                                                                                                    ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:157: 错误: 需要';'
+                  this.panel.replayEditor.moveReplay(result.position()().x, result.position()().y, result.position()().z);
+                                                                                                                        ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:765: 错误: 需要';'
+              distance = (float) position.distance(result.position()().x, result.position()().y, result.position()().z) - 0.1F;
+                                                                        ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:765: 错误: 需要';'
+              distance = (float) position.distance(result.position()().x, result.position()().y, result.position()().z) - 0.1F;
+                                                                                           ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:765: 错误: 需要';'
+              distance = (float) position.distance(result.position()().x, result.position()().y, result.position()().z) - 0.1F;
+                                                                                               ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:765: 错误: 需要';'
+              distance = (float) position.distance(result.position()().x, result.position()().y, result.position()().z) - 0.1F;
+                                                                                                                  ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:765: 错误: 需要';'
+              distance = (float) position.distance(result.position()().x, result.position()().y, result.position()().z) - 0.1F;
+                                                                                                                      ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:1035: 错误: 需要';'
+          PoseStack worldStack = this.worldRendercontext.poseStack()();
+                                                                    ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:1037: 错误: 需要';'
+          worldStack.pushPose()();
+                               ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:1041: 错误: 需要';'
+          worldStack.popPose()();
+                              ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:1121: 错误: 需要';'
+                  Recorder.renderCameraPreview(this.panel.getRunner().position()ition(), context.camera(), context.poseStack()());
+                                                                                       ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:1121: 错误: 需要';'
+                  Recorder.renderCameraPreview(this.panel.getRunner().position()ition(), context.camera(), context.poseStack()());
+                                                                                                         ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:1121: 错误: 需要';'
+                  Recorder.renderCameraPreview(this.panel.getRunner().position()ition(), context.camera(), context.poseStack()());
+                                                                                                                              ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\replays\UIReplayList.java:474: 错误: 需要';'
+          Vec3 p = blockHitResult.position()();
+                                            ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\replays\UIReplayList.java:565: 错误: 需要';'
+          BlockPos blockPos = modelBlock.position()();
+                                                   ^
+  100 个错误
+
+* Try:
+> Check your code and dependencies to fix the compilation error(s)
+> Run with --scan to get full insights from a Build Scan (powered by Develocity).
+
+BUILD FAILED in 10s
+3 actionable tasks: 1 executed, 2 up-to-date

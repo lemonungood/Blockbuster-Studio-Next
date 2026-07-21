@@ -29,7 +29,7 @@ public class UIParticleSettings extends UIElement
             UIListOverlayPanel overlayPanel = new UIListOverlayPanel(UIKeys.FORMS_EDITORS_VANILLA_PARTICLE_EDITOR_TITLE, (l) -> this.setParticle(new Identifier(l)));
             List<String> strings = new ArrayList<>();
 
-            for (ResourceKey<ParticleType<?>> key : BuiltInRegistries.PARTICLE_TYPE.getKeys())
+            for (ResourceKey<ParticleType<?>> key : BuiltInRegistries.PARTICLE_TYPE.getAllKeys())
             {
                 strings.add(key.getValue().toString());
             }

@@ -3,6 +3,11 @@ package mchorse.bbs_mod.forms.renderers.utils;
 import mchorse.bbs_mod.utils.colors.Color;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 
+/**
+ * RecolorVertexConsumer - updated for MC 26.2 VertexConsumer API.
+ * Old methods (vertex, color, texture, overlay, light, normal, next, fixedColor, unfixColor) 
+ * were replaced with addVertex, setColor, setUv, setUv1, setUv2, setNormal, setLineWidth.
+ */
 public class RecolorVertexConsumer implements VertexConsumer
 {
     public static Color newColor;
@@ -17,61 +22,55 @@ public class RecolorVertexConsumer implements VertexConsumer
     }
 
     @Override
-    public VertexConsumer vertex(double x, double y, double z)
+    public VertexConsumer addVertex(float x, float y, float z)
     {
-        return this.consumer.vertex(x, y, z);
+        return this.consumer.addVertex(x, y, z);
     }
 
     @Override
-    public VertexConsumer color(int red, int green, int blue, int alpha)
+    public VertexConsumer setColor(int packed)
+    {
+        return this.consumer.setColor(packed);
+    }
+
+    @Override
+    public VertexConsumer setColor(int red, int green, int blue, int alpha)
     {
         red = (int) (this.color.r * red);
         green = (int) (this.color.g * green);
         blue = (int) (this.color.b * blue);
         alpha = (int) (this.color.a * alpha);
 
-        return this.consumer.color(red, green, blue, alpha);
+        return this.consumer.setColor(red, green, blue, alpha);
     }
 
     @Override
-    public VertexConsumer texture(float u, float v)
+    public VertexConsumer setUv(float u, float v)
     {
-        return this.consumer.texture(u, v);
+        return this.consumer.setUv(u, v);
     }
 
     @Override
-    public VertexConsumer overlay(int u, int v)
+    public VertexConsumer setUv1(int u, int v)
     {
-        return this.consumer.overlay(u, v);
+        return this.consumer.setUv1(u, v);
     }
 
     @Override
-    public VertexConsumer light(int u, int v)
+    public VertexConsumer setUv2(int u, int v)
     {
-        return this.consumer.light(u, v);
+        return this.consumer.setUv2(u, v);
     }
 
     @Override
-    public VertexConsumer normal(float x, float y, float z)
+    public VertexConsumer setNormal(float x, float y, float z)
     {
-        return this.consumer.normal(x, y, z);
+        return this.consumer.setNormal(x, y, z);
     }
 
     @Override
-    public void next()
+    public VertexConsumer setLineWidth(float width)
     {
-        this.consumer.next();
-    }
-
-    @Override
-    public void fixedColor(int red, int green, int blue, int alpha)
-    {
-        this.consumer.fixedColor(red, green, blue, alpha);
-    }
-
-    @Override
-    public void unfixColor()
-    {
-        this.consumer.unfixColor();
+        return this;
     }
 }

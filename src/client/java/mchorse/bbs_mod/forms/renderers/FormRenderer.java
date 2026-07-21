@@ -102,14 +102,14 @@ public abstract class FormRenderer <T extends Form>
 
         boolean isPicking = context.stencilMap != null;
 
-        context.stack.push();
+        context.stack.pushPose();
         this.applyTransforms(context.stack, false, context.getTransition());
 
         float lf = 1F - MathUtils.clamp(this.form.lighting.get(), 0F, 1F);
         int u = context.light & '\uffff';
         int v = context.light >> 16 & '\uffff';
 
-        u = (int) Lerps.lerp(u, LightmapTextureManager.MAX_BLOCK_LIGHT_COORDINATE, lf);
+        u = (int) Lerps.lerp(u, 240, lf);
         context.light = u | v << 16;
 
         this.render3D(context);
@@ -121,7 +121,7 @@ public abstract class FormRenderer <T extends Form>
 
         this.renderBodyParts(context);
 
-        context.stack.pop();
+        context.stack.popPose();
 
         context.light = light;
 
@@ -184,13 +184,14 @@ public abstract class FormRenderer <T extends Form>
 
     protected void setupTarget(FormRenderingContext context, ShaderProgram program)
     {
-        GlUniform target = program.getUniform("Target");
+        // [MC 26.2] GlUniform removed - getUniform/getUniformLocation no longer available
+        int targetLoc = program.getUniformLocation("Target");
 
-        if (target != null)
+        if (targetLoc >= 0)
         {
             int pickingIndex = context.getPickingIndex();
 
-            target.set(pickingIndex);
+            program.setUniform(targetLoc, pickingIndex, 0, 0, 0);
         }
     }
 
@@ -218,12 +219,12 @@ public abstract class FormRenderer <T extends Form>
 
         if (part.getForm() != null)
         {
-            context.stack.push();
+            context.stack.pushPose();
             PoseStackUtils.applyTransform(context.stack, part.transform.get());
 
             FormUtilsClient.render(part.getForm(), context);
 
-            context.stack.pop();
+            context.stack.popPose();
         }
 
         context.entity = oldEntity;
@@ -244,14 +245,14 @@ public abstract class FormRenderer <T extends Form>
         Matrix4f mm = new Matrix4f();
         Matrix4f oo = new Matrix4f();
 
-        stack.push();
+        stack.pushPose();
         this.applyTransforms(stack, true, transition);
-        oo.set(stack.peek().getPositionMatrix());
-        stack.pop();
+        oo.set(stack.last().pose());
+        stack.popPose();
 
-        stack.push();
+        stack.pushPose();
         this.applyTransforms(stack, false, transition);
-        mm.set(stack.peek().getPositionMatrix());
+        mm.set(stack.last().pose());
 
         matrices.put(prefix, mm, oo);
 
@@ -263,18 +264,18 @@ public abstract class FormRenderer <T extends Form>
 
             if (form != null)
             {
-                stack.push();
+                stack.pushPose();
                 PoseStackUtils.applyTransform(stack, part.transform.get());
 
                 FormUtilsClient.getRenderer(form).collectMatrices(entity, stack, matrices, StringUtils.combinePaths(prefix, String.valueOf(i)), transition);
 
-                stack.pop();
+                stack.popPose();
             }
 
             i += 1;
         }
 
-        stack.pop();
+        stack.popPose();
     }
 }
 

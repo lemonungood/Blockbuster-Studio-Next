@@ -506,7 +506,6 @@ public class UIContext implements IViewportStack
     public void shiftX(int x)
     {
         this.mouseX += x;
-        this.render.batcher.getContext().pose().translate(-x, 0, 0);
         this.viewportStack.shiftX(x);
     }
 
@@ -514,7 +513,6 @@ public class UIContext implements IViewportStack
     public void shiftY(int y)
     {
         this.mouseY += y;
-        this.render.batcher.getContext().pose().translate(0, -y, 0);
         this.viewportStack.shiftY(y);
     }
 
@@ -538,7 +536,7 @@ public class UIContext implements IViewportStack
 
     public void resetMatrix()
     {
-        this.render.batcher.getContext().pose().setIdentity();
+        // GuiGraphicsExtractor does not expose pose stack in MC 26.2
     }
 
     public void update()

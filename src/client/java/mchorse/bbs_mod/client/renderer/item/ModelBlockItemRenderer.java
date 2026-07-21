@@ -62,17 +62,17 @@ public class ModelBlockItemRenderer
 
                 Transform transform = properties.getTransform(mode);
 
-                matrices.push();
+                matrices.pushPose();
                 matrices.translate(0.5F, 0F, 0.5F);
                 PoseStackUtils.applyTransform(matrices, transform);
 
                 /* enableDepthTest removed */;
                 FormUtilsClient.render(form, new FormRenderingContext()
                     .set(FormRenderType.fromModelMode(mode), item.formEntity, matrices, light, overlay, Minecraft.getInstance().getDeltaTracker().getGameTimeDeltaPartialTick(false))
-                    .camera(/* Camera */ null));
+                    .camera((net.minecraft.client.Camera) null));
                 /* disableDepthTest removed */;
 
-                matrices.pop();
+                matrices.popPose();
             }
         }
     }
@@ -89,18 +89,19 @@ public class ModelBlockItemRenderer
             return this.map.get(stack);
         }
 
-        CompoundTag nbt = stack.getTag();
+        var component = stack.get(net.minecraft.core.component.DataComponents.BLOCK_ENTITY_DATA);
         ModelBlockEntity entity = new ModelBlockEntity(BlockPos.ZERO, BBSMod.MODEL_BLOCK.defaultBlockState());
         Item item = new Item(entity);
 
         this.map.put(stack, item);
 
-        if (nbt == null)
+        if (component == null)
         {
             return item;
         }
 
-        entity.readNbt(nbt.getCompound("BlockEntityTag"));
+        // [MC 26.2] TypedEntityData.getTag() → loadInto(BlockEntity, HolderLookup.Provider)
+        component.loadInto(entity, Minecraft.getInstance().level.registryAccess());
 
         return item;
     }

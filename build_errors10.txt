@@ -1,0 +1,1041 @@
+WARNING: A restricted method in java.lang.System has been called
+WARNING: java.lang.System::load has been called by net.rubygrapefruit.platform.internal.NativeLibraryLoader in an unnamed module (file:/C:/Users/hechengyu/.gradle/wrapper/dists/gradle-9.5.1-bin/iq79hdu3mqx29lgffhp8bfmx/gradle-9.5.1/lib/native-platform-0.22-milestone-29.jar)
+WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+
+> Configure project :
+Fabric Loom: 1.17.16
+
+> Task :compileJava UP-TO-DATE
+> Task :processResources UP-TO-DATE
+> Task :classes UP-TO-DATE
+
+> Task :compileClientJava
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\utils\VideoRecorder.java:9: 警告: Unsafe是内部专用 API, 可能会在未来发行版中删除
+import sun.misc.Unsafe;
+               ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\particles\emitter\ParticleEmitter.java:18: 错误: 找不到符号
+import net.minecraft.client.renderer.ShaderProgram;
+                                    ^
+  符号:   类 ShaderProgram
+  位置: 程序包 net.minecraft.client.renderer
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\particles\emitter\ParticleEmitter.java:22: 错误: 找不到符号
+import com.mojang.blaze3d.vertex.VertexFormat.DrawMode;
+                                             ^
+  符号:   类 DrawMode
+  位置: 类 VertexFormat
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\particles\emitter\ParticleEmitter.java:469: 错误: 找不到符号
+    public void render(VertexFormat format, Supplier<ShaderProgram> program, PoseStack stack, int overlay, float transition)
+                                                     ^
+  符号:   类 ShaderProgram
+  位置: 类 ParticleEmitter
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\UIContext.java:509: 错误: 不兼容的类型: float无法转换为Matrix3x2f
+        this.render.batcher.getContext().pose().translate((float)-x, 0f, 0f);
+                                                                         ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\UIContext.java:517: 错误: 不兼容的类型: float无法转换为Matrix3x2f
+        this.render.batcher.getContext().pose().translate(0f, (float)-y, 0f);
+                                                                         ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\UIContext.java:541: 错误: 找不到符号
+        PoseStack ps = this.render.batcher.getContext().pose();
+        ^
+  符号:   类 PoseStack
+  位置: 类 UIContext
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\utils\Scroll.java:468: 错误: 找不到符号
+            float progress = (this.direction.getMouse(x, y) - (this.direction.position(this.area, 0F) + scrollbar * this.scrollbarRatio)) / (float) h;
+                                                                             ^
+  符号:   方法 position(Area,float)
+  位置: 类型为ScrollDirection的变量 direction
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\BBSModClient.java:447: 错误: 找不到符号
+            if (mc.screen != null)
+                  ^
+  符号:   变量 screen
+  位置: 类型为Minecraft的变量 mc
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\BBSModClient.java:449: 错误: 找不到符号
+                mc.screen.tick();
+                  ^
+  符号:   变量 screen
+  位置: 类型为Minecraft的变量 mc
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\utils\VideoRecorder.java:156: 警告: Unsafe是内部专用 API, 可能会在未来发行版中删除
+            Unsafe unsafe = UnsafeUtils.getUnsafe();
+            ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\utils\VideoRecorder.java:164: 警告: [removal] Unsafe 中的 objectFieldOffset(Field) 已过时, 且标记为待删除
+                    os = (OutputStream) unsafe.getObject(os, unsafe.objectFieldOffset(outField));
+                                                                   ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\utils\VideoRecorder.java:164: 警告: [removal] Unsafe 中的 getObject(Object,long) 已过时, 且标记为待删除
+                    os = (OutputStream) unsafe.getObject(os, unsafe.objectFieldOffset(outField));
+                                              ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\renderer\item\ModelBlockItemRenderer.java:92: 错误: 找不到符号
+        net.minecraft.world.level.block.entity.BlockEntityData data = stack.get(net.minecraft.core.component.DataComponents.BLOCK_ENTITY_DATA);
+                                              ^
+  符号:   类 BlockEntityData
+  位置: 程序包 net.minecraft.world.level.block.entity
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\Films.java:269: 错误: 找不到符号
+        GL11.glEnable(GL11.GL_DEPTH_TEST);
+                      ^
+  符号:   变量 GL11
+  位置: 类 Films
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\Films.java:269: 错误: 找不到符号
+        GL11.glEnable(GL11.GL_DEPTH_TEST);
+        ^
+  符号:   变量 GL11
+  位置: 类 Films
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\Films.java:281: 错误: 找不到符号
+        GL11.glDisable(GL11.GL_DEPTH_TEST);
+                       ^
+  符号:   变量 GL11
+  位置: 类 Films
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\Films.java:281: 错误: 找不到符号
+        GL11.glDisable(GL11.GL_DEPTH_TEST);
+        ^
+  符号:   变量 GL11
+  位置: 类 Films
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\BaseFilmController.java:88: 错误: 找不到符号
+        double cx = camera.getPosition().x;
+                          ^
+  符号:   方法 getPosition()
+  位置: 类型为Camera的变量 camera
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\BaseFilmController.java:89: 错误: 找不到符号
+        double cy = camera.getPosition().y;
+                          ^
+  符号:   方法 getPosition()
+  位置: 类型为Camera的变量 camera
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\BaseFilmController.java:90: 错误: 找不到符号
+        double cz = camera.getPosition().z;
+                          ^
+  符号:   方法 getPosition()
+  位置: 类型为Camera的变量 camera
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\BaseFilmController.java:306: 错误: 找不到符号
+        float bodyYaw = Lerps.lerp(entity.getYBodyRotO(), entity.getYBodyRot(), tickDelta);
+                                         ^
+  符号:   方法 getYBodyRotO()
+  位置: 类型为IEntity的变量 entity
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\BaseFilmController.java:306: 错误: 找不到符号
+        float bodyYaw = Lerps.lerp(entity.getYBodyRotO(), entity.getYBodyRot(), tickDelta);
+                                                                ^
+  符号:   方法 getYBodyRot()
+  位置: 类型为IEntity的变量 entity
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\BaseFilmController.java:378: 错误: 找不到符号
+                entity.setYRotO(entity.getYRot());
+                                      ^
+  符号:   方法 getYRot()
+  位置: 类型为IEntity的变量 entity
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\BaseFilmController.java:379: 错误: 找不到符号
+                entity.setYHeadRotO(entity.getYHeadRot());
+                                          ^
+  符号:   方法 getYHeadRot()
+  位置: 类型为IEntity的变量 entity
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\BaseFilmController.java:380: 错误: 找不到符号
+                entity.setXRotO(entity.getXRot());
+                                      ^
+  符号:   方法 getXRot()
+  位置: 类型为IEntity的变量 entity
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\BaseFilmController.java:381: 错误: 找不到符号
+                entity.setYBodyRotO(entity.getYBodyRot());
+                                          ^
+  符号:   方法 getYBodyRot()
+  位置: 类型为IEntity的变量 entity
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\BaseFilmController.java:513: 错误: 找不到符号
+                                playerEntity.input.shiftPressed = sneaking;
+                                                  ^
+  符号:   变量 shiftPressed
+  位置: 类型为ClientInput的变量 input
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\WorldFilmController.java:75: 错误: 找不到符号
+        this.context.setup(tick, Minecraft.getInstance().getDeltaTracker().getGameTimeDeltaPartialTick(false));
+                                 ^
+  符号:   变量 Minecraft
+  位置: 类 WorldFilmController
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\Recorder.java:63: 错误: 找不到符号
+        float x = (float) (position.point.x - camera.getPosition().x);
+                                                    ^
+  符号:   方法 getPosition()
+  位置: 类型为Camera的变量 camera
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\Recorder.java:64: 错误: 找不到符号
+        float y = (float) (position.point.y - camera.getPosition().y);
+                                                    ^
+  符号:   方法 getPosition()
+  位置: 类型为Camera的变量 camera
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\Recorder.java:65: 错误: 找不到符号
+        float z = (float) (position.point.z - camera.getPosition().z);
+                                                    ^
+  符号:   方法 getPosition()
+  位置: 类型为Camera的变量 camera
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\Recorder.java:82: 错误: 找不到符号
+        MeshData mesh = builder.buildOrThrow();
+        ^
+  符号:   类 MeshData
+  位置: 类 Recorder
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\Recorder.java:127: 错误: 找不到符号
+            this.lastRotation = new Vector4f(player.getYRot(), player.getXRot(), player.getYHeadRot(), player.getYBodyRot());
+                                                                                                             ^
+  符号:   方法 getYBodyRot()
+  位置: 类型为LocalPlayer的变量 player
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\Recorder.java:150: 错误: 找不到符号
+        renderCameraPreview(this.position, context.gameRenderer().getMainCamera(), context.poseStack());
+                                                                 ^
+  符号:   方法 getMainCamera()
+  位置: 类 GameRenderer
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\FilmControllerContext.java:71: 错误: 找不到符号
+        this.camera = context.gameRenderer().getMainCamera();
+                                            ^
+  符号:   方法 getMainCamera()
+  位置: 类 GameRenderer
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\FilmControllerContext.java:74: 错误: 找不到符号
+        this.transition = Minecraft.getInstance().getDeltaTracker().getGameTimeDeltaPartialTick(false);
+                          ^
+  符号:   变量 Minecraft
+  位置: 类 FilmControllerContext
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\particles\emitter\ParticleEmitter.java:455: 错误: 找不到符号
+            BufferBuilder builder = new BufferBuilder(byteBuf, DrawMode.TRIANGLES, DefaultVertexFormat.POSITION_TEX_COLOR);
+                                                               ^
+  符号:   变量 DrawMode
+  位置: 类 ParticleEmitter
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\particles\emitter\ParticleEmitter.java:487: 错误: 找不到符号
+            BufferBuilder builder = new BufferBuilder(byteBuf, DrawMode.TRIANGLES, format);
+                                                               ^
+  符号:   变量 DrawMode
+  位置: 类 ParticleEmitter
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\selectors\EntitySelector.java:50: 错误: 不兼容的类型: CompoundTag无法转换为ValueOutput
+            mcEntity.saveWithoutId(entityCompound);
+                                   ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\selectors\EntitySelector.java:101: 错误: 无法将类 TagParser<T>中的构造器 TagParser应用到给定类型;
+                this.nbt = new net.minecraft.nbt.TagParser(new StringReader(data.getString("nbt"))).readCompound();
+                           ^
+  需要: DynamicOps,Grammar
+  找到:    StringReader
+  原因: 实际参数列表和形式参数列表长度不同
+  其中, T是类型变量:
+    T扩展已在类 TagParser中声明的Object
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\categories\UIFormCategory.java:114: 错误: 找不到符号
+                    String name = Minecraft.getInstance().player.getGameProfile().getName();
+                                                                                 ^
+  符号:   方法 getName()
+  位置: 类 GameProfile
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\categories\UIFormCategory.java:122: 错误: 找不到符号
+                Collection<PlayerInfo> playerList = Minecraft.getInstance().getNetworkHandler().getPlayerList();
+                                                                           ^
+  符号:   方法 getNetworkHandler()
+  位置: 类 Minecraft
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\categories\UIFormCategory.java:132: 错误: 找不到符号
+                                if (entry.getProfile().getId().equals(Minecraft.getInstance().player.getGameProfile().getId()))
+                                                      ^
+  符号:   方法 getId()
+  位置: 类 GameProfile
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\categories\UIFormCategory.java:132: 错误: 找不到符号
+                                if (entry.getProfile().getId().equals(Minecraft.getInstance().player.getGameProfile().getId()))
+                                                                                                                     ^
+  符号:   方法 getId()
+  位置: 类 GameProfile
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\categories\UIFormCategory.java:137: 错误: 找不到符号
+                                newMenu.action(Icons.ARROW_RIGHT, IKey.constant(entry.getProfile().getName()), () ->
+                                                                                                  ^
+  符号:   方法 getName()
+  位置: 类 GameProfile
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\categories\UIFormCategory.java:139: 错误: 找不到符号
+                                    ClientNetwork.sendSharedForm(this.selected, entry.getProfile().getId());
+                                                                                                  ^
+  符号:   方法 getId()
+  位置: 类 GameProfile
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\cubic\ModelInstance.java:345: 错误: 找不到符号
+                RenderSystem.setShader(program);
+                            ^
+  符号:   方法 setShader(Supplier<ShaderProgram>)
+  位置: 类 RenderSystem
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\UIFilmPanel.java:734: 错误: 找不到符号
+        camera.set(mc.player, MathUtils.toRad(mc.options.getFov().getValue()));
+                                                        ^
+  符号:   方法 getFov()
+  位置: 类型为Options的变量 options
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\UIFilmPanel.java:955: 错误: 找不到符号
+            int value = Minecraft.getInstance().options.getViewDistance().getValue();
+                                                       ^
+  符号:   方法 getViewDistance()
+  位置: 类型为Options的变量 options
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\utils\UIDraggable.java:50: 错误: UIDraggable 中的 subMouseHandlerClicked(UIContext) 不会覆盖或实现超类型中的方法
+    @Override
+    ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\utils\UIDraggable.java:67: 错误: 找不到符号
+        return super.subMouseHandlerClicked(context);
+                    ^
+  符号: 方法 subMouseHandlerClicked(UIContext)
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\utils\UIDraggable.java:70: 错误: UIDraggable 中的 subMouseHandlerReleased(UIContext) 不会覆盖或实现超类型中的方法
+    @Override
+    ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\utils\UIDraggable.java:75: 错误: 找不到符号
+        return super.subMouseHandlerReleased(context);
+                    ^
+  符号: 方法 subMouseHandlerReleased(UIContext)
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\UIFilmPreview.java:252: 错误: 找不到符号
+        camera.copy(this.panel.getWorldCamera());
+              ^
+  符号:   方法 copy(Camera)
+  位置: 类型为Camera的变量 camera
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\UIFilmPreview.java:253: 错误: 找不到符号
+        camera.updatePerspectiveProjection(width, height);
+              ^
+  符号:   方法 updatePerspectiveProjection(int,int)
+  位置: 类型为Camera的变量 camera
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\UIFilmPreview.java:284: 错误: 找不到符号
+        camera.copy(this.panel.getWorldCamera());
+              ^
+  符号:   方法 copy(Camera)
+  位置: 类型为Camera的变量 camera
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\UIFilmPreview.java:285: 错误: 找不到符号
+        camera.view.set(this.panel.lastView);
+              ^
+  符号:   变量 view
+  位置: 类型为Camera的变量 camera
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\UIFilmPreview.java:286: 错误: 找不到符号
+        camera.projection.set(this.panel.lastProjection);
+              ^
+  符号:   变量 projection
+  位置: 类型为Camera的变量 camera
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\UIFilmPreview.java:375: 错误: 找不到符号
+        net.minecraft.client.Camera mcCamera = Minecraft.getInstance().gameRenderer.getMainCamera();
+                                                                                   ^
+  符号:   方法 getMainCamera()
+  位置: 类型为GameRenderer的变量 gameRenderer
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\UIFilmPreview.java:380: 错误: 找不到符号
+        stack.multiplyPositionMatrix(context.batcher.getContext().pose().last().pose());
+                                                                        ^
+  符号:   方法 last()
+  位置: 类 Matrix3x2fStack
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\UIFilmPreview.java:382: 错误: 找不到符号
+        stack.multiply(com.mojang.math.Axis.XN.rotationDegrees(mcCamera.getXRot()));
+                                                                       ^
+  符号:   方法 getXRot()
+  位置: 类型为Camera的变量 mcCamera
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\UIFilmPreview.java:383: 错误: 找不到符号
+        stack.multiply(com.mojang.math.Axis.YP.rotationDegrees(mcCamera.getYRot()));
+                                                                       ^
+  符号:   方法 getYRot()
+  位置: 类型为Camera的变量 mcCamera
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\replays\UIReplaysEditor.java:541: 错误: 找不到符号
+                RayTracing.fromVector3f(CameraUtils.getMouseDirection(camera.projection, camera.view, context.mouseX, context.mouseY, area.x, area.y, area.w, area.h)),
+                                                                            ^
+  符号:   变量 projection
+  位置: 类型为Camera的变量 camera
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\replays\UIReplaysEditor.java:541: 错误: 找不到符号
+                RayTracing.fromVector3f(CameraUtils.getMouseDirection(camera.projection, camera.view, context.mouseX, context.mouseY, area.x, area.y, area.w, area.h)),
+                                                                                               ^
+  符号:   变量 view
+  位置: 类型为Camera的变量 camera
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:151: 错误: 找不到符号
+                RayTracing.fromVector3f(camera.getMouseHandlerDirection(context.mouseX, context.mouseY, area.x, area.y, area.w, area.h)),
+                                              ^
+  符号:   方法 getMouseHandlerDirection(int,int,int,int,int,int)
+  位置: 类型为Camera的变量 camera
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:219: 错误: 找不到符号
+            GLFW.glfwSetInputMode(window.getHandle(), GLFW.GLFW_CURSOR, GLFW.GLFW_CURSOR_DISABLED);
+                                        ^
+  符号:   方法 getHandle()
+  位置: 类型为Window的变量 window
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:223: 错误: 找不到符号
+            GLFW.glfwSetInputMode(window.getHandle(), GLFW.GLFW_CURSOR, GLFW.GLFW_CURSOR_NORMAL);
+                                        ^
+  符号:   方法 getHandle()
+  位置: 类型为Window的变量 window
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:374: 错误: 找不到符号
+                PlayerUtils.teleport(this.controlled.getX(), this.controlled.getY(), this.controlled.getZ(), this.controlled.getYHeadRot(), this.controlled.getYBodyRot(), this.controlled.getXRot());
+                                                                                                                            ^
+  符号:   方法 getYHeadRot()
+  位置: 类型为IEntity的变量 controlled
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:374: 错误: 找不到符号
+                PlayerUtils.teleport(this.controlled.getX(), this.controlled.getY(), this.controlled.getZ(), this.controlled.getYHeadRot(), this.controlled.getYBodyRot(), this.controlled.getXRot());
+                                                                                                                                                           ^
+  符号:   方法 getYBodyRot()
+  位置: 类型为IEntity的变量 controlled
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:374: 错误: 找不到符号
+                PlayerUtils.teleport(this.controlled.getX(), this.controlled.getY(), this.controlled.getZ(), this.controlled.getYHeadRot(), this.controlled.getYBodyRot(), this.controlled.getXRot());
+                                                                                                                                                                                          ^
+  符号:   方法 getXRot()
+  位置: 类型为IEntity的变量 controlled
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:430: 错误: 找不到符号
+            Minecraft.getInstance().setScreen(null);
+                                   ^
+  符号:   方法 setScreen(<空值>)
+  位置: 类 Minecraft
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:537: 错误: UIFilmController 中的 subMouseHandlerClicked(UIContext) 不会覆盖或实现超类型中的方法
+    @Override
+    ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:556: 错误: 找不到符号
+        return super.subMouseHandlerClicked(context);
+                    ^
+  符号: 方法 subMouseHandlerClicked(UIContext)
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:571: 错误: UIFilmController 中的 subMouseHandlerReleased(UIContext) 不会覆盖或实现超类型中的方法
+    @Override
+    ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:581: 错误: 找不到符号
+        return super.subMouseHandlerReleased(context);
+                    ^
+  符号: 方法 subMouseHandlerReleased(UIContext)
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:624: 错误: 找不到符号
+        return options.forwardKey.getDefaultKey() == utilKey
+                      ^
+  符号:   变量 forwardKey
+  位置: 类型为Options的变量 options
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:625: 错误: 找不到符号
+            || options.backKey.getDefaultKey() == utilKey
+                      ^
+  符号:   变量 backKey
+  位置: 类型为Options的变量 options
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:626: 错误: 找不到符号
+            || options.leftKey.getDefaultKey() == utilKey
+                      ^
+  符号:   变量 leftKey
+  位置: 类型为Options的变量 options
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:627: 错误: 找不到符号
+            || options.rightKey.getDefaultKey() == utilKey
+                      ^
+  符号:   变量 rightKey
+  位置: 类型为Options的变量 options
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:628: 错误: 找不到符号
+            || options.sneakKey.getDefaultKey() == utilKey
+                      ^
+  符号:   变量 sneakKey
+  位置: 类型为Options的变量 options
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:629: 错误: 找不到符号
+            || options.sprintKey.getDefaultKey() == utilKey
+                      ^
+  符号:   变量 sprintKey
+  位置: 类型为Options的变量 options
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:630: 错误: 找不到符号
+            || options.jumpKey.getDefaultKey() == utilKey;
+                      ^
+  符号:   变量 jumpKey
+  位置: 类型为Options的变量 options
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:737: 错误: 找不到符号
+        rotation.set(controller.getxRotO(), controller.getyHeadRotO(), 0);
+                               ^
+  符号:   方法 getxRotO()
+  位置: 类型为IEntity的变量 controller
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:737: 错误: 找不到符号
+        rotation.set(controller.getxRotO(), controller.getyHeadRotO(), 0);
+                                                      ^
+  符号:   方法 getyHeadRotO()
+  位置: 类型为IEntity的变量 controller
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:738: 错误: 找不到符号
+        rotation.lerp(new Vector3f(controller.getXRot(), controller.getYHeadRot(), 0), transition);
+                                             ^
+  符号:   方法 getXRot()
+  位置: 类型为IEntity的变量 controller
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:738: 错误: 找不到符号
+        rotation.lerp(new Vector3f(controller.getXRot(), controller.getYHeadRot(), 0), transition);
+                                                                   ^
+  符号:   方法 getYHeadRot()
+  位置: 类型为IEntity的变量 controller
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:1002: 错误: 对于clip(int,int,int,int,UIContext), 找不到合适的方法
+                context.batcher.clip(x, y - 10, 40, 40, context);
+                               ^
+    方法 Batcher2D.clip(Area,UIContext)不适用
+      (实际参数列表和形式参数列表长度不同)
+    方法 Batcher2D.clip(int,int,int,int,int,int)不适用
+      (实际参数列表和形式参数列表长度不同)
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:1026: 错误: 找不到符号
+        RenderSystem.depthFunc(GL11.GL_LESS);
+                    ^
+  符号:   方法 depthFunc(int)
+  位置: 类 RenderSystem
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:1031: 错误: 找不到符号
+        RenderSystem.setProjectionMatrix(this.panel.lastProjection, VertexSorter.BY_Z);
+                                                                    ^
+  符号:   变量 VertexSorter
+  位置: 类 UIFilmController
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:1032: 错误: 找不到符号
+        RenderSystem.setInverseViewRotationMatrix(new Matrix3f(this.panel.lastView).invert());
+                    ^
+  符号:   方法 setInverseViewRotationMatrix(Matrix3f)
+  位置: 类 RenderSystem
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:1035: 错误: 找不到符号
+        PoseStack worldStack = this.worldRendercontext.poseStack();
+                                   ^
+  符号: 变量 worldRendercontext
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:1038: 错误: 找不到符号
+        worldStack.loadIdentity();
+                  ^
+  符号:   方法 loadIdentity()
+  位置: 类型为PoseStack的变量 worldStack
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:1046: 错误: 找不到符号
+        RenderSystem.depthFunc(GL11.GL_ALWAYS);
+                    ^
+  符号:   方法 depthFunc(int)
+  位置: 类 RenderSystem
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:1061: 错误: 找不到符号
+        ShaderProgram previewProgram = BBSShaders.getPickerPreviewProgram();
+        ^
+  符号:   类 ShaderProgram
+  位置: 类 UIFilmController
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:1062: 错误: 找不到符号
+        Supplier<ShaderProgram> getPickerPreviewProgram = BBSShaders::getPickerPreviewProgram;
+                 ^
+  符号:   类 ShaderProgram
+  位置: 类 UIFilmController
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:1063: 错误: 找不到符号
+        GlUniform target = previewProgram.getUniform("Target");
+        ^
+  符号:   类 GlUniform
+  位置: 类 UIFilmController
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:1070: 错误: 找不到符号
+        RenderSystem.enableBlend();
+                    ^
+  符号:   方法 enableBlend()
+  位置: 类 RenderSystem
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:1121: 错误: 找不到符号
+                Recorder.renderCameraPreview(this.panel.getRunner().position(), context.camera(), context.poseStack());
+                                                                   ^
+  符号:   方法 position()
+  位置: 类 RunnerCameraController
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:1121: 错误: 找不到符号
+                Recorder.renderCameraPreview(this.panel.getRunner().position(), context.camera(), context.poseStack());
+                                                                                       ^
+  符号:   方法 camera()
+  位置: 类型为LevelRenderContext的变量 context
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:1125: 错误: 找不到符号
+        MouseHandler mouse = Minecraft.getInstance().mouse;
+                                                    ^
+  符号:   变量 mouse
+  位置: 类 Minecraft
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:1126: 错误: 找不到符号
+        int x = (int) mouse.getX();
+                           ^
+  符号:   方法 getX()
+  位置: 类型为MouseHandler的变量 mouse
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:1127: 错误: 找不到符号
+        int y = (int) mouse.getY();
+                           ^
+  符号:   方法 getY()
+  位置: 类型为MouseHandler的变量 mouse
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:1136: 错误: 找不到符号
+                Minecraft.getInstance().player.changeLookDirection(cursorDeltaX, cursorDeltaY);
+                                              ^
+  符号:   方法 changeLookDirection(float,float)
+  位置: 类型为LocalPlayer的变量 player
+注: D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\BBSModClient.java使用或覆盖了已过时的 API。
+注: 有关详细信息, 请使用 -Xlint:deprecation 重新编译。
+注: 某些输入文件使用了未经检查或不安全的操作。
+注: 有关详细信息, 请使用 -Xlint:unchecked 重新编译。
+注: 某些消息已经过简化; 请使用 -Xdiags:verbose 重新编译以获得完整输出
+100 个错误
+4 个警告
+
+> Task :compileClientJava FAILED
+
+[Incubating] Problems report is available at: file:///D:/DEV/bbs_clean/build/reports/problems/problems-report.html
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':compileClientJava' (registered by plugin class 'org.gradle.api.plugins.JavaBasePlugin').
+> Compilation failed; see the compiler output below.
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\selectors\EntitySelector.java:101: 错误: 无法将类 TagParser<T>中的构造器 TagParser应用到给定类型;
+                  this.nbt = new net.minecraft.nbt.TagParser(new StringReader(data.getString("nbt"))).readCompound();
+                             ^
+    需要: DynamicOps,Grammar
+    找到:    StringReader
+    原因: 实际参数列表和形式参数列表长度不同
+    其中, T是类型变量:
+      T扩展已在类 TagParser中声明的Object
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:1002: 错误: 对于clip(int,int,int,int,UIContext), 找不到合适的方法
+                  context.batcher.clip(x, y - 10, 40, 40, context);
+                                 ^
+      方法 Batcher2D.clip(Area,UIContext)不适用
+        (实际参数列表和形式参数列表长度不同)
+      方法 Batcher2D.clip(int,int,int,int,int,int)不适用
+        (实际参数列表和形式参数列表长度不同)
+  注: 有关详细信息, 请使用 -Xlint:deprecation 重新编译。
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\particles\emitter\ParticleEmitter.java:18: 错误: 找不到符号
+  import net.minecraft.client.renderer.ShaderProgram;
+                                      ^
+    符号:   类 ShaderProgram
+    位置: 程序包 net.minecraft.client.renderer
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\particles\emitter\ParticleEmitter.java:22: 错误: 找不到符号
+  import com.mojang.blaze3d.vertex.VertexFormat.DrawMode;
+                                               ^
+    符号:   类 DrawMode
+    位置: 类 VertexFormat
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\particles\emitter\ParticleEmitter.java:469: 错误: 找不到符号
+      public void render(VertexFormat format, Supplier<ShaderProgram> program, PoseStack stack, int overlay, float transition)
+                                                       ^
+    符号:   类 ShaderProgram
+    位置: 类 ParticleEmitter
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\UIContext.java:541: 错误: 找不到符号
+          PoseStack ps = this.render.batcher.getContext().pose();
+          ^
+    符号:   类 PoseStack
+    位置: 类 UIContext
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\BBSModClient.java:447: 错误: 找不到符号
+              if (mc.screen != null)
+                    ^
+    符号:   变量 screen
+    位置: 类型为Minecraft的变量 mc
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\BBSModClient.java:449: 错误: 找不到符号
+                  mc.screen.tick();
+                    ^
+    符号:   变量 screen
+    位置: 类型为Minecraft的变量 mc
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\renderer\item\ModelBlockItemRenderer.java:92: 错误: 找不到符号
+          net.minecraft.world.level.block.entity.BlockEntityData data = stack.get(net.minecraft.core.component.DataComponents.BLOCK_ENTITY_DATA);
+                                                ^
+    符号:   类 BlockEntityData
+    位置: 程序包 net.minecraft.world.level.block.entity
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\Films.java:269: 错误: 找不到符号
+          GL11.glEnable(GL11.GL_DEPTH_TEST);
+                        ^
+    符号:   变量 GL11
+    位置: 类 Films
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\Films.java:269: 错误: 找不到符号
+          GL11.glEnable(GL11.GL_DEPTH_TEST);
+          ^
+    符号:   变量 GL11
+    位置: 类 Films
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\Films.java:281: 错误: 找不到符号
+          GL11.glDisable(GL11.GL_DEPTH_TEST);
+                         ^
+    符号:   变量 GL11
+    位置: 类 Films
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\Films.java:281: 错误: 找不到符号
+          GL11.glDisable(GL11.GL_DEPTH_TEST);
+          ^
+    符号:   变量 GL11
+    位置: 类 Films
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\BaseFilmController.java:513: 错误: 找不到符号
+                                  playerEntity.input.shiftPressed = sneaking;
+                                                    ^
+    符号:   变量 shiftPressed
+    位置: 类型为ClientInput的变量 input
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\WorldFilmController.java:75: 错误: 找不到符号
+          this.context.setup(tick, Minecraft.getInstance().getDeltaTracker().getGameTimeDeltaPartialTick(false));
+                                   ^
+    符号:   变量 Minecraft
+    位置: 类 WorldFilmController
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\Recorder.java:82: 错误: 找不到符号
+          MeshData mesh = builder.buildOrThrow();
+          ^
+    符号:   类 MeshData
+    位置: 类 Recorder
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\FilmControllerContext.java:74: 错误: 找不到符号
+          this.transition = Minecraft.getInstance().getDeltaTracker().getGameTimeDeltaPartialTick(false);
+                            ^
+    符号:   变量 Minecraft
+    位置: 类 FilmControllerContext
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\particles\emitter\ParticleEmitter.java:455: 错误: 找不到符号
+              BufferBuilder builder = new BufferBuilder(byteBuf, DrawMode.TRIANGLES, DefaultVertexFormat.POSITION_TEX_COLOR);
+                                                                 ^
+    符号:   变量 DrawMode
+    位置: 类 ParticleEmitter
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\particles\emitter\ParticleEmitter.java:487: 错误: 找不到符号
+              BufferBuilder builder = new BufferBuilder(byteBuf, DrawMode.TRIANGLES, format);
+                                                                 ^
+    符号:   变量 DrawMode
+    位置: 类 ParticleEmitter
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\UIFilmPreview.java:285: 错误: 找不到符号
+          camera.view.set(this.panel.lastView);
+                ^
+    符号:   变量 view
+    位置: 类型为Camera的变量 camera
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\UIFilmPreview.java:286: 错误: 找不到符号
+          camera.projection.set(this.panel.lastProjection);
+                ^
+    符号:   变量 projection
+    位置: 类型为Camera的变量 camera
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\replays\UIReplaysEditor.java:541: 错误: 找不到符号
+                  RayTracing.fromVector3f(CameraUtils.getMouseDirection(camera.projection, camera.view, context.mouseX, context.mouseY, area.x, area.y, area.w, area.h)),
+                                                                              ^
+    符号:   变量 projection
+    位置: 类型为Camera的变量 camera
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\replays\UIReplaysEditor.java:541: 错误: 找不到符号
+                  RayTracing.fromVector3f(CameraUtils.getMouseDirection(camera.projection, camera.view, context.mouseX, context.mouseY, area.x, area.y, area.w, area.h)),
+                                                                                                 ^
+    符号:   变量 view
+    位置: 类型为Camera的变量 camera
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:624: 错误: 找不到符号
+          return options.forwardKey.getDefaultKey() == utilKey
+                        ^
+    符号:   变量 forwardKey
+    位置: 类型为Options的变量 options
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:625: 错误: 找不到符号
+              || options.backKey.getDefaultKey() == utilKey
+                        ^
+    符号:   变量 backKey
+    位置: 类型为Options的变量 options
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:626: 错误: 找不到符号
+              || options.leftKey.getDefaultKey() == utilKey
+                        ^
+    符号:   变量 leftKey
+    位置: 类型为Options的变量 options
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:627: 错误: 找不到符号
+              || options.rightKey.getDefaultKey() == utilKey
+                        ^
+    符号:   变量 rightKey
+    位置: 类型为Options的变量 options
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:628: 错误: 找不到符号
+              || options.sneakKey.getDefaultKey() == utilKey
+                        ^
+    符号:   变量 sneakKey
+    位置: 类型为Options的变量 options
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:629: 错误: 找不到符号
+              || options.sprintKey.getDefaultKey() == utilKey
+                        ^
+    符号:   变量 sprintKey
+    位置: 类型为Options的变量 options
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:630: 错误: 找不到符号
+              || options.jumpKey.getDefaultKey() == utilKey;
+                        ^
+    符号:   变量 jumpKey
+    位置: 类型为Options的变量 options
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:1031: 错误: 找不到符号
+          RenderSystem.setProjectionMatrix(this.panel.lastProjection, VertexSorter.BY_Z);
+                                                                      ^
+    符号:   变量 VertexSorter
+    位置: 类 UIFilmController
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:1061: 错误: 找不到符号
+          ShaderProgram previewProgram = BBSShaders.getPickerPreviewProgram();
+          ^
+    符号:   类 ShaderProgram
+    位置: 类 UIFilmController
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:1062: 错误: 找不到符号
+          Supplier<ShaderProgram> getPickerPreviewProgram = BBSShaders::getPickerPreviewProgram;
+                   ^
+    符号:   类 ShaderProgram
+    位置: 类 UIFilmController
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:1063: 错误: 找不到符号
+          GlUniform target = previewProgram.getUniform("Target");
+          ^
+    符号:   类 GlUniform
+    位置: 类 UIFilmController
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:1125: 错误: 找不到符号
+          MouseHandler mouse = Minecraft.getInstance().mouse;
+                                                      ^
+    符号:   变量 mouse
+    位置: 类 Minecraft
+  注: 有关详细信息, 请使用 -Xlint:unchecked 重新编译。
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\utils\UIDraggable.java:50: 错误: UIDraggable 中的 subMouseHandlerClicked(UIContext) 不会覆盖或实现超类型中的方法
+      @Override
+      ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\utils\UIDraggable.java:70: 错误: UIDraggable 中的 subMouseHandlerReleased(UIContext) 不会覆盖或实现超类型中的方法
+      @Override
+      ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:537: 错误: UIFilmController 中的 subMouseHandlerClicked(UIContext) 不会覆盖或实现超类型中的方法
+      @Override
+      ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:571: 错误: UIFilmController 中的 subMouseHandlerReleased(UIContext) 不会覆盖或实现超类型中的方法
+      @Override
+      ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\utils\VideoRecorder.java:164: 警告: [removal] Unsafe 中的 objectFieldOffset(Field) 已过时, 且标记为待删除
+                      os = (OutputStream) unsafe.getObject(os, unsafe.objectFieldOffset(outField));
+                                                                     ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\utils\VideoRecorder.java:164: 警告: [removal] Unsafe 中的 getObject(Object,long) 已过时, 且标记为待删除
+                      os = (OutputStream) unsafe.getObject(os, unsafe.objectFieldOffset(outField));
+                                                ^
+  注: 某些输入文件使用了未经检查或不安全的操作。
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\utils\Scroll.java:468: 错误: 找不到符号
+              float progress = (this.direction.getMouse(x, y) - (this.direction.position(this.area, 0F) + scrollbar * this.scrollbarRatio)) / (float) h;
+                                                                               ^
+    符号:   方法 position(Area,float)
+    位置: 类型为ScrollDirection的变量 direction
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\BaseFilmController.java:88: 错误: 找不到符号
+          double cx = camera.getPosition().x;
+                            ^
+    符号:   方法 getPosition()
+    位置: 类型为Camera的变量 camera
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\BaseFilmController.java:89: 错误: 找不到符号
+          double cy = camera.getPosition().y;
+                            ^
+    符号:   方法 getPosition()
+    位置: 类型为Camera的变量 camera
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\BaseFilmController.java:90: 错误: 找不到符号
+          double cz = camera.getPosition().z;
+                            ^
+    符号:   方法 getPosition()
+    位置: 类型为Camera的变量 camera
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\BaseFilmController.java:306: 错误: 找不到符号
+          float bodyYaw = Lerps.lerp(entity.getYBodyRotO(), entity.getYBodyRot(), tickDelta);
+                                           ^
+    符号:   方法 getYBodyRotO()
+    位置: 类型为IEntity的变量 entity
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\BaseFilmController.java:306: 错误: 找不到符号
+          float bodyYaw = Lerps.lerp(entity.getYBodyRotO(), entity.getYBodyRot(), tickDelta);
+                                                                  ^
+    符号:   方法 getYBodyRot()
+    位置: 类型为IEntity的变量 entity
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\BaseFilmController.java:378: 错误: 找不到符号
+                  entity.setYRotO(entity.getYRot());
+                                        ^
+    符号:   方法 getYRot()
+    位置: 类型为IEntity的变量 entity
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\BaseFilmController.java:379: 错误: 找不到符号
+                  entity.setYHeadRotO(entity.getYHeadRot());
+                                            ^
+    符号:   方法 getYHeadRot()
+    位置: 类型为IEntity的变量 entity
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\BaseFilmController.java:380: 错误: 找不到符号
+                  entity.setXRotO(entity.getXRot());
+                                        ^
+    符号:   方法 getXRot()
+    位置: 类型为IEntity的变量 entity
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\BaseFilmController.java:381: 错误: 找不到符号
+                  entity.setYBodyRotO(entity.getYBodyRot());
+                                            ^
+    符号:   方法 getYBodyRot()
+    位置: 类型为IEntity的变量 entity
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\Recorder.java:63: 错误: 找不到符号
+          float x = (float) (position.point.x - camera.getPosition().x);
+                                                      ^
+    符号:   方法 getPosition()
+    位置: 类型为Camera的变量 camera
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\Recorder.java:64: 错误: 找不到符号
+          float y = (float) (position.point.y - camera.getPosition().y);
+                                                      ^
+    符号:   方法 getPosition()
+    位置: 类型为Camera的变量 camera
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\Recorder.java:65: 错误: 找不到符号
+          float z = (float) (position.point.z - camera.getPosition().z);
+                                                      ^
+    符号:   方法 getPosition()
+    位置: 类型为Camera的变量 camera
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\Recorder.java:127: 错误: 找不到符号
+              this.lastRotation = new Vector4f(player.getYRot(), player.getXRot(), player.getYHeadRot(), player.getYBodyRot());
+                                                                                                               ^
+    符号:   方法 getYBodyRot()
+    位置: 类型为LocalPlayer的变量 player
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\Recorder.java:150: 错误: 找不到符号
+          renderCameraPreview(this.position, context.gameRenderer().getMainCamera(), context.poseStack());
+                                                                   ^
+    符号:   方法 getMainCamera()
+    位置: 类 GameRenderer
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\FilmControllerContext.java:71: 错误: 找不到符号
+          this.camera = context.gameRenderer().getMainCamera();
+                                              ^
+    符号:   方法 getMainCamera()
+    位置: 类 GameRenderer
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\categories\UIFormCategory.java:114: 错误: 找不到符号
+                      String name = Minecraft.getInstance().player.getGameProfile().getName();
+                                                                                   ^
+    符号:   方法 getName()
+    位置: 类 GameProfile
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\categories\UIFormCategory.java:122: 错误: 找不到符号
+                  Collection<PlayerInfo> playerList = Minecraft.getInstance().getNetworkHandler().getPlayerList();
+                                                                             ^
+    符号:   方法 getNetworkHandler()
+    位置: 类 Minecraft
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\categories\UIFormCategory.java:132: 错误: 找不到符号
+                                  if (entry.getProfile().getId().equals(Minecraft.getInstance().player.getGameProfile().getId()))
+                                                        ^
+    符号:   方法 getId()
+    位置: 类 GameProfile
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\categories\UIFormCategory.java:132: 错误: 找不到符号
+                                  if (entry.getProfile().getId().equals(Minecraft.getInstance().player.getGameProfile().getId()))
+                                                                                                                       ^
+    符号:   方法 getId()
+    位置: 类 GameProfile
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\categories\UIFormCategory.java:137: 错误: 找不到符号
+                                  newMenu.action(Icons.ARROW_RIGHT, IKey.constant(entry.getProfile().getName()), () ->
+                                                                                                    ^
+    符号:   方法 getName()
+    位置: 类 GameProfile
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\categories\UIFormCategory.java:139: 错误: 找不到符号
+                                      ClientNetwork.sendSharedForm(this.selected, entry.getProfile().getId());
+                                                                                                    ^
+    符号:   方法 getId()
+    位置: 类 GameProfile
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\cubic\ModelInstance.java:345: 错误: 找不到符号
+                  RenderSystem.setShader(program);
+                              ^
+    符号:   方法 setShader(Supplier<ShaderProgram>)
+    位置: 类 RenderSystem
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\UIFilmPanel.java:734: 错误: 找不到符号
+          camera.set(mc.player, MathUtils.toRad(mc.options.getFov().getValue()));
+                                                          ^
+    符号:   方法 getFov()
+    位置: 类型为Options的变量 options
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\UIFilmPanel.java:955: 错误: 找不到符号
+              int value = Minecraft.getInstance().options.getViewDistance().getValue();
+                                                         ^
+    符号:   方法 getViewDistance()
+    位置: 类型为Options的变量 options
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\UIFilmPreview.java:252: 错误: 找不到符号
+          camera.copy(this.panel.getWorldCamera());
+                ^
+    符号:   方法 copy(Camera)
+    位置: 类型为Camera的变量 camera
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\UIFilmPreview.java:253: 错误: 找不到符号
+          camera.updatePerspectiveProjection(width, height);
+                ^
+    符号:   方法 updatePerspectiveProjection(int,int)
+    位置: 类型为Camera的变量 camera
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\UIFilmPreview.java:284: 错误: 找不到符号
+          camera.copy(this.panel.getWorldCamera());
+                ^
+    符号:   方法 copy(Camera)
+    位置: 类型为Camera的变量 camera
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\UIFilmPreview.java:375: 错误: 找不到符号
+          net.minecraft.client.Camera mcCamera = Minecraft.getInstance().gameRenderer.getMainCamera();
+                                                                                     ^
+    符号:   方法 getMainCamera()
+    位置: 类型为GameRenderer的变量 gameRenderer
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\UIFilmPreview.java:380: 错误: 找不到符号
+          stack.multiplyPositionMatrix(context.batcher.getContext().pose().last().pose());
+                                                                          ^
+    符号:   方法 last()
+    位置: 类 Matrix3x2fStack
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\UIFilmPreview.java:382: 错误: 找不到符号
+          stack.multiply(com.mojang.math.Axis.XN.rotationDegrees(mcCamera.getXRot()));
+                                                                         ^
+    符号:   方法 getXRot()
+    位置: 类型为Camera的变量 mcCamera
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\UIFilmPreview.java:383: 错误: 找不到符号
+          stack.multiply(com.mojang.math.Axis.YP.rotationDegrees(mcCamera.getYRot()));
+                                                                         ^
+    符号:   方法 getYRot()
+    位置: 类型为Camera的变量 mcCamera
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:151: 错误: 找不到符号
+                  RayTracing.fromVector3f(camera.getMouseHandlerDirection(context.mouseX, context.mouseY, area.x, area.y, area.w, area.h)),
+                                                ^
+    符号:   方法 getMouseHandlerDirection(int,int,int,int,int,int)
+    位置: 类型为Camera的变量 camera
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:219: 错误: 找不到符号
+              GLFW.glfwSetInputMode(window.getHandle(), GLFW.GLFW_CURSOR, GLFW.GLFW_CURSOR_DISABLED);
+                                          ^
+    符号:   方法 getHandle()
+    位置: 类型为Window的变量 window
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:223: 错误: 找不到符号
+              GLFW.glfwSetInputMode(window.getHandle(), GLFW.GLFW_CURSOR, GLFW.GLFW_CURSOR_NORMAL);
+                                          ^
+    符号:   方法 getHandle()
+    位置: 类型为Window的变量 window
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:374: 错误: 找不到符号
+                  PlayerUtils.teleport(this.controlled.getX(), this.controlled.getY(), this.controlled.getZ(), this.controlled.getYHeadRot(), this.controlled.getYBodyRot(), this.controlled.getXRot());
+                                                                                                                              ^
+    符号:   方法 getYHeadRot()
+    位置: 类型为IEntity的变量 controlled
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:374: 错误: 找不到符号
+                  PlayerUtils.teleport(this.controlled.getX(), this.controlled.getY(), this.controlled.getZ(), this.controlled.getYHeadRot(), this.controlled.getYBodyRot(), this.controlled.getXRot());
+                                                                                                                                                             ^
+    符号:   方法 getYBodyRot()
+    位置: 类型为IEntity的变量 controlled
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:374: 错误: 找不到符号
+                  PlayerUtils.teleport(this.controlled.getX(), this.controlled.getY(), this.controlled.getZ(), this.controlled.getYHeadRot(), this.controlled.getYBodyRot(), this.controlled.getXRot());
+                                                                                                                                                                                            ^
+    符号:   方法 getXRot()
+    位置: 类型为IEntity的变量 controlled
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:430: 错误: 找不到符号
+              Minecraft.getInstance().setScreen(null);
+                                     ^
+    符号:   方法 setScreen(<空值>)
+    位置: 类 Minecraft
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:737: 错误: 找不到符号
+          rotation.set(controller.getxRotO(), controller.getyHeadRotO(), 0);
+                                 ^
+    符号:   方法 getxRotO()
+    位置: 类型为IEntity的变量 controller
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:737: 错误: 找不到符号
+          rotation.set(controller.getxRotO(), controller.getyHeadRotO(), 0);
+                                                        ^
+    符号:   方法 getyHeadRotO()
+    位置: 类型为IEntity的变量 controller
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:738: 错误: 找不到符号
+          rotation.lerp(new Vector3f(controller.getXRot(), controller.getYHeadRot(), 0), transition);
+                                               ^
+    符号:   方法 getXRot()
+    位置: 类型为IEntity的变量 controller
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:738: 错误: 找不到符号
+          rotation.lerp(new Vector3f(controller.getXRot(), controller.getYHeadRot(), 0), transition);
+                                                                     ^
+    符号:   方法 getYHeadRot()
+    位置: 类型为IEntity的变量 controller
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:1026: 错误: 找不到符号
+          RenderSystem.depthFunc(GL11.GL_LESS);
+                      ^
+    符号:   方法 depthFunc(int)
+    位置: 类 RenderSystem
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:1032: 错误: 找不到符号
+          RenderSystem.setInverseViewRotationMatrix(new Matrix3f(this.panel.lastView).invert());
+                      ^
+    符号:   方法 setInverseViewRotationMatrix(Matrix3f)
+    位置: 类 RenderSystem
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:1038: 错误: 找不到符号
+          worldStack.loadIdentity();
+                    ^
+    符号:   方法 loadIdentity()
+    位置: 类型为PoseStack的变量 worldStack
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:1046: 错误: 找不到符号
+          RenderSystem.depthFunc(GL11.GL_ALWAYS);
+                      ^
+    符号:   方法 depthFunc(int)
+    位置: 类 RenderSystem
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:1070: 错误: 找不到符号
+          RenderSystem.enableBlend();
+                      ^
+    符号:   方法 enableBlend()
+    位置: 类 RenderSystem
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:1121: 错误: 找不到符号
+                  Recorder.renderCameraPreview(this.panel.getRunner().position(), context.camera(), context.poseStack());
+                                                                     ^
+    符号:   方法 position()
+    位置: 类 RunnerCameraController
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:1121: 错误: 找不到符号
+                  Recorder.renderCameraPreview(this.panel.getRunner().position(), context.camera(), context.poseStack());
+                                                                                         ^
+    符号:   方法 camera()
+    位置: 类型为LevelRenderContext的变量 context
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:1126: 错误: 找不到符号
+          int x = (int) mouse.getX();
+                             ^
+    符号:   方法 getX()
+    位置: 类型为MouseHandler的变量 mouse
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:1127: 错误: 找不到符号
+          int y = (int) mouse.getY();
+                             ^
+    符号:   方法 getY()
+    位置: 类型为MouseHandler的变量 mouse
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:1136: 错误: 找不到符号
+                  Minecraft.getInstance().player.changeLookDirection(cursorDeltaX, cursorDeltaY);
+                                                ^
+    符号:   方法 changeLookDirection(float,float)
+    位置: 类型为LocalPlayer的变量 player
+  注: D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\BBSModClient.java使用或覆盖了已过时的 API。
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\utils\VideoRecorder.java:9: 警告: Unsafe是内部专用 API, 可能会在未来发行版中删除
+  import sun.misc.Unsafe;
+                 ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\utils\VideoRecorder.java:156: 警告: Unsafe是内部专用 API, 可能会在未来发行版中删除
+              Unsafe unsafe = UnsafeUtils.getUnsafe();
+              ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\utils\UIDraggable.java:67: 错误: 找不到符号
+          return super.subMouseHandlerClicked(context);
+                      ^
+    符号: 方法 subMouseHandlerClicked(UIContext)
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\utils\UIDraggable.java:75: 错误: 找不到符号
+          return super.subMouseHandlerReleased(context);
+                      ^
+    符号: 方法 subMouseHandlerReleased(UIContext)
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:556: 错误: 找不到符号
+          return super.subMouseHandlerClicked(context);
+                      ^
+    符号: 方法 subMouseHandlerClicked(UIContext)
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:581: 错误: 找不到符号
+          return super.subMouseHandlerReleased(context);
+                      ^
+    符号: 方法 subMouseHandlerReleased(UIContext)
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\UIContext.java:509: 错误: 不兼容的类型: float无法转换为Matrix3x2f
+          this.render.batcher.getContext().pose().translate((float)-x, 0f, 0f);
+                                                                           ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\UIContext.java:517: 错误: 不兼容的类型: float无法转换为Matrix3x2f
+          this.render.batcher.getContext().pose().translate(0f, (float)-y, 0f);
+                                                                           ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\selectors\EntitySelector.java:50: 错误: 不兼容的类型: CompoundTag无法转换为ValueOutput
+              mcEntity.saveWithoutId(entityCompound);
+                                     ^
+  注: 某些消息已经过简化; 请使用 -Xdiags:verbose 重新编译以获得完整输出
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:1035: 错误: 找不到符号
+          PoseStack worldStack = this.worldRendercontext.poseStack();
+                                     ^
+    符号: 变量 worldRendercontext
+  100 个错误
+  4 个警告
+
+* Try:
+> Check your code and dependencies to fix the compilation error(s)
+> Run with --scan to get full insights from a Build Scan (powered by Develocity).
+
+BUILD FAILED in 9s
+3 actionable tasks: 1 executed, 2 up-to-date

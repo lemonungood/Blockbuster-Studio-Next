@@ -256,7 +256,7 @@ public class UICurve extends UIElement
 
     private void drawGraph(UIContext context)
     {
-        Matrix4f matrix = context.batcher.getContext().getMatrices().peek().getPositionMatrix();
+        Matrix4f matrix = context.batcher.getContext().pose().last().pose();
         int c = this.curve.nodes.size();
 
         BufferBuilder builder = Tessellator.getInstance().getBuffer();

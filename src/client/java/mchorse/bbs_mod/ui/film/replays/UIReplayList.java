@@ -467,11 +467,11 @@ public class UIReplayList extends UIList<Replay>
 
     private void addReplay()
     {
-        Level world = Minecraft.getInstance().world;
+        Level world = Minecraft.getInstance().level;
         Camera camera = this.panel.getCamera();
 
         BlockHitResult blockHitResult = RayTracing.rayTrace(world, camera, 64F);
-        Vec3 p = blockHitResult.getPos();
+        Vec3 p = blockHitResult.getLocation();
         Vector3d position = new Vector3d(p.x, p.y, p.z);
 
         if (blockHitResult.getType() == HitResult.Type.MISS)
@@ -562,7 +562,7 @@ public class UIReplayList extends UIList<Replay>
     {
         Film film = this.panel.getData();
         Replay replay = film.replays.addReplay();
-        BlockPos blockPos = modelBlock.getPos();
+        BlockPos blockPos = modelBlock.getBlockPos();
         ModelProperties properties = modelBlock.getProperties();
         Transform transform = properties.getTransform().copy();
         double x = blockPos.getX() + transform.translate.x + 0.5D;
@@ -715,7 +715,7 @@ public class UIReplayList extends UIList<Replay>
         {
             x += this.area.w - 30;
 
-            context.batcher.clip(x, y, 40, 20, context);
+            context.batcher.clip(x, y, 40, 20, this.area.w, this.area.h);
 
             y -= 10;
 

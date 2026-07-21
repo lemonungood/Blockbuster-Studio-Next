@@ -1,0 +1,634 @@
+WARNING: A restricted method in java.lang.System has been called
+WARNING: java.lang.System::load has been called by net.rubygrapefruit.platform.internal.NativeLibraryLoader in an unnamed module (file:/C:/Users/hechengyu/.gradle/wrapper/dists/gradle-9.5.1-bin/iq79hdu3mqx29lgffhp8bfmx/gradle-9.5.1/lib/native-platform-0.22-milestone-29.jar)
+WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+Starting a Gradle Daemon, 2 busy Daemons could not be reused, use --status for details
+
+> Configure project :
+Fabric Loom: 1.17.16
+
+> Task :compileJava UP-TO-DATE
+> Task :processResources UP-TO-DATE
+> Task :classes UP-TO-DATE
+
+> Task :compileClientJava
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\audio\Waveform.java:32: 错误: 需要';'
+        this.popPose()ulate(data, pixelsPerSecond, height);
+                      ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\BBSModClient.java:601: 错误: 需要';'
+                stack.pushPose()Pose();
+                                ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\BBSModClient.java:615: 错误: 需要';'
+                stack.popPose()Pose();
+                               ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\BBSRendering.java:335: 错误: 需要')'或','
+            UISubtitleRenderer.renderSubtitles(batcher.getContext().pose()(), batcher, SubtitleClip.getSubtitles(controller.getContext()));
+                                                                          ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\BBSRendering.java:335: 错误: 不是语句
+            UISubtitleRenderer.renderSubtitles(batcher.getContext().pose()(), batcher, SubtitleClip.getSubtitles(controller.getContext()));
+                                                                              ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\BBSRendering.java:335: 错误: 需要';'
+            UISubtitleRenderer.renderSubtitles(batcher.getContext().pose()(), batcher, SubtitleClip.getSubtitles(controller.getContext()));
+                                                                                     ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\BBSRendering.java:335: 错误: 需要';'
+            UISubtitleRenderer.renderSubtitles(batcher.getContext().pose()(), batcher, SubtitleClip.getSubtitles(controller.getContext()));
+                                                                                                                                         ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\BBSRendering.java:351: 错误: 需要')'或','
+                UISubtitleRenderer.renderSubtitles(currentMenu.context.batcher.getContext().pose()(), currentMenu.context.batcher, SubtitleClip.getSubtitles(panel.getRunner().getContext()));
+                                                                                                  ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\BBSRendering.java:351: 错误: 不是语句
+                UISubtitleRenderer.renderSubtitles(currentMenu.context.batcher.getContext().pose()(), currentMenu.context.batcher, SubtitleClip.getSubtitles(panel.getRunner().getContext()));
+                                                                                                                         ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\BBSRendering.java:351: 错误: 需要';'
+                UISubtitleRenderer.renderSubtitles(currentMenu.context.batcher.getContext().pose()(), currentMenu.context.batcher, SubtitleClip.getSubtitles(panel.getRunner().getContext()));
+                                                                                                                                 ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\BBSRendering.java:351: 错误: 需要';'
+                UISubtitleRenderer.renderSubtitles(currentMenu.context.batcher.getContext().pose()(), currentMenu.context.batcher, SubtitleClip.getSubtitles(panel.getRunner().getContext()));
+                                                                                                                                                                                            ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\BBSRendering.java:377: 错误: 需要')'或','
+            mc.gameRenderer.getMainCamera()(), mc.gameRenderer, mc.gameRenderer.getLightmapTextureManager(),
+                                           ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\BBSRendering.java:377: 错误: 不是语句
+            mc.gameRenderer.getMainCamera()(), mc.gameRenderer, mc.gameRenderer.getLightmapTextureManager(),
+                                                 ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\BBSRendering.java:377: 错误: 需要';'
+            mc.gameRenderer.getMainCamera()(), mc.gameRenderer, mc.gameRenderer.getLightmapTextureManager(),
+                                                              ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\BBSRendering.java:377: 错误: 需要';'
+            mc.gameRenderer.getMainCamera()(), mc.gameRenderer, mc.gameRenderer.getLightmapTextureManager(),
+                                                                                                           ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\BBSRendering.java:378: 错误: 需要';'
+            new org.joml.Matrix4f(), mc.getBufferBuilders().getEntityVertexConsumers(), null, false, mc.world
+                                   ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\BBSRendering.java:378: 错误: 需要';'
+            new org.joml.Matrix4f(), mc.getBufferBuilders().getEntityVertexConsumers(), null, false, mc.world
+                                                                                      ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\BBSRendering.java:378: 错误: 不是语句
+            new org.joml.Matrix4f(), mc.getBufferBuilders().getEntityVertexConsumers(), null, false, mc.world
+                                                                                                       ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\BBSRendering.java:378: 错误: 需要';'
+            new org.joml.Matrix4f(), mc.getBufferBuilders().getEntityVertexConsumers(), null, false, mc.world
+                                                                                                             ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\renderer\entity\ActorEntityRenderer.java:48: 错误: 需要';'
+        matrices.pushPose()();
+                           ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\renderer\entity\ActorEntityRenderer.java:59: 错误: 需要')'或','
+            .camera(Minecraft.getInstance().gameRenderer.getMainCamera()()));
+                                                                        ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\renderer\entity\ActorEntityRenderer.java:63: 错误: 需要';'
+        matrices.popPose()();
+                          ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\renderer\entity\GunProjectileEntityRenderer.java:37: 错误: 需要';'
+        matrices.pushPose()();
+                           ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\renderer\entity\GunProjectileEntityRenderer.java:54: 错误: 需要')'或','
+            .camera(Minecraft.getInstance().gameRenderer.getMainCamera()()));
+                                                                        ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\renderer\entity\GunProjectileEntityRenderer.java:57: 错误: 需要';'
+        matrices.popPose()();
+                          ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\renderer\item\GunItemRenderer.java:79: 错误: 需要';'
+                matrices.pushPose()();
+                                   ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\renderer\item\GunItemRenderer.java:89: 错误: 需要';'
+                matrices.popPose()();
+                                  ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\renderer\item\ModelBlockItemRenderer.java:65: 错误: 需要';'
+                matrices.pushPose()();
+                                   ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\renderer\item\ModelBlockItemRenderer.java:75: 错误: 需要';'
+                matrices.popPose()();
+                                  ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\renderer\ModelBlockEntityRenderer.java:71: 错误: 需要';'
+        matrices.pushPose()();
+                           ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\renderer\ModelBlockEntityRenderer.java:76: 错误: 需要';'
+        matrices.popPose()();
+                          ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\renderer\ModelBlockEntityRenderer.java:111: 错误: 需要';'
+        BlockPos pos = entity.position()();
+                                        ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\renderer\ModelBlockEntityRenderer.java:113: 错误: 需要';'
+        matrices.pushPose()();
+                           ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\renderer\ModelBlockEntityRenderer.java:118: 错误: 需要';'
+            matrices.pushPose()();
+                               ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\renderer\ModelBlockEntityRenderer.java:140: 错误: 需要';'
+            Camera camera = mc.gameRenderer.getMainCamera()();
+                                                           ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\renderer\ModelBlockEntityRenderer.java:150: 错误: 需要';'
+                matrices.pushPose()();
+                                   ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\renderer\ModelBlockEntityRenderer.java:153: 错误: 需要';'
+                matrices.popPose()();
+                                  ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\renderer\ModelBlockEntityRenderer.java:156: 错误: 需要';'
+            matrices.popPose()();
+                              ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\renderer\ModelBlockEntityRenderer.java:166: 错误: 需要';'
+        matrices.popPose()();
+                          ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\renderer\ModelBlockEntityRenderer.java:184: 错误: 需要';'
+        Camera camera = mc.gameRenderer.getMainCamera()();
+                                                       ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\renderer\ModelBlockEntityRenderer.java:187: 错误: 需要';'
+            : camera.position()();
+                               ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\renderer\ModelBlockEntityRenderer.java:189: 错误: 需要';'
+        BlockPos pos = entity.position()();
+                                        ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\renderer\MorphRenderer.java:51: 错误: 需要';'
+                matrixStack.pushPose()();
+                                      ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\renderer\MorphRenderer.java:56: 错误: 需要')'或','
+                    .camera(Minecraft.getInstance().gameRenderer.getMainCamera()()));
+                                                                                ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\renderer\MorphRenderer.java:58: 错误: 需要';'
+                matrixStack.popPose()();
+                                     ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\renderer\MorphRenderer.java:105: 错误: 需要';'
+            matrixStack.pushPose()();
+                                  ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\renderer\MorphRenderer.java:110: 错误: 需要')'或','
+                .camera(Minecraft.getInstance().gameRenderer.getMainCamera()()));
+                                                                            ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\renderer\MorphRenderer.java:112: 错误: 需要';'
+            matrixStack.popPose()();
+                                 ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\cubic\ModelInstance.java:359: 错误: 需要';'
+                stack.pushPose()Pose();
+                                ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\cubic\ModelInstance.java:366: 错误: 需要';'
+                stack.popPose()Pose();
+                               ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\cubic\render\CubicAxisRenderer.java:17: 错误: 需要';'
+        stack.pushPose()();
+                        ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\cubic\render\CubicAxisRenderer.java:20: 错误: 需要';'
+        Matrix4f matrix = stack.peek().position()itionMatrix();
+                                                 ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\cubic\render\CubicAxisRenderer.java:41: 错误: 需要';'
+        stack.popPose()();
+                       ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\cubic\render\CubicCubeRenderer.java:92: 错误: 需要';'
+        stack.peek().position()itionMatrix().mul(modelM);
+                               ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\cubic\render\CubicCubeRenderer.java:135: 错误: 需要';'
+        stack.pushPose()();
+                        ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\cubic\render\CubicCubeRenderer.java:156: 错误: 需要';'
+        stack.popPose()();
+                       ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\cubic\render\CubicCubeRenderer.java:161: 错误: 需要';'
+        stack.pushPose()();
+                        ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\cubic\render\CubicCubeRenderer.java:222: 错误: 需要';'
+        stack.popPose()();
+                       ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\cubic\render\CubicCubeRenderer.java:241: 错误: 需要';'
+        stack.peek().position()itionMatrix().transform(this.vertex);
+                               ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\cubic\render\CubicMatrixRenderer.java:34: 错误: 需要')'或','
+        this.origins.get(group.index).set(stack.peek().position()itionMatrix());
+                                                                 ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\cubic\render\CubicMatrixRenderer.java:34: 错误: 需要';'
+        this.origins.get(group.index).set(stack.peek().position()itionMatrix());
+                                                                              ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\cubic\render\CubicMatrixRenderer.java:45: 错误: 需要')'或','
+        this.matrices.get(group.index).set(stack.peek().position()itionMatrix());
+                                                                  ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\cubic\render\CubicMatrixRenderer.java:45: 错误: 需要';'
+        this.matrices.get(group.index).set(stack.peek().position()itionMatrix());
+                                                                               ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\cubic\render\CubicRenderer.java:35: 错误: 需要';'
+        stack.pushPose()();
+                        ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\cubic\render\CubicRenderer.java:42: 错误: 需要';'
+                stack.popPose()();
+                               ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\cubic\render\CubicRenderer.java:52: 错误: 需要';'
+                stack.popPose()();
+                               ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\cubic\render\CubicRenderer.java:58: 错误: 需要';'
+        stack.popPose()();
+                       ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\cubic\render\CubicVAOBuilderRenderer.java:86: 错误: 需要';'
+        stack.pushPose()();
+                        ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\cubic\render\CubicVAOBuilderRenderer.java:107: 错误: 需要';'
+        stack.popPose()();
+                       ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\cubic\render\CubicVAOBuilderRenderer.java:112: 错误: 需要';'
+        stack.pushPose()();
+                        ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\cubic\render\CubicVAOBuilderRenderer.java:150: 错误: 需要';'
+        stack.popPose()();
+                       ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\cubic\render\CubicVAOBuilderRenderer.java:156: 错误: 需要';'
+        stack.peek().position()itionMatrix().transform(this.vertex);
+                               ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\cubic\render\vao\ModelVAORenderer.java:42: 错误: 需要')'或','
+            shader.modelViewMat.set(new Matrix4f(RenderSystem.getModelViewMatrix()).mul(stack.peek().position()itionMatrix()));
+                                                                                                               ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\cubic\render\vao\ModelVAORenderer.java:42: 错误: 需要';'
+            shader.modelViewMat.set(new Matrix4f(RenderSystem.getModelViewMatrix()).mul(stack.peek().position()itionMatrix()));
+                                                                                                                            ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\BaseFilmController.java:139: 错误: 需要';'
+        stack.pushPose()Pose();
+                        ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\BaseFilmController.java:156: 错误: 需要';'
+        stack.popPose()Pose();
+                       ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\BaseFilmController.java:160: 错误: 需要';'
+            stack.pushPose()Pose();
+                            ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\BaseFilmController.java:165: 错误: 需要';'
+            stack.popPose()Pose();
+                           ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\BaseFilmController.java:170: 错误: 需要';'
+            stack.pushPose()Pose();
+                            ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\BaseFilmController.java:175: 错误: 需要';'
+            stack.popPose()Pose();
+                           ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\BaseFilmController.java:189: 错误: 需要';'
+            stack.pushPose()Pose();
+                            ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\BaseFilmController.java:202: 错误: 需要';'
+            stack.popPose()Pose();
+                           ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\BaseFilmController.java:319: 错误: 需要';'
+        matrices.pushPose()Pose();
+                           ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\BaseFilmController.java:334: 错误: 需要';'
+        matrices.popPose()Pose();
+                          ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\Recorder.java:131: 错误: 需要';'
+            this.hunger = player.getFoodData()().getSaturationLevel();
+                                              ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\FormUtilsClient.java:155: 错误: 需要';'
+            currentForm.pushPose()(form);
+                                  ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\FormUtilsClient.java:155: 错误: 不是语句
+            currentForm.pushPose()(form);
+                                   ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\FormUtilsClient.java:155: 错误: 需要';'
+            currentForm.pushPose()(form);
+                                       ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\FormUtilsClient.java:164: 错误: 需要';'
+            currentForm.popPose()();
+                                 ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\AnchorFormRenderer.java:46: 错误: 需要';'
+            PoseStack stack = context.batcher.getContext().pose()();
+                                                                 ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\AnchorFormRenderer.java:50: 错误: 需要';'
+            stack.pushPose()();
+                            ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\AnchorFormRenderer.java:63: 错误: 需要';'
+            stack.popPose()();
+                           ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\BillboardFormRenderer.java:51: 错误: 需要';'
+        PoseStack stack = context.batcher.getContext().pose()();
+                                                             ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\BillboardFormRenderer.java:53: 错误: 需要';'
+        stack.pushPose()();
+                        ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\BillboardFormRenderer.java:71: 错误: 需要';'
+        stack.popPose()();
+                       ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\BillboardFormRenderer.java:173: 错误: 需要';'
+        Matrix4f matrix = matrices.peek().position()itionMatrix();
+                                                    ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\BillboardFormRenderer.java:180: 错误: 需要';'
+            Matrix4f modelMatrix = matrices.peek().position()itionMatrix();
+                                                             ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\BlockFormRenderer.java:34: 错误: 需要';'
+        PoseStack matrices = context.batcher.getContext().pose()();
+                                                                ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\BlockFormRenderer.java:38: 错误: 需要';'
+        matrices.pushPose()();
+                           ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\BlockFormRenderer.java:55: 错误: 需要';'
+        matrices.popPose()();
+                          ^
+100 个错误
+
+> Task :compileClientJava FAILED
+
+[Incubating] Problems report is available at: file:///D:/DEV/bbs_clean/build/reports/problems/problems-report.html
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':compileClientJava' (registered by plugin class 'org.gradle.api.plugins.JavaBasePlugin').
+> Compilation failed; see the compiler output below.
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\BBSRendering.java:335: 错误: 不是语句
+              UISubtitleRenderer.renderSubtitles(batcher.getContext().pose()(), batcher, SubtitleClip.getSubtitles(controller.getContext()));
+                                                                                ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\BBSRendering.java:351: 错误: 不是语句
+                  UISubtitleRenderer.renderSubtitles(currentMenu.context.batcher.getContext().pose()(), currentMenu.context.batcher, SubtitleClip.getSubtitles(panel.getRunner().getContext()));
+                                                                                                                           ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\BBSRendering.java:377: 错误: 不是语句
+              mc.gameRenderer.getMainCamera()(), mc.gameRenderer, mc.gameRenderer.getLightmapTextureManager(),
+                                                   ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\BBSRendering.java:378: 错误: 不是语句
+              new org.joml.Matrix4f(), mc.getBufferBuilders().getEntityVertexConsumers(), null, false, mc.world
+                                                                                                         ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\FormUtilsClient.java:155: 错误: 不是语句
+              currentForm.pushPose()(form);
+                                     ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\BBSRendering.java:335: 错误: 需要')'或','
+              UISubtitleRenderer.renderSubtitles(batcher.getContext().pose()(), batcher, SubtitleClip.getSubtitles(controller.getContext()));
+                                                                            ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\BBSRendering.java:351: 错误: 需要')'或','
+                  UISubtitleRenderer.renderSubtitles(currentMenu.context.batcher.getContext().pose()(), currentMenu.context.batcher, SubtitleClip.getSubtitles(panel.getRunner().getContext()));
+                                                                                                    ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\BBSRendering.java:377: 错误: 需要')'或','
+              mc.gameRenderer.getMainCamera()(), mc.gameRenderer, mc.gameRenderer.getLightmapTextureManager(),
+                                             ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\renderer\entity\ActorEntityRenderer.java:59: 错误: 需要')'或','
+              .camera(Minecraft.getInstance().gameRenderer.getMainCamera()()));
+                                                                          ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\renderer\entity\GunProjectileEntityRenderer.java:54: 错误: 需要')'或','
+              .camera(Minecraft.getInstance().gameRenderer.getMainCamera()()));
+                                                                          ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\renderer\MorphRenderer.java:56: 错误: 需要')'或','
+                      .camera(Minecraft.getInstance().gameRenderer.getMainCamera()()));
+                                                                                  ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\renderer\MorphRenderer.java:110: 错误: 需要')'或','
+                  .camera(Minecraft.getInstance().gameRenderer.getMainCamera()()));
+                                                                              ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\cubic\render\CubicMatrixRenderer.java:34: 错误: 需要')'或','
+          this.origins.get(group.index).set(stack.peek().position()itionMatrix());
+                                                                   ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\cubic\render\CubicMatrixRenderer.java:45: 错误: 需要')'或','
+          this.matrices.get(group.index).set(stack.peek().position()itionMatrix());
+                                                                    ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\cubic\render\vao\ModelVAORenderer.java:42: 错误: 需要')'或','
+              shader.modelViewMat.set(new Matrix4f(RenderSystem.getModelViewMatrix()).mul(stack.peek().position()itionMatrix()));
+                                                                                                                 ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\audio\Waveform.java:32: 错误: 需要';'
+          this.popPose()ulate(data, pixelsPerSecond, height);
+                        ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\BBSModClient.java:601: 错误: 需要';'
+                  stack.pushPose()Pose();
+                                  ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\BBSModClient.java:615: 错误: 需要';'
+                  stack.popPose()Pose();
+                                 ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\BBSRendering.java:335: 错误: 需要';'
+              UISubtitleRenderer.renderSubtitles(batcher.getContext().pose()(), batcher, SubtitleClip.getSubtitles(controller.getContext()));
+                                                                                       ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\BBSRendering.java:335: 错误: 需要';'
+              UISubtitleRenderer.renderSubtitles(batcher.getContext().pose()(), batcher, SubtitleClip.getSubtitles(controller.getContext()));
+                                                                                                                                           ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\BBSRendering.java:351: 错误: 需要';'
+                  UISubtitleRenderer.renderSubtitles(currentMenu.context.batcher.getContext().pose()(), currentMenu.context.batcher, SubtitleClip.getSubtitles(panel.getRunner().getContext()));
+                                                                                                                                   ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\BBSRendering.java:351: 错误: 需要';'
+                  UISubtitleRenderer.renderSubtitles(currentMenu.context.batcher.getContext().pose()(), currentMenu.context.batcher, SubtitleClip.getSubtitles(panel.getRunner().getContext()));
+                                                                                                                                                                                              ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\BBSRendering.java:377: 错误: 需要';'
+              mc.gameRenderer.getMainCamera()(), mc.gameRenderer, mc.gameRenderer.getLightmapTextureManager(),
+                                                                ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\BBSRendering.java:377: 错误: 需要';'
+              mc.gameRenderer.getMainCamera()(), mc.gameRenderer, mc.gameRenderer.getLightmapTextureManager(),
+                                                                                                             ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\BBSRendering.java:378: 错误: 需要';'
+              new org.joml.Matrix4f(), mc.getBufferBuilders().getEntityVertexConsumers(), null, false, mc.world
+                                     ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\BBSRendering.java:378: 错误: 需要';'
+              new org.joml.Matrix4f(), mc.getBufferBuilders().getEntityVertexConsumers(), null, false, mc.world
+                                                                                        ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\BBSRendering.java:378: 错误: 需要';'
+              new org.joml.Matrix4f(), mc.getBufferBuilders().getEntityVertexConsumers(), null, false, mc.world
+                                                                                                               ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\renderer\entity\ActorEntityRenderer.java:48: 错误: 需要';'
+          matrices.pushPose()();
+                             ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\renderer\entity\ActorEntityRenderer.java:63: 错误: 需要';'
+          matrices.popPose()();
+                            ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\renderer\entity\GunProjectileEntityRenderer.java:37: 错误: 需要';'
+          matrices.pushPose()();
+                             ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\renderer\entity\GunProjectileEntityRenderer.java:57: 错误: 需要';'
+          matrices.popPose()();
+                            ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\renderer\item\GunItemRenderer.java:79: 错误: 需要';'
+                  matrices.pushPose()();
+                                     ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\renderer\item\GunItemRenderer.java:89: 错误: 需要';'
+                  matrices.popPose()();
+                                    ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\renderer\item\ModelBlockItemRenderer.java:65: 错误: 需要';'
+                  matrices.pushPose()();
+                                     ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\renderer\item\ModelBlockItemRenderer.java:75: 错误: 需要';'
+                  matrices.popPose()();
+                                    ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\renderer\ModelBlockEntityRenderer.java:71: 错误: 需要';'
+          matrices.pushPose()();
+                             ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\renderer\ModelBlockEntityRenderer.java:76: 错误: 需要';'
+          matrices.popPose()();
+                            ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\renderer\ModelBlockEntityRenderer.java:111: 错误: 需要';'
+          BlockPos pos = entity.position()();
+                                          ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\renderer\ModelBlockEntityRenderer.java:113: 错误: 需要';'
+          matrices.pushPose()();
+                             ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\renderer\ModelBlockEntityRenderer.java:118: 错误: 需要';'
+              matrices.pushPose()();
+                                 ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\renderer\ModelBlockEntityRenderer.java:140: 错误: 需要';'
+              Camera camera = mc.gameRenderer.getMainCamera()();
+                                                             ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\renderer\ModelBlockEntityRenderer.java:150: 错误: 需要';'
+                  matrices.pushPose()();
+                                     ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\renderer\ModelBlockEntityRenderer.java:153: 错误: 需要';'
+                  matrices.popPose()();
+                                    ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\renderer\ModelBlockEntityRenderer.java:156: 错误: 需要';'
+              matrices.popPose()();
+                                ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\renderer\ModelBlockEntityRenderer.java:166: 错误: 需要';'
+          matrices.popPose()();
+                            ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\renderer\ModelBlockEntityRenderer.java:184: 错误: 需要';'
+          Camera camera = mc.gameRenderer.getMainCamera()();
+                                                         ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\renderer\ModelBlockEntityRenderer.java:187: 错误: 需要';'
+              : camera.position()();
+                                 ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\renderer\ModelBlockEntityRenderer.java:189: 错误: 需要';'
+          BlockPos pos = entity.position()();
+                                          ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\renderer\MorphRenderer.java:51: 错误: 需要';'
+                  matrixStack.pushPose()();
+                                        ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\renderer\MorphRenderer.java:58: 错误: 需要';'
+                  matrixStack.popPose()();
+                                       ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\renderer\MorphRenderer.java:105: 错误: 需要';'
+              matrixStack.pushPose()();
+                                    ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\renderer\MorphRenderer.java:112: 错误: 需要';'
+              matrixStack.popPose()();
+                                   ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\cubic\ModelInstance.java:359: 错误: 需要';'
+                  stack.pushPose()Pose();
+                                  ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\cubic\ModelInstance.java:366: 错误: 需要';'
+                  stack.popPose()Pose();
+                                 ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\cubic\render\CubicAxisRenderer.java:17: 错误: 需要';'
+          stack.pushPose()();
+                          ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\cubic\render\CubicAxisRenderer.java:20: 错误: 需要';'
+          Matrix4f matrix = stack.peek().position()itionMatrix();
+                                                   ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\cubic\render\CubicAxisRenderer.java:41: 错误: 需要';'
+          stack.popPose()();
+                         ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\cubic\render\CubicCubeRenderer.java:92: 错误: 需要';'
+          stack.peek().position()itionMatrix().mul(modelM);
+                                 ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\cubic\render\CubicCubeRenderer.java:135: 错误: 需要';'
+          stack.pushPose()();
+                          ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\cubic\render\CubicCubeRenderer.java:156: 错误: 需要';'
+          stack.popPose()();
+                         ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\cubic\render\CubicCubeRenderer.java:161: 错误: 需要';'
+          stack.pushPose()();
+                          ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\cubic\render\CubicCubeRenderer.java:222: 错误: 需要';'
+          stack.popPose()();
+                         ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\cubic\render\CubicCubeRenderer.java:241: 错误: 需要';'
+          stack.peek().position()itionMatrix().transform(this.vertex);
+                                 ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\cubic\render\CubicMatrixRenderer.java:34: 错误: 需要';'
+          this.origins.get(group.index).set(stack.peek().position()itionMatrix());
+                                                                                ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\cubic\render\CubicMatrixRenderer.java:45: 错误: 需要';'
+          this.matrices.get(group.index).set(stack.peek().position()itionMatrix());
+                                                                                 ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\cubic\render\CubicRenderer.java:35: 错误: 需要';'
+          stack.pushPose()();
+                          ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\cubic\render\CubicRenderer.java:42: 错误: 需要';'
+                  stack.popPose()();
+                                 ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\cubic\render\CubicRenderer.java:52: 错误: 需要';'
+                  stack.popPose()();
+                                 ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\cubic\render\CubicRenderer.java:58: 错误: 需要';'
+          stack.popPose()();
+                         ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\cubic\render\CubicVAOBuilderRenderer.java:86: 错误: 需要';'
+          stack.pushPose()();
+                          ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\cubic\render\CubicVAOBuilderRenderer.java:107: 错误: 需要';'
+          stack.popPose()();
+                         ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\cubic\render\CubicVAOBuilderRenderer.java:112: 错误: 需要';'
+          stack.pushPose()();
+                          ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\cubic\render\CubicVAOBuilderRenderer.java:150: 错误: 需要';'
+          stack.popPose()();
+                         ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\cubic\render\CubicVAOBuilderRenderer.java:156: 错误: 需要';'
+          stack.peek().position()itionMatrix().transform(this.vertex);
+                                 ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\cubic\render\vao\ModelVAORenderer.java:42: 错误: 需要';'
+              shader.modelViewMat.set(new Matrix4f(RenderSystem.getModelViewMatrix()).mul(stack.peek().position()itionMatrix()));
+                                                                                                                              ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\BaseFilmController.java:139: 错误: 需要';'
+          stack.pushPose()Pose();
+                          ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\BaseFilmController.java:156: 错误: 需要';'
+          stack.popPose()Pose();
+                         ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\BaseFilmController.java:160: 错误: 需要';'
+              stack.pushPose()Pose();
+                              ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\BaseFilmController.java:165: 错误: 需要';'
+              stack.popPose()Pose();
+                             ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\BaseFilmController.java:170: 错误: 需要';'
+              stack.pushPose()Pose();
+                              ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\BaseFilmController.java:175: 错误: 需要';'
+              stack.popPose()Pose();
+                             ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\BaseFilmController.java:189: 错误: 需要';'
+              stack.pushPose()Pose();
+                              ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\BaseFilmController.java:202: 错误: 需要';'
+              stack.popPose()Pose();
+                             ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\BaseFilmController.java:319: 错误: 需要';'
+          matrices.pushPose()Pose();
+                             ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\BaseFilmController.java:334: 错误: 需要';'
+          matrices.popPose()Pose();
+                            ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\Recorder.java:131: 错误: 需要';'
+              this.hunger = player.getFoodData()().getSaturationLevel();
+                                                ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\FormUtilsClient.java:155: 错误: 需要';'
+              currentForm.pushPose()(form);
+                                    ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\FormUtilsClient.java:155: 错误: 需要';'
+              currentForm.pushPose()(form);
+                                         ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\FormUtilsClient.java:164: 错误: 需要';'
+              currentForm.popPose()();
+                                   ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\AnchorFormRenderer.java:46: 错误: 需要';'
+              PoseStack stack = context.batcher.getContext().pose()();
+                                                                   ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\AnchorFormRenderer.java:50: 错误: 需要';'
+              stack.pushPose()();
+                              ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\AnchorFormRenderer.java:63: 错误: 需要';'
+              stack.popPose()();
+                             ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\BillboardFormRenderer.java:51: 错误: 需要';'
+          PoseStack stack = context.batcher.getContext().pose()();
+                                                               ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\BillboardFormRenderer.java:53: 错误: 需要';'
+          stack.pushPose()();
+                          ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\BillboardFormRenderer.java:71: 错误: 需要';'
+          stack.popPose()();
+                         ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\BillboardFormRenderer.java:173: 错误: 需要';'
+          Matrix4f matrix = matrices.peek().position()itionMatrix();
+                                                      ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\BillboardFormRenderer.java:180: 错误: 需要';'
+              Matrix4f modelMatrix = matrices.peek().position()itionMatrix();
+                                                               ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\BlockFormRenderer.java:34: 错误: 需要';'
+          PoseStack matrices = context.batcher.getContext().pose()();
+                                                                  ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\BlockFormRenderer.java:38: 错误: 需要';'
+          matrices.pushPose()();
+                             ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\BlockFormRenderer.java:55: 错误: 需要';'
+          matrices.popPose()();
+                            ^
+  100 个错误
+
+* Try:
+> Check your code and dependencies to fix the compilation error(s)
+> Run with --scan to get full insights from a Build Scan (powered by Develocity).
+
+BUILD FAILED in 16s
+3 actionable tasks: 1 executed, 2 up-to-date

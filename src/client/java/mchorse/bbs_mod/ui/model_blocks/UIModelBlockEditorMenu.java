@@ -101,7 +101,7 @@ public class UIModelBlockEditorMenu extends UIBaseMenu
         this.uiOrbitCamera.setControl(true);
         this.uiOrbitCamera.orbit = orbit;
         this.orbitCameraController = new OrbitCameraController(this.uiOrbitCamera.orbit);
-        this.orbitCameraController.camera.position.set(player.getPos().x, player.getPos().y + 1D, player.getPos().z);
+        this.orbitCameraController.camera.position.set(player.position().x, player.position().y + 1D, player.position().z);
         this.orbitCameraController.camera.rotation.set(0, MathUtils.toRad(player.bodyYaw), 0);
 
         if (this.gunProperties != null)

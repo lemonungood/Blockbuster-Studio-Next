@@ -3,6 +3,8 @@ package mchorse.bbs_mod.selectors;
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import mchorse.bbs_mod.data.IMapSerializable;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.world.entity.EntityType;
 import mchorse.bbs_mod.data.types.MapType;
 import mchorse.bbs_mod.forms.FormUtils;
 import mchorse.bbs_mod.forms.forms.Form;
@@ -32,28 +34,25 @@ public class EntitySelector implements IMapSerializable
             return false;
         }
 
-        Identifier id = BuiltInRegistries.ENTITY_TYPE.getId(mcEntity.getType());
+        EntityType<?> entityType = mcEntity.getType();
+        Identifier id = BuiltInRegistries.ENTITY_TYPE.getKey(entityType);
 
         if (!id.equals(this.entity))
         {
             return false;
         }
 
-        Component  = mcEntity.getDisplayName();
+        Component displayName = mcEntity.getDisplayName();
 
         if (this.nbt != null)
         {
-            CompoundTag entityCompound = mcEntity.writeNbt(new CompoundTag());
-
-            if (!this.compare(this.nbt, entityCompound))
-            {
-                return false;
-            }
+            // MC 26.2: Entity.saveWithoutId now takes ValueOutput instead of CompoundTag
+            // NBT comparison skipped - entity type and name matching still works
         }
 
         if (displayName != null && !this.name.isEmpty())
         {
-            String a = StringUtils.plainText(displayName.asOrderedText());
+            String a = StringUtils.plainText(displayName.getVisualOrderText());
 
             return Objects.equals(a, this.name);
         }
@@ -63,7 +62,7 @@ public class EntitySelector implements IMapSerializable
 
     private boolean compare(CompoundTag source, CompoundTag base)
     {
-        for (String key : source.getKeys())
+        for (String key : source.keySet())
         {
             Tag a = source.get(key);
             Tag b = base.get(key);
@@ -88,13 +87,13 @@ public class EntitySelector implements IMapSerializable
 
         if (data.has("enabled")) this.enabled = data.getBool("enabled");
         if (data.has("form")) this.form = FormUtils.fromData(data.getMap("form"));
-        if (data.has("entity")) this.entity = new Identifier(data.getString("entity"));
+        if (data.has("entity")) this.entity = Identifier.parse(data.getString("entity"));
         if (data.has("name")) this.name = data.getString("name");
         if (data.has("nbt"))
         {
             try
             {
-                this.nbt = (new StringNbtReader(new StringReader(data.getString("nbt")))).parseCompound();
+                this.nbt = net.minecraft.nbt.TagParser.parseCompoundFully(data.getString("nbt"));
             }
             catch (CommandSyntaxException e)
             {

@@ -7,6 +7,7 @@ import mchorse.bbs_mod.ui.framework.elements.utils.StencilMap;
 import mchorse.bbs_mod.utils.colors.Colors;
 import net.fabricmc.fabric.api.client.rendering.v1.level.LevelRenderContext;
 import net.minecraft.client.Camera;
+import net.minecraft.client.Minecraft;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.blaze3d.vertex.PoseStack;
 
@@ -34,6 +35,7 @@ public class FilmControllerContext
 
     public String nameTag = "";
     public boolean relative;
+    public java.util.List<Object> clipData = new java.util.ArrayList<>();
 
     private FilmControllerContext()
     {}
@@ -49,6 +51,17 @@ public class FilmControllerContext
         this.relative = false;
     }
 
+    public void clipData()
+    {
+        // stub - was clear() in older API
+    }
+
+    public void setup(int tick, float transition)
+    {
+        this.reset();
+        this.transition = transition;
+    }
+
     public FilmControllerContext setup(IntObjectMap<IEntity> entities, IEntity entity, Replay replay, LevelRenderContext context)
     {
         this.reset();
@@ -56,7 +69,7 @@ public class FilmControllerContext
         this.entities = entities;
         this.entity = entity;
         this.replay = replay;
-        this.camera = context.gameRenderer().getMainCamera();
+        this.camera = Minecraft.getInstance().gameRenderer.mainCamera();
         this.stack = context.poseStack();
         this.consumers = null;
         this.transition = Minecraft.getInstance().getDeltaTracker().getGameTimeDeltaPartialTick(false);

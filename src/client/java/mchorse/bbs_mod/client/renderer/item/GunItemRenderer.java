@@ -47,7 +47,6 @@ public class GunItemRenderer
         }
     }
 
-    @Override
     public void render(ItemStack stack, ItemDisplayContext mode, PoseStack matrices, VertexConsumer vertexConsumers, int light, int overlay)
     {
         Item item = this.get(stack);
@@ -76,17 +75,17 @@ public class GunItemRenderer
             {
                 item.expiration = 20;
 
-                matrices.push();
+                matrices.pushPose();
                 matrices.translate(0.5F, 0F, 0.5F);
                 PoseStackUtils.applyTransform(matrices, transform);
 
                 /* enableDepthTest removed */;
                 FormUtilsClient.render(form, new FormRenderingContext()
                     .set(FormRenderType.fromModelMode(mode), item.formEntity, matrices, light, overlay, Minecraft.getInstance().getDeltaTracker().getGameTimeDeltaPartialTick(false))
-                    .camera(/* Camera */ null));
+                    .camera((net.minecraft.client.Camera) null));
                 /* disableDepthTest removed */;
 
-                matrices.pop();
+                matrices.popPose();
             }
         }
     }

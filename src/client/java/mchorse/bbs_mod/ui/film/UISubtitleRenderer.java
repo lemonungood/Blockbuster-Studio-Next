@@ -54,15 +54,15 @@ public class UISubtitleRenderer
         }
 
         ShaderProgram program = BBSShaders.getSubtitlesProgram();
-        GlUniform blur = program.getUniform("Blur");
-        GlUniform textureSize = program.getUniform("TextureSize");
+        int blurUniform = program.getUniformLocation("Blur");
+        int textureSizeUniform = program.getUniformLocation("TextureSize");
         Supplier<ShaderProgram> supplier = () -> program;
 
-        net.minecraft.client.gl.Framebuffer fb = Minecraft.getInstance().getFramebuffer();
-        int width = fb.textureWidth;
-        int height = fb.textureHeight;
+        com.mojang.blaze3d.pipeline.RenderTarget fb = Minecraft.getInstance().getMainRenderTarget();
+        int width = fb.width;
+        int height = fb.height;
 
-        Matrix4f cache = new Matrix4f(RenderSystem.getProjectionMatrix());
+        Matrix4f cache = new Matrix4f(new org.joml.Matrix4f());
 
         width /= 2;
         height /= 2;
@@ -132,35 +132,35 @@ public class UISubtitleRenderer
             /* Render the texture */
             fb.beginWrite(true);
 
-            RenderSystem.setProjectionMatrix(ortho, VertexSorter.BY_Z);
+            /* setProjectionMatrix removed in MC 26.2 */ // RenderSystem.setProjectionMatrix(ortho, VertexSorter.BY_Z);
 
             Transform transform = new Transform();
 
             transform.lerp(subtitle.transform, 1F - subtitle.factor);
 
-            stack.push();
+            stack.pushPose();
             stack.translate(x, y, 0);
             PoseStackUtils.applyTransform(stack, transform);
 
-            if (blur != null)
+            if (blurUniform >= 0)
             {
-                blur.set(subtitle.shadow, subtitle.shadowOpaque ? 1F : 0F);
+                program.setUniform(blurUniform, subtitle.shadow, subtitle.shadowOpaque ? 1F : 0F, 0F, 0F);
             }
 
-            if (textureSize != null)
+            if (textureSizeUniform >= 0)
             {
-                textureSize.set((float) texture.width, (float) texture.height);
+                program.setUniform(textureSizeUniform, (float) texture.width, (float) texture.height, 0F, 0F);
             }
 
-            RenderSystem.enableBlend();
+            // enableBlend removed in MC 26.2; // RenderSystem.enableBlend();
             RenderSystem.blendFuncSeparate(GlStateManager.SrcFactor.SRC_ALPHA, GlStateManager.DstFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SrcFactor.ONE, GlStateManager.DstFactor.ONE_MINUS_SRC_ALPHA);
 
             batcher.texturedBox(supplier, texture.id, Colors.setA(Colors.WHITE, alpha), -fw * subtitle.anchorX, -fh * subtitle.anchorY, texture.width, texture.height, 0, 0, texture.width, texture.height, texture.width, texture.height);
 
-            stack.pop();
+            stack.popPose();
         }
 
-        RenderSystem.setProjectionMatrix(cache, VertexSorter.BY_Z);
+        /* setProjectionMatrix removed in MC 26.2 */ // RenderSystem.setProjectionMatrix(cache, VertexSorter.BY_Z);
         RenderSystem.enableCull();
     }
 }

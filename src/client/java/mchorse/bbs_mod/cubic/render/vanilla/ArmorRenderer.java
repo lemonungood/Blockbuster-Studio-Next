@@ -16,6 +16,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.resources.Identifier;
 
+import java.util.List;
 import java.util.Map;
 
 public class ArmorRenderer
@@ -33,17 +34,18 @@ public class ArmorRenderer
         this.slim = slim;
     }
 
-    private ModelPart innerModelPart() { return new ModelPart(null, 0, 0); }
-    private ModelPart outerModelPart() { return new ModelPart(null, 0, 0); }
+    private ModelPart innerModelPart() { return new ModelPart(List.of(), Map.of()); }
+    private ModelPart outerModelPart() { return new ModelPart(List.of(), Map.of()); }
 
     public void renderArmorSlot(PoseStack matrices, VertexConsumer vertexConsumers, IEntity entity, EquipmentSlot armorSlot, ArmorType type, int light)
     {
-        renderArmorParts(getModel(armorSlot), matrices, vertexConsumers, light, armorSlot, type, 1F, 1F, 1F);
+        renderArmorParts(getModel(armorSlot).root(), matrices, vertexConsumers, light, armorSlot, type, 1F, 1F, 1F);
     }
 
     private void renderArmorParts(ModelPart part, PoseStack matrices, VertexConsumer vertexConsumers, int light, EquipmentSlot slot, ArmorType type, float red, float green, float blue)
     {
-        part.render(matrices, vertexConsumers, light, 0, red, green, blue, 1F);
+        int color = 0xFF000000 | ((int) (red * 255) << 16) | ((int) (green * 255) << 8) | (int) (blue * 255);
+        part.render(matrices, vertexConsumers, light, 0, color);
     }
 
     private HumanoidModel getModel(EquipmentSlot slot)
@@ -60,6 +62,6 @@ public class ArmorRenderer
     {
         String materialName = slot.getName();
         String id = "textures/models/armor/" + materialName + "_layer_" + (secondLayer ? 2 : 1) + (overlay == null ? "" : "_" + overlay) + ".png";
-        return ARMOR_TEXTURE_CACHE.computeIfAbsent(id, Identifier::new);
+        return ARMOR_TEXTURE_CACHE.computeIfAbsent(id, Identifier::parse);
     }
 }

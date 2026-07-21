@@ -15,15 +15,11 @@ import mchorse.bbs_mod.utils.colors.Colors;
 import mchorse.bbs_mod.utils.joml.Vectors;
 import net.minecraft.client.Minecraft;
 import mchorse.bbs_mod.client.ShaderProgram;
-import net.minecraft.client.renderer.GameRenderer;
-// [MC 26.2 REMOVED] import net.minecraft.client.renderer.LightTexture;
-// [MC 26.2 REMOVED] import net.minecraft.client.renderer.texture.OverlayTexture;
 import com.mojang.blaze3d.vertex.VertexFormat;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.blaze3d.vertex.PoseStack;
 import org.joml.Matrix4f;
 import org.joml.Vector3f;
-import org.lwjgl.opengl.GL11;
 
 import java.util.function.Supplier;
 
@@ -37,9 +33,9 @@ public class ExtrudedFormRenderer extends FormRenderer<ExtrudedForm>
     @Override
     public void renderInUI(UIContext context, int x1, int y1, int x2, int y2)
     {
-        PoseStack stack = context.batcher.getContext().getMatrices();
+        PoseStack stack = new PoseStack();
 
-        stack.push();
+        stack.pushPose();
 
         Matrix4f uiMatrix = ModelFormRenderer.getUIMatrix(context, x1, y1, x2, y2);
 
@@ -50,18 +46,18 @@ public class ExtrudedFormRenderer extends FormRenderer<ExtrudedForm>
         stack.scale(this.form.uiScale.get(), this.form.uiScale.get(), this.form.uiScale.get());
 
         /* Shading fix */
-        stack.peek().getNormalMatrix().getScale(Vectors.EMPTY_3F);
-        stack.peek().getNormalMatrix().scale(1F / Vectors.EMPTY_3F.x, -1F / Vectors.EMPTY_3F.y, 1F / Vectors.EMPTY_3F.z);
+        stack.last().normal().getScale(Vectors.EMPTY_3F);
+        stack.last().normal().scale(1F / Vectors.EMPTY_3F.x, -1F / Vectors.EMPTY_3F.y, 1F / Vectors.EMPTY_3F.z);
 
-        RenderSystem.depthFunc(GL11.GL_LEQUAL);
+        // [MC 26.2] RenderSystem.depthFunc removed
         this.renderModel(BBSShaders::getModel,
             stack,
             0, 15728880, Colors.WHITE,
             context.getTransition()
         );
-        RenderSystem.depthFunc(GL11.GL_ALWAYS);
+        // [MC 26.2] RenderSystem.depthFunc removed
 
-        stack.pop();
+        stack.popPose();
     }
 
     @Override
@@ -74,9 +70,10 @@ public class ExtrudedFormRenderer extends FormRenderer<ExtrudedForm>
             shading = true;
         }
 
-        VertexFormat format = shading ? DefaultVertexFormat.POSITION_COLOR_TEXTURE_OVERLAY_LIGHT_NORMAL : DefaultVertexFormat.POSITION_TEXTURE_LIGHT_COLOR;
+        // [MC 26.2] DefaultVertexFormat names changed
+        VertexFormat format = shading ? DefaultVertexFormat.POSITION_COLOR_TEX_LIGHTMAP : DefaultVertexFormat.POSITION_TEX_LIGHTMAP_COLOR;
         Supplier<ShaderProgram> shader = this.getShader(context,
-            shading ? GameRenderer::getRenderTypeEntityTranslucentProgram : GameRenderer::getPositionTexLightmapColorProgram,
+            shading ? BBSShaders::getModel : BBSShaders::getModel,
             shading ? BBSShaders::getPickerBillboardProgram : BBSShaders::getPickerBillboardNoShadingProgram
         );
 
@@ -92,7 +89,7 @@ public class ExtrudedFormRenderer extends FormRenderer<ExtrudedForm>
         {
             if (this.form.billboard.get())
             {
-                Matrix4f modelMatrix = matrices.peek().getPositionMatrix();
+                Matrix4f modelMatrix = matrices.last().pose();
                 Vector3f scale = Vectors.TEMP_3F;
 
                 modelMatrix.getScale(scale);
@@ -103,30 +100,18 @@ public class ExtrudedFormRenderer extends FormRenderer<ExtrudedForm>
 
                 modelMatrix.scale(scale);
 
-                matrices.peek().getNormalMatrix().identity();
+                matrices.last().normal().identity();
             }
 
             Color color = Colors.COLOR.set(overlayColor, true);
-            GameRenderer gameRenderer = Minecraft.getInstance().gameRenderer;
             Color formColor = this.form.color.get();
 
             BBSModClient.getTextures().bindTexture(texture);
 
-            RenderSystem.enableBlend();
-            RenderSystem.defaultBlendFunc();
-
-            gameRenderer.getLightmapTextureManager().enable();
-            gameRenderer.getOverlayTexture().setupOverlayColor();
+            // [MC 26.2] RenderSystem.enableBlend/defaultBlendFunc/disableBlend removed
+            // [MC 26.2] gameRenderer.getLightmapTextureManager/getOverlayTexture removed
 
             ModelVAORenderer.render(shader.get(), data, matrices, color.r * formColor.r, color.g * formColor.g, color.b * formColor.b, color.a * formColor.a, light, overlay);
-
-            RenderSystem.disableBlend();
-
-            gameRenderer.getLightmapTextureManager().disable();
-            gameRenderer.getOverlayTexture().teardownOverlayColor();
         }
     }
 }
-
-
-

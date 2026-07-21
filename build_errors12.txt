@@ -1,0 +1,51 @@
+WARNING: A restricted method in java.lang.System has been called
+WARNING: java.lang.System::load has been called by net.rubygrapefruit.platform.internal.NativeLibraryLoader in an unnamed module (file:/C:/Users/hechengyu/.gradle/wrapper/dists/gradle-9.5.1-bin/iq79hdu3mqx29lgffhp8bfmx/gradle-9.5.1/lib/native-platform-0.22-milestone-29.jar)
+WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+
+> Configure project :
+Fabric Loom: 1.17.16
+
+> Task :compileJava UP-TO-DATE
+> Task :processResources UP-TO-DATE
+> Task :classes UP-TO-DATE
+
+> Task :compileClientJava
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\Recorder.java:96: 错误: 方法声明无效; 需要返回类型
+    public Recorder(Film film, Form form, int replayId, int tick)
+           ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\Recorder.java:167: 错误: 需要 class、interface、enum 或 record
+}
+^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\Recorder.java:1: 错误: 压缩源文件不应有程序包声明
+package mchorse.bbs_mod.film;
+^
+3 个错误
+
+> Task :compileClientJava FAILED
+
+[Incubating] Problems report is available at: file:///D:/DEV/bbs_clean/build/reports/problems/problems-report.html
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':compileClientJava' (registered by plugin class 'org.gradle.api.plugins.JavaBasePlugin').
+> Compilation failed; see the compiler output below.
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\Recorder.java:1: 错误: 压缩源文件不应有程序包声明
+  package mchorse.bbs_mod.film;
+  ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\Recorder.java:167: 错误: 需要 class、interface、enum 或 record
+  }
+  ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\Recorder.java:96: 错误: 方法声明无效; 需要返回类型
+      public Recorder(Film film, Form form, int replayId, int tick)
+             ^
+  3 个错误
+
+* Try:
+> Check your code and dependencies to fix the compilation error(s)
+> Run with --scan to get full insights from a Build Scan (powered by Develocity).
+
+BUILD FAILED in 5s
+3 actionable tasks: 1 executed, 2 up-to-date

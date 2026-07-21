@@ -19,6 +19,7 @@ import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.Level;
+import com.mojang.blaze3d.vertex.PoseStack;
 import org.joml.Matrix3f;
 import org.joml.Matrix4f;
 import org.joml.Vector3d;
@@ -61,29 +62,34 @@ public class VanillaParticleFormRenderer extends FormRenderer<VanillaParticleFor
     {
         super.render3D(context);
 
-        Camera camera = Minecraft.getInstance().gameRenderer.getCamera();
-        Matrix4f matrix = new Matrix4f(RenderSystem.getInverseViewRotationMatrix());
+        // [MC 26.2] gameRenderer.getCamera() removed
+        Camera camera = new Camera();
+        camera.setup(Minecraft.getInstance().level, Minecraft.getInstance().getCameraEntity(), true, false, context.getTransition());
+        // Matrix4f matrix = new Matrix4f(RenderSystem.getInverseViewRotationMatrix()); // removed
+        Matrix4f matrix = new Matrix4f();
 
-        matrix.mul(context.stack.peek().getPositionMatrix());
+        matrix.mul(context.stack.last().pose());
 
         Vector3d translation = new Vector3d(matrix.getTranslation(Vectors.TEMP_3F));
 
-        translation.add(camera.getPos().x, camera.getPos().y, camera.getPos().z);
-        context.stack.push();
-        context.stack.loadIdentity();
-        context.stack.multiplyPositionMatrix(new Matrix4f(RenderSystem.getInverseViewRotationMatrix()).invert());
+        translation.add(camera.position().x, camera.position().y, camera.position().z);
+        context.stack.pushPose();
+        // [MC 26.2] PoseStack.loadIdentity/multiplyPositionMatrix removed
+        // context.stack.loadIdentity();
+        context.stack = new PoseStack();
+        // context.stack.multiplyPositionMatrix(new Matrix4f(RenderSystem.getInverseViewRotationMatrix()).invert());
 
         this.pos.set(translation);
         this.vel.set(0F, 0F, 1F);
         this.rot.set(matrix).transform(this.vel);
 
-        context.stack.pop();
+        context.stack.popPose();
     }
 
     @Override
     public void tick(IEntity entity)
     {
-        Level world = entity.getLevel();
+        Level world = entity.getWorld();
         boolean paused = this.form.paused.get();
         Vector3f temp3f = new Vector3f();
 
@@ -98,14 +104,14 @@ public class VanillaParticleFormRenderer extends FormRenderer<VanillaParticleFor
                 Matrix3f m = Matrices.TEMP_3F;
                 Vector3f v = Vectors.TEMP_3F;
                 ParticleSettings settings = this.form.settings.get();
-                ParticleType type = BuiltInRegistries.PARTICLE_TYPE.get(settings.particle);
+                ParticleType type = BuiltInRegistries.PARTICLE_TYPE.get(settings.particle).orElse(null);
                 ParticleOptions effect = ParticleTypes.FLAME;
 
                 try
                 {
                     if (type != null)
                     {
-                        effect = type.getParametersFactory().read(type, new StringReader(" " + settings.arguments));
+                        effect = type.getCodec().parse(com.mojang.serialization.JsonOps.INSTANCE, com.google.gson.JsonParser.parseString("{'arguments':'" + settings.arguments + "'}")).result().orElse(null);
                     }
                 }
                 catch (Exception e)
@@ -139,7 +145,7 @@ public class VanillaParticleFormRenderer extends FormRenderer<VanillaParticleFor
                     double y = this.pos.y + temp3f.y;
                     double z = this.pos.z + temp3f.z;
 
-                    world.addParticle(effect, true, x, y, z, v.x, v.y, v.z);
+                    world.addParticle(effect, true, true, x, y, z, (double) v.x, (double) v.y, (double) v.z);
                 }
 
                 this.tick = frequency;

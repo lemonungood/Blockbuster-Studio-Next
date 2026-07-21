@@ -731,7 +731,7 @@ public class UIFilmPanel extends UIDataDashboardPanel<Film> implements IFlightSu
         Camera camera = new Camera();
         Minecraft mc = Minecraft.getInstance();
 
-        camera.set(mc.player, MathUtils.toRad(mc.options.getFov().getValue()));
+        camera.set(mc.player, MathUtils.toRad(mc.options.fov().get()));
 
         clip.layer.set(8);
         clip.duration.set(BBSSettings.getDefaultDuration());
@@ -949,10 +949,10 @@ public class UIFilmPanel extends UIDataDashboardPanel<Film> implements IFlightSu
         if (this.entered)
         {
             LocalPlayer player = Minecraft.getInstance().player;
-            Vec3 pos = player.getPos();
+            Vec3 pos = player.position();
             Vector3d cameraPos = this.camera.position;
             double distance = cameraPos.distance(pos.x, pos.y, pos.z);
-            int value = Minecraft.getInstance().options.getViewDistance().getValue();
+            int value = Minecraft.getInstance().options.renderDistance().get();
 
             if (distance > value * 12)
             {
@@ -1063,8 +1063,8 @@ public class UIFilmPanel extends UIDataDashboardPanel<Film> implements IFlightSu
 
         if (!BBSRendering.isIrisShadowPass())
         {
-            this.lastProjection.set(RenderSystem.getProjectionMatrix());
-            this.lastView.set(context.matrixStack().peek().getPositionMatrix());
+            this.lastProjection.set(new org.joml.Matrix4f());
+            this.lastView.set(context.poseStack().last().pose());
         }
 
         this.controller.renderFrame(context);

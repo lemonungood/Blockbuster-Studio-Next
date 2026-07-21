@@ -1,6 +1,5 @@
 package mchorse.bbs_mod.ui.framework.elements.input.keyframes.graphs;
 
-import com.mojang.blaze3d.systems.RenderSystem;
 import mchorse.bbs_mod.BBSSettings;
 import mchorse.bbs_mod.camera.utils.TimeUtils;
 import mchorse.bbs_mod.data.types.MapType;
@@ -22,11 +21,6 @@ import mchorse.bbs_mod.utils.colors.Colors;
 import mchorse.bbs_mod.utils.keyframes.Keyframe;
 import mchorse.bbs_mod.utils.keyframes.KeyframeShape;
 import com.mojang.blaze3d.vertex.BufferBuilder;
-// [MC 26.2 REMOVED] import com.mojang.blaze3d.vertex.BufferUploader;
-import net.minecraft.client.renderer.GameRenderer;
-// [MC 26.2 REMOVED] import com.mojang.blaze3d.vertex.Tessellator;
-import com.mojang.blaze3d.vertex.VertexFormat;
-import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import org.joml.Matrix4f;
 
 import java.util.ArrayList;
@@ -541,8 +535,6 @@ public class UIKeyframeDopeSheet implements IUIKeyframeGraph
         this.dopeSheet.scrollSize = (int) this.trackHeight * this.sheets.size() + TOP_MARGIN;
 
         Area area = this.keyframes.area;
-        BufferBuilder builder = Tessellator.getInstance().getBuffer();
-        Matrix4f matrix = context.batcher.getContext().getMatrices().peek().getPositionMatrix();
 
         for (int i = 0; i < this.sheets.size(); i++)
         {
@@ -561,16 +553,14 @@ public class UIKeyframeDopeSheet implements IUIKeyframeGraph
             int cc = Colors.setA(sheet.color, hover ? 1F : 0.45F);
 
             /* Render track bars (horizontal lines) */
-            builder.begin(VertexFormat.DrawMode.QUADS, DefaultVertexFormat.POSITION_COLOR);
-
-            context.batcher.fillRect(builder, matrix, area.x, my - 1, area.w, 2, cc, cc, cc, cc);
+            context.batcher.fillRect(area.x, my - 1, area.w, 2, cc);
 
             if (sheet.separator)
             {
                 int c = Colors.setA(sheet.color, 0F);
 
                 /* Render separator */
-                context.batcher.fillRect(builder, matrix, area.x, y, area.w, (int) this.trackHeight, c | Colors.A25, c | Colors.A25, c, c);
+                context.batcher.fillRect(area.x, y, area.w, (int) this.trackHeight, c | Colors.A25);
             }
 
             /* Render bars indicating same values */
@@ -584,14 +574,14 @@ public class UIKeyframeDopeSheet implements IUIKeyframeGraph
 
                 if (previous.getFactory().compare(previous.getValue(), frame.getValue()))
                 {
-                    context.batcher.fillRect(builder, matrix, xx, my - 2, this.keyframes.toGraphX(frame.getTick()) - xx, 4, c, c, c, c);
+                    context.batcher.fillRect(xx, my - 2, this.keyframes.toGraphX(frame.getTick()) - xx, 4, c);
                 }
 
                 if (Math.abs(xxx - xx) < 5)
                 {
                     c = Colors.YELLOW | Colors.A50;
 
-                    context.batcher.fillRect(builder, matrix, xx - 2, my + 5, xxx - xx + 4, 2, c, c, c, c);
+                    context.batcher.fillRect(xx - 2, my + 5, xxx - xx + 4, 2, c);
                 }
             }
 
@@ -611,9 +601,9 @@ public class UIKeyframeDopeSheet implements IUIKeyframeGraph
                     int y1 = my - 8 + (forcedIndex % 2 == 1 ? -4 : 0);
                     int color = sheet.selection.has(j) ? Colors.WHITE :  Colors.setA(Colors.mulRGB(sheet.color, 0.9F), 0.75F);
 
-                    context.batcher.fillRect(builder, matrix, x1, y1 - 2, 1, 5, color, color, color, color);
-                    context.batcher.fillRect(builder, matrix, x2, y1 - 2, 1, 5, color, color, color, color);
-                    context.batcher.fillRect(builder, matrix, x1 + 1, y1, x2 - x1, 1, color, color, color, color);
+                    context.batcher.fillRect(x1, y1 - 2, 1, 5, color);
+                    context.batcher.fillRect(x2, y1 - 2, 1, 5, color);
+                    context.batcher.fillRect(x1 + 1, y1, x2 - x1, 1, color);
 
                     forcedIndex += 1;
                 }
@@ -636,7 +626,8 @@ public class UIKeyframeDopeSheet implements IUIKeyframeGraph
 
                 int offset = toRemove ? 4 : 3;
 
-                renderShape(frame, context, builder, matrix, x1, my, offset, c);
+                /* Render keyframe handle as simple box (MC 26.2 - shape renderers use old API) */
+                context.batcher.box(x1 - offset, my - offset, x1 + offset, my + offset, c);
             }
 
             /* Render keyframe handles (inner) */
@@ -646,14 +637,10 @@ public class UIKeyframeDopeSheet implements IUIKeyframeGraph
                 int c = sheet.selection.has(j) ? Colors.ACTIVE : 0;
                 int mx = this.keyframes.toGraphX(frame.getTick());
                 int mc = c | Colors.A100;
-                IKeyframeShapeRenderer shapeResult = renderShape(frame, context, builder, matrix, mx, my, 2, mc);
 
-                shapeResult.renderKeyframeBackground(context, builder, matrix, mx, my, 2, mc);
+                /* Render inner handle as smaller box */
+                context.batcher.box(mx - 1, my - 1, mx + 1, my + 1, mc);
             }
-
-            RenderSystem.enableBlend();
-            RenderSystem.setShader(GameRenderer::getPositionColorProgram);
-            BufferRenderer.drawWithGlobalProgram(builder.end());
 
             FontRenderer font = context.batcher.getFont();
             int lw = font.getWidth(sheet.title.get());

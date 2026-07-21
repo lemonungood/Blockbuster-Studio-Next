@@ -123,15 +123,15 @@ public class UIItemStack extends UIElement
 
         if (this.stack != null && !this.stack.isEmpty())
         {
-            PoseStack matrices = context.batcher.getContext().getMatrices();
+            PoseStack matrices = context.batcher.getContext().pose();
             CustomVertexConsumer consumers = FormUtilsClient.getProvider();
 
-            matrices.push();
+            matrices.pushPose();
             consumers.setUI(true);
             context.batcher.getContext().drawItem(this.stack, this.area.mx() - 8, this.area.my() - 8);
             context.batcher.getContext().drawItemInSlot(context.batcher.getFont().getRenderer(), this.stack, this.area.mx() - 8, this.area.my() - 8);
             consumers.setUI(false);
-            matrices.pop();
+            matrices.popPose();
         }
 
         super.render(context);

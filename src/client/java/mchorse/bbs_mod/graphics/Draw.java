@@ -1,22 +1,89 @@
 package mchorse.bbs_mod.graphics;
 
 import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.blaze3d.systems.RenderPass;
+import com.mojang.blaze3d.buffers.GpuBuffer;
+import com.mojang.blaze3d.buffers.GpuBufferSlice;
+import com.mojang.blaze3d.pipeline.RenderPipeline;
+import com.mojang.blaze3d.systems.CommandEncoder;
+import com.mojang.blaze3d.systems.GpuDevice;
 import mchorse.bbs_mod.BBSSettings;
 import mchorse.bbs_mod.camera.data.Angle;
 import mchorse.bbs_mod.utils.Axis;
 import mchorse.bbs_mod.utils.MathUtils;
 import com.mojang.blaze3d.vertex.BufferBuilder;
-// [MC 26.2 REMOVED] import com.mojang.blaze3d.vertex.BufferUploader;
-import net.minecraft.client.renderer.GameRenderer;
-// [MC 26.2 REMOVED] import com.mojang.blaze3d.vertex.Tessellator;
+import com.mojang.blaze3d.vertex.ByteBufferBuilder;
+import com.mojang.blaze3d.PrimitiveTopology;
+import com.mojang.blaze3d.vertex.MeshData;
 import com.mojang.blaze3d.vertex.VertexFormat;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.blaze3d.vertex.PoseStack;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.RenderPipelines;
 import org.joml.Quaternionf;
 import org.joml.Matrix4f;
 
+import java.util.Optional;
+import java.util.OptionalDouble;
+
 public class Draw
 {
+    private static void drawBuffer(BufferBuilder builder)
+    {
+        MeshData mesh = builder.buildOrThrow();
+        MeshData.DrawState drawState = mesh.drawState();
+        VertexFormat format = drawState.format();
+        Minecraft mc = Minecraft.getInstance();
+        GpuDevice device = RenderSystem.getDevice();
+
+        CommandEncoder encoder = device.createCommandEncoder();
+        java.nio.ByteBuffer vertexData = mesh.vertexBuffer();
+        GpuBuffer vertices = device.createBuffer(() -> "vertices", GpuBuffer.USAGE_VERTEX | GpuBuffer.USAGE_MAP_WRITE, vertexData.remaining());
+        GpuBufferSlice vertSlice = new GpuBufferSlice(vertices, 0, vertexData.remaining());
+        encoder.writeToBuffer(vertSlice, vertexData);
+
+        RenderPipeline pipeline = RenderPipelines.DEBUG_FILLED_BOX;
+        PrimitiveTopology topo = pipeline.getPrimitiveTopology();
+        GpuBuffer indices;
+        com.mojang.blaze3d.IndexType indexType;
+
+        if (topo == PrimitiveTopology.QUADS)
+        {
+            mesh.sortQuads(new ByteBufferBuilder(256), RenderSystem.getProjectionType().vertexSorting());
+            java.nio.ByteBuffer indexData = mesh.indexBuffer();
+            indices = device.createBuffer(() -> "indices", GpuBuffer.USAGE_INDEX | GpuBuffer.USAGE_MAP_WRITE, indexData.remaining());
+            encoder.writeToBuffer(new GpuBufferSlice(indices, 0, indexData.remaining()), indexData);
+            indexType = drawState.indexType();
+        }
+        else
+        {
+            RenderSystem.AutoStorageIndexBuffer shapeIndexBuffer = RenderSystem.getSequentialBuffer(topo);
+            indices = shapeIndexBuffer.getBuffer(drawState.indexCount());
+            indexType = shapeIndexBuffer.type();
+        }
+
+        GpuBufferSlice transforms = RenderSystem.getDynamicUniforms().writeTransform(RenderSystem.getModelViewMatrixCopy());
+
+        try (RenderPass pass = encoder.createRenderPass(
+            () -> "draw",
+            mc.gameRenderer.mainRenderTarget().getColorTextureView(),
+            Optional.empty(),
+            mc.gameRenderer.mainRenderTarget().getDepthTextureView(),
+            OptionalDouble.empty()
+        ))
+        {
+            pass.setPipeline(pipeline);
+            RenderSystem.bindDefaultUniforms(pass);
+            pass.setUniform("DynamicTransforms", transforms);
+            pass.setVertexBuffer(0, new GpuBufferSlice(vertices, 0, vertexData.remaining()));
+            pass.setIndexBuffer(indices, indexType);
+            pass.drawIndexed(0, 0, drawState.indexCount(), 1, 1);
+        }
+
+        mesh.close();
+        encoder.submit();
+    }
+
     public static void renderBox(PoseStack stack, double x, double y, double z, double w, double h, double d)
     {
         renderBox(stack, x, y, z, w, h, d, 1, 1, 1);
@@ -29,79 +96,57 @@ public class Draw
 
     public static void renderBox(PoseStack stack, double x, double y, double z, double w, double h, double d, float r, float g, float b, float a)
     {
-        stack.push();
+        stack.pushPose();
         stack.translate(x, y, z);
         float fw = (float) w;
         float fh = (float) h;
         float fd = (float) d;
         float t = 1 / 96F + (float) (Math.sqrt(w * w + h + h + d + d) / 2000);
 
-        BufferBuilder builder = Tessellator.getInstance().getBuffer();
-        RenderSystem.setShader(GameRenderer::getPositionColorProgram);
+        BufferBuilder builder = new BufferBuilder(new ByteBufferBuilder(2048), PrimitiveTopology.TRIANGLES, DefaultVertexFormat.POSITION_COLOR);
 
-        builder.begin(VertexFormat.DrawMode.TRIANGLES, DefaultVertexFormat.POSITION_COLOR);
-
-        /* Pillars: fillBox(builder, -t, -t, -t, t, t, t, r, g, b, a); */
         fillBox(builder, stack, -t, -t, -t, t, t + fh, t, r, g, b, a);
         fillBox(builder, stack, -t + fw, -t, -t, t + fw, t + fh, t, r, g, b, a);
         fillBox(builder, stack, -t, -t, -t + fd, t, t + fh, t + fd, r, g, b, a);
         fillBox(builder, stack, -t + fw, -t, -t + fd, t + fw, t + fh, t + fd, r, g, b, a);
 
-        /* Top */
         fillBox(builder, stack, -t, -t + fh, -t, t + fw, t + fh, t, r, g, b, a);
         fillBox(builder, stack, -t, -t + fh, -t + fd, t + fw, t + fh, t + fd, r, g, b, a);
         fillBox(builder, stack, -t, -t + fh, -t, t, t + fh, t + fd, r, g, b, a);
         fillBox(builder, stack, -t + fw, -t + fh, -t, t + fw, t + fh, t + fd, r, g, b, a);
 
-        /* Bottom */
         fillBox(builder, stack, -t, -t, -t, t + fw, t, t, r, g, b, a);
         fillBox(builder, stack, -t, -t, -t + fd, t + fw, t, t + fd, r, g, b, a);
         fillBox(builder, stack, -t, -t, -t, t, t, t + fd, r, g, b, a);
         fillBox(builder, stack, -t + fw, -t, -t, t + fw, t, t + fd, r, g, b, a);
 
-        BufferRenderer.drawWithGlobalProgram(builder.end());
-
-        stack.pop();
+        drawBuffer(builder);
+        stack.popPose();
     }
 
-    /**
-     * Fill a quad for {@link net.minecraft.client.render.DefaultVertexFormat#POSITION_TEXTURE_COLOR_NORMAL}. Points should
-     * be supplied in this order:
-     *
-     *     3 -------> 4
-     *     ^
-     *     |
-     *     |
-     *     2 <------- 1
-     *
-     * I.e. bottom left, bottom right, top left, top right, where left is -X and right is +X,
-     * in case of a quad on fixed on Z axis.
-     */
     public static void fillTexturedNormalQuad(BufferBuilder builder, PoseStack stack, float x1, float y1, float z1, float x2, float y2, float z2, float x3, float y3, float z3, float x4, float y4, float z4, float u1, float v1, float u2, float v2, float r, float g, float b, float a, float nx, float ny, float nz)
     {
-        Matrix4f matrix4f = stack.peek().getPositionMatrix();
+        Matrix4f matrix4f = stack.last().pose();
 
-        /* 1 - BL, 2 - BR, 3 - TR, 4 - TL */
-        builder.vertex(matrix4f, x2, y2, z2).texture(u1, v2).color(r, g, b, a).normal(nx, ny, nz).next();
-        builder.vertex(matrix4f, x1, y1, z1).texture(u2, v2).color(r, g, b, a).normal(nx, ny, nz).next();
-        builder.vertex(matrix4f, x4, y4, z4).texture(u2, v1).color(r, g, b, a).normal(nx, ny, nz).next();
+        builder.addVertex(matrix4f, x2, y2, z2).setUv(u1, v2).setColor(r, g, b, a).setNormal(nx, ny, nz);
+        builder.addVertex(matrix4f, x1, y1, z1).setUv(u2, v2).setColor(r, g, b, a).setNormal(nx, ny, nz);
+        builder.addVertex(matrix4f, x4, y4, z4).setUv(u2, v1).setColor(r, g, b, a).setNormal(nx, ny, nz);
 
-        builder.vertex(matrix4f, x2, y2, z2).texture(u1, v2).color(r, g, b, a).normal(nx, ny, nz).next();
-        builder.vertex(matrix4f, x4, y4, z4).texture(u2, v1).color(r, g, b, a).normal(nx, ny, nz).next();
-        builder.vertex(matrix4f, x3, y3, z3).texture(u1, v1).color(r, g, b, a).normal(nx, ny, nz).next();
+        builder.addVertex(matrix4f, x2, y2, z2).setUv(u1, v2).setColor(r, g, b, a).setNormal(nx, ny, nz);
+        builder.addVertex(matrix4f, x4, y4, z4).setUv(u2, v1).setColor(r, g, b, a).setNormal(nx, ny, nz);
+        builder.addVertex(matrix4f, x3, y3, z3).setUv(u1, v1).setColor(r, g, b, a).setNormal(nx, ny, nz);
     }
 
     public static void fillQuad(BufferBuilder builder, PoseStack stack, float x1, float y1, float z1, float x2, float y2, float z2, float x3, float y3, float z3, float x4, float y4, float z4, float r, float g, float b, float a)
     {
-        Matrix4f matrix4f = stack.peek().getPositionMatrix();
+        Matrix4f matrix4f = stack.last().pose();
 
-        /* 1 - BR, 2 - BL, 3 - TL, 4 - TR */
-        builder.vertex(matrix4f, x1, y1, z1).color(r, g, b, a).next();
-        builder.vertex(matrix4f, x2, y2, z2).color(r, g, b, a).next();
-        builder.vertex(matrix4f, x3, y3, z3).color(r, g, b, a).next();
-        builder.vertex(matrix4f, x1, y1, z1).color(r, g, b, a).next();
-        builder.vertex(matrix4f, x3, y3, z3).color(r, g, b, a).next();
-        builder.vertex(matrix4f, x4, y4, z4).color(r, g, b, a).next();
+        builder.addVertex(matrix4f, x1, y1, z1).setColor(r, g, b, a);
+        builder.addVertex(matrix4f, x2, y2, z2).setColor(r, g, b, a);
+        builder.addVertex(matrix4f, x3, y3, z3).setColor(r, g, b, a);
+        builder.addVertex(matrix4f, x1, y1, z1).setColor(r, g, b, a);
+        builder.addVertex(matrix4f, x3, y3, z3).setColor(r, g, b, a);
+        builder.addVertex(matrix4f, x4, y4, z4).setColor(r, g, b, a);
     }
 
     public static void fillBoxTo(BufferBuilder builder, PoseStack stack, float x1, float y1, float z1, float x2, float y2, float z2, float thickness, float r, float g, float b, float a)
@@ -112,15 +157,13 @@ public class Draw
         double distance = Math.sqrt(dx * dx + dy * dy + dz * dz);
         Angle angle = Angle.angle(dx, dy, dz);
 
-        stack.push();
-
+        stack.pushPose();
         stack.translate(x1, y1, z1);
-        stack.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(angle.yaw));
-        stack.multiply(RotationAxis.POSITIVE_X.rotationDegrees(angle.pitch));
+        stack.mulPose(com.mojang.math.Axis.YP.rotationDegrees(angle.yaw));
+        stack.mulPose(com.mojang.math.Axis.XP.rotationDegrees(angle.pitch));
 
         fillBox(builder, stack, -thickness / 2, -thickness / 2, 0, thickness / 2, thickness / 2, (float) distance, r, g, b, a);
-
-        stack.pop();
+        stack.popPose();
     }
 
     public static void fillBox(BufferBuilder builder, PoseStack stack, float x1, float y1, float z1, float x2, float y2, float z2, float r, float g, float b)
@@ -130,15 +173,10 @@ public class Draw
 
     public static void fillBox(BufferBuilder builder, PoseStack stack, float x1, float y1, float z1, float x2, float y2, float z2, float r, float g, float b, float a)
     {
-        /* X */
         fillQuad(builder, stack, x1, y1, z2, x1, y2, z2, x1, y2, z1, x1, y1, z1, r, g, b, a);
         fillQuad(builder, stack, x2, y1, z1, x2, y2, z1, x2, y2, z2, x2, y1, z2, r, g, b, a);
-
-        /* Y */
         fillQuad(builder, stack, x1, y1, z1, x2, y1, z1, x2, y1, z2, x1, y1, z2, r, g, b, a);
         fillQuad(builder, stack, x2, y2, z1, x1, y2, z1, x1, y2, z2, x2, y2, z2, r, g, b, a);
-
-        /* Z */
         fillQuad(builder, stack, x2, y1, z1, x1, y1, z1, x1, y2, z1, x2, y2, z1, r, g, b, a);
         fillQuad(builder, stack, x1, y1, z2, x2, y1, z2, x2, y2, z2, x1, y2, z2, r, g, b, a);
     }
@@ -152,9 +190,7 @@ public class Draw
         outlineSize *= scale;
         outlineOffset *= scale;
 
-        BufferBuilder builder = Tessellator.getInstance().getBuffer();
-
-        builder.begin(VertexFormat.DrawMode.TRIANGLES, DefaultVertexFormat.POSITION_COLOR);
+        BufferBuilder builder = new BufferBuilder(new ByteBufferBuilder(4096), PrimitiveTopology.TRIANGLES, DefaultVertexFormat.POSITION_COLOR);
 
         fillBox(builder, stack, 0, -outlineOffset, -outlineOffset, outlineSize, outlineOffset, outlineOffset, 0, 0, 0);
         fillBox(builder, stack, -outlineOffset, 0, -outlineOffset, outlineOffset, outlineSize, outlineOffset, 0, 0, 0);
@@ -166,10 +202,7 @@ public class Draw
         fillBox(builder, stack, -axisOffset, -axisOffset, 0, axisOffset, axisOffset, axisSize, 0, 0, 1);
         fillBox(builder, stack, -axisOffset, -axisOffset, -axisOffset, axisOffset, axisOffset, axisOffset, 1, 1, 1);
 
-        RenderSystem.setShader(GameRenderer::getPositionColorProgram);
-        RenderSystem.disableDepthTest();
-
-        BufferRenderer.drawWithGlobalProgram(builder.end());
+        drawBuffer(builder);
     }
 
     public static void arc3D(BufferBuilder builder, PoseStack stack, Axis axis, float radius, float thickness, float r, float g, float b)
@@ -177,9 +210,6 @@ public class Draw
         arc3D(builder, stack, axis, radius, thickness, r, g, b, 0F, 360F);
     }
 
-    /**
-     * Based on ElGatoPro300's code from BBS mod CML edition
-     */
     public static void arc3D(BufferBuilder builder, PoseStack stack, Axis axis, float radius, float thickness, float r, float g, float b, float startDeg, float sweepDeg)
     {
         int segU = 96;
@@ -188,13 +218,13 @@ public class Draw
         double uStep = Math.toRadians(sweepDeg / (double) segU);
         double vStep = Math.PI * 2D / (double) segV;
 
-        stack.push();
+        stack.pushPose();
 
-        if (axis == Axis.X) stack.multiply(RotationAxis.POSITIVE_Z.rotation(MathUtils.PI / 2F));
-        if (axis == Axis.Z) stack.multiply(RotationAxis.POSITIVE_X.rotation(MathUtils.PI / 2F));
+        if (axis == Axis.X) stack.mulPose(com.mojang.math.Axis.ZP.rotation(MathUtils.PI / 2F));
+        if (axis == Axis.Z) stack.mulPose(com.mojang.math.Axis.XP.rotation(MathUtils.PI / 2F));
 
         float tubeR = thickness * 0.5F;
-        Matrix4f mat = stack.peek().getPositionMatrix();
+        Matrix4f mat = stack.last().pose();
 
         for (int iu = 0; iu < segU; iu++)
         {
@@ -224,18 +254,20 @@ public class Draw
                 float z22 = (float) (cos2 * Math.sin(u2));
                 float y22 = (float) (tubeR * Math.sin(v2));
 
-                builder.vertex(mat, x11, y11, z11).color(r, g, b, 1F).next();
-                builder.vertex(mat, x12, y12, z12).color(r, g, b, 1F).next();
-                builder.vertex(mat, x22, y22, z22).color(r, g, b, 1F).next();
+                int ri = (int)(r * 255);
+                int gi = (int)(g * 255);
+                int bi = (int)(b * 255);
 
-                builder.vertex(mat, x11, y11, z11).color(r, g, b, 1F).next();
-                builder.vertex(mat, x22, y22, z22).color(r, g, b, 1F).next();
-                builder.vertex(mat, x21, y21, z21).color(r, g, b, 1F).next();
+                builder.addVertex(mat, x11, y11, z11).setColor(ri, gi, bi, 255);
+                builder.addVertex(mat, x12, y12, z12).setColor(ri, gi, bi, 255);
+                builder.addVertex(mat, x22, y22, z22).setColor(ri, gi, bi, 255);
+
+                builder.addVertex(mat, x11, y11, z11).setColor(ri, gi, bi, 255);
+                builder.addVertex(mat, x22, y22, z22).setColor(ri, gi, bi, 255);
+                builder.addVertex(mat, x21, y21, z21).setColor(ri, gi, bi, 255);
             }
         }
 
-        stack.pop();
+        stack.popPose();
     }
 }
-
-

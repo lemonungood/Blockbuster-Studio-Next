@@ -208,11 +208,11 @@ public class UIFormList extends UIElement
             this.setSelected(selected);
         }
 
-        DiffuseLighting.enableGuiDepthLighting();
+        // DiffuseLighting removed
 
         super.render(context);
 
-        DiffuseLighting.disableGuiDepthLighting();
+        // DiffuseLighting removed
 
         /* Render form's display name and ID */
         Form selected = this.getSelected();

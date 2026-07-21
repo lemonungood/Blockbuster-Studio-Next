@@ -532,7 +532,7 @@ public class UIReplaysEditor extends UIElement
         }
         else if (context.mouseButton == 1 && this.isVisible())
         {
-            Level world = Minecraft.getInstance().world;
+            Level world = Minecraft.getInstance().level;
             Camera camera = this.filmPanel.getCamera();
 
             BlockHitResult blockHitResult = RayTracing.rayTrace(
@@ -544,7 +544,7 @@ public class UIReplaysEditor extends UIElement
 
             if (blockHitResult.getType() != HitResult.Type.MISS)
             {
-                Vector3d vec = new Vector3d(blockHitResult.getPos().x, blockHitResult.getPos().y, blockHitResult.getPos().z);
+                Vector3d vec = new Vector3d(blockHitResult.getLocation().x, blockHitResult.getLocation().y, blockHitResult.getLocation().z);
 
                 if (Window.isShiftPressed())
                 {
@@ -607,10 +607,10 @@ public class UIReplaysEditor extends UIElement
             LocalPlayer player = Minecraft.getInstance().player;
 
             PlayerUtils.teleport(x, y, z, headYaw, pitch);
-            player.setYaw(yaw);
-            player.setHeadYaw(headYaw);
-            player.setBodyYaw(bodyYaw);
-            player.setPitch(pitch);
+            player.setYRot(yaw);
+            player.setYHeadRot(headYaw);
+            player.setYBodyRot(bodyYaw);
+            player.setXRot(pitch);
         }
     }
 

@@ -85,9 +85,10 @@ public abstract class BaseFilmController
             Lerps.lerp(entity.getPrevZ(), entity.getZ(), transition)
         );
 
-        double cx = camera.cameraPos.x;
-        double cy = camera.cameraPos.y;
-        double cz = camera.cameraPos.z;
+        Vec3 camPos = camera.position();
+        double cx = camPos.x;
+        double cy = camPos.y;
+        double cz = camPos.z;
 
         boolean relative = context.replay != null && context.relative;
 
@@ -430,15 +431,15 @@ public abstract class BaseFilmController
 
                     if (entityId != null)
                     {
-                        Entity anEntity = Minecraft.getInstance().level.getEntityById(entityId);
+                        Entity anEntity = Minecraft.getInstance().level.getEntity(entityId);
 
                         if (anEntity instanceof ActorEntity actor)
                         {
                             /* Force synchronize entity angles */
-                            actor.setYaw(replay.keyframes.yaw.interpolate(ticks).floatValue());
-                            actor.setHeadYaw(replay.keyframes.headYaw.interpolate(ticks).floatValue());
-                            actor.setBodyYaw(replay.keyframes.bodyYaw.interpolate(ticks).floatValue());
-                            actor.setPitch(replay.keyframes.pitch.interpolate(ticks).floatValue());
+                            actor.setYRot(replay.keyframes.yaw.interpolate(ticks).floatValue());
+                            actor.setYHeadRot(replay.keyframes.headYaw.interpolate(ticks).floatValue());
+                            actor.setYBodyRot(replay.keyframes.bodyYaw.interpolate(ticks).floatValue());
+                            actor.setXRot(replay.keyframes.pitch.interpolate(ticks).floatValue());
                             replay.applyClientActions(ticks, new MCEntity(anEntity), this.film);
                         }
                         else if (anEntity instanceof Player player)
@@ -486,7 +487,7 @@ public abstract class BaseFilmController
 
                     if (entityId != null)
                     {
-                        Entity anEntity = Minecraft.getInstance().level.getEntityById(entityId);
+                        Entity anEntity = Minecraft.getInstance().level.getEntity(entityId);
 
                         if (anEntity instanceof Player player)
                         {
@@ -510,7 +511,7 @@ public abstract class BaseFilmController
 
                             if (player instanceof LocalPlayer playerEntity)
                             {
-                                playerEntity.input.shiftKeyDown = sneaking;
+                            // playerEntity.input.shiftKeyDown/shiftPressed removed in MC 26.2
                             }
 
                             player.fallDistance = replay.keyframes.fall.interpolate(ticks).floatValue();
@@ -565,7 +566,7 @@ public abstract class BaseFilmController
 
                 if (entityId != null)
                 {
-                    Entity anEntity = Minecraft.getInstance().level.getEntityById(entityId);
+                    Entity anEntity = Minecraft.getInstance().level.getEntity(entityId);
 
                     if (anEntity instanceof ActorEntity actor)
                     {

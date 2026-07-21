@@ -29,10 +29,10 @@ public class PlayerUtils
         else
         {
             ClientNetwork.sendTeleport(x, y, z, yaw, bodyYaw, pitch);
-            player.setYaw(yaw);
-            player.setHeadYaw(yaw);
-            player.setBodyYaw(bodyYaw);
-            player.setPitch(pitch);
+            player.setYRot(yaw);
+            player.setYHeadRot(yaw);
+            player.setYBodyRot(bodyYaw);
+            player.setXRot(pitch);
         }
     }
 

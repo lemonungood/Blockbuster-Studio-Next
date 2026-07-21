@@ -156,7 +156,7 @@ public class UIDashboard extends UIBaseMenu
         Camera camera = new Camera();
 
         camera.position.set(eyePos.x(), eyePos.y(), eyePos.z());
-        camera.rotation.set(MathUtils.toRad(cameraEntity.getXRot()), MathUtils.toRad(cameraEntity.yHeadRot - 180), 0);
+        camera.rotation.set(MathUtils.toRad(cameraEntity.getXRot()), MathUtils.toRad(cameraEntity.getYHeadRot() - 180), 0);
         camera.fov = MathUtils.toRad(Minecraft.getInstance().options.fov().get().floatValue());
 
         this.orbit.setup(camera);
@@ -315,7 +315,7 @@ public class UIDashboard extends UIBaseMenu
         }
         else
         {
-            context.batcher.texturedBox(context.getTextures().getTexture(background), color, 0, 0, this.width, this.height, 0, 0, this.width, this.height, this.width, this.height);
+            context.batcher.texturedBox(context.getTextures().getTexture(background).id, color, 0, 0, this.width, this.height, 0, 0, this.width, this.height, this.width, this.height);
         }
     }
 

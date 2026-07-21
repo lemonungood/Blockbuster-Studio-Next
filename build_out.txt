@@ -1,0 +1,926 @@
+﻿.\gradlew : WARNING: A restricted method in java.lang.System has been called
+所在位置 行:439 字符: 50
++ ... Location "D:\DEV\bbs_clean"; .\gradlew compileClientJava 2>&1 | Out-S ...
++                                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (WARNING: A rest...has been called:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+WARNING: java.lang.System::load has been called by net.rubygrapefruit.platform.internal.NativeLibraryLoader in an unnamed module (file:/C:/Users/hechengyu/.gradle/wrapper/dists/gradle-9.5.1-bin/iq79hdu3mqx29lgffhp8bfmx/gradle-9.5.1/lib/native-platform-0.22-milestone-29.jar)
+WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+
+> Configure project :
+Fabric Loom: 1.17.16
+
+> Task :compileJava UP-TO-DATE
+> Task :processResources UP-TO-DATE
+> Task :classes UP-TO-DATE
+
+> Task :compileClientJava
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\utils\VideoRecorder.java:9: 璀﹀憡: Unsafe鏄唴閮ㄤ笓鐢?API, 鍙兘浼氬湪鏈潵鍙戣鐗堜腑鍒犻櫎
+import sun.misc.Unsafe;
+               ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\particles\emitter\ParticleEmitter.java:23: 閿欒: 鎵句笉鍒扮鍙?import com.mojang.blaze3d.vertex.VertexFormat.Mode;
+                                             ^
+  绗﹀彿:   绫?Mode
+  浣嶇疆: 绫?VertexFormat
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\utils\Scroll.java:453: 閿欒: 鎵句笉鍒扮鍙?            float delta = Minecraft.getInstance().getFrameTime();
+                                                 ^
+  绗﹀彿:   鏂规硶 getFrameTime()
+  浣嶇疆: 绫?Minecraft
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\BBSModClient.java:447: 閿欒: screen 鍦?Gui 涓槸 private 璁块棶鎺у埗
+            if (mc.gui.screen != null)
+                      ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\BBSModClient.java:449: 閿欒: screen 鍦?Gui 涓槸 private 璁块棶鎺у埗
+                mc.gui.screen.tick();
+                      ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\utils\VideoRecorder.java:156: 璀﹀憡: Unsafe鏄唴閮ㄤ笓鐢?API, 鍙兘浼氬湪鏈潵鍙戣鐗堜腑鍒犻櫎
+            Unsafe unsafe = UnsafeUtils.getUnsafe();
+            ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\utils\VideoRecorder.java:164: 璀﹀憡: [removal] Unsafe 涓殑 objectFieldOffset(Field) 宸茶繃鏃? 涓旀爣璁颁负寰呭垹闄?                    os = (OutputStream) unsafe.getObject(os, unsafe.objectFieldOffset(outField));
+                                                                   ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\utils\VideoRecorder.java:164: 璀﹀憡: [removal] Unsafe 涓殑 getObject(Object,long) 宸茶繃鏃? 涓旀爣璁颁负寰呭垹闄?                    os = (OutputStream) unsafe.getObject(os, unsafe.objectFieldOffset(outField));
+                                              ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\renderer\item\ModelBlockItemRenderer.java:92: 閿欒: 涓嶅吋瀹圭殑绫诲瀷: 鎺ㄨ鍙橀噺 T 鍏锋湁涓嶅吋瀹圭殑涓婇檺
+        net.minecraft.nbt.CompoundTag data = stack.get(net.minecraft.core.component.DataComponents.BLOCK_ENTITY_DATA);
+                                                      ^
+    涓婇檺锛欳ompoundTag,Object
+    涓嬮檺锛歍ypedEntityData<BlockEntityType<?>>
+  鍏朵腑, T鏄被鍨嬪彉閲?
+    T鎵╁睍宸插湪鏂规硶 <T>get(DataComponentType<? extends T>)涓０鏄庣殑Object
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\BaseFilmController.java:514: 閿欒: 鎵句笉鍒扮鍙?                                playerEntity.input.shiftKeyDown = sneaking;
+                                                  ^
+  绗﹀彿:   鍙橀噺 shiftKeyDown
+  浣嶇疆: 绫诲瀷涓篊lientInput鐨勫彉閲?input
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\BaseFilmController.java:644: 閿欒: 鎵句笉鍒扮鍙?            filmContext.transition = getTransition(entity, Minecraft.getInstance().getFrameTime());
+                                                                                  ^
+  绗﹀彿:   鏂规硶 getFrameTime()
+  浣嶇疆: 绫?Minecraft
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\Recorder.java:77: 閿欒: 鎵句笉鍒扮鍙?        BufferBuilder builder = new BufferBuilder(byteBuf, VertexFormat.DrawMode.TRIANGLES, DefaultVertexFormat.POSITION_COLOR);
+                                                                       ^
+  绗﹀彿:   鍙橀噺 DrawMode
+  浣嶇疆: 绫?VertexFormat
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\Recorder.java:159: 閿欒: 鎵句笉鍒扮鍙?        renderCameraPreview(this.position, Minecraft.getInstance().gameRenderer.getCamera(), context.poseStack());
+                                                                               ^
+  绗﹀彿:   鏂规硶 getCamera()
+  浣嶇疆: 绫诲瀷涓篏ameRenderer鐨勫彉閲?gameRenderer
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\FilmControllerContext.java:72: 閿欒: 鎵句笉鍒扮鍙?        this.camera = Minecraft.getInstance().gameRenderer.getCamera();
+                                                          ^
+  绗﹀彿:   鏂规硶 getCamera()
+  浣嶇疆: 绫诲瀷涓篏ameRenderer鐨勫彉閲?gameRenderer
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\FilmControllerContext.java:75: 閿欒: 鎵句笉鍒扮鍙?        this.transition = Minecraft.getInstance().getFrameTime();
+                                                 ^
+  绗﹀彿:   鏂规硶 getFrameTime()
+  浣嶇疆: 绫?Minecraft
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\particles\emitter\ParticleEmitter.java:456: 閿欒: 鎵句笉鍒扮鍙?            BufferBuilder builder = new BufferBuilder(byteBuf, Mode.TRIANGLES, DefaultVertexFormat.POSITION_TEX_COLOR);
+                                                               ^
+  绗﹀彿:   鍙橀噺 Mode
+  浣嶇疆: 绫?ParticleEmitter
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\particles\emitter\ParticleEmitter.java:488: 閿欒: 鎵句笉鍒扮鍙?            BufferBuilder builder = new BufferBuilder(byteBuf, Mode.TRIANGLES, format);
+                                                               ^
+  绗﹀彿:   鍙橀噺 Mode
+  浣嶇疆: 绫?ParticleEmitter
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\categories\UIFormCategory.java:132: 閿欒: 鎵句笉鍒扮鍙?                                if (entry.getUuid().equals(Minecraft.getInstance().player.getUUID()))
+                                         ^
+  绗﹀彿:   鏂规硶 getUuid()
+  浣嶇疆: 绫诲瀷涓篜layerInfo鐨勫彉閲?entry
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\categories\UIFormCategory.java:137: 閿欒: 鎵句笉鍒扮鍙?                                newMenu.action(Icons.ARROW_RIGHT, IKey.constant(entry.getPlayerName()), () ->
+                                                                                     ^
+  绗﹀彿:   鏂规硶 getPlayerName()
+  浣嶇疆: 绫诲瀷涓篜layerInfo鐨勫彉閲?entry
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\categories\UIFormCategory.java:139: 閿欒: 鎵句笉鍒扮鍙?                                    ClientNetwork.sendSharedForm(this.selected, entry.getUuid());
+                                                                                     ^
+  绗﹀彿:   鏂规硶 getUuid()
+  浣嶇疆: 绫诲瀷涓篜layerInfo鐨勫彉閲?entry
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\cubic\ModelInstance.java:348: 閿欒: 鎵句笉鍒扮鍙?                BufferBuilder builder = new BufferBuilder(byteBuf, VertexFormat.Mode.TRIANGLES, DefaultVertexFormat.POSITION_COLOR_TEX_LIGHTMAP);
+                                                                               ^
+  绗﹀彿:   鍙橀噺 Mode
+  浣嶇疆: 绫?VertexFormat
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\UIFilmPanel.java:955: 閿欒: 鎵句笉鍒扮鍙?            int value = Minecraft.getInstance().options.getRenderDistance().get();
+                                                       ^
+  绗﹀彿:   鏂规硶 getRenderDistance()
+  浣嶇疆: 绫诲瀷涓篛ptions鐨勫彉閲?options
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\UIFilmPreview.java:375: 閿欒: 鎵句笉鍒扮鍙?        net.minecraft.client.Camera mcCamera = Minecraft.getInstance().gameRenderer.getCamera();
+                                                                                   ^
+  绗﹀彿:   鏂规硶 getCamera()
+  浣嶇疆: 绫诲瀷涓篏ameRenderer鐨勫彉閲?gameRenderer
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\UIFilmPreview.java:381: 閿欒: 鎵句笉鍒扮鍙?        stack.multiply(com.mojang.math.Axis.XN.rotationDegrees(mcCamera.getPitch()));
+                                                                       ^
+  绗﹀彿:   鏂规硶 getPitch()
+  浣嶇疆: 绫诲瀷涓篊amera鐨勫彉閲?mcCamera
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\UIFilmPreview.java:382: 閿欒: 鎵句笉鍒扮鍙?        stack.multiply(com.mojang.math.Axis.YP.rotationDegrees(mcCamera.getYaw()));
+                                                                       ^
+  绗﹀彿:   鏂规硶 getYaw()
+  浣嶇疆: 绫诲瀷涓篊amera鐨勫彉閲?mcCamera
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:219: 閿欒: 鎵句笉鍒扮鍙?            GLFW.glfwSetInputMode(window.getWindow(), GLFW.GLFW_CURSOR, GLFW.GLFW_CURSOR_DISABLED);
+                                        ^
+  绗﹀彿:   鏂规硶 getWindow()
+  浣嶇疆: 绫诲瀷涓篧indow鐨勫彉閲?window
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:223: 閿欒: 鎵句笉鍒扮鍙?            GLFW.glfwSetInputMode(window.getWindow(), GLFW.GLFW_CURSOR, GLFW.GLFW_CURSOR_NORMAL);
+                                        ^
+  绗﹀彿:   鏂规硶 getWindow()
+  浣嶇疆: 绫诲瀷涓篧indow鐨勫彉閲?window
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:1031: 閿欒: 鏃犳硶灏嗙被 RenderSystem涓殑鏂规硶 setProjectionMatrix搴旂敤鍒扮粰瀹氱被鍨?
+        RenderSystem.setProjectionMatrix(this.panel.lastProjection);
+                    ^
+  闇€瑕? GpuBufferSlice,ProjectionType
+  鎵惧埌:    Matrix4f
+  鍘熷洜: 瀹為檯鍙傛暟鍒楄〃鍜屽舰寮忓弬鏁板垪琛ㄩ暱搴︿笉鍚?
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:1121: 閿欒: 鎵句笉鍒扮鍙?                Recorder.renderCameraPreview(this.panel.getRunner().position(), Minecraft.getInstance().gameRenderer.getCamera(), context.poseStack());
+                                                                   ^
+  绗﹀彿:   鏂规硶 position()
+  浣嶇疆: 绫?RunnerCameraController
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:1121: 閿欒: 鎵句笉鍒扮鍙?                Recorder.renderCameraPreview(this.panel.getRunner().position(), Minecraft.getInstance().gameRenderer.getCamera(), context.poseStack());
+                                                                                                                    ^
+  绗﹀彿:   鏂规硶 getCamera()
+  浣嶇疆: 绫诲瀷涓篏ameRenderer鐨勫彉閲?gameRenderer
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:1201: 閿欒: 鎵句笉鍒扮鍙?                    .transition(isPlaying ? Minecraft.getInstance().getFrameTime() : 0)
+                                                                   ^
+  绗﹀彿:   鏂规硶 getFrameTime()
+  浣嶇疆: 绫?Minecraft
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:1213: 閿欒: 鎵句笉鍒扮鍙?                .transition(isPlaying ? Minecraft.getInstance().getFrameTime() : 0)
+                                                               ^
+  绗﹀彿:   鏂规硶 getFrameTime()
+  浣嶇疆: 绫?Minecraft
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:1225: 閿欒: 鎵句笉鍒扮鍙?        Minecraft.getInstance().getMainRenderTarget().beginWrite(true);
+                               ^
+  绗﹀彿:   鏂规硶 getMainRenderTarget()
+  浣嶇疆: 绫?Minecraft
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\ContentType.java:35: 閿欒: 鎵句笉鍒扮鍙?        if (Minecraft.getInstance().isSingleplayer())
+                                   ^
+  绗﹀彿:   鏂规硶 isSingleplayer()
+  浣嶇疆: 绫?Minecraft
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\FilmEditorController.java:175: 閿欒: 鎵句笉鍒扮鍙?                    float tick = ticks + this.getTransition(entity, context.transition);
+                                                                           ^
+  绗﹀彿:   鍙橀噺 transition
+  浣嶇疆: 绫诲瀷涓篖evelRenderContext鐨勫彉閲?context
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\FilmEditorController.java:184: 閿欒: 鎵句笉鍒扮鍙?                        entity.setyRotO(entity.getYRot());
+                                              ^
+  绗﹀彿:   鏂规硶 getYRot()
+  浣嶇疆: 绫诲瀷涓篒Entity鐨勫彉閲?entity
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\FilmEditorController.java:185: 閿欒: 鎵句笉鍒扮鍙?                        entity.setyHeadRotO(entity.getYHeadRot());
+                                                  ^
+  绗﹀彿:   鏂规硶 getYHeadRot()
+  浣嶇疆: 绫诲瀷涓篒Entity鐨勫彉閲?entity
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\FilmEditorController.java:186: 閿欒: 鎵句笉鍒扮鍙?                        entity.setyBodyRotO(entity.getYBodyRot());
+                                                  ^
+  绗﹀彿:   鏂规硶 getYBodyRot()
+  浣嶇疆: 绫诲瀷涓篒Entity鐨勫彉閲?entity
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\FilmEditorController.java:187: 閿欒: 鎵句笉鍒扮鍙?                        entity.setxRotO(entity.getXRot());
+                                              ^
+  绗﹀彿:   鏂规硶 getXRot()
+  浣嶇疆: 绫诲瀷涓篒Entity鐨勫彉閲?entity
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\FilmEditorController.java:248: 閿欒: 鎵句笉鍒扮鍙?            .transition(this.getTransition(entity, context.tickDelta()))
+                                                          ^
+  绗﹀彿:   鏂规硶 tickDelta()
+  浣嶇疆: 绫诲瀷涓篖evelRenderContext鐨勫彉閲?context
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\OrbitFilmCameraController.java:210: 閿欒: 鎵句笉鍒扮鍙?            float renderYaw = MathUtils.toRad(-Lerps.lerp(entity.getyBodyRotO(), entity.getYBodyRot(), transition) + 180F);
+                                                                ^
+  绗﹀彿:   鏂规硶 getyBodyRotO()
+  浣嶇疆: 绫诲瀷涓篒Entity鐨勫彉閲?entity
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\OrbitFilmCameraController.java:210: 閿欒: 鎵句笉鍒扮鍙?            float renderYaw = MathUtils.toRad(-Lerps.lerp(entity.getyBodyRotO(), entity.getYBodyRot(), transition) + 180F);
+                                                                                       ^
+  绗﹀彿:   鏂规硶 getYBodyRot()
+  浣嶇疆: 绫诲瀷涓篒Entity鐨勫彉閲?entity
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\keyframes\graphs\UIKeyframeDopeSheet.java:544: 閿欒: 鎵句笉鍒扮鍙?        BufferBuilder builder = Tessellator.getInstance().getBuffer();
+                                ^
+  绗﹀彿:   鍙橀噺 Tessellator
+  浣嶇疆: 绫?UIKeyframeDopeSheet
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\keyframes\graphs\UIKeyframeDopeSheet.java:545: 閿欒: 鎵句笉鍒扮鍙?        Matrix4f matrix = context.batcher.getContext().pose().last().pose();
+                                                             ^
+  绗﹀彿:   鏂规硶 last()
+  浣嶇疆: 绫?Matrix3x2fStack
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\keyframes\graphs\UIKeyframeDopeSheet.java:564: 閿欒: 鎵句笉鍒扮鍙?            builder.begin(VertexFormat.DrawMode.QUADS, DefaultVertexFormat.POSITION_COLOR);
+                                      ^
+  绗﹀彿:   鍙橀噺 DrawMode
+  浣嶇疆: 绫?VertexFormat
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\keyframes\graphs\UIKeyframeDopeSheet.java:566: 閿欒: 鏃犳硶灏嗙被 Batcher2D涓殑鏂规硶 fillRect搴旂敤鍒扮粰瀹氱被鍨?
+            context.batcher.fillRect(builder, matrix, area.x, my - 1, area.w, 2, cc, cc, cc, cc);
+                           ^
+  闇€瑕? int,int,int,int,int
+  鎵惧埌:    BufferBuilder,Matrix4f,int,int,int,int,int,int,int,int
+  鍘熷洜: 瀹為檯鍙傛暟鍒楄〃鍜屽舰寮忓弬鏁板垪琛ㄩ暱搴︿笉鍚?
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\keyframes\graphs\UIKeyframeDopeSheet.java:573: 閿欒: 鏃犳硶灏嗙被 Batcher2D涓殑鏂规硶 fillRect搴旂敤鍒扮粰瀹氱被鍨?
+                context.batcher.fillRect(builder, matrix, area.x, y, area.w, (int) this.trackHeight, c | Colors.A25, c | Colors.A25, c, c);
+                               ^
+  闇€瑕? int,int,int,int,int
+  鎵惧埌:    BufferBuilder,Matrix4f,int,int,int,int,int,int,int,int
+  鍘熷洜: 瀹為檯鍙傛暟鍒楄〃鍜屽舰寮忓弬鏁板垪琛ㄩ暱搴︿笉鍚?
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\keyframes\graphs\UIKeyframeDopeSheet.java:587: 閿欒: 鏃犳硶灏嗙被 Batcher2D涓殑鏂规硶 fillRect搴旂敤鍒扮粰瀹氱被鍨?
+                    context.batcher.fillRect(builder, matrix, xx, my - 2, this.keyframes.toGraphX(frame.getTick()) - xx, 4, c, c, c, c);
+                                   ^
+  闇€瑕? int,int,int,int,int
+  鎵惧埌:    BufferBuilder,Matrix4f,int,int,int,int,int,int,int,int
+  鍘熷洜: 瀹為檯鍙傛暟鍒楄〃鍜屽舰寮忓弬鏁板垪琛ㄩ暱搴︿笉鍚?
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\keyframes\graphs\UIKeyframeDopeSheet.java:594: 閿欒: 鏃犳硶灏嗙被 Batcher2D涓殑鏂规硶 fillRect搴旂敤鍒扮粰瀹氱被鍨?
+                    context.batcher.fillRect(builder, matrix, xx - 2, my + 5, xxx - xx + 4, 2, c, c, c, c);
+                                   ^
+  闇€瑕? int,int,int,int,int
+  鎵惧埌:    BufferBuilder,Matrix4f,int,int,int,int,int,int,int,int
+  鍘熷洜: 瀹為檯鍙傛暟鍒楄〃鍜屽舰寮忓弬鏁板垪琛ㄩ暱搴︿笉鍚?
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\keyframes\graphs\UIKeyframeDopeSheet.java:614: 閿欒: 鏃犳硶灏嗙被 Batcher2D涓殑鏂规硶 fillRect搴旂敤鍒扮粰瀹氱被鍨?
+                    context.batcher.fillRect(builder, matrix, x1, y1 - 2, 1, 5, color, color, color, color);
+                                   ^
+  闇€瑕? int,int,int,int,int
+  鎵惧埌:    BufferBuilder,Matrix4f,int,int,int,int,int,int,int,int
+  鍘熷洜: 瀹為檯鍙傛暟鍒楄〃鍜屽舰寮忓弬鏁板垪琛ㄩ暱搴︿笉鍚?
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\keyframes\graphs\UIKeyframeDopeSheet.java:615: 閿欒: 鏃犳硶灏嗙被 Batcher2D涓殑鏂规硶 fillRect搴旂敤鍒扮粰瀹氱被鍨?
+                    context.batcher.fillRect(builder, matrix, x2, y1 - 2, 1, 5, color, color, color, color);
+                                   ^
+  闇€瑕? int,int,int,int,int
+  鎵惧埌:    BufferBuilder,Matrix4f,int,int,int,int,int,int,int,int
+  鍘熷洜: 瀹為檯鍙傛暟鍒楄〃鍜屽舰寮忓弬鏁板垪琛ㄩ暱搴︿笉鍚?
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\keyframes\graphs\UIKeyframeDopeSheet.java:616: 閿欒: 鏃犳硶灏嗙被 Batcher2D涓殑鏂规硶 fillRect搴旂敤鍒扮粰瀹氱被鍨?
+                    context.batcher.fillRect(builder, matrix, x1 + 1, y1, x2 - x1, 1, color, color, color, color);
+                                   ^
+  闇€瑕? int,int,int,int,int
+  鎵惧埌:    BufferBuilder,Matrix4f,int,int,int,int,int,int,int,int
+  鍘熷洜: 瀹為檯鍙傛暟鍒楄〃鍜屽舰寮忓弬鏁板垪琛ㄩ暱搴︿笉鍚?
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\keyframes\graphs\UIKeyframeDopeSheet.java:654: 閿欒: 鎵句笉鍒扮鍙?            RenderSystem.enableBlend();
+                        ^
+  绗﹀彿:   鏂规硶 enableBlend()
+  浣嶇疆: 绫?RenderSystem
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\keyframes\graphs\UIKeyframeDopeSheet.java:655: 閿欒: 鏂规硶寮曠敤鏃犳晥
+            RenderSystem.setShader(GameRenderer::getPositionColorProgram);
+                                   ^
+  鎵句笉鍒扮鍙?    绗﹀彿:   鏂规硶 getPositionColorProgram()
+    浣嶇疆: 绫?GameRenderer
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\keyframes\graphs\UIKeyframeDopeSheet.java:656: 閿欒: 鎵句笉鍒扮鍙?            BufferRenderer.drawWithGlobalProgram(builder.end());
+            ^
+  绗﹀彿:   鍙橀噺 BufferRenderer
+  浣嶇疆: 绫?UIKeyframeDopeSheet
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\keyframes\graphs\UIKeyframeDopeSheet.java:656: 閿欒: 鎵句笉鍒扮鍙?            BufferRenderer.drawWithGlobalProgram(builder.end());
+                                                        ^
+  绗﹀彿:   鏂规硶 end()
+  浣嶇疆: 绫诲瀷涓築ufferBuilder鐨勫彉閲?builder
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\utils\Scale.java:214: 閿欒: 鎵句笉鍒扮鍙?            factor += this.direction.position(this.area, this.anchor);
+                                    ^
+  绗﹀彿:   鏂规硶 position(Area,float)
+  浣嶇疆: 绫诲瀷涓篠crollDirection鐨勫彉閲?direction
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\utils\Scale.java:227: 閿欒: 鎵句笉鍒扮鍙?            mouse -= this.direction.position(this.area, this.anchor);
+                                   ^
+  绗﹀彿:   鏂规硶 position(Area,float)
+  浣嶇疆: 绫诲瀷涓篠crollDirection鐨勫彉閲?direction
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\utils\Scale.java:239: 閿欒: 鎵句笉鍒扮鍙?        return this.from(this.direction.position(this.area, this.inverse ? 1 : 0));
+                                       ^
+  绗﹀彿:   鏂规硶 position(Area,int)
+  浣嶇疆: 绫诲瀷涓篠crollDirection鐨勫彉閲?direction
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\utils\Scale.java:246: 閿欒: 鎵句笉鍒扮鍙?        return this.from(this.direction.position(this.area, this.inverse ? 0 : 1));
+                                       ^
+  绗﹀彿:   鏂规硶 position(Area,int)
+  浣嶇疆: 绫诲瀷涓篠crollDirection鐨勫彉閲?direction
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\utils\Scale.java:352: 閿欒: 鎵句笉鍒扮鍙?                double shift = this.direction.position(this.area, this.anchor) - this.direction.position(this.area, newAnchor);
+                                             ^
+  绗﹀彿:   鏂规硶 position(Area,float)
+  浣嶇疆: 绫诲瀷涓篠crollDirection鐨勫彉閲?direction
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\utils\Scale.java:352: 閿欒: 鎵句笉鍒扮鍙?                double shift = this.direction.position(this.area, this.anchor) - this.direction.position(this.area, newAnchor);
+                                                                                               ^
+  绗﹀彿:   鏂规硶 position(Area,float)
+  浣嶇疆: 绫诲瀷涓篠crollDirection鐨勫彉閲?direction
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\utils\Scale.java:358: 閿欒: 鎵句笉鍒扮鍙?                double shift = this.direction.position(this.area, this.anchor) - this.direction.position(this.area, newAnchor);
+                                             ^
+  绗﹀彿:   鏂规硶 position(Area,float)
+  浣嶇疆: 绫诲瀷涓篠crollDirection鐨勫彉閲?direction
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\utils\Scale.java:358: 閿欒: 鎵句笉鍒扮鍙?                double shift = this.direction.position(this.area, this.anchor) - this.direction.position(this.area, newAnchor);
+                                                                                               ^
+  绗﹀彿:   鏂规硶 position(Area,float)
+  浣嶇疆: 绫诲瀷涓篠crollDirection鐨勫彉閲?direction
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\utils\Scale.java:368: 閿欒: 鎵句笉鍒扮鍙?        double diff = this.from(this.direction.position(this.area, newAnchor)) - this.from(this.direction.position(this.area, 0F));
+                                              ^
+  绗﹀彿:   鏂规硶 position(Area,float)
+  浣嶇疆: 绫诲瀷涓篠crollDirection鐨勫彉閲?direction
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\utils\Scale.java:368: 閿欒: 鎵句笉鍒扮鍙?        double diff = this.from(this.direction.position(this.area, newAnchor)) - this.from(this.direction.position(this.area, 0F));
+                                                                                                         ^
+  绗﹀彿:   鏂规硶 position(Area,float)
+  浣嶇疆: 绫诲瀷涓篠crollDirection鐨勫彉閲?direction
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\UITrackpad.java:717: 閿欒: 鎵句笉鍒扮鍙?                    Window.moveCursor(ww - (int) (factor * borderPadding), (int) mc.mouse.getY());
+                                                                                   ^
+  绗﹀彿:   鍙橀噺 mouse
+  浣嶇疆: 绫诲瀷涓篗inecraft鐨勫彉閲?mc
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\UITrackpad.java:725: 閿欒: 鎵句笉鍒扮鍙?                    Window.moveCursor((int) (factor * borderPadding), (int) mc.mouse.getY());
+                                                                              ^
+  绗﹀彿:   鍙橀噺 mouse
+  浣嶇疆: 绫诲瀷涓篗inecraft鐨勫彉閲?mc
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\UITrackpad.java:766: 閿欒: 鏃犳硶灏嗙被 Batcher2D涓殑鏂规硶 outlineCenter搴旂敤鍒扮粰瀹氱被鍨?
+            context.batcher.outlineCenter(this.initialX, this.initialY, 4, Colors.WHITE);
+                           ^
+  闇€瑕? int,int,int,int,int
+  鎵惧埌:    int,int,int,int
+  鍘熷洜: 瀹為檯鍙傛暟鍒楄〃鍜屽舰寮忓弬鏁板垪琛ㄩ暱搴︿笉鍚?
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\replays\UIReplayList.java:565: 閿欒: 鎵句笉鍒扮鍙?        BlockPos blockPos = modelBlock.blockPosition();
+                                      ^
+  绗﹀彿:   鏂规硶 blockPosition()
+  浣嶇疆: 绫诲瀷涓篗odelBlockEntity鐨勫彉閲?modelBlock
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\replays\UIReplayList.java:718: 閿欒: 瀵逛簬clip(int,int,int,int,UIContext), 鎵句笉鍒板悎閫傜殑鏂规硶
+            context.batcher.clip(x, y, 40, 20, context);
+                           ^
+    鏂规硶 Batcher2D.clip(Area,UIContext)涓嶉€傜敤
+      (瀹為檯鍙傛暟鍒楄〃鍜屽舰寮忓弬鏁板垪琛ㄩ暱搴︿笉鍚?
+    鏂规硶 Batcher2D.clip(int,int,int,int,int,int)涓嶉€傜敤
+      (瀹為檯鍙傛暟鍒楄〃鍜屽舰寮忓弬鏁板垪琛ㄩ暱搴︿笉鍚?
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\UIClips.java:260: 閿欒: 鎵句笉鍒扮鍙?            if (this.factory.getAllKeys().contains(Link.bbs("keyframe")))
+                            ^
+  绗﹀彿:   鏂规硶 getAllKeys()
+  浣嶇疆: 绫诲瀷涓篒Factory<Clip,ClipFactoryData>鐨勫彉閲?factory
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\UIClips.java:352: 閿欒: 鎵句笉鍒扮鍙?            for (Link type : this.factory.getAllKeys())
+                                         ^
+  绗﹀彿:   鏂规硶 getAllKeys()
+  浣嶇疆: 绫诲瀷涓篒Factory<Clip,ClipFactoryData>鐨勫彉閲?factory
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:92: 閿欒: 鎵句笉鍒扮鍙?        BufferBuilder builder = Tessellator.getInstance().getBuffer();
+                                ^
+  绗﹀彿:   鍙橀噺 Tessellator
+  浣嶇疆: 绫?UIClipRenderer<T>
+  鍏朵腑, T鏄被鍨嬪彉閲?
+    T鎵╁睍宸插湪绫?UIClipRenderer涓０鏄庣殑Clip
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:93: 閿欒: 鎵句笉鍒扮鍙?        Matrix4f matrix = context.batcher.getContext().pose().last().pose();
+                                                             ^
+  绗﹀彿:   鏂规硶 last()
+  浣嶇疆: 绫?Matrix3x2fStack
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:95: 閿欒: 鎵句笉鍒扮鍙?        builder.begin(VertexFormat.DrawMode.TRIANGLES, DefaultVertexFormat.POSITION_COLOR);
+                                  ^
+  绗﹀彿:   鍙橀噺 DrawMode
+  浣嶇疆: 绫?VertexFormat
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:109: 閿欒: 鎵句笉鍒扮鍙?        BufferRenderer.drawWithGlobalProgram(builder.end());
+        ^
+  绗﹀彿:   鍙橀噺 BufferRenderer
+  浣嶇疆: 绫?UIClipRenderer<T>
+  鍏朵腑, T鏄被鍨嬪彉閲?
+    T鎵╁睍宸插湪绫?UIClipRenderer涓０鏄庣殑Clip
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:109: 閿欒: 鎵句笉鍒扮鍙?        BufferRenderer.drawWithGlobalProgram(builder.end());
+                                                    ^
+  绗﹀彿:   鏂规硶 end()
+  浣嶇疆: 绫诲瀷涓築ufferBuilder鐨勫彉閲?builder
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:127: 閿欒: 鎵句笉鍒扮鍙?                builder.vertex(matrix, prevPoint.x, y2, 0F).color(c).next();
+                       ^
+  绗﹀彿:   鏂规硶 vertex(Matrix4f,float,int,float)
+  浣嶇疆: 绫诲瀷涓築ufferBuilder鐨勫彉閲?builder
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:128: 閿欒: 鎵句笉鍒扮鍙?                builder.vertex(matrix, point.x, point.y, 0F).color(c).next();
+                       ^
+  绗﹀彿:   鏂规硶 vertex(Matrix4f,float,float,float)
+  浣嶇疆: 绫诲瀷涓築ufferBuilder鐨勫彉閲?builder
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:129: 閿欒: 鎵句笉鍒扮鍙?                builder.vertex(matrix, prevPoint.x, prevPoint.y, 0F).color(c).next();
+                       ^
+  绗﹀彿:   鏂规硶 vertex(Matrix4f,float,float,float)
+  浣嶇疆: 绫诲瀷涓築ufferBuilder鐨勫彉閲?builder
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:131: 閿欒: 鎵句笉鍒扮鍙?                builder.vertex(matrix, point.x, y2, 0F).color(c).next();
+                       ^
+  绗﹀彿:   鏂规硶 vertex(Matrix4f,float,int,float)
+  浣嶇疆: 绫诲瀷涓築ufferBuilder鐨勫彉閲?builder
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:132: 閿欒: 鎵句笉鍒扮鍙?                builder.vertex(matrix, point.x, point.y, 0F).color(c).next();
+                       ^
+  绗﹀彿:   鏂规硶 vertex(Matrix4f,float,float,float)
+  浣嶇疆: 绫诲瀷涓築ufferBuilder鐨勫彉閲?builder
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:133: 閿欒: 鎵句笉鍒扮鍙?                builder.vertex(matrix, prevPoint.x, y2, 0F).color(c).next();
+                       ^
+  绗﹀彿:   鏂规硶 vertex(Matrix4f,float,int,float)
+  浣嶇疆: 绫诲瀷涓築ufferBuilder鐨勫彉閲?builder
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:144: 閿欒: 鎵句笉鍒扮鍙?            builder.vertex(matrix, point.x, y2, 0F).color(c).next();
+                   ^
+  绗﹀彿:   鏂规硶 vertex(Matrix4f,float,int,float)
+  浣嶇疆: 绫诲瀷涓築ufferBuilder鐨勫彉閲?builder
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:145: 閿欒: 鎵句笉鍒扮鍙?            builder.vertex(matrix, x2, point.y, 0F).color(c).next();
+                   ^
+  绗﹀彿:   鏂规硶 vertex(Matrix4f,int,float,float)
+  浣嶇疆: 绫诲瀷涓築ufferBuilder鐨勫彉閲?builder
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:146: 閿欒: 鎵句笉鍒扮鍙?            builder.vertex(matrix, point.x, point.y, 0F).color(c).next();
+                   ^
+  绗﹀彿:   鏂规硶 vertex(Matrix4f,float,float,float)
+  浣嶇疆: 绫诲瀷涓築ufferBuilder鐨勫彉閲?builder
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:148: 閿欒: 鎵句笉鍒扮鍙?            builder.vertex(matrix, x2, y2, 0F).color(c).next();
+                   ^
+  绗﹀彿:   鏂规硶 vertex(Matrix4f,int,int,float)
+  浣嶇疆: 绫诲瀷涓築ufferBuilder鐨勫彉閲?builder
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:149: 閿欒: 鎵句笉鍒扮鍙?            builder.vertex(matrix, x2, point.y, 0F).color(c).next();
+                   ^
+  绗﹀彿:   鏂规硶 vertex(Matrix4f,int,float,float)
+  浣嶇疆: 绫诲瀷涓築ufferBuilder鐨勫彉閲?builder
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:150: 閿欒: 鎵句笉鍒扮鍙?            builder.vertex(matrix, point.x, y2, 0F).color(c).next();
+                   ^
+  绗﹀彿:   鏂规硶 vertex(Matrix4f,float,int,float)
+  浣嶇疆: 绫诲瀷涓築ufferBuilder鐨勫彉閲?builder
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:162: 閿欒: 鎵句笉鍒扮鍙?        builder.vertex(matrix, point.x, point.y, 0F).color(c).next();
+               ^
+  绗﹀彿:   鏂规硶 vertex(Matrix4f,float,float,float)
+  浣嶇疆: 绫诲瀷涓築ufferBuilder鐨勫彉閲?builder
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:166: 閿欒: 鎵句笉鍒扮鍙?        builder.vertex(matrix, point.x, y2, 0F).color(c).next();
+               ^
+  绗﹀彿:   鏂规硶 vertex(Matrix4f,float,int,float)
+  浣嶇疆: 绫诲瀷涓築ufferBuilder鐨勫彉閲?builder
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:167: 閿欒: 鎵句笉鍒扮鍙?        builder.vertex(matrix, point.x, point.y, 0F).color(c).next();
+               ^
+  绗﹀彿:   鏂规硶 vertex(Matrix4f,float,float,float)
+  浣嶇疆: 绫诲瀷涓築ufferBuilder鐨勫彉閲?builder
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:172: 閿欒: 鎵句笉鍒扮鍙?        builder.vertex(matrix, point.x, point.y, 0F).color(c).next();
+               ^
+  绗﹀彿:   鏂规硶 vertex(Matrix4f,float,float,float)
+  浣嶇疆: 绫诲瀷涓築ufferBuilder鐨勫彉閲?builder
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:173: 閿欒: 鎵句笉鍒扮鍙?        builder.vertex(matrix, previous.x, y2, 0F).color(c).next();
+               ^
+  绗﹀彿:   鏂规硶 vertex(Matrix4f,float,int,float)
+  浣嶇疆: 绫诲瀷涓築ufferBuilder鐨勫彉閲?builder
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:174: 閿欒: 鎵句笉鍒扮鍙?        builder.vertex(matrix, point.x, y2, 0F).color(c).next();
+               ^
+  绗﹀彿:   鏂规硶 vertex(Matrix4f,float,int,float)
+  浣嶇疆: 绫诲瀷涓築ufferBuilder鐨勫彉閲?builder
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:177: 閿欒: 鎵句笉鍒扮鍙?        builder.vertex(matrix, point.x, point.y, 0F).color(c).next();
+               ^
+  绗﹀彿:   鏂规硶 vertex(Matrix4f,float,float,float)
+  浣嶇疆: 绫诲瀷涓築ufferBuilder鐨勫彉閲?builder
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:178: 閿欒: 鎵句笉鍒扮鍙?        builder.vertex(matrix, previous.x, previous.y, 0F).color(c).next();
+               ^
+  绗﹀彿:   鏂规硶 vertex(Matrix4f,float,float,float)
+  浣嶇疆: 绫诲瀷涓築ufferBuilder鐨勫彉閲?builder
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:179: 閿欒: 鎵句笉鍒扮鍙?        builder.vertex(matrix, previous.x, y2, 0F).color(c).next();
+               ^
+  绗﹀彿:   鏂规硶 vertex(Matrix4f,float,int,float)
+  浣嶇疆: 绫诲瀷涓築ufferBuilder鐨勫彉閲?builder
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:184: 閿欒: 鎵句笉鍒扮鍙?        builder.vertex(matrix, previous.x, previous.y, 0F).color(c).next();
+               ^
+  绗﹀彿:   鏂规硶 vertex(Matrix4f,float,float,float)
+  浣嶇疆: 绫诲瀷涓築ufferBuilder鐨勫彉閲?builder
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:185: 閿欒: 鎵句笉鍒扮鍙?        builder.vertex(matrix, previous.x, y2, 0F).color(c).next();
+               ^
+  绗﹀彿:   鏂规硶 vertex(Matrix4f,float,int,float)
+  浣嶇疆: 绫诲瀷涓築ufferBuilder鐨勫彉閲?builder
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:186: 閿欒: 鎵句笉鍒扮鍙?        builder.vertex(matrix, point.x, point.y, 0F).color(c).next();
+               ^
+  绗﹀彿:   鏂规硶 vertex(Matrix4f,float,float,float)
+  浣嶇疆: 绫诲瀷涓築ufferBuilder鐨勫彉閲?builder
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\BBSRendering.java:189: 閿欒: 鎵句笉鍒扮鍙?            if (entity.getLevel().isClient())
+                                 ^
+  绗﹀彿:   鏂规硶 isClient()
+  浣嶇疆: 绫?Level
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\BBSRendering.java:200: 閿欒: 鎵句笉鍒扮鍙?        IrisUtils.setup();
+                 ^
+  绗﹀彿:   鏂规硶 setup()
+  浣嶇疆: 绫?IrisUtils
+娉? D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\BBSModClient.java浣跨敤鎴栬鐩栦簡宸茶繃鏃剁殑 API銆?
+娉? 鏈夊叧璇︾粏淇℃伅, 璇蜂娇鐢?-Xlint:deprecation 閲嶆柊缂栬瘧銆?
+娉? 鏌愪簺杈撳叆鏂囦欢浣跨敤浜嗘湭缁忔鏌ユ垨涓嶅畨鍏ㄧ殑鎿嶄綔銆?
+娉? 鏈夊叧璇︾粏淇℃伅, 璇蜂娇鐢?-Xlint:unchecked 閲嶆柊缂栬瘧銆?
+娉? 鏌愪簺娑堟伅宸茬粡杩囩畝鍖? 璇蜂娇鐢?-Xdiags:verbose 閲嶆柊缂栬瘧浠ヨ幏寰楀畬鏁磋緭鍑?
+100 涓敊璇?
+4 涓鍛?
+
+> Task :compileClientJava FAILED
+
+[Incubating] Problems report is available at: file:///D:/DEV/bbs_clean/build/reports/problems/problems-report.html
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':compileClientJava' (registered by plugin class 'org.gradle.api.plugins.JavaBasePlugin').
+> Compilation failed; see the compiler output below.
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:1031: 閿欒: 鏃犳硶灏嗙被 RenderSystem涓殑鏂规硶 setProjectionMatrix搴旂敤鍒扮粰瀹氱被鍨?
+          RenderSystem.setProjectionMatrix(this.panel.lastProjection);
+                      ^
+    闇€瑕? GpuBufferSlice,ProjectionType
+    鎵惧埌:    Matrix4f
+    鍘熷洜: 瀹為檯鍙傛暟鍒楄〃鍜屽舰寮忓弬鏁板垪琛ㄩ暱搴︿笉鍚?
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\keyframes\graphs\UIKeyframeDopeSheet.java:566: 閿欒: 鏃犳硶灏嗙被 Batcher2D涓殑鏂规硶 fillRect搴旂敤鍒扮粰瀹氱被鍨?
+              context.batcher.fillRect(builder, matrix, area.x, my - 1, area.w, 2, cc, cc, cc, cc);
+                             ^
+    闇€瑕? int,int,int,int,int
+    鎵惧埌:    BufferBuilder,Matrix4f,int,int,int,int,int,int,int,int
+    鍘熷洜: 瀹為檯鍙傛暟鍒楄〃鍜屽舰寮忓弬鏁板垪琛ㄩ暱搴︿笉鍚?
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\keyframes\graphs\UIKeyframeDopeSheet.java:573: 閿欒: 鏃犳硶灏嗙被 Batcher2D涓殑鏂规硶 fillRect搴旂敤鍒扮粰瀹氱被鍨?
+                  context.batcher.fillRect(builder, matrix, area.x, y, area.w, (int) this.trackHeight, c | Colors.A25, c | Colors.A25, c, c);
+                                 ^
+    闇€瑕? int,int,int,int,int
+    鎵惧埌:    BufferBuilder,Matrix4f,int,int,int,int,int,int,int,int
+    鍘熷洜: 瀹為檯鍙傛暟鍒楄〃鍜屽舰寮忓弬鏁板垪琛ㄩ暱搴︿笉鍚?
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\keyframes\graphs\UIKeyframeDopeSheet.java:587: 閿欒: 鏃犳硶灏嗙被 Batcher2D涓殑鏂规硶 fillRect搴旂敤鍒扮粰瀹氱被鍨?
+                      context.batcher.fillRect(builder, matrix, xx, my - 2, this.keyframes.toGraphX(frame.getTick()) - xx, 4, c, c, c, c);
+                                     ^
+    闇€瑕? int,int,int,int,int
+    鎵惧埌:    BufferBuilder,Matrix4f,int,int,int,int,int,int,int,int
+    鍘熷洜: 瀹為檯鍙傛暟鍒楄〃鍜屽舰寮忓弬鏁板垪琛ㄩ暱搴︿笉鍚?
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\keyframes\graphs\UIKeyframeDopeSheet.java:594: 閿欒: 鏃犳硶灏嗙被 Batcher2D涓殑鏂规硶 fillRect搴旂敤鍒扮粰瀹氱被鍨?
+                      context.batcher.fillRect(builder, matrix, xx - 2, my + 5, xxx - xx + 4, 2, c, c, c, c);
+                                     ^
+    闇€瑕? int,int,int,int,int
+    鎵惧埌:    BufferBuilder,Matrix4f,int,int,int,int,int,int,int,int
+    鍘熷洜: 瀹為檯鍙傛暟鍒楄〃鍜屽舰寮忓弬鏁板垪琛ㄩ暱搴︿笉鍚?
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\keyframes\graphs\UIKeyframeDopeSheet.java:614: 閿欒: 鏃犳硶灏嗙被 Batcher2D涓殑鏂规硶 fillRect搴旂敤鍒扮粰瀹氱被鍨?
+                      context.batcher.fillRect(builder, matrix, x1, y1 - 2, 1, 5, color, color, color, color);
+                                     ^
+    闇€瑕? int,int,int,int,int
+    鎵惧埌:    BufferBuilder,Matrix4f,int,int,int,int,int,int,int,int
+    鍘熷洜: 瀹為檯鍙傛暟鍒楄〃鍜屽舰寮忓弬鏁板垪琛ㄩ暱搴︿笉鍚?
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\keyframes\graphs\UIKeyframeDopeSheet.java:615: 閿欒: 鏃犳硶灏嗙被 Batcher2D涓殑鏂规硶 fillRect搴旂敤鍒扮粰瀹氱被鍨?
+                      context.batcher.fillRect(builder, matrix, x2, y1 - 2, 1, 5, color, color, color, color);
+                                     ^
+    闇€瑕? int,int,int,int,int
+    鎵惧埌:    BufferBuilder,Matrix4f,int,int,int,int,int,int,int,int
+    鍘熷洜: 瀹為檯鍙傛暟鍒楄〃鍜屽舰寮忓弬鏁板垪琛ㄩ暱搴︿笉鍚?
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\keyframes\graphs\UIKeyframeDopeSheet.java:616: 閿欒: 鏃犳硶灏嗙被 Batcher2D涓殑鏂规硶 fillRect搴旂敤鍒扮粰瀹氱被鍨?
+                      context.batcher.fillRect(builder, matrix, x1 + 1, y1, x2 - x1, 1, color, color, color, color);
+                                     ^
+    闇€瑕? int,int,int,int,int
+    鎵惧埌:    BufferBuilder,Matrix4f,int,int,int,int,int,int,int,int
+    鍘熷洜: 瀹為檯鍙傛暟鍒楄〃鍜屽舰寮忓弬鏁板垪琛ㄩ暱搴︿笉鍚?
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\UITrackpad.java:766: 閿欒: 鏃犳硶灏嗙被 Batcher2D涓殑鏂规硶 outlineCenter搴旂敤鍒扮粰瀹氱被鍨?
+              context.batcher.outlineCenter(this.initialX, this.initialY, 4, Colors.WHITE);
+                             ^
+    闇€瑕? int,int,int,int,int
+    鎵惧埌:    int,int,int,int
+    鍘熷洜: 瀹為檯鍙傛暟鍒楄〃鍜屽舰寮忓弬鏁板垪琛ㄩ暱搴︿笉鍚?
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\replays\UIReplayList.java:718: 閿欒: 瀵逛簬clip(int,int,int,int,UIContext), 鎵句笉鍒板悎閫傜殑鏂规硶
+              context.batcher.clip(x, y, 40, 20, context);
+                             ^
+      鏂规硶 Batcher2D.clip(Area,UIContext)涓嶉€傜敤
+        (瀹為檯鍙傛暟鍒楄〃鍜屽舰寮忓弬鏁板垪琛ㄩ暱搴︿笉鍚?
+      鏂规硶 Batcher2D.clip(int,int,int,int,int,int)涓嶉€傜敤
+        (瀹為檯鍙傛暟鍒楄〃鍜屽舰寮忓弬鏁板垪琛ㄩ暱搴︿笉鍚?
+  娉? 鏈夊叧璇︾粏淇℃伅, 璇蜂娇鐢?-Xlint:deprecation 閲嶆柊缂栬瘧銆?
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\keyframes\graphs\UIKeyframeDopeSheet.java:655: 閿欒: 鏂规硶寮曠敤鏃犳晥
+              RenderSystem.setShader(GameRenderer::getPositionColorProgram);
+                                     ^
+    鎵句笉鍒扮鍙?      绗﹀彿:   鏂规硶 getPositionColorProgram()
+      浣嶇疆: 绫?GameRenderer
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\particles\emitter\ParticleEmitter.java:23: 閿欒: 鎵句笉鍒扮鍙?  import com.mojang.blaze3d.vertex.VertexFormat.Mode;
+                                               ^
+    绗﹀彿:   绫?Mode
+    浣嶇疆: 绫?VertexFormat
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\BaseFilmController.java:514: 閿欒: 鎵句笉鍒扮鍙?                                  playerEntity.input.shiftKeyDown = sneaking;
+                                                    ^
+    绗﹀彿:   鍙橀噺 shiftKeyDown
+    浣嶇疆: 绫诲瀷涓篊lientInput鐨勫彉閲?input
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\Recorder.java:77: 閿欒: 鎵句笉鍒扮鍙?          BufferBuilder builder = new BufferBuilder(byteBuf, VertexFormat.DrawMode.TRIANGLES, DefaultVertexFormat.POSITION_COLOR);
+                                                                         ^
+    绗﹀彿:   鍙橀噺 DrawMode
+    浣嶇疆: 绫?VertexFormat
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\particles\emitter\ParticleEmitter.java:456: 閿欒: 鎵句笉鍒扮鍙?              BufferBuilder builder = new BufferBuilder(byteBuf, Mode.TRIANGLES, DefaultVertexFormat.POSITION_TEX_COLOR);
+                                                                 ^
+    绗﹀彿:   鍙橀噺 Mode
+    浣嶇疆: 绫?ParticleEmitter
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\particles\emitter\ParticleEmitter.java:488: 閿欒: 鎵句笉鍒扮鍙?              BufferBuilder builder = new BufferBuilder(byteBuf, Mode.TRIANGLES, format);
+                                                                 ^
+    绗﹀彿:   鍙橀噺 Mode
+    浣嶇疆: 绫?ParticleEmitter
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\cubic\ModelInstance.java:348: 閿欒: 鎵句笉鍒扮鍙?                  BufferBuilder builder = new BufferBuilder(byteBuf, VertexFormat.Mode.TRIANGLES, DefaultVertexFormat.POSITION_COLOR_TEX_LIGHTMAP);
+                                                                                 ^
+    绗﹀彿:   鍙橀噺 Mode
+    浣嶇疆: 绫?VertexFormat
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\FilmEditorController.java:175: 閿欒: 鎵句笉鍒扮鍙?                      float tick = ticks + this.getTransition(entity, context.transition);
+                                                                             ^
+    绗﹀彿:   鍙橀噺 transition
+    浣嶇疆: 绫诲瀷涓篖evelRenderContext鐨勫彉閲?context
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\keyframes\graphs\UIKeyframeDopeSheet.java:544: 閿欒: 鎵句笉鍒扮鍙?          BufferBuilder builder = Tessellator.getInstance().getBuffer();
+                                  ^
+    绗﹀彿:   鍙橀噺 Tessellator
+    浣嶇疆: 绫?UIKeyframeDopeSheet
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\keyframes\graphs\UIKeyframeDopeSheet.java:564: 閿欒: 鎵句笉鍒扮鍙?              builder.begin(VertexFormat.DrawMode.QUADS, DefaultVertexFormat.POSITION_COLOR);
+                                        ^
+    绗﹀彿:   鍙橀噺 DrawMode
+    浣嶇疆: 绫?VertexFormat
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\keyframes\graphs\UIKeyframeDopeSheet.java:656: 閿欒: 鎵句笉鍒扮鍙?              BufferRenderer.drawWithGlobalProgram(builder.end());
+              ^
+    绗﹀彿:   鍙橀噺 BufferRenderer
+    浣嶇疆: 绫?UIKeyframeDopeSheet
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\UITrackpad.java:717: 閿欒: 鎵句笉鍒扮鍙?                      Window.moveCursor(ww - (int) (factor * borderPadding), (int) mc.mouse.getY());
+                                                                                     ^
+    绗﹀彿:   鍙橀噺 mouse
+    浣嶇疆: 绫诲瀷涓篗inecraft鐨勫彉閲?mc
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\UITrackpad.java:725: 閿欒: 鎵句笉鍒扮鍙?                      Window.moveCursor((int) (factor * borderPadding), (int) mc.mouse.getY());
+                                                                                ^
+    绗﹀彿:   鍙橀噺 mouse
+    浣嶇疆: 绫诲瀷涓篗inecraft鐨勫彉閲?mc
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:92: 閿欒: 鎵句笉鍒扮鍙?          BufferBuilder builder = Tessellator.getInstance().getBuffer();
+                                  ^
+    绗﹀彿:   鍙橀噺 Tessellator
+    浣嶇疆: 绫?UIClipRenderer<T>
+    鍏朵腑, T鏄被鍨嬪彉閲?
+      T鎵╁睍宸插湪绫?UIClipRenderer涓０鏄庣殑Clip
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:95: 閿欒: 鎵句笉鍒扮鍙?          builder.begin(VertexFormat.DrawMode.TRIANGLES, DefaultVertexFormat.POSITION_COLOR);
+                                    ^
+    绗﹀彿:   鍙橀噺 DrawMode
+    浣嶇疆: 绫?VertexFormat
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:109: 閿欒: 鎵句笉鍒扮鍙?          BufferRenderer.drawWithGlobalProgram(builder.end());
+          ^
+    绗﹀彿:   鍙橀噺 BufferRenderer
+    浣嶇疆: 绫?UIClipRenderer<T>
+    鍏朵腑, T鏄被鍨嬪彉閲?
+      T鎵╁睍宸插湪绫?UIClipRenderer涓０鏄庣殑Clip
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\BBSModClient.java:447: 閿欒: screen 鍦?Gui 涓槸 private 璁块棶鎺у埗
+              if (mc.gui.screen != null)
+                        ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\BBSModClient.java:449: 閿欒: screen 鍦?Gui 涓槸 private 璁块棶鎺у埗
+                  mc.gui.screen.tick();
+                        ^
+  娉? 鏈夊叧璇︾粏淇℃伅, 璇蜂娇鐢?-Xlint:unchecked 閲嶆柊缂栬瘧銆?
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\utils\VideoRecorder.java:164: 璀﹀憡: [removal] Unsafe 涓殑 objectFieldOffset(Field) 宸茶繃鏃? 涓旀爣璁颁负寰呭垹闄?                      os = (OutputStream) unsafe.getObject(os, unsafe.objectFieldOffset(outField));
+                                                                     ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\utils\VideoRecorder.java:164: 璀﹀憡: [removal] Unsafe 涓殑 getObject(Object,long) 宸茶繃鏃? 涓旀爣璁颁负寰呭垹闄?                      os = (OutputStream) unsafe.getObject(os, unsafe.objectFieldOffset(outField));
+                                                ^
+  娉? 鏌愪簺杈撳叆鏂囦欢浣跨敤浜嗘湭缁忔鏌ユ垨涓嶅畨鍏ㄧ殑鎿嶄綔銆?
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\utils\Scroll.java:453: 閿欒: 鎵句笉鍒扮鍙?              float delta = Minecraft.getInstance().getFrameTime();
+                                                   ^
+    绗﹀彿:   鏂规硶 getFrameTime()
+    浣嶇疆: 绫?Minecraft
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\BaseFilmController.java:644: 閿欒: 鎵句笉鍒扮鍙?              filmContext.transition = getTransition(entity, Minecraft.getInstance().getFrameTime());
+                                                                                    ^
+    绗﹀彿:   鏂规硶 getFrameTime()
+    浣嶇疆: 绫?Minecraft
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\Recorder.java:159: 閿欒: 鎵句笉鍒扮鍙?          renderCameraPreview(this.position, Minecraft.getInstance().gameRenderer.getCamera(), context.poseStack());
+                                                                                 ^
+    绗﹀彿:   鏂规硶 getCamera()
+    浣嶇疆: 绫诲瀷涓篏ameRenderer鐨勫彉閲?gameRenderer
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\FilmControllerContext.java:72: 閿欒: 鎵句笉鍒扮鍙?          this.camera = Minecraft.getInstance().gameRenderer.getCamera();
+                                                            ^
+    绗﹀彿:   鏂规硶 getCamera()
+    浣嶇疆: 绫诲瀷涓篏ameRenderer鐨勫彉閲?gameRenderer
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\film\FilmControllerContext.java:75: 閿欒: 鎵句笉鍒扮鍙?          this.transition = Minecraft.getInstance().getFrameTime();
+                                                   ^
+    绗﹀彿:   鏂规硶 getFrameTime()
+    浣嶇疆: 绫?Minecraft
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\categories\UIFormCategory.java:132: 閿欒: 鎵句笉鍒扮鍙?                                  if (entry.getUuid().equals(Minecraft.getInstance().player.getUUID()))
+                                           ^
+    绗﹀彿:   鏂规硶 getUuid()
+    浣嶇疆: 绫诲瀷涓篜layerInfo鐨勫彉閲?entry
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\categories\UIFormCategory.java:137: 閿欒: 鎵句笉鍒扮鍙?                                  newMenu.action(Icons.ARROW_RIGHT, IKey.constant(entry.getPlayerName()), () ->
+                                                                                       ^
+    绗﹀彿:   鏂规硶 getPlayerName()
+    浣嶇疆: 绫诲瀷涓篜layerInfo鐨勫彉閲?entry
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\categories\UIFormCategory.java:139: 閿欒: 鎵句笉鍒扮鍙?                                      ClientNetwork.sendSharedForm(this.selected, entry.getUuid());
+                                                                                       ^
+    绗﹀彿:   鏂规硶 getUuid()
+    浣嶇疆: 绫诲瀷涓篜layerInfo鐨勫彉閲?entry
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\UIFilmPanel.java:955: 閿欒: 鎵句笉鍒扮鍙?              int value = Minecraft.getInstance().options.getRenderDistance().get();
+                                                         ^
+    绗﹀彿:   鏂规硶 getRenderDistance()
+    浣嶇疆: 绫诲瀷涓篛ptions鐨勫彉閲?options
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\UIFilmPreview.java:375: 閿欒: 鎵句笉鍒扮鍙?          net.minecraft.client.Camera mcCamera = Minecraft.getInstance().gameRenderer.getCamera();
+                                                                                     ^
+    绗﹀彿:   鏂规硶 getCamera()
+    浣嶇疆: 绫诲瀷涓篏ameRenderer鐨勫彉閲?gameRenderer
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\UIFilmPreview.java:381: 閿欒: 鎵句笉鍒扮鍙?          stack.multiply(com.mojang.math.Axis.XN.rotationDegrees(mcCamera.getPitch()));
+                                                                         ^
+    绗﹀彿:   鏂规硶 getPitch()
+    浣嶇疆: 绫诲瀷涓篊amera鐨勫彉閲?mcCamera
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\UIFilmPreview.java:382: 閿欒: 鎵句笉鍒扮鍙?          stack.multiply(com.mojang.math.Axis.YP.rotationDegrees(mcCamera.getYaw()));
+                                                                         ^
+    绗﹀彿:   鏂规硶 getYaw()
+    浣嶇疆: 绫诲瀷涓篊amera鐨勫彉閲?mcCamera
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:219: 閿欒: 鎵句笉鍒扮鍙?              GLFW.glfwSetInputMode(window.getWindow(), GLFW.GLFW_CURSOR, GLFW.GLFW_CURSOR_DISABLED);
+                                          ^
+    绗﹀彿:   鏂规硶 getWindow()
+    浣嶇疆: 绫诲瀷涓篧indow鐨勫彉閲?window
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:223: 閿欒: 鎵句笉鍒扮鍙?              GLFW.glfwSetInputMode(window.getWindow(), GLFW.GLFW_CURSOR, GLFW.GLFW_CURSOR_NORMAL);
+                                          ^
+    绗﹀彿:   鏂规硶 getWindow()
+    浣嶇疆: 绫诲瀷涓篧indow鐨勫彉閲?window
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:1121: 閿欒: 鎵句笉鍒扮鍙?                  Recorder.renderCameraPreview(this.panel.getRunner().position(), Minecraft.getInstance().gameRenderer.getCamera(), context.poseStack());
+                                                                     ^
+    绗﹀彿:   鏂规硶 position()
+    浣嶇疆: 绫?RunnerCameraController
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:1121: 閿欒: 鎵句笉鍒扮鍙?                  Recorder.renderCameraPreview(this.panel.getRunner().position(), Minecraft.getInstance().gameRenderer.getCamera(), context.poseStack());
+                                                                                                                      ^
+    绗﹀彿:   鏂规硶 getCamera()
+    浣嶇疆: 绫诲瀷涓篏ameRenderer鐨勫彉閲?gameRenderer
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:1201: 閿欒: 鎵句笉鍒扮鍙?                      .transition(isPlaying ? Minecraft.getInstance().getFrameTime() : 0)
+                                                                     ^
+    绗﹀彿:   鏂规硶 getFrameTime()
+    浣嶇疆: 绫?Minecraft
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:1213: 閿欒: 鎵句笉鍒扮鍙?                  .transition(isPlaying ? Minecraft.getInstance().getFrameTime() : 0)
+                                                                 ^
+    绗﹀彿:   鏂规硶 getFrameTime()
+    浣嶇疆: 绫?Minecraft
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\UIFilmController.java:1225: 閿欒: 鎵句笉鍒扮鍙?          Minecraft.getInstance().getMainRenderTarget().beginWrite(true);
+                                 ^
+    绗﹀彿:   鏂规硶 getMainRenderTarget()
+    浣嶇疆: 绫?Minecraft
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\ContentType.java:35: 閿欒: 鎵句笉鍒扮鍙?          if (Minecraft.getInstance().isSingleplayer())
+                                     ^
+    绗﹀彿:   鏂规硶 isSingleplayer()
+    浣嶇疆: 绫?Minecraft
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\FilmEditorController.java:184: 閿欒: 鎵句笉鍒扮鍙?                          entity.setyRotO(entity.getYRot());
+                                                ^
+    绗﹀彿:   鏂规硶 getYRot()
+    浣嶇疆: 绫诲瀷涓篒Entity鐨勫彉閲?entity
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\FilmEditorController.java:185: 閿欒: 鎵句笉鍒扮鍙?                          entity.setyHeadRotO(entity.getYHeadRot());
+                                                    ^
+    绗﹀彿:   鏂规硶 getYHeadRot()
+    浣嶇疆: 绫诲瀷涓篒Entity鐨勫彉閲?entity
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\FilmEditorController.java:186: 閿欒: 鎵句笉鍒扮鍙?                          entity.setyBodyRotO(entity.getYBodyRot());
+                                                    ^
+    绗﹀彿:   鏂规硶 getYBodyRot()
+    浣嶇疆: 绫诲瀷涓篒Entity鐨勫彉閲?entity
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\FilmEditorController.java:187: 閿欒: 鎵句笉鍒扮鍙?                          entity.setxRotO(entity.getXRot());
+                                                ^
+    绗﹀彿:   鏂规硶 getXRot()
+    浣嶇疆: 绫诲瀷涓篒Entity鐨勫彉閲?entity
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\FilmEditorController.java:248: 閿欒: 鎵句笉鍒扮鍙?              .transition(this.getTransition(entity, context.tickDelta()))
+                                                            ^
+    绗﹀彿:   鏂规硶 tickDelta()
+    浣嶇疆: 绫诲瀷涓篖evelRenderContext鐨勫彉閲?context
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\OrbitFilmCameraController.java:210: 閿欒: 鎵句笉鍒扮鍙?              float renderYaw = MathUtils.toRad(-Lerps.lerp(entity.getyBodyRotO(), entity.getYBodyRot(), transition) + 180F);
+                                                                  ^
+    绗﹀彿:   鏂规硶 getyBodyRotO()
+    浣嶇疆: 绫诲瀷涓篒Entity鐨勫彉閲?entity
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\controller\OrbitFilmCameraController.java:210: 閿欒: 鎵句笉鍒扮鍙?              float renderYaw = MathUtils.toRad(-Lerps.lerp(entity.getyBodyRotO(), entity.getYBodyRot(), transition) + 180F);
+                                                                                         ^
+    绗﹀彿:   鏂规硶 getYBodyRot()
+    浣嶇疆: 绫诲瀷涓篒Entity鐨勫彉閲?entity
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\keyframes\graphs\UIKeyframeDopeSheet.java:545: 閿欒: 鎵句笉鍒扮鍙?          Matrix4f matrix = context.batcher.getContext().pose().last().pose();
+                                                               ^
+    绗﹀彿:   鏂规硶 last()
+    浣嶇疆: 绫?Matrix3x2fStack
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\keyframes\graphs\UIKeyframeDopeSheet.java:654: 閿欒: 鎵句笉鍒扮鍙?              RenderSystem.enableBlend();
+                          ^
+    绗﹀彿:   鏂规硶 enableBlend()
+    浣嶇疆: 绫?RenderSystem
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\keyframes\graphs\UIKeyframeDopeSheet.java:656: 閿欒: 鎵句笉鍒扮鍙?              BufferRenderer.drawWithGlobalProgram(builder.end());
+                                                          ^
+    绗﹀彿:   鏂规硶 end()
+    浣嶇疆: 绫诲瀷涓築ufferBuilder鐨勫彉閲?builder
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\utils\Scale.java:214: 閿欒: 鎵句笉鍒扮鍙?              factor += this.direction.position(this.area, this.anchor);
+                                      ^
+    绗﹀彿:   鏂规硶 position(Area,float)
+    浣嶇疆: 绫诲瀷涓篠crollDirection鐨勫彉閲?direction
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\utils\Scale.java:227: 閿欒: 鎵句笉鍒扮鍙?              mouse -= this.direction.position(this.area, this.anchor);
+                                     ^
+    绗﹀彿:   鏂规硶 position(Area,float)
+    浣嶇疆: 绫诲瀷涓篠crollDirection鐨勫彉閲?direction
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\utils\Scale.java:239: 閿欒: 鎵句笉鍒扮鍙?          return this.from(this.direction.position(this.area, this.inverse ? 1 : 0));
+                                         ^
+    绗﹀彿:   鏂规硶 position(Area,int)
+    浣嶇疆: 绫诲瀷涓篠crollDirection鐨勫彉閲?direction
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\utils\Scale.java:246: 閿欒: 鎵句笉鍒扮鍙?          return this.from(this.direction.position(this.area, this.inverse ? 0 : 1));
+                                         ^
+    绗﹀彿:   鏂规硶 position(Area,int)
+    浣嶇疆: 绫诲瀷涓篠crollDirection鐨勫彉閲?direction
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\utils\Scale.java:352: 閿欒: 鎵句笉鍒扮鍙?                  double shift = this.direction.position(this.area, this.anchor) - this.direction.position(this.area, newAnchor);
+                                               ^
+    绗﹀彿:   鏂规硶 position(Area,float)
+    浣嶇疆: 绫诲瀷涓篠crollDirection鐨勫彉閲?direction
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\utils\Scale.java:352: 閿欒: 鎵句笉鍒扮鍙?                  double shift = this.direction.position(this.area, this.anchor) - this.direction.position(this.area, newAnchor);
+                                                                                                 ^
+    绗﹀彿:   鏂规硶 position(Area,float)
+    浣嶇疆: 绫诲瀷涓篠crollDirection鐨勫彉閲?direction
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\utils\Scale.java:358: 閿欒: 鎵句笉鍒扮鍙?                  double shift = this.direction.position(this.area, this.anchor) - this.direction.position(this.area, newAnchor);
+                                               ^
+    绗﹀彿:   鏂规硶 position(Area,float)
+    浣嶇疆: 绫诲瀷涓篠crollDirection鐨勫彉閲?direction
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\utils\Scale.java:358: 閿欒: 鎵句笉鍒扮鍙?                  double shift = this.direction.position(this.area, this.anchor) - this.direction.position(this.area, newAnchor);
+                                                                                                 ^
+    绗﹀彿:   鏂规硶 position(Area,float)
+    浣嶇疆: 绫诲瀷涓篠crollDirection鐨勫彉閲?direction
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\utils\Scale.java:368: 閿欒: 鎵句笉鍒扮鍙?          double diff = this.from(this.direction.position(this.area, newAnchor)) - this.from(this.direction.position(this.area, 0F));
+                                                ^
+    绗﹀彿:   鏂规硶 position(Area,float)
+    浣嶇疆: 绫诲瀷涓篠crollDirection鐨勫彉閲?direction
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\utils\Scale.java:368: 閿欒: 鎵句笉鍒扮鍙?          double diff = this.from(this.direction.position(this.area, newAnchor)) - this.from(this.direction.position(this.area, 0F));
+                                                                                                           ^
+    绗﹀彿:   鏂规硶 position(Area,float)
+    浣嶇疆: 绫诲瀷涓篠crollDirection鐨勫彉閲?direction
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\replays\UIReplayList.java:565: 閿欒: 鎵句笉鍒扮鍙?          BlockPos blockPos = modelBlock.blockPosition();
+                                        ^
+    绗﹀彿:   鏂规硶 blockPosition()
+    浣嶇疆: 绫诲瀷涓篗odelBlockEntity鐨勫彉閲?modelBlock
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\UIClips.java:260: 閿欒: 鎵句笉鍒扮鍙?              if (this.factory.getAllKeys().contains(Link.bbs("keyframe")))
+                              ^
+    绗﹀彿:   鏂规硶 getAllKeys()
+    浣嶇疆: 绫诲瀷涓篒Factory<Clip,ClipFactoryData>鐨勫彉閲?factory
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\UIClips.java:352: 閿欒: 鎵句笉鍒扮鍙?              for (Link type : this.factory.getAllKeys())
+                                           ^
+    绗﹀彿:   鏂规硶 getAllKeys()
+    浣嶇疆: 绫诲瀷涓篒Factory<Clip,ClipFactoryData>鐨勫彉閲?factory
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:93: 閿欒: 鎵句笉鍒扮鍙?          Matrix4f matrix = context.batcher.getContext().pose().last().pose();
+                                                               ^
+    绗﹀彿:   鏂规硶 last()
+    浣嶇疆: 绫?Matrix3x2fStack
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:109: 閿欒: 鎵句笉鍒扮鍙?          BufferRenderer.drawWithGlobalProgram(builder.end());
+                                                      ^
+    绗﹀彿:   鏂规硶 end()
+    浣嶇疆: 绫诲瀷涓築ufferBuilder鐨勫彉閲?builder
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:127: 閿欒: 鎵句笉鍒扮鍙?                  builder.vertex(matrix, prevPoint.x, y2, 0F).color(c).next();
+                         ^
+    绗﹀彿:   鏂规硶 vertex(Matrix4f,float,int,float)
+    浣嶇疆: 绫诲瀷涓築ufferBuilder鐨勫彉閲?builder
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:128: 閿欒: 鎵句笉鍒扮鍙?                  builder.vertex(matrix, point.x, point.y, 0F).color(c).next();
+                         ^
+    绗﹀彿:   鏂规硶 vertex(Matrix4f,float,float,float)
+    浣嶇疆: 绫诲瀷涓築ufferBuilder鐨勫彉閲?builder
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:129: 閿欒: 鎵句笉鍒扮鍙?                  builder.vertex(matrix, prevPoint.x, prevPoint.y, 0F).color(c).next();
+                         ^
+    绗﹀彿:   鏂规硶 vertex(Matrix4f,float,float,float)
+    浣嶇疆: 绫诲瀷涓築ufferBuilder鐨勫彉閲?builder
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:131: 閿欒: 鎵句笉鍒扮鍙?                  builder.vertex(matrix, point.x, y2, 0F).color(c).next();
+                         ^
+    绗﹀彿:   鏂规硶 vertex(Matrix4f,float,int,float)
+    浣嶇疆: 绫诲瀷涓築ufferBuilder鐨勫彉閲?builder
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:132: 閿欒: 鎵句笉鍒扮鍙?                  builder.vertex(matrix, point.x, point.y, 0F).color(c).next();
+                         ^
+    绗﹀彿:   鏂规硶 vertex(Matrix4f,float,float,float)
+    浣嶇疆: 绫诲瀷涓築ufferBuilder鐨勫彉閲?builder
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:133: 閿欒: 鎵句笉鍒扮鍙?                  builder.vertex(matrix, prevPoint.x, y2, 0F).color(c).next();
+                         ^
+    绗﹀彿:   鏂规硶 vertex(Matrix4f,float,int,float)
+    浣嶇疆: 绫诲瀷涓築ufferBuilder鐨勫彉閲?builder
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:144: 閿欒: 鎵句笉鍒扮鍙?              builder.vertex(matrix, point.x, y2, 0F).color(c).next();
+                     ^
+    绗﹀彿:   鏂规硶 vertex(Matrix4f,float,int,float)
+    浣嶇疆: 绫诲瀷涓築ufferBuilder鐨勫彉閲?builder
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:145: 閿欒: 鎵句笉鍒扮鍙?              builder.vertex(matrix, x2, point.y, 0F).color(c).next();
+                     ^
+    绗﹀彿:   鏂规硶 vertex(Matrix4f,int,float,float)
+    浣嶇疆: 绫诲瀷涓築ufferBuilder鐨勫彉閲?builder
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:146: 閿欒: 鎵句笉鍒扮鍙?              builder.vertex(matrix, point.x, point.y, 0F).color(c).next();
+                     ^
+    绗﹀彿:   鏂规硶 vertex(Matrix4f,float,float,float)
+    浣嶇疆: 绫诲瀷涓築ufferBuilder鐨勫彉閲?builder
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:148: 閿欒: 鎵句笉鍒扮鍙?              builder.vertex(matrix, x2, y2, 0F).color(c).next();
+                     ^
+    绗﹀彿:   鏂规硶 vertex(Matrix4f,int,int,float)
+    浣嶇疆: 绫诲瀷涓築ufferBuilder鐨勫彉閲?builder
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:149: 閿欒: 鎵句笉鍒扮鍙?              builder.vertex(matrix, x2, point.y, 0F).color(c).next();
+                     ^
+    绗﹀彿:   鏂规硶 vertex(Matrix4f,int,float,float)
+    浣嶇疆: 绫诲瀷涓築ufferBuilder鐨勫彉閲?builder
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:150: 閿欒: 鎵句笉鍒扮鍙?              builder.vertex(matrix, point.x, y2, 0F).color(c).next();
+                     ^
+    绗﹀彿:   鏂规硶 vertex(Matrix4f,float,int,float)
+    浣嶇疆: 绫诲瀷涓築ufferBuilder鐨勫彉閲?builder
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:162: 閿欒: 鎵句笉鍒扮鍙?          builder.vertex(matrix, point.x, point.y, 0F).color(c).next();
+                 ^
+    绗﹀彿:   鏂规硶 vertex(Matrix4f,float,float,float)
+    浣嶇疆: 绫诲瀷涓築ufferBuilder鐨勫彉閲?builder
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:166: 閿欒: 鎵句笉鍒扮鍙?          builder.vertex(matrix, point.x, y2, 0F).color(c).next();
+                 ^
+    绗﹀彿:   鏂规硶 vertex(Matrix4f,float,int,float)
+    浣嶇疆: 绫诲瀷涓築ufferBuilder鐨勫彉閲?builder
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:167: 閿欒: 鎵句笉鍒扮鍙?          builder.vertex(matrix, point.x, point.y, 0F).color(c).next();
+                 ^
+3 actionable tasks: 1 executed, 2 up-to-date
+    绗﹀彿:   鏂规硶 vertex(Matrix4f,float,float,float)
+    浣嶇疆: 绫诲瀷涓築ufferBuilder鐨勫彉閲?builder
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:172: 閿欒: 鎵句笉鍒扮鍙?          builder.vertex(matrix, point.x, point.y, 0F).color(c).next();
+                 ^
+    绗﹀彿:   鏂规硶 vertex(Matrix4f,float,float,float)
+    浣嶇疆: 绫诲瀷涓築ufferBuilder鐨勫彉閲?builder
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:173: 閿欒: 鎵句笉鍒扮鍙?          builder.vertex(matrix, previous.x, y2, 0F).color(c).next();
+                 ^
+    绗﹀彿:   鏂规硶 vertex(Matrix4f,float,int,float)
+    浣嶇疆: 绫诲瀷涓築ufferBuilder鐨勫彉閲?builder
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:174: 閿欒: 鎵句笉鍒扮鍙?          builder.vertex(matrix, point.x, y2, 0F).color(c).next();
+                 ^
+    绗﹀彿:   鏂规硶 vertex(Matrix4f,float,int,float)
+    浣嶇疆: 绫诲瀷涓築ufferBuilder鐨勫彉閲?builder
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:177: 閿欒: 鎵句笉鍒扮鍙?          builder.vertex(matrix, point.x, point.y, 0F).color(c).next();
+                 ^
+    绗﹀彿:   鏂规硶 vertex(Matrix4f,float,float,float)
+    浣嶇疆: 绫诲瀷涓築ufferBuilder鐨勫彉閲?builder
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:178: 閿欒: 鎵句笉鍒扮鍙?          builder.vertex(matrix, previous.x, previous.y, 0F).color(c).next();
+                 ^
+    绗﹀彿:   鏂规硶 vertex(Matrix4f,float,float,float)
+    浣嶇疆: 绫诲瀷涓築ufferBuilder鐨勫彉閲?builder
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:179: 閿欒: 鎵句笉鍒扮鍙?          builder.vertex(matrix, previous.x, y2, 0F).color(c).next();
+                 ^
+    绗﹀彿:   鏂规硶 vertex(Matrix4f,float,int,float)
+    浣嶇疆: 绫诲瀷涓築ufferBuilder鐨勫彉閲?builder
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:184: 閿欒: 鎵句笉鍒扮鍙?          builder.vertex(matrix, previous.x, previous.y, 0F).color(c).next();
+                 ^
+    绗﹀彿:   鏂规硶 vertex(Matrix4f,float,float,float)
+    浣嶇疆: 绫诲瀷涓築ufferBuilder鐨勫彉閲?builder
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:185: 閿欒: 鎵句笉鍒扮鍙?          builder.vertex(matrix, previous.x, y2, 0F).color(c).next();
+                 ^
+    绗﹀彿:   鏂规硶 vertex(Matrix4f,float,int,float)
+    浣嶇疆: 绫诲瀷涓築ufferBuilder鐨勫彉閲?builder
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\clips\renderer\UIClipRenderer.java:186: 閿欒: 鎵句笉鍒扮鍙?          builder.vertex(matrix, point.x, point.y, 0F).color(c).next();
+                 ^
+    绗﹀彿:   鏂规硶 vertex(Matrix4f,float,float,float)
+    浣嶇疆: 绫诲瀷涓築ufferBuilder鐨勫彉閲?builder
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\BBSRendering.java:189: 閿欒: 鎵句笉鍒扮鍙?              if (entity.getLevel().isClient())
+                                   ^
+    绗﹀彿:   鏂规硶 isClient()
+    浣嶇疆: 绫?Level
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\BBSRendering.java:200: 閿欒: 鎵句笉鍒扮鍙?          IrisUtils.setup();
+                   ^
+    绗﹀彿:   鏂规硶 setup()
+    浣嶇疆: 绫?IrisUtils
+  娉? D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\BBSModClient.java浣跨敤鎴栬鐩栦簡宸茶繃鏃剁殑 API銆?
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\utils\VideoRecorder.java:9: 璀﹀憡: Unsafe鏄唴閮ㄤ笓鐢?API, 鍙兘浼氬湪鏈潵鍙戣鐗堜腑鍒犻櫎
+  import sun.misc.Unsafe;
+                 ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\utils\VideoRecorder.java:156: 璀﹀憡: Unsafe鏄唴閮ㄤ笓鐢?API, 鍙兘浼氬湪鏈潵鍙戣鐗堜腑鍒犻櫎
+              Unsafe unsafe = UnsafeUtils.getUnsafe();
+              ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\client\renderer\item\ModelBlockItemRenderer.java:92: 閿欒: 涓嶅吋瀹圭殑绫诲瀷: 鎺ㄨ鍙橀噺 T 鍏锋湁涓嶅吋瀹圭殑涓婇檺
+          net.minecraft.nbt.CompoundTag data = stack.get(net.minecraft.core.component.DataComponents.BLOCK_ENTITY_DATA);
+                                                        ^
+      涓婇檺锛欳ompoundTag,Object
+      涓嬮檺锛歍ypedEntityData<BlockEntityType<?>>
+    鍏朵腑, T鏄被鍨嬪彉閲?
+      T鎵╁睍宸插湪鏂规硶 <T>get(DataComponentType<? extends T>)涓０鏄庣殑Object
+  娉? 鏌愪簺娑堟伅宸茬粡杩囩畝鍖? 璇蜂娇鐢?-Xdiags:verbose 閲嶆柊缂栬瘧浠ヨ幏寰楀畬鏁磋緭鍑?
+  100 涓敊璇?
+  4 涓鍛?
+
+* Try:
+> Check your code and dependencies to fix the compilation error(s)
+> Run with --scan to get full insights from a Build Scan (powered by Develocity).
+
+BUILD FAILED in 13s
+

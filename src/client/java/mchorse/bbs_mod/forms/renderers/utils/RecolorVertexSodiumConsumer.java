@@ -22,6 +22,12 @@ public class RecolorVertexSodiumConsumer implements VertexConsumer
     }
 
     @Override
+    public VertexConsumer setColor(int packed)
+    {
+        return parent.setColor(packed);
+    }
+
+    @Override
     public VertexConsumer setColor(int r, int g, int b, int a)
     {
         return parent.setColor(r, g, b, a);
@@ -49,5 +55,11 @@ public class RecolorVertexSodiumConsumer implements VertexConsumer
     public VertexConsumer setNormal(float x, float y, float z)
     {
         return parent.setNormal(x, y, z);
+    }
+
+    @Override
+    public VertexConsumer setLineWidth(float width)
+    {
+        return this;
     }
 }

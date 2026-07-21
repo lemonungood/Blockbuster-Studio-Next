@@ -47,7 +47,7 @@ public class CubicVAORenderer extends CubicCubeRenderer
             }
             else
             {
-                int u = (int) Lerps.lerp(light & '\uffff', LightmapTextureManager.MAX_BLOCK_LIGHT_COORDINATE, MathUtils.clamp(group.lighting, 0F, 1F));
+                int u = (int) Lerps.lerp(light & '\uffff', 240, MathUtils.clamp(group.lighting, 0F, 1F));
                 int v = light >> 16 & '\uffff';
 
                 light = u | v << 16;

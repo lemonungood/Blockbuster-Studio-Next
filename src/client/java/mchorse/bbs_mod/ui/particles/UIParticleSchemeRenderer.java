@@ -64,19 +64,19 @@ public class UIParticleSchemeRenderer extends UIModelRenderer
 
         Minecraft.getInstance().gameRenderer.getLightmapTextureManager().enable();
 
-        PoseStack stack = context.batcher.getContext().getMatrices();
+        PoseStack stack = context.batcher.getContext().pose();
 
-        stack.push();
+        stack.pushPose();
         stack.loadIdentity();
         stack.multiplyPositionMatrix(new Matrix4f(RenderSystem.getInverseViewRotationMatrix()).invert());
 
         RenderSystem.enableBlend();
-        RenderSystem.enableDepthTest();
+        // enableDepthTest removed;
         this.emitter.render(DefaultVertexFormat.POSITION_TEXTURE_COLOR_LIGHT, GameRenderer::getParticleProgram, stack, 0, context.getTransition());
-        RenderSystem.disableDepthTest();
+        // disableDepthTest removed;
         RenderSystem.disableBlend();
 
-        stack.pop();
+        stack.popPose();
 
         ParticleComponentKillPlane plane = this.emitter.scheme.get(ParticleComponentKillPlane.class);
 
@@ -88,7 +88,7 @@ public class UIParticleSchemeRenderer extends UIModelRenderer
 
     private void renderPlane(UIContext context, float a, float b, float c, float d)
     {
-        Matrix4f matrix = context.batcher.getContext().getMatrices().peek().getPositionMatrix();
+        Matrix4f matrix = context.batcher.getContext().pose().last().pose();
         BufferBuilder builder = Tessellator.getInstance().getBuffer();
         final float alpha = 0.5F;
 
@@ -145,7 +145,7 @@ public class UIParticleSchemeRenderer extends UIModelRenderer
 
         if (UIBaseMenu.renderAxes)
         {
-            Draw.coolerAxes(context.batcher.getContext().getMatrices(), 1F, 0.01F, 1.01F, 0.02F);
+            Draw.coolerAxes(context.batcher.getContext().pose(), 1F, 0.01F, 1.01F, 0.02F);
         }
     }
 }

@@ -79,13 +79,13 @@ public class UIModelBlockPanel extends UIDashboardPanel implements IFlightSuppor
         this.keyDude.keys().register(Keys.MODEL_BLOCKS_MOVE_TO, () ->
         {
             Minecraft mc = Minecraft.getInstance();
-            Camera camera = mc.gameRenderer.getCamera();
-            BlockHitResult blockHitResult = RayTracing.rayTrace(mc.world, camera.getPos(), RayTracing.fromVector3f(this.mouseDirection), 512F);
+            Camera camera = mc.gameRenderer.getMainCamera();
+            BlockHitResult blockHitResult = RayTracing.rayTrace(mc.world, camera.position(), RayTracing.fromVector3f(this.mouseDirection), 512F);
 
             if (blockHitResult.getType() != HitResult.Type.MISS)
             {
-                Vec3 hit = blockHitResult.getPos();
-                BlockPos pos = this.modelBlock.getPos();
+                Vec3 hit = blockHitResult.position();
+                BlockPos pos = this.modelBlock.position();
 
                 this.modelBlock.getProperties().getTransform().translate.set(hit.x - pos.getX() - 0.5F, hit.y - pos.getY(), hit.z - pos.getZ() - 0.5F);
                 this.fillData();
@@ -145,7 +145,7 @@ public class UIModelBlockPanel extends UIDashboardPanel implements IFlightSuppor
         this.global = new UIToggle(UIKeys.MODEL_BLOCKS_GLOBAL, (b) ->
         {
             this.modelBlock.getProperties().setGlobal(b.getValue());
-            Minecraft.getInstance().worldRenderer.reload();
+            Minecraft.getInstance().levelRenderer.reload();
         });
         this.lookAt = new UIToggle(UIKeys.CAMERA_PANELS_LOOK_AT, (b) -> this.modelBlock.getProperties().setLookAt(b.getValue()));
 
@@ -169,7 +169,7 @@ public class UIModelBlockPanel extends UIDashboardPanel implements IFlightSuppor
     {
         if (this.modelBlock != null)
         {
-            BlockPos pos = this.modelBlock.getPos();
+            BlockPos pos = this.modelBlock.position();
 
             PlayerUtils.teleport(pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D);
             UIUtils.playClick();
@@ -330,7 +330,7 @@ public class UIModelBlockPanel extends UIDashboardPanel implements IFlightSuppor
     {
         if (modelBlock != null)
         {
-            ClientNetwork.sendModelBlockForm(modelBlock.getPos(), modelBlock);
+            ClientNetwork.sendModelBlockForm(modelBlock.position(), modelBlock);
         }
     }
 
@@ -375,44 +375,44 @@ public class UIModelBlockPanel extends UIDashboardPanel implements IFlightSuppor
         super.renderInWorld(context);
 
         Camera camera = context.camera();
-        Vec3 pos = camera.getPos();
+        Vec3 pos = camera.position();
 
         Minecraft mc = Minecraft.getInstance();
         double x = mc.mouse.getX();
         double y = mc.mouse.getY();
 
         this.mouseDirection.set(CameraUtils.getMouseDirection(
-            RenderSystem.getProjectionMatrix(),
-            context.matrixStack().peek().getPositionMatrix(),
+            new org.joml.Matrix4f(),
+            context.poseStack().last().pose(),
             (int) x, (int) y, 0, 0, mc.getWindow().getWidth(), mc.getWindow().getHeight()
         ));
         this.hovered = this.getClosestObject(new Vector3d(pos.x, pos.y, pos.z), this.mouseDirection);
 
-        RenderSystem.enableDepthTest();
+        // enableDepthTest removed;
 
         for (ModelBlockEntity entity : this.modelBlocks.getList())
         {
-            BlockPos blockPos = entity.getPos();
+            BlockPos blockPos = entity.position();
 
             if (!this.isEditing(entity))
             {
-                context.matrixStack().push();
-                context.matrixStack().translate(blockPos.getX() - pos.x, blockPos.getY() - pos.y, blockPos.getZ() - pos.z);
+                context.poseStack().pushPose();
+                context.poseStack().translate(blockPos.getX() - pos.x, blockPos.getY() - pos.y, blockPos.getZ() - pos.z);
 
                 if (this.hovered == entity || entity == this.modelBlock)
                 {
-                    Draw.renderBox(context.matrixStack(), 0D, 0D, 0D, 1D, 1D, 1D, 0, 0.5F, 1F);
+                    Draw.renderBox(context.poseStack(), 0D, 0D, 0D, 1D, 1D, 1D, 0, 0.5F, 1F);
                 }
                 else
                 {
-                    Draw.renderBox(context.matrixStack(), 0D, 0D, 0D, 1D, 1D, 1D);
+                    Draw.renderBox(context.poseStack(), 0D, 0D, 0D, 1D, 1D, 1D);
                 }
 
-                context.matrixStack().pop();
+                context.poseStack().popPose();
             }
         }
 
-        RenderSystem.disableDepthTest();
+        // disableDepthTest removed;
     }
 
     private ModelBlockEntity getClosestObject(Vector3d finalPosition, Vector3f mouseDirection)
@@ -445,7 +445,7 @@ public class UIModelBlockPanel extends UIDashboardPanel implements IFlightSuppor
 
     private AABB getHitbox(ModelBlockEntity closest)
     {
-        BlockPos pos = closest.getPos();
+        BlockPos pos = closest.position();
 
         return new AABB(pos.getX(), pos.getY(), pos.getZ(), 1D, 1D, 1D);
     }

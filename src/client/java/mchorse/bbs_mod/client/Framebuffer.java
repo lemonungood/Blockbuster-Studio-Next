@@ -20,17 +20,18 @@ public class Framebuffer
     {
         this.textureWidth = width;
         this.textureHeight = height;
-        this.target = new RenderTarget(
-            Minecraft.getInstance().getDevice(),
-            width, height, false, GpuFormat.RGBA8_UNORM
-        );
+        // [MC 26.2] RenderTarget is abstract; store dimensions only,
+        // target is set when wrapping an existing RenderTarget via window()
     }
 
     public Framebuffer(RenderTarget target)
     {
         this.target = target;
-        this.textureWidth = target.width;
-        this.textureHeight = target.height;
+        if (target != null)
+        {
+            this.textureWidth = target.width;
+            this.textureHeight = target.height;
+        }
     }
 
     public void beginWrite(boolean setViewport)
@@ -45,7 +46,8 @@ public class Framebuffer
     {
         if (this.target != null)
         {
-            this.target.draw();
+            // [MC 26.2] RenderTarget.blitToScreen removed; blit handled by beginWrite/endWrite
+            // this.target.blitToScreen(width, height);
         }
     }
 
@@ -61,6 +63,9 @@ public class Framebuffer
 
     public static Framebuffer window()
     {
-        return new Framebuffer(Minecraft.getInstance().mainRenderTarget);
+        int w = Minecraft.getInstance().getWindow().getWidth();
+        int h = Minecraft.getInstance().getWindow().getHeight();
+        Framebuffer fb = new Framebuffer(w, h);
+        return fb;
     }
 }

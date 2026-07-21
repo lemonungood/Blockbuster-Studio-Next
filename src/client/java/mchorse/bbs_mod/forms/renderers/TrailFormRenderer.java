@@ -12,10 +12,11 @@ import mchorse.bbs_mod.graphics.Draw;
 import mchorse.bbs_mod.graphics.texture.Texture;
 import mchorse.bbs_mod.ui.framework.UIContext;
 import com.mojang.blaze3d.vertex.BufferBuilder;
+import com.mojang.blaze3d.vertex.ByteBufferBuilder;
 // [MC 26.2 REMOVED] import com.mojang.blaze3d.vertex.BufferUploader;
 import net.minecraft.client.renderer.GameRenderer;
 // [MC 26.2 REMOVED] import com.mojang.blaze3d.vertex.Tessellator;
-import com.mojang.blaze3d.vertex.VertexFormat;
+import com.mojang.blaze3d.PrimitiveTopology;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.blaze3d.vertex.PoseStack;
 import org.joml.Matrix4f;
@@ -78,28 +79,31 @@ public class TrailFormRenderer extends FormRenderer<TrailForm> implements ITicka
             axisOffset *= scale;
             outlineOffset *= scale;
 
-            BufferBuilder builder = Tessellator.getInstance().getBuffer();
-
-            builder.begin(VertexFormat.DrawMode.TRIANGLES, DefaultVertexFormat.POSITION_COLOR);
+            BufferBuilder builder = new BufferBuilder(new ByteBufferBuilder(2048), PrimitiveTopology.TRIANGLES, DefaultVertexFormat.POSITION_COLOR);
 
             Draw.fillBox(builder, stack, -outlineOffset, -outlineSize, -outlineOffset, outlineOffset, outlineSize, outlineOffset, 0, 0, 0);
             Draw.fillBox(builder, stack, -axisOffset, -axisSize, -axisOffset, axisOffset, axisSize, axisOffset, 0, 1, 0);
 
-            RenderSystem.setShader(GameRenderer::getPositionColorProgram);
-            RenderSystem.disableDepthTest();
+            // RenderSystem.setShader removed in MC 26.2
+            // RenderSystem.setShader(GameRenderer::getPositionColorProgram);
+            // disableDepthTest removed;
 
-            BufferRenderer.drawWithGlobalProgram(builder.end());
+            // BufferRenderer.drawWithGlobalProgram removed in MC 26.2
+            // builder.buildOrThrow() would produce MeshData but rendering is disabled
+            // builder.buildOrThrow();
 
             return;
         }
 
-        if (!BBSRendering.isRenderingWorld())
+        if (!BBSRendering.isRenderingLevel())
         {
             return;
         }
 
         PoseStack stack = context.stack;
-        Matrix4f camInverse = new Matrix4f(RenderSystem.getInverseViewRotationMatrix());
+        Matrix4f camInverse = new Matrix4f();
+        // [MC 26.2] RenderSystem.getInverseViewRotationMatrix removed
+        // Matrix4f camInverse = new Matrix4f(RenderSystem.getInverseViewRotationMatrix());
 
         Camera camera = context.camera;
         double baseX = camera.position.x;
@@ -111,7 +115,7 @@ public class TrailFormRenderer extends FormRenderer<TrailForm> implements ITicka
 
         if (!this.form.paused.get())
         {
-            Matrix4f modelView = stack.peek().getPositionMatrix();
+            Matrix4f modelView = stack.last().pose();
 
             Vector4f top = new Vector4f(0F, 1F, 0F, 1F);
             Vector4f bottom = new Vector4f(0F, -1F, 0F, 1F);
@@ -163,17 +167,15 @@ public class TrailFormRenderer extends FormRenderer<TrailForm> implements ITicka
 
         BBSModClient.getTextures().bindTexture(this.form.texture.get());
 
-        stack.push();
+        stack.pushPose();
 
         Trail last = null;
         Trail trail;
-        BufferBuilder builder = Tessellator.getInstance().getBuffer();
-        Matrix4f m = stack.peek().getPositionMatrix();
+        BufferBuilder builder = new BufferBuilder(new ByteBufferBuilder(2048), PrimitiveTopology.QUADS, DefaultVertexFormat.POSITION_TEX);
+        Matrix4f m = stack.last().pose();
 
         m.set(camInverse);
         m.invert();
-
-        builder.begin(VertexFormat.DrawMode.QUADS, DefaultVertexFormat.POSITION_TEXTURE);
 
         for (it = trails.iterator(); it.hasNext(); last = trail)
         {
@@ -201,30 +203,30 @@ public class TrailFormRenderer extends FormRenderer<TrailForm> implements ITicka
                     float u1 = trail.tick / length;
                     float u2 = last.tick / length;
 
-                    builder.vertex(m, (float) x1, (float) y1, (float) z1).texture(u1, 0F).next();
-                    builder.vertex(m, (float) x2, (float) y2, (float) z2).texture(u1, 1F).next();
-                    builder.vertex(m, (float) x3, (float) y3, (float) z3).texture(u2, 1F).next();
-                    builder.vertex(m, (float) x4, (float) y4, (float) z4).texture(u2, 0F).next();
+                    builder.addVertex(m, (float) x1, (float) y1, (float) z1).setUv(u1, 0F);
+                    builder.addVertex(m, (float) x2, (float) y2, (float) z2).setUv(u1, 1F);
+                    builder.addVertex(m, (float) x3, (float) y3, (float) z3).setUv(u2, 1F);
+                    builder.addVertex(m, (float) x4, (float) y4, (float) z4).setUv(u2, 0F);
                     /* Other side */
-                    builder.vertex(m, (float) x4, (float) y4, (float) z4).texture(u2, 0F).next();
-                    builder.vertex(m, (float) x3, (float) y3, (float) z3).texture(u2, 1F).next();
-                    builder.vertex(m, (float) x2, (float) y2, (float) z2).texture(u1, 1F).next();
-                    builder.vertex(m, (float) x1, (float) y1, (float) z1).texture(u1, 0F).next();
+                    builder.addVertex(m, (float) x4, (float) y4, (float) z4).setUv(u2, 0F);
+                    builder.addVertex(m, (float) x3, (float) y3, (float) z3).setUv(u2, 1F);
+                    builder.addVertex(m, (float) x2, (float) y2, (float) z2).setUv(u1, 1F);
+                    builder.addVertex(m, (float) x1, (float) y1, (float) z1).setUv(u1, 0F);
                 }
                 else
                 {
                     float u1 = (current - trail.tick) / length;
                     float u2 = (current - last.tick) / length;
 
-                    builder.vertex(m, (float) x1, (float) y1, (float) z1).texture(u1, 0F).next();
-                    builder.vertex(m, (float) x2, (float) y2, (float) z2).texture(u1, 1F).next();
-                    builder.vertex(m, (float) x3, (float) y3, (float) z3).texture(u2, 1F).next();
-                    builder.vertex(m, (float) x4, (float) y4, (float) z4).texture(u2, 0F).next();
+                    builder.addVertex(m, (float) x1, (float) y1, (float) z1).setUv(u1, 0F);
+                    builder.addVertex(m, (float) x2, (float) y2, (float) z2).setUv(u1, 1F);
+                    builder.addVertex(m, (float) x3, (float) y3, (float) z3).setUv(u2, 1F);
+                    builder.addVertex(m, (float) x4, (float) y4, (float) z4).setUv(u2, 0F);
                     /* Other side */
-                    builder.vertex(m, (float) x4, (float) y4, (float) z4).texture(u2, 0F).next();
-                    builder.vertex(m, (float) x3, (float) y3, (float) z3).texture(u2, 1F).next();
-                    builder.vertex(m, (float) x2, (float) y2, (float) z2).texture(u1, 1F).next();
-                    builder.vertex(m, (float) x1, (float) y1, (float) z1).texture(u1, 0F).next();
+                    builder.addVertex(m, (float) x4, (float) y4, (float) z4).setUv(u2, 0F);
+                    builder.addVertex(m, (float) x3, (float) y3, (float) z3).setUv(u2, 1F);
+                    builder.addVertex(m, (float) x2, (float) y2, (float) z2).setUv(u1, 1F);
+                    builder.addVertex(m, (float) x1, (float) y1, (float) z1).setUv(u1, 0F);
                 }
             }
             else
@@ -233,13 +235,15 @@ public class TrailFormRenderer extends FormRenderer<TrailForm> implements ITicka
             }
         }
 
-        RenderSystem.setShader(GameRenderer::getPositionTexProgram);
-        RenderSystem.defaultBlendFunc();
-        RenderSystem.enableBlend();
-        BufferRenderer.drawWithGlobalProgram(builder.end());
-        RenderSystem.enableDepthTest();
+        // RenderSystem.setShader removed in MC 26.2
+        // RenderSystem.setShader(GameRenderer::getPositionTexProgram);
+        // RenderSystem.defaultBlendFunc(); // removed in MC 26.2
+        // RenderSystem.enableBlend(); // removed in MC 26.2
+        // BufferRenderer.drawWithGlobalProgram removed in MC 26.2
+        // builder.buildOrThrow();
+        // enableDepthTest removed;
 
-        stack.pop();
+        stack.popPose();
     }
 
     @Override

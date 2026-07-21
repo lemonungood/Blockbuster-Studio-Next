@@ -1,6 +1,5 @@
 package mchorse.bbs_mod.client.renderer;
 
-import com.mojang.blaze3d.systems.RenderSystem;
 import mchorse.bbs_mod.forms.FormUtilsClient;
 import mchorse.bbs_mod.forms.forms.Form;
 import mchorse.bbs_mod.forms.forms.MobForm;
@@ -20,7 +19,9 @@ import net.minecraft.client.player.AbstractClientPlayer;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.renderer.entity.LivingEntityRenderer;
 import com.mojang.blaze3d.vertex.PoseStack;
+import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.world.entity.LivingEntity;
+import com.mojang.math.Axis;
 import org.joml.Quaternionf;
 
 public class MorphRenderer
@@ -43,21 +44,17 @@ public class MorphRenderer
         {
             if (canRender())
             {
-                RenderSystem.enableDepthTest();
+                float bodyYaw = Lerps.lerp(player.yBodyRotO, player.yBodyRot, g);
+                int overlay = OverlayTexture.NO_OVERLAY;
 
-                float bodyYaw = Lerps.lerp(player.prevBodyYaw, player.bodyYaw, g);
-                int overlay = LivingEntityRenderer.getOverlay(player, 0F);
-
-                matrixStack.push();
-                matrixStack.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(-bodyYaw));
+                matrixStack.pushPose();
+                matrixStack.mulPose(Axis.YP.rotationDegrees(-bodyYaw));
 
                 FormUtilsClient.render(morph.getForm(), new FormRenderingContext()
                     .set(FormRenderType.ENTITY, morph.entity, matrixStack, i, overlay, g)
-                    .camera(Minecraft.getInstance().gameRenderer.getCamera()));
+                    .camera(Minecraft.getInstance().gameRenderer.mainCamera()));
 
-                matrixStack.pop();
-
-                RenderSystem.disableDepthTest();
+                matrixStack.popPose();
             }
 
             return true;
@@ -98,20 +95,16 @@ public class MorphRenderer
 
         if (form != null)
         {
-            RenderSystem.enableDepthTest();
+            float bodyYaw = Lerps.lerp(livingEntity.yBodyRotO, livingEntity.yBodyRot, g);
 
-            float bodyYaw = Lerps.lerp(livingEntity.prevBodyYaw, livingEntity.bodyYaw, g);
-
-            matrixStack.push();
-            matrixStack.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(-bodyYaw));
+            matrixStack.pushPose();
+            matrixStack.mulPose(Axis.YP.rotationDegrees(-bodyYaw));
 
             FormUtilsClient.render(form, new FormRenderingContext()
                 .set(FormRenderType.ENTITY, owner.entity, matrixStack, i, o, g)
-                .camera(Minecraft.getInstance().gameRenderer.getCamera()));
+                .camera(Minecraft.getInstance().gameRenderer.mainCamera()));
 
-            matrixStack.pop();
-
-            RenderSystem.disableDepthTest();
+            matrixStack.popPose();
 
             return true;
         }

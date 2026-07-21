@@ -37,7 +37,7 @@ public class EntityRenderDispatcherMixin
                 whiteOverlayProgress = invoker.bbs$getAnimationCounter(livingEntity, tickDelta);
             }
 
-            int o = LivingEntityRenderer.getOverlay(livingEntity, whiteOverlayProgress);
+            int o = LivingEntityRenderer.getOverlayCoords(livingEntity, whiteOverlayProgress);
 
             if (MorphRenderer.renderLivingEntity(livingEntity, yaw, tickDelta, matrices, vcp, light, o))
             {

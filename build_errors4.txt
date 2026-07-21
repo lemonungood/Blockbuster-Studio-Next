@@ -1,0 +1,633 @@
+WARNING: A restricted method in java.lang.System has been called
+WARNING: java.lang.System::load has been called by net.rubygrapefruit.platform.internal.NativeLibraryLoader in an unnamed module (file:/C:/Users/hechengyu/.gradle/wrapper/dists/gradle-9.5.1-bin/iq79hdu3mqx29lgffhp8bfmx/gradle-9.5.1/lib/native-platform-0.22-milestone-29.jar)
+WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+
+> Configure project :
+Fabric Loom: 1.17.16
+
+> Task :compileJava UP-TO-DATE
+> Task :processResources UP-TO-DATE
+> Task :classes UP-TO-DATE
+
+> Task :compileClientJava
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\ModelFormRenderer.java:449: 错误: 需要';'
+            matrices.pushPose()();
+                               ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\ModelFormRenderer.java:469: 错误: 需要';'
+            matrices.popPose()();
+                              ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\graphics\Draw.java:197: 错误: 需要';'
+        Matrix4f mat = stack.peek().position()itionMatrix();
+                                              ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\selectors\EntitySelector.java:66: 错误: 需要')'
+        for (String key : source.getAllKeys()())
+                                             ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\selectors\EntitySelector.java:66: 错误: 需要->
+        for (String key : source.getAllKeys()())
+                                               ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\replays\UIReplaysEditor.java:547: 错误: 需要')'或','
+                Vector3d vec = new Vector3d(blockHitResult.position()().x, blockHitResult.position()().y, blockHitResult.position()().z);
+                                                                     ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\replays\UIReplaysEditor.java:547: 错误: 不是语句
+                Vector3d vec = new Vector3d(blockHitResult.position()().x, blockHitResult.position()().y, blockHitResult.position()().z);
+                                                                        ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\replays\UIReplaysEditor.java:547: 错误: 需要';'
+                Vector3d vec = new Vector3d(blockHitResult.position()().x, blockHitResult.position()().y, blockHitResult.position()().z);
+                                                                         ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\replays\UIReplaysEditor.java:547: 错误: 需要';'
+                Vector3d vec = new Vector3d(blockHitResult.position()().x, blockHitResult.position()().y, blockHitResult.position()().z);
+                                                                                                    ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\replays\UIReplaysEditor.java:547: 错误: 不是语句
+                Vector3d vec = new Vector3d(blockHitResult.position()().x, blockHitResult.position()().y, blockHitResult.position()().z);
+                                                                                                       ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\replays\UIReplaysEditor.java:547: 错误: 需要';'
+                Vector3d vec = new Vector3d(blockHitResult.position()().x, blockHitResult.position()().y, blockHitResult.position()().z);
+                                                                                                        ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\replays\UIReplaysEditor.java:547: 错误: 需要';'
+                Vector3d vec = new Vector3d(blockHitResult.position()().x, blockHitResult.position()().y, blockHitResult.position()().z);
+                                                                                                                                   ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\replays\UIReplaysEditor.java:547: 错误: 不是语句
+                Vector3d vec = new Vector3d(blockHitResult.position()().x, blockHitResult.position()().y, blockHitResult.position()().z);
+                                                                                                                                      ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\replays\UIReplaysEditor.java:547: 错误: 需要';'
+                Vector3d vec = new Vector3d(blockHitResult.position()().x, blockHitResult.position()().y, blockHitResult.position()().z);
+                                                                                                                                       ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\UIClips.java:260: 错误: 需要')'
+            if (this.factory.getAllKeys()().contains(Link.bbs("keyframe")))
+                                         ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\UIClips.java:260: 错误: 需要->
+            if (this.factory.getAllKeys()().contains(Link.bbs("keyframe")))
+                                           ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\UIClips.java:260: 错误: 需要';'
+            if (this.factory.getAllKeys()().contains(Link.bbs("keyframe")))
+                                                                          ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\UIClips.java:352: 错误: 需要')'
+            for (Link type : this.factory.getAllKeys()())
+                                                      ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\UIClips.java:352: 错误: 需要->
+            for (Link type : this.factory.getAllKeys()())
+                                                        ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\UIFilmPanel.java:952: 错误: 需要';'
+            Vec3 pos = player.position()();
+                                        ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\UIFilmPanel.java:1067: 错误: 需要')'或','
+            this.lastView.set(context.poseStack()().peek().position()itionMatrix());
+                                                 ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\UIFilmPanel.java:1067: 错误: 需要';'
+            this.lastView.set(context.poseStack()().peek().position()itionMatrix());
+                                                                     ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\UIFilmPanel.java:1067: 错误: 需要';'
+            this.lastView.set(context.poseStack()().peek().position()itionMatrix());
+                                                                                  ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\UIFilmPreview.java:375: 错误: 需要';'
+        net.minecraft.client.Camera mcCamera = Minecraft.getInstance().gameRenderer.getMainCamera()();
+                                                                                                   ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\UIFilmPreview.java:378: 错误: 需要';'
+        stack.pushPose()();
+                        ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\UIFilmPreview.java:380: 错误: 需要')'或','
+        stack.multiplyPositionMatrix(context.batcher.getContext().pose()().peek().position()itionMatrix());
+                                                                        ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\UIFilmPreview.java:380: 错误: 需要';'
+        stack.multiplyPositionMatrix(context.batcher.getContext().pose()().peek().position()itionMatrix());
+                                                                                            ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\UIFilmPreview.java:380: 错误: 需要';'
+        stack.multiplyPositionMatrix(context.batcher.getContext().pose()().peek().position()itionMatrix());
+                                                                                                         ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\UIFilmPreview.java:388: 错误: 需要';'
+        stack.popPose()();
+                       ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\UISubtitleRenderer.java:141: 错误: 需要';'
+            stack.pushPose()();
+                            ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\UISubtitleRenderer.java:160: 错误: 需要';'
+            stack.popPose()();
+                           ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\panels\UIMobFormPanel.java:35: 错误: 需要')'
+        for (ResourceKey<EntityType<?>> key : BuiltInRegistries.ENTITY_TYPE.getAllKeys()())
+                                                                                        ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\panels\UIMobFormPanel.java:35: 错误: 需要->
+        for (ResourceKey<EntityType<?>> key : BuiltInRegistries.ENTITY_TYPE.getAllKeys()())
+                                                                                          ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\panels\widgets\UIBlockStateEditor.java:35: 错误: 需要')'
+        for (ResourceKey<Block> key : BuiltInRegistries.BLOCK.getAllKeys()())
+                                                                          ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\panels\widgets\UIBlockStateEditor.java:35: 错误: 需要->
+        for (ResourceKey<Block> key : BuiltInRegistries.BLOCK.getAllKeys()())
+                                                                            ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\panels\widgets\UIItemStack.java:126: 错误: 需要';'
+            PoseStack matrices = context.batcher.getContext().pose()();
+                                                                    ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\panels\widgets\UIItemStack.java:129: 错误: 需要';'
+            matrices.pushPose()();
+                               ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\panels\widgets\UIItemStack.java:134: 错误: 需要';'
+            matrices.popPose()();
+                              ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\panels\widgets\UIItemStackOverlayPanel.java:41: 错误: 需要')'
+        for (ResourceKey<Item> key : BuiltInRegistries.ITEM.getAllKeys()())
+                                                                        ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\panels\widgets\UIItemStackOverlayPanel.java:41: 错误: 需要->
+        for (ResourceKey<Item> key : BuiltInRegistries.ITEM.getAllKeys()())
+                                                                          ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\UIFormUndoHandler.java:157: 错误: 需要';'
+            this.undoManager.pushPose()Undo(changeUndos.get(0));
+                                       ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\UIFormUndoHandler.java:161: 错误: 需要';'
+            this.undoManager.pushPose()Undo(new CompoundUndo<>(changeUndos.toArray(new IUndo[0])));
+                                       ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\utils\UIFormRenderer.java:25: 错误: 需要')'或','
+            .set(FormRenderType.PREVIEW, this.entity, context.batcher.getContext().pose()(), LightmapTextureManager.pack(15, 15), 0, context.getTransition())
+                                                                                         ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\utils\UIFormRenderer.java:25: 错误: 需要';'
+            .set(FormRenderType.PREVIEW, this.entity, context.batcher.getContext().pose()(), LightmapTextureManager.pack(15, 15), 0, context.getTransition())
+                                                                                                                                ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\utils\UIFormRenderer.java:25: 错误: 需要';'
+            .set(FormRenderType.PREVIEW, this.entity, context.batcher.getContext().pose()(), LightmapTextureManager.pack(15, 15), 0, context.getTransition())
+                                                                                                                                                            ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\utils\UIParticleSettings.java:32: 错误: 需要')'
+            for (ResourceKey<ParticleType<?>> key : BuiltInRegistries.PARTICLE_TYPE.getAllKeys()())
+                                                                                                ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\utils\UIParticleSettings.java:32: 错误: 需要->
+            for (ResourceKey<ParticleType<?>> key : BuiltInRegistries.PARTICLE_TYPE.getAllKeys()())
+                                                                                                  ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\utils\UIPickableFormRenderer.java:111: 错误: 需要')'或','
+            .set(FormRenderType.PREVIEW, this.target == null ? this.entity : this.target, context.batcher.getContext().pose()(), LightmapTextureManager.pack(15, 15), 0, context.getTransition())
+                                                                                                                             ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\utils\UIPickableFormRenderer.java:111: 错误: 需要';'
+            .set(FormRenderType.PREVIEW, this.target == null ? this.entity : this.target, context.batcher.getContext().pose()(), LightmapTextureManager.pack(15, 15), 0, context.getTransition())
+                                                                                                                                                                    ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\utils\UIPickableFormRenderer.java:111: 错误: 需要';'
+            .set(FormRenderType.PREVIEW, this.target == null ? this.entity : this.target, context.batcher.getContext().pose()(), LightmapTextureManager.pack(15, 15), 0, context.getTransition())
+                                                                                                                                                                                                ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\utils\UIPickableFormRenderer.java:137: 错误: 需要';'
+            PoseStack stack = context.render.batcher.getContext().pose()();
+                                                                        ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\utils\UIPickableFormRenderer.java:139: 错误: 需要';'
+            stack.pushPose()();
+                            ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\utils\UIPickableFormRenderer.java:146: 错误: 需要')'或','
+            Gizmo.INSTANCE.renderStencil(context.batcher.getContext().pose()(), this.stencilMap);
+                                                                            ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\utils\UIPickableFormRenderer.java:146: 错误: 不是语句
+            Gizmo.INSTANCE.renderStencil(context.batcher.getContext().pose()(), this.stencilMap);
+                                                                                    ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\utils\UIPickableFormRenderer.java:146: 错误: 需要';'
+            Gizmo.INSTANCE.renderStencil(context.batcher.getContext().pose()(), this.stencilMap);
+                                                                                               ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\utils\UIPickableFormRenderer.java:148: 错误: 需要';'
+            stack.popPose()();
+                           ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\utils\UIPickableFormRenderer.java:166: 错误: 需要';'
+        PoseStack stack = context.render.batcher.getContext().pose()();
+                                                                    ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\utils\UIPickableFormRenderer.java:168: 错误: 需要';'
+        stack.pushPose()();
+                        ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\utils\UIPickableFormRenderer.java:183: 错误: 需要';'
+        stack.popPose()();
+                       ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\utils\UIPickableFormRenderer.java:194: 错误: 需要')'或','
+        Draw.renderBox(context.batcher.getContext().pose()(), -thickness, -thickness + eyeHeight, -thickness, thickness, thickness, 2F, 1F, 0F, 0F);
+                                                          ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\utils\UIPickableFormRenderer.java:194: 错误: 不是语句
+        Draw.renderBox(context.batcher.getContext().pose()(), -thickness, -thickness + eyeHeight, -thickness, thickness, thickness, 2F, 1F, 0F, 0F);
+                                                               ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\utils\UIPickableFormRenderer.java:194: 错误: 需要';'
+        Draw.renderBox(context.batcher.getContext().pose()(), -thickness, -thickness + eyeHeight, -thickness, thickness, thickness, 2F, 1F, 0F, 0F);
+                                                                        ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\utils\UIPickableFormRenderer.java:194: 错误: 不是语句
+        Draw.renderBox(context.batcher.getContext().pose()(), -thickness, -thickness + eyeHeight, -thickness, thickness, thickness, 2F, 1F, 0F, 0F);
+                                                                                     ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\utils\UIPickableFormRenderer.java:194: 错误: 需要';'
+        Draw.renderBox(context.batcher.getContext().pose()(), -thickness, -thickness + eyeHeight, -thickness, thickness, thickness, 2F, 1F, 0F, 0F);
+                                                                                                ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\utils\UIPickableFormRenderer.java:194: 错误: 不是语句
+        Draw.renderBox(context.batcher.getContext().pose()(), -thickness, -thickness + eyeHeight, -thickness, thickness, thickness, 2F, 1F, 0F, 0F);
+                                                                                                   ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\utils\UIPickableFormRenderer.java:194: 错误: 需要';'
+        Draw.renderBox(context.batcher.getContext().pose()(), -thickness, -thickness + eyeHeight, -thickness, thickness, thickness, 2F, 1F, 0F, 0F);
+                                                                                                            ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\utils\UIPickableFormRenderer.java:194: 错误: 不是语句
+        Draw.renderBox(context.batcher.getContext().pose()(), -thickness, -thickness + eyeHeight, -thickness, thickness, thickness, 2F, 1F, 0F, 0F);
+                                                                                                              ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\utils\UIPickableFormRenderer.java:194: 错误: 需要';'
+        Draw.renderBox(context.batcher.getContext().pose()(), -thickness, -thickness + eyeHeight, -thickness, thickness, thickness, 2F, 1F, 0F, 0F);
+                                                                                                                       ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\utils\UIPickableFormRenderer.java:194: 错误: 不是语句
+        Draw.renderBox(context.batcher.getContext().pose()(), -thickness, -thickness + eyeHeight, -thickness, thickness, thickness, 2F, 1F, 0F, 0F);
+                                                                                                                         ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\utils\UIPickableFormRenderer.java:194: 错误: 需要';'
+        Draw.renderBox(context.batcher.getContext().pose()(), -thickness, -thickness + eyeHeight, -thickness, thickness, thickness, 2F, 1F, 0F, 0F);
+                                                                                                                                  ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\utils\UIPickableFormRenderer.java:197: 错误: 需要')'或','
+        Draw.renderBox(context.batcher.getContext().pose()(), -hitboxW / 2, 0, -hitboxW / 2, hitboxW, hitboxH, hitboxW);
+                                                          ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\utils\UIPickableFormRenderer.java:197: 错误: 不是语句
+        Draw.renderBox(context.batcher.getContext().pose()(), -hitboxW / 2, 0, -hitboxW / 2, hitboxW, hitboxH, hitboxW);
+                                                                       ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\utils\UIPickableFormRenderer.java:197: 错误: 需要';'
+        Draw.renderBox(context.batcher.getContext().pose()(), -hitboxW / 2, 0, -hitboxW / 2, hitboxW, hitboxH, hitboxW);
+                                                                          ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\utils\UIPickableFormRenderer.java:197: 错误: 不是语句
+        Draw.renderBox(context.batcher.getContext().pose()(), -hitboxW / 2, 0, -hitboxW / 2, hitboxW, hitboxH, hitboxW);
+                                                                                        ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\utils\UIPickableFormRenderer.java:197: 错误: 需要';'
+        Draw.renderBox(context.batcher.getContext().pose()(), -hitboxW / 2, 0, -hitboxW / 2, hitboxW, hitboxH, hitboxW);
+                                                                                           ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\utils\UIPickableFormRenderer.java:197: 错误: 不是语句
+        Draw.renderBox(context.batcher.getContext().pose()(), -hitboxW / 2, 0, -hitboxW / 2, hitboxW, hitboxH, hitboxW);
+                                                                                             ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\utils\UIPickableFormRenderer.java:197: 错误: 需要';'
+        Draw.renderBox(context.batcher.getContext().pose()(), -hitboxW / 2, 0, -hitboxW / 2, hitboxW, hitboxH, hitboxW);
+                                                                                                    ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\utils\UIPickableFormRenderer.java:197: 错误: 不是语句
+        Draw.renderBox(context.batcher.getContext().pose()(), -hitboxW / 2, 0, -hitboxW / 2, hitboxW, hitboxH, hitboxW);
+                                                                                                      ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\utils\UIPickableFormRenderer.java:197: 错误: 需要';'
+        Draw.renderBox(context.batcher.getContext().pose()(), -hitboxW / 2, 0, -hitboxW / 2, hitboxW, hitboxH, hitboxW);
+                                                                                                             ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\utils\UIPickableFormRenderer.java:197: 错误: 不是语句
+        Draw.renderBox(context.batcher.getContext().pose()(), -hitboxW / 2, 0, -hitboxW / 2, hitboxW, hitboxH, hitboxW);
+                                                                                                               ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\utils\UIPickableFormRenderer.java:197: 错误: 需要';'
+        Draw.renderBox(context.batcher.getContext().pose()(), -hitboxW / 2, 0, -hitboxW / 2, hitboxW, hitboxH, hitboxW);
+                                                                                                                      ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\keyframes\factories\UIPoseKeyframeFactory.java:129: 错误: 需要')'或','
+            return CollectionUtils.getKey(this.position()e().transforms, transform);
+                                                         ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\keyframes\factories\UIPoseKeyframeFactory.java:129: 错误: 不是语句
+            return CollectionUtils.getKey(this.position()e().transforms, transform);
+                                                            ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\keyframes\factories\UIPoseKeyframeFactory.java:129: 错误: 需要';'
+            return CollectionUtils.getKey(this.position()e().transforms, transform);
+                                                                       ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\keyframes\factories\UIPoseKeyframeFactory.java:129: 错误: 不是语句
+            return CollectionUtils.getKey(this.position()e().transforms, transform);
+                                                                         ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\keyframes\factories\UIPoseKeyframeFactory.java:129: 错误: 需要';'
+            return CollectionUtils.getKey(this.position()e().transforms, transform);
+                                                                                  ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\keyframes\graphs\UIKeyframeDopeSheet.java:545: 错误: 需要';'
+        Matrix4f matrix = context.batcher.getContext().pose()().peek().position()itionMatrix();
+                                                             ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\keyframes\graphs\UIKeyframeDopeSheet.java:545: 错误: 需要';'
+        Matrix4f matrix = context.batcher.getContext().pose()().peek().position()itionMatrix();
+                                                                                 ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\keyframes\graphs\UIKeyframeGraph.java:525: 错误: 需要';'
+        Matrix4f matrix = context.batcher.getContext().pose()().peek().position()itionMatrix();
+                                                             ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\keyframes\graphs\UIKeyframeGraph.java:525: 错误: 需要';'
+        Matrix4f matrix = context.batcher.getContext().pose()().peek().position()itionMatrix();
+                                                                                 ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\keyframes\graphs\UIKeyframeGraph.java:555: 错误: 需要';'
+                    lineBuilder.pushPose()();
+                                          ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\keyframes\graphs\UIKeyframeGraph.java:588: 错误: 需要';'
+                lineBuilder.pushPose()();
+                                      ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\keyframes\graphs\UIKeyframeGraph.java:600: 错误: 需要';'
+                lineBuilder.pushPose()();
+                                      ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\keyframes\graphs\UIKeyframeGraph.java:609: 错误: 需要';'
+                lineBuilder.pushPose()();
+                                      ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\list\UIVanillaSoundList.java:66: 错误: 需要';'
+            this.popPose()ulateList();
+                          ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\multilink\UIMultiLinkEditor.java:226: 错误: 需要';'
+                ShaderProgram shader = GameRenderer.position()itionTexColorProgram();
+                                                              ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\text\highlighting\BaseSyntaxHighlighter.java:195: 错误: 需要';'
+                    this.pushPose()Keyword(list, keyword, this.style.primary, i, font);
+                                   ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\text\highlighting\BaseSyntaxHighlighter.java:199: 错误: 需要';'
+                    this.pushPose()Keyword(list, keyword, this.style.special, i, font);
+                                   ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\text\highlighting\BaseSyntaxHighlighter.java:203: 错误: 需要';'
+                    this.pushPose()Keyword(list, keyword, this.style.secondary, i, font);
+                                   ^
+D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\text\highlighting\BaseSyntaxHighlighter.java:207: 错误: 需要';'
+                    this.pushPose()Keyword(list, keyword, this.style.identifier, i, font);
+                                   ^
+100 个错误
+
+> Task :compileClientJava FAILED
+
+[Incubating] Problems report is available at: file:///D:/DEV/bbs_clean/build/reports/problems/problems-report.html
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':compileClientJava' (registered by plugin class 'org.gradle.api.plugins.JavaBasePlugin').
+> Compilation failed; see the compiler output below.
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\replays\UIReplaysEditor.java:547: 错误: 不是语句
+                  Vector3d vec = new Vector3d(blockHitResult.position()().x, blockHitResult.position()().y, blockHitResult.position()().z);
+                                                                          ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\replays\UIReplaysEditor.java:547: 错误: 不是语句
+                  Vector3d vec = new Vector3d(blockHitResult.position()().x, blockHitResult.position()().y, blockHitResult.position()().z);
+                                                                                                         ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\replays\UIReplaysEditor.java:547: 错误: 不是语句
+                  Vector3d vec = new Vector3d(blockHitResult.position()().x, blockHitResult.position()().y, blockHitResult.position()().z);
+                                                                                                                                        ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\utils\UIPickableFormRenderer.java:146: 错误: 不是语句
+              Gizmo.INSTANCE.renderStencil(context.batcher.getContext().pose()(), this.stencilMap);
+                                                                                      ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\utils\UIPickableFormRenderer.java:194: 错误: 不是语句
+          Draw.renderBox(context.batcher.getContext().pose()(), -thickness, -thickness + eyeHeight, -thickness, thickness, thickness, 2F, 1F, 0F, 0F);
+                                                                 ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\utils\UIPickableFormRenderer.java:194: 错误: 不是语句
+          Draw.renderBox(context.batcher.getContext().pose()(), -thickness, -thickness + eyeHeight, -thickness, thickness, thickness, 2F, 1F, 0F, 0F);
+                                                                                       ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\utils\UIPickableFormRenderer.java:194: 错误: 不是语句
+          Draw.renderBox(context.batcher.getContext().pose()(), -thickness, -thickness + eyeHeight, -thickness, thickness, thickness, 2F, 1F, 0F, 0F);
+                                                                                                     ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\utils\UIPickableFormRenderer.java:194: 错误: 不是语句
+          Draw.renderBox(context.batcher.getContext().pose()(), -thickness, -thickness + eyeHeight, -thickness, thickness, thickness, 2F, 1F, 0F, 0F);
+                                                                                                                ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\utils\UIPickableFormRenderer.java:194: 错误: 不是语句
+          Draw.renderBox(context.batcher.getContext().pose()(), -thickness, -thickness + eyeHeight, -thickness, thickness, thickness, 2F, 1F, 0F, 0F);
+                                                                                                                           ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\utils\UIPickableFormRenderer.java:197: 错误: 不是语句
+          Draw.renderBox(context.batcher.getContext().pose()(), -hitboxW / 2, 0, -hitboxW / 2, hitboxW, hitboxH, hitboxW);
+                                                                         ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\utils\UIPickableFormRenderer.java:197: 错误: 不是语句
+          Draw.renderBox(context.batcher.getContext().pose()(), -hitboxW / 2, 0, -hitboxW / 2, hitboxW, hitboxH, hitboxW);
+                                                                                          ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\utils\UIPickableFormRenderer.java:197: 错误: 不是语句
+          Draw.renderBox(context.batcher.getContext().pose()(), -hitboxW / 2, 0, -hitboxW / 2, hitboxW, hitboxH, hitboxW);
+                                                                                               ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\utils\UIPickableFormRenderer.java:197: 错误: 不是语句
+          Draw.renderBox(context.batcher.getContext().pose()(), -hitboxW / 2, 0, -hitboxW / 2, hitboxW, hitboxH, hitboxW);
+                                                                                                        ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\utils\UIPickableFormRenderer.java:197: 错误: 不是语句
+          Draw.renderBox(context.batcher.getContext().pose()(), -hitboxW / 2, 0, -hitboxW / 2, hitboxW, hitboxH, hitboxW);
+                                                                                                                 ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\keyframes\factories\UIPoseKeyframeFactory.java:129: 错误: 不是语句
+              return CollectionUtils.getKey(this.position()e().transforms, transform);
+                                                              ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\keyframes\factories\UIPoseKeyframeFactory.java:129: 错误: 不是语句
+              return CollectionUtils.getKey(this.position()e().transforms, transform);
+                                                                           ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\replays\UIReplaysEditor.java:547: 错误: 需要')'或','
+                  Vector3d vec = new Vector3d(blockHitResult.position()().x, blockHitResult.position()().y, blockHitResult.position()().z);
+                                                                       ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\UIFilmPanel.java:1067: 错误: 需要')'或','
+              this.lastView.set(context.poseStack()().peek().position()itionMatrix());
+                                                   ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\UIFilmPreview.java:380: 错误: 需要')'或','
+          stack.multiplyPositionMatrix(context.batcher.getContext().pose()().peek().position()itionMatrix());
+                                                                          ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\utils\UIFormRenderer.java:25: 错误: 需要')'或','
+              .set(FormRenderType.PREVIEW, this.entity, context.batcher.getContext().pose()(), LightmapTextureManager.pack(15, 15), 0, context.getTransition())
+                                                                                           ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\utils\UIPickableFormRenderer.java:111: 错误: 需要')'或','
+              .set(FormRenderType.PREVIEW, this.target == null ? this.entity : this.target, context.batcher.getContext().pose()(), LightmapTextureManager.pack(15, 15), 0, context.getTransition())
+                                                                                                                               ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\utils\UIPickableFormRenderer.java:146: 错误: 需要')'或','
+              Gizmo.INSTANCE.renderStencil(context.batcher.getContext().pose()(), this.stencilMap);
+                                                                              ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\utils\UIPickableFormRenderer.java:194: 错误: 需要')'或','
+          Draw.renderBox(context.batcher.getContext().pose()(), -thickness, -thickness + eyeHeight, -thickness, thickness, thickness, 2F, 1F, 0F, 0F);
+                                                            ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\utils\UIPickableFormRenderer.java:197: 错误: 需要')'或','
+          Draw.renderBox(context.batcher.getContext().pose()(), -hitboxW / 2, 0, -hitboxW / 2, hitboxW, hitboxH, hitboxW);
+                                                            ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\keyframes\factories\UIPoseKeyframeFactory.java:129: 错误: 需要')'或','
+              return CollectionUtils.getKey(this.position()e().transforms, transform);
+                                                           ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\ModelFormRenderer.java:449: 错误: 需要';'
+              matrices.pushPose()();
+                                 ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\forms\renderers\ModelFormRenderer.java:469: 错误: 需要';'
+              matrices.popPose()();
+                                ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\graphics\Draw.java:197: 错误: 需要';'
+          Matrix4f mat = stack.peek().position()itionMatrix();
+                                                ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\selectors\EntitySelector.java:66: 错误: 需要')'
+          for (String key : source.getAllKeys()())
+                                               ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\selectors\EntitySelector.java:66: 错误: 需要->
+          for (String key : source.getAllKeys()())
+                                                 ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\replays\UIReplaysEditor.java:547: 错误: 需要';'
+                  Vector3d vec = new Vector3d(blockHitResult.position()().x, blockHitResult.position()().y, blockHitResult.position()().z);
+                                                                           ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\replays\UIReplaysEditor.java:547: 错误: 需要';'
+                  Vector3d vec = new Vector3d(blockHitResult.position()().x, blockHitResult.position()().y, blockHitResult.position()().z);
+                                                                                                      ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\replays\UIReplaysEditor.java:547: 错误: 需要';'
+                  Vector3d vec = new Vector3d(blockHitResult.position()().x, blockHitResult.position()().y, blockHitResult.position()().z);
+                                                                                                          ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\replays\UIReplaysEditor.java:547: 错误: 需要';'
+                  Vector3d vec = new Vector3d(blockHitResult.position()().x, blockHitResult.position()().y, blockHitResult.position()().z);
+                                                                                                                                     ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\replays\UIReplaysEditor.java:547: 错误: 需要';'
+                  Vector3d vec = new Vector3d(blockHitResult.position()().x, blockHitResult.position()().y, blockHitResult.position()().z);
+                                                                                                                                         ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\UIClips.java:260: 错误: 需要')'
+              if (this.factory.getAllKeys()().contains(Link.bbs("keyframe")))
+                                           ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\UIClips.java:260: 错误: 需要->
+              if (this.factory.getAllKeys()().contains(Link.bbs("keyframe")))
+                                             ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\UIClips.java:260: 错误: 需要';'
+              if (this.factory.getAllKeys()().contains(Link.bbs("keyframe")))
+                                                                            ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\UIClips.java:352: 错误: 需要')'
+              for (Link type : this.factory.getAllKeys()())
+                                                        ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\UIClips.java:352: 错误: 需要->
+              for (Link type : this.factory.getAllKeys()())
+                                                          ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\UIFilmPanel.java:952: 错误: 需要';'
+              Vec3 pos = player.position()();
+                                          ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\UIFilmPanel.java:1067: 错误: 需要';'
+              this.lastView.set(context.poseStack()().peek().position()itionMatrix());
+                                                                       ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\UIFilmPanel.java:1067: 错误: 需要';'
+              this.lastView.set(context.poseStack()().peek().position()itionMatrix());
+                                                                                    ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\UIFilmPreview.java:375: 错误: 需要';'
+          net.minecraft.client.Camera mcCamera = Minecraft.getInstance().gameRenderer.getMainCamera()();
+                                                                                                     ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\UIFilmPreview.java:378: 错误: 需要';'
+          stack.pushPose()();
+                          ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\UIFilmPreview.java:380: 错误: 需要';'
+          stack.multiplyPositionMatrix(context.batcher.getContext().pose()().peek().position()itionMatrix());
+                                                                                              ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\UIFilmPreview.java:380: 错误: 需要';'
+          stack.multiplyPositionMatrix(context.batcher.getContext().pose()().peek().position()itionMatrix());
+                                                                                                           ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\UIFilmPreview.java:388: 错误: 需要';'
+          stack.popPose()();
+                         ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\UISubtitleRenderer.java:141: 错误: 需要';'
+              stack.pushPose()();
+                              ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\film\UISubtitleRenderer.java:160: 错误: 需要';'
+              stack.popPose()();
+                             ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\panels\UIMobFormPanel.java:35: 错误: 需要')'
+          for (ResourceKey<EntityType<?>> key : BuiltInRegistries.ENTITY_TYPE.getAllKeys()())
+                                                                                          ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\panels\UIMobFormPanel.java:35: 错误: 需要->
+          for (ResourceKey<EntityType<?>> key : BuiltInRegistries.ENTITY_TYPE.getAllKeys()())
+                                                                                            ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\panels\widgets\UIBlockStateEditor.java:35: 错误: 需要')'
+          for (ResourceKey<Block> key : BuiltInRegistries.BLOCK.getAllKeys()())
+                                                                            ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\panels\widgets\UIBlockStateEditor.java:35: 错误: 需要->
+          for (ResourceKey<Block> key : BuiltInRegistries.BLOCK.getAllKeys()())
+                                                                              ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\panels\widgets\UIItemStack.java:126: 错误: 需要';'
+              PoseStack matrices = context.batcher.getContext().pose()();
+                                                                      ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\panels\widgets\UIItemStack.java:129: 错误: 需要';'
+              matrices.pushPose()();
+                                 ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\panels\widgets\UIItemStack.java:134: 错误: 需要';'
+              matrices.popPose()();
+                                ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\panels\widgets\UIItemStackOverlayPanel.java:41: 错误: 需要')'
+          for (ResourceKey<Item> key : BuiltInRegistries.ITEM.getAllKeys()())
+                                                                          ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\panels\widgets\UIItemStackOverlayPanel.java:41: 错误: 需要->
+          for (ResourceKey<Item> key : BuiltInRegistries.ITEM.getAllKeys()())
+                                                                            ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\UIFormUndoHandler.java:157: 错误: 需要';'
+              this.undoManager.pushPose()Undo(changeUndos.get(0));
+                                         ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\UIFormUndoHandler.java:161: 错误: 需要';'
+              this.undoManager.pushPose()Undo(new CompoundUndo<>(changeUndos.toArray(new IUndo[0])));
+                                         ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\utils\UIFormRenderer.java:25: 错误: 需要';'
+              .set(FormRenderType.PREVIEW, this.entity, context.batcher.getContext().pose()(), LightmapTextureManager.pack(15, 15), 0, context.getTransition())
+                                                                                                                                  ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\utils\UIFormRenderer.java:25: 错误: 需要';'
+              .set(FormRenderType.PREVIEW, this.entity, context.batcher.getContext().pose()(), LightmapTextureManager.pack(15, 15), 0, context.getTransition())
+                                                                                                                                                              ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\utils\UIParticleSettings.java:32: 错误: 需要')'
+              for (ResourceKey<ParticleType<?>> key : BuiltInRegistries.PARTICLE_TYPE.getAllKeys()())
+                                                                                                  ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\utils\UIParticleSettings.java:32: 错误: 需要->
+              for (ResourceKey<ParticleType<?>> key : BuiltInRegistries.PARTICLE_TYPE.getAllKeys()())
+                                                                                                    ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\utils\UIPickableFormRenderer.java:111: 错误: 需要';'
+              .set(FormRenderType.PREVIEW, this.target == null ? this.entity : this.target, context.batcher.getContext().pose()(), LightmapTextureManager.pack(15, 15), 0, context.getTransition())
+                                                                                                                                                                      ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\utils\UIPickableFormRenderer.java:111: 错误: 需要';'
+              .set(FormRenderType.PREVIEW, this.target == null ? this.entity : this.target, context.batcher.getContext().pose()(), LightmapTextureManager.pack(15, 15), 0, context.getTransition())
+                                                                                                                                                                                                  ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\utils\UIPickableFormRenderer.java:137: 错误: 需要';'
+              PoseStack stack = context.render.batcher.getContext().pose()();
+                                                                          ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\utils\UIPickableFormRenderer.java:139: 错误: 需要';'
+              stack.pushPose()();
+                              ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\utils\UIPickableFormRenderer.java:146: 错误: 需要';'
+              Gizmo.INSTANCE.renderStencil(context.batcher.getContext().pose()(), this.stencilMap);
+                                                                                                 ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\utils\UIPickableFormRenderer.java:148: 错误: 需要';'
+              stack.popPose()();
+                             ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\utils\UIPickableFormRenderer.java:166: 错误: 需要';'
+          PoseStack stack = context.render.batcher.getContext().pose()();
+                                                                      ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\utils\UIPickableFormRenderer.java:168: 错误: 需要';'
+          stack.pushPose()();
+                          ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\utils\UIPickableFormRenderer.java:183: 错误: 需要';'
+          stack.popPose()();
+                         ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\utils\UIPickableFormRenderer.java:194: 错误: 需要';'
+          Draw.renderBox(context.batcher.getContext().pose()(), -thickness, -thickness + eyeHeight, -thickness, thickness, thickness, 2F, 1F, 0F, 0F);
+                                                                          ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\utils\UIPickableFormRenderer.java:194: 错误: 需要';'
+          Draw.renderBox(context.batcher.getContext().pose()(), -thickness, -thickness + eyeHeight, -thickness, thickness, thickness, 2F, 1F, 0F, 0F);
+                                                                                                  ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\utils\UIPickableFormRenderer.java:194: 错误: 需要';'
+          Draw.renderBox(context.batcher.getContext().pose()(), -thickness, -thickness + eyeHeight, -thickness, thickness, thickness, 2F, 1F, 0F, 0F);
+                                                                                                              ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\utils\UIPickableFormRenderer.java:194: 错误: 需要';'
+          Draw.renderBox(context.batcher.getContext().pose()(), -thickness, -thickness + eyeHeight, -thickness, thickness, thickness, 2F, 1F, 0F, 0F);
+                                                                                                                         ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\utils\UIPickableFormRenderer.java:194: 错误: 需要';'
+          Draw.renderBox(context.batcher.getContext().pose()(), -thickness, -thickness + eyeHeight, -thickness, thickness, thickness, 2F, 1F, 0F, 0F);
+                                                                                                                                    ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\utils\UIPickableFormRenderer.java:197: 错误: 需要';'
+          Draw.renderBox(context.batcher.getContext().pose()(), -hitboxW / 2, 0, -hitboxW / 2, hitboxW, hitboxH, hitboxW);
+                                                                            ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\utils\UIPickableFormRenderer.java:197: 错误: 需要';'
+          Draw.renderBox(context.batcher.getContext().pose()(), -hitboxW / 2, 0, -hitboxW / 2, hitboxW, hitboxH, hitboxW);
+                                                                                             ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\utils\UIPickableFormRenderer.java:197: 错误: 需要';'
+          Draw.renderBox(context.batcher.getContext().pose()(), -hitboxW / 2, 0, -hitboxW / 2, hitboxW, hitboxH, hitboxW);
+                                                                                                      ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\utils\UIPickableFormRenderer.java:197: 错误: 需要';'
+          Draw.renderBox(context.batcher.getContext().pose()(), -hitboxW / 2, 0, -hitboxW / 2, hitboxW, hitboxH, hitboxW);
+                                                                                                               ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\forms\editors\utils\UIPickableFormRenderer.java:197: 错误: 需要';'
+          Draw.renderBox(context.batcher.getContext().pose()(), -hitboxW / 2, 0, -hitboxW / 2, hitboxW, hitboxH, hitboxW);
+                                                                                                                        ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\keyframes\factories\UIPoseKeyframeFactory.java:129: 错误: 需要';'
+              return CollectionUtils.getKey(this.position()e().transforms, transform);
+                                                                         ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\keyframes\factories\UIPoseKeyframeFactory.java:129: 错误: 需要';'
+              return CollectionUtils.getKey(this.position()e().transforms, transform);
+                                                                                    ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\keyframes\graphs\UIKeyframeDopeSheet.java:545: 错误: 需要';'
+          Matrix4f matrix = context.batcher.getContext().pose()().peek().position()itionMatrix();
+                                                               ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\keyframes\graphs\UIKeyframeDopeSheet.java:545: 错误: 需要';'
+          Matrix4f matrix = context.batcher.getContext().pose()().peek().position()itionMatrix();
+                                                                                   ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\keyframes\graphs\UIKeyframeGraph.java:525: 错误: 需要';'
+          Matrix4f matrix = context.batcher.getContext().pose()().peek().position()itionMatrix();
+                                                               ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\keyframes\graphs\UIKeyframeGraph.java:525: 错误: 需要';'
+          Matrix4f matrix = context.batcher.getContext().pose()().peek().position()itionMatrix();
+                                                                                   ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\keyframes\graphs\UIKeyframeGraph.java:555: 错误: 需要';'
+                      lineBuilder.pushPose()();
+                                            ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\keyframes\graphs\UIKeyframeGraph.java:588: 错误: 需要';'
+                  lineBuilder.pushPose()();
+                                        ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\keyframes\graphs\UIKeyframeGraph.java:600: 错误: 需要';'
+                  lineBuilder.pushPose()();
+                                        ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\keyframes\graphs\UIKeyframeGraph.java:609: 错误: 需要';'
+                  lineBuilder.pushPose()();
+                                        ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\list\UIVanillaSoundList.java:66: 错误: 需要';'
+              this.popPose()ulateList();
+                            ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\multilink\UIMultiLinkEditor.java:226: 错误: 需要';'
+                  ShaderProgram shader = GameRenderer.position()itionTexColorProgram();
+                                                                ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\text\highlighting\BaseSyntaxHighlighter.java:195: 错误: 需要';'
+                      this.pushPose()Keyword(list, keyword, this.style.primary, i, font);
+                                     ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\text\highlighting\BaseSyntaxHighlighter.java:199: 错误: 需要';'
+                      this.pushPose()Keyword(list, keyword, this.style.special, i, font);
+                                     ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\text\highlighting\BaseSyntaxHighlighter.java:203: 错误: 需要';'
+                      this.pushPose()Keyword(list, keyword, this.style.secondary, i, font);
+                                     ^
+  D:\DEV\bbs_clean\src\client\java\mchorse\bbs_mod\ui\framework\elements\input\text\highlighting\BaseSyntaxHighlighter.java:207: 错误: 需要';'
+                      this.pushPose()Keyword(list, keyword, this.style.identifier, i, font);
+                                     ^
+  100 个错误
+
+* Try:
+> Check your code and dependencies to fix the compilation error(s)
+> Run with --scan to get full insights from a Build Scan (powered by Develocity).
+
+BUILD FAILED in 6s
+3 actionable tasks: 1 executed, 2 up-to-date

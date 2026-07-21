@@ -31,7 +31,7 @@ public class CubicMatrixRenderer implements ICubicRenderer
     {
         ICubicRenderer.translateGroup(stack, group);
 
-        this.origins.get(group.index).set(stack.peek().getPositionMatrix());
+        this.origins.get(group.index).set(stack.last().pose());
 
         ICubicRenderer.moveToGroupPivot(stack, group);
         ICubicRenderer.rotateGroup(stack, group);
@@ -42,7 +42,7 @@ public class CubicMatrixRenderer implements ICubicRenderer
     @Override
     public boolean renderGroup(BufferBuilder builder, PoseStack stack, ModelGroup group, Model model)
     {
-        this.matrices.get(group.index).set(stack.peek().getPositionMatrix());
+        this.matrices.get(group.index).set(stack.last().pose());
 
         return false;
     }

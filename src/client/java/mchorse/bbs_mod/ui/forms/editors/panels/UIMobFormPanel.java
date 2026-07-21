@@ -32,7 +32,7 @@ public class UIMobFormPanel extends UIFormPanel<MobForm>
     {
         mobIDs = new ArrayList<>();
 
-        for (ResourceKey<EntityType<?>> key : BuiltInRegistries.ENTITY_TYPE.getKeys())
+        for (ResourceKey<EntityType<?>> key : BuiltInRegistries.ENTITY_TYPE.getAllKeys())
         {
             mobIDs.add(key.getValue().toString());
         }

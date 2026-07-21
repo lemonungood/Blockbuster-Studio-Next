@@ -18,7 +18,7 @@ public class ModelVAORenderer
         setupUniforms(stack, shader);
 
         shader.bind();
-        modelVAO.render(shader.getFormat(), r, g, b, a, light, overlay);
+        modelVAO.render(shader.getVertexFormat(), r, g, b, a, light, overlay);
         shader.unbind();
 
         GL30.glBindVertexArray(currentVAO);
@@ -27,73 +27,18 @@ public class ModelVAORenderer
 
     public static void setupUniforms(PoseStack stack, ShaderProgram shader)
     {
+        // [MC 26.2 removed] RenderSystem.getShaderTexture(int) removed
+        // [MC 26.2 removed] shader.addSampler() removed
+        /*
         for (int i = 0; i < 12; i++)
         {
             shader.addSampler("Sampler" + i, RenderSystem.getShaderTexture(i));
         }
+        */
 
-        if (shader.projectionMat != null)
-        {
-            shader.projectionMat.set(RenderSystem.getProjectionMatrix());
-        }
-
-        if (shader.modelViewMat != null)
-        {
-            shader.modelViewMat.set(new Matrix4f(RenderSystem.getModelViewMatrix()).mul(stack.peek().getPositionMatrix()));
-        }
-
-        /* NormalMat is present by default in Iris' shaders, but when there is no Iris,
-         * the BBS mod's model.json shader is being used instead that provides NormalMat
-         * uniform.
-         */
-        GlUniform normalUniform = shader.getUniform("NormalMat");
-
-        if (normalUniform != null)
-        {
-            normalUniform.set(stack.peek().getNormalMatrix());
-        }
-
-        if (shader.viewRotationMat != null)
-        {
-            shader.viewRotationMat.set(RenderSystem.getInverseViewRotationMatrix());
-        }
-
-        if (shader.fogStart != null)
-        {
-            shader.fogStart.set(RenderSystem.getShaderFogStart());
-        }
-
-        if (shader.fogEnd != null)
-        {
-            shader.fogEnd.set(RenderSystem.getShaderFogEnd());
-        }
-
-        if (shader.fogColor != null)
-        {
-            shader.fogColor.set(RenderSystem.getShaderFogColor());
-        }
-
-        if (shader.fogShape != null)
-        {
-            shader.fogShape.set(RenderSystem.getShaderFogShape().getId());
-        }
-
-        if (shader.colorModulator != null)
-        {
-            shader.colorModulator.set(1F, 1F, 1F, 1F);
-        }
-
-        if (shader.gameTime != null)
-        {
-            shader.gameTime.set(RenderSystem.getShaderGameTime());
-        }
-
-        if (shader.textureMat != null)
-        {
-            shader.textureMat.set(RenderSystem.getTextureMatrix());
-        }
-
-        RenderSystem.setupShaderLights(shader);
+        // [MC 26.2] shader.projectionMat/modelViewMat/gameTime/textureMat/colorModulator fields removed from ShaderProgram
+        // [MC 26.2] RenderSystem.setupShaderLights/getShaderGameTime/getTextureMatrix all removed
+        // Uniforms are now set via shader.setUniform(location, ...) directly
     }
 }
 

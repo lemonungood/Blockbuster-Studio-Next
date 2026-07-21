@@ -48,7 +48,7 @@ public class UIDraggable extends UIElement
     }
 
     @Override
-    protected boolean subMouseHandlerClicked(UIContext context)
+    protected boolean subMouseClicked(UIContext context)
     {
         if (this.area.isInside(context) && context.mouseButton == 0)
         {
@@ -64,15 +64,15 @@ public class UIDraggable extends UIElement
             return true;
         }
 
-        return super.subMouseHandlerClicked(context);
+        return super.subMouseClicked(context);
     }
 
     @Override
-    protected boolean subMouseHandlerReleased(UIContext context)
+    protected boolean subMouseReleased(UIContext context)
     {
         this.dragging = false;
 
-        return super.subMouseHandlerReleased(context);
+        return super.subMouseReleased(context);
     }
 
     @Override

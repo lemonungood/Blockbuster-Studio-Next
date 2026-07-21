@@ -28,15 +28,15 @@ public class ItemStackContextAction extends ContextAction
 
         if (this.stack != null && !this.stack.isEmpty())
         {
-            PoseStack matrices = context.batcher.getContext().getMatrices();
+            PoseStack matrices = context.batcher.getContext().pose();
             CustomVertexConsumer consumers = FormUtilsClient.getProvider();
 
-            matrices.push();
+            matrices.pushPose();
             consumers.setUI(true);
             context.batcher.getContext().drawItem(this.stack, x + 2, y + 2);
             context.batcher.getContext().drawItemInSlot(context.batcher.getFont().getRenderer(), this.stack, x + 2, y + 2);
             consumers.setUI(false);
-            matrices.pop();
+            matrices.popPose();
         }
 
         context.batcher.text(this.label.get(), x + 22, y + (h - font.getHeight()) / 2 + 1, Colors.WHITE, false);

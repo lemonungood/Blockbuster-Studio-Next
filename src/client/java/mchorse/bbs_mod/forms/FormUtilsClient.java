@@ -30,17 +30,14 @@ import mchorse.bbs_mod.forms.renderers.TrailFormRenderer;
 import mchorse.bbs_mod.forms.renderers.VanillaParticleFormRenderer;
 import mchorse.bbs_mod.ui.framework.UIContext;
 import com.mojang.blaze3d.vertex.BufferBuilder;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-// [MC 26.2 REMOVED] import net.minecraft.client.renderer.Sheets;
-// [MC 26.2 REMOVED] import net.minecraft.client.render.chunk.SectionBufferBuilderPool;
-import net.minecraft.client.resources.model.ModelBakery;
-// [MC26.2] import net.minecraft.Util; -> use java.util.Objects or keep
+import com.mojang.blaze3d.vertex.ByteBufferBuilder;
+import com.mojang.blaze3d.PrimitiveTopology;
+import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.SortedMap;
 import java.util.Stack;
 
 public class FormUtilsClient
@@ -51,30 +48,9 @@ public class FormUtilsClient
 
     static
     {
-        SectionBufferBuilderPool storage = new SectionBufferBuilderPool();
-        SortedMap sortedMap = Util.make(new Object2ObjectLinkedOpenHashMap(), map -> {
-            map.put(TexturedRenderTypess.getEntitySolid(), storage.get(RenderTypes.getSolid()));
-            map.put(TexturedRenderTypess.getEntityCutout(), storage.get(RenderTypes.getCutout()));
-            map.put(TexturedRenderTypess.getBannerPatterns(), storage.get(RenderTypes.getCutoutMipped()));
-            map.put(TexturedRenderTypess.getEntityTranslucentCull(), storage.get(RenderTypes.getTranslucent()));
-            assignBufferBuilder(map, TexturedRenderTypess.getShieldPatterns());
-            assignBufferBuilder(map, TexturedRenderTypess.getBeds());
-            assignBufferBuilder(map, TexturedRenderTypess.getShulkerBoxes());
-            assignBufferBuilder(map, TexturedRenderTypess.getSign());
-            assignBufferBuilder(map, TexturedRenderTypess.getHangingSign());
-            map.put(TexturedRenderTypess.getChest(), new BufferBuilder(786432));
-            assignBufferBuilder(map, RenderTypes.getArmorGlint());
-            assignBufferBuilder(map, RenderTypes.getArmorEntityGlint());
-            assignBufferBuilder(map, RenderTypes.getGlint());
-            assignBufferBuilder(map, RenderTypes.getDirectGlint());
-            assignBufferBuilder(map, RenderTypes.getGlintTranslucent());
-            assignBufferBuilder(map, RenderTypes.getEntityGlint());
-            assignBufferBuilder(map, RenderTypes.getDirectEntityGlint());
-            assignBufferBuilder(map, RenderTypes.getWaterMask());
-            ModelBakery.BLOCK_DESTRUCTION_RENDER_LAYERS.forEach(renderLayer -> assignBufferBuilder(map, renderLayer));
-        });
-
-        customVertexConsumer = new CustomVertexConsumer(new BufferBuilder(1536), sortedMap);
+        // [MC 26.2] Simplified: removed TexturedRenderTypess and old RenderTypes API
+        // The entire render layer system changed - use a single fallback builder
+        customVertexConsumer = new CustomVertexConsumer(new BufferBuilder(new ByteBufferBuilder(1536), PrimitiveTopology.TRIANGLES, DefaultVertexFormat.POSITION_COLOR_TEX_LIGHTMAP));
 
         register(BillboardForm.class, BillboardFormRenderer::new);
         register(ExtrudedForm.class, ExtrudedFormRenderer::new);
@@ -88,11 +64,6 @@ public class FormUtilsClient
         register(VanillaParticleForm.class, VanillaParticleFormRenderer::new);
         register(TrailForm.class, TrailFormRenderer::new);
         register(FramebufferForm.class, FramebufferFormRenderer::new);
-    }
-
-    private static void assignBufferBuilder(Object2ObjectLinkedOpenHashMap<RenderTypes, BufferBuilder> builderStorage, RenderTypes layer)
-    {
-        builderStorage.put(layer, new BufferBuilder(layer.getExpectedBufferSize()));
     }
 
     public static CustomVertexConsumer getProvider()

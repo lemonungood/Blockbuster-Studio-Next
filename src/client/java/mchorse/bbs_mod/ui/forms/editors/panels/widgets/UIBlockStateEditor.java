@@ -32,7 +32,7 @@ public class UIBlockStateEditor extends UIElement
 
     static
     {
-        for (ResourceKey<Block> key : BuiltInRegistries.BLOCK.getKeys())
+        for (ResourceKey<Block> key : BuiltInRegistries.BLOCK.getAllKeys())
         {
             blockIDs.add(key.getValue().toString());
         }

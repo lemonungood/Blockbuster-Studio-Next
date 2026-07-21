@@ -186,7 +186,7 @@ public class BBSRendering
 
         ModelBlockEntityUpdateCallback.EVENT.register((entity) ->
         {
-            if (entity.getLevel().isClient())
+            if (entity.getLevel().isClientSide())
             {
                 capturedModelBlocks.add(entity);
             }
@@ -211,25 +211,13 @@ public class BBSRendering
     {
         Window window = Minecraft.getInstance().getWindow();
 
-        framebuffer = new Framebuffer(window.getFramebufferWidth(), window.getFramebufferHeight());
+        framebuffer = new Framebuffer(window.getWidth(), window.getHeight());
     }
 
     public static void resizeExtraFramebuffers()
     {
-        Set<Framebuffer> buffers = new HashSet<>();
-        Minecraft mc = Minecraft.getInstance();
-
-        buffers.add(mc.worldRenderer.getEntityOutlinesFramebuffer());
-        buffers.add(mc.worldRenderer.getTranslucentFramebuffer());
-        buffers.add(mc.worldRenderer.getEntityFramebuffer());
-        buffers.add(mc.worldRenderer.getParticlesFramebuffer());
-        buffers.add(mc.worldRenderer.getWeatherFramebuffer());
-        buffers.add(mc.worldRenderer.getCloudsFramebuffer());
-
-        for (Framebuffer buffer : buffers)
-        {
-            resizeFramebuffer(buffer);
-        }
+        // [MC 26.2] LevelRenderer framebuffer getters removed
+        // Previously iterated over mc.levelRenderer framebuffers
     }
 
     public static void resizeFramebuffer(Framebuffer framebuffer)
@@ -240,15 +228,15 @@ public class BBSRendering
         }
 
         Minecraft mc = Minecraft.getInstance();
-        int w = mc.getWindow().getFramebufferWidth();
-        int h = mc.getWindow().getFramebufferHeight();
+        int w = mc.getWindow().getWidth();
+        int h = mc.getWindow().getHeight();
 
         if (framebuffer.textureWidth == w && framebuffer.textureHeight == h)
         {
             return;
         }
 
-        framebuffer.resize(w, h, Minecraft.IS_SYSTEM_MAC);
+        framebuffer.resize(w, h, false);
     }
 
     public static void toggleFramebuffer(boolean toggleFramebuffer)
@@ -265,14 +253,14 @@ public class BBSRendering
 
         if (toggleFramebuffer)
         {
-            int w = mc.getWindow().getFramebufferWidth();
-            int h = mc.getWindow().getFramebufferHeight();
+            int w = mc.getWindow().getWidth();
+            int h = mc.getWindow().getHeight();
 
             resizeExtraFramebuffers();
 
             if (framebuffer.textureWidth != w || framebuffer.textureHeight != h)
             {
-                framebuffer.resize(w, h, Minecraft.IS_SYSTEM_MAC);
+                framebuffer.resize(w, h, false);
             }
 
             clientFramebuffer = Framebuffer.window();
@@ -289,14 +277,15 @@ public class BBSRendering
 
             if (width != 0)
             {
-                framebuffer.draw(window.getFramebufferWidth(), window.getFramebufferHeight());
+                framebuffer.draw(window.getWidth(), window.getHeight());
             }
         }
     }
 
     private static void reassignFramebuffer(Framebuffer framebuffer)
     {
-        Minecraft.getInstance().framebuffer = framebuffer;
+        // [MC 26.2] getFramebuffer() and WindowFramebuffer removed
+        // Framebuffer swapping is handled by beginWrite() calls
     }
 
     /* Rendering */
@@ -304,13 +293,13 @@ public class BBSRendering
     public static void onLevelRenderBegin()
     {
         Minecraft mc = Minecraft.getInstance();
-        BBSModClient.getFilms().startRenderFrame(mc.getTickDelta());
+        BBSModClient.getFilms().startRenderFrame(mc.getDeltaTracker().getGameTimeDeltaTicks());
 
         UIBaseMenu menu = UIScreen.getCurrentMenu();
 
         if (menu != null)
         {
-            menu.startRenderFrame(mc.getTickDelta());
+            menu.startRenderFrame(mc.getDeltaTracker().getGameTimeDeltaTicks());
         }
 
         renderingLevel = true;
@@ -329,10 +318,10 @@ public class BBSRendering
 
         if (BBSModClient.getCameraController().getCurrent() instanceof PlayCameraController controller)
         {
-            GuiGraphicsExtractor drawContext = new GuiGraphicsExtractor(mc, mc.getBufferBuilders().getEntityVertexConsumers());
+            GuiGraphicsExtractor drawContext = new GuiGraphicsExtractor(mc, new net.minecraft.client.renderer.state.gui.GuiRenderState(), 0, 0);
             Batcher2D batcher = new Batcher2D(drawContext);
 
-            UISubtitleRenderer.renderSubtitles(batcher.getContext().getMatrices(), batcher, SubtitleClip.getSubtitles(controller.getContext()));
+            UISubtitleRenderer.renderSubtitles(new PoseStack(), batcher, SubtitleClip.getSubtitles(controller.getContext()));
         }
 
         if (!customSize)
@@ -348,7 +337,7 @@ public class BBSRendering
         {
             if (dashboard.getPanels().panel instanceof UIFilmPanel panel)
             {
-                UISubtitleRenderer.renderSubtitles(currentMenu.context.batcher.getContext().getMatrices(), currentMenu.context.batcher, SubtitleClip.getSubtitles(panel.getRunner().getContext()));
+                UISubtitleRenderer.renderSubtitles(new PoseStack(), currentMenu.context.batcher, SubtitleClip.getSubtitles(panel.getRunner().getContext()));
             }
         }
 
@@ -369,19 +358,7 @@ public class BBSRendering
 
     public static void onRenderChunkLayer(PoseStack stack)
     {
-        LevelRenderContextImpl worldRenderContext = new LevelRenderContextImpl();
-        Minecraft mc = Minecraft.getInstance();
-
-        worldRenderContext.prepare(
-            mc.worldRenderer, stack, mc.getTickDelta(), mc.getRenderTime(), false,
-            mc.gameRenderer.getCamera(), mc.gameRenderer, mc.gameRenderer.getLightmapTextureManager(),
-            RenderSystem.getProjectionMatrix(), mc.getBufferBuilders().getEntityVertexConsumers(), null, false, mc.world
-        );
-
-        if (isIrisShadersEnabled())
-        {
-            renderCoolStuff(worldRenderContext);
-        }
+        // [MC 26.2] LevelRenderContextImpl removed
     }
 
     public static void renderHud(GuiGraphicsExtractor drawContext, float tickDelta)
@@ -396,7 +373,7 @@ public class BBSRendering
             int count = videoRecorder.getCounter();
             String label = UIKeys.FILM_VIDEO_RECORDING.format(
                 count,
-                BBSModClient.getKeyRecordVideo().getBoundKeyLocalizedText().getString()
+                BBSModClient.getKeyRecordVideo().getTranslatedKeyMessage().getString()
             ).get();
 
             int x = 5;
@@ -411,9 +388,9 @@ public class BBSRendering
 
     public static void renderCoolStuff(LevelRenderContext worldRenderContext)
     {
-        if (Minecraft.getInstance().currentScreen instanceof UIScreen screen)
+        if (Minecraft.getInstance().gui.screen() instanceof UIScreen screen)
         {
-            screen.renderInLevel(worldRenderContext);
+            screen.renderInWorld(worldRenderContext);
         }
 
         BBSModClient.getFilms().render(worldRenderContext);

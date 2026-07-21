@@ -39,9 +39,9 @@ public class SelectorOwner
 
     public void update()
     {
-        Level world = this.entity.getLevel();
+        Level world = this.entity.level();
 
-        if (!world.isClient)
+        if (!world.isClientSide())
         {
             return;
         }
@@ -64,7 +64,7 @@ public class SelectorOwner
             this.nbtCheck = 10;
 
             Set<String> keys = createWhitelist();
-            CompoundTag compound = this.mcEntity.writeNbt(new CompoundTag());
+            CompoundTag compound = this.mcEntity.save(new CompoundTag());
             CompoundTag newCompound = new CompoundTag();
 
             for (String key : keys)

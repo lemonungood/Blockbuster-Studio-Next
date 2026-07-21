@@ -38,7 +38,7 @@ public class UIItemStackOverlayPanel extends UIOverlayPanel
 
     static
     {
-        for (ResourceKey<Item> key : BuiltInRegistries.ITEM.getKeys())
+        for (ResourceKey<Item> key : BuiltInRegistries.ITEM.getAllKeys())
         {
             itemIDs.add(key.getValue().toString());
         }
@@ -70,7 +70,7 @@ public class UIItemStackOverlayPanel extends UIOverlayPanel
         {
             try
             {
-                CompoundTag nbtCompound = new StringNbtReader(new StringReader(v)).parseCompound();
+                CompoundTag nbtCompound = new StringTagReader(new StringReader(v)).parseCompound();
                 ItemStack itemStack = ItemStack.fromNbt(nbtCompound);
 
                 this.pickItemStack(itemStack);

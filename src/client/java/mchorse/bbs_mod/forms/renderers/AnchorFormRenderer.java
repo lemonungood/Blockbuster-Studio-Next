@@ -9,8 +9,7 @@ import mchorse.bbs_mod.resources.Link;
 import mchorse.bbs_mod.ui.framework.UIContext;
 import mchorse.bbs_mod.utils.PoseStackUtils;
 import mchorse.bbs_mod.utils.joml.Vectors;
-// [MC 26.2 REMOVED] import net.minecraft.client.renderer.LightTexture;
-// [MC 26.2 REMOVED] import net.minecraft.client.renderer.texture.OverlayTexture;
+import com.mojang.math.Axis;
 import com.mojang.blaze3d.vertex.PoseStack;
 import org.joml.Quaternionf;
 import org.joml.Matrix4f;
@@ -43,25 +42,26 @@ public class AnchorFormRenderer extends FormRenderer<AnchorForm>
         }
         else
         {
-            PoseStack stack = context.batcher.getContext().getMatrices();
+            // [MC 26.2] context.batcher.getContext().pose() returns Matrix3x2fStack
+            PoseStack stack = new PoseStack();
             Matrix4f uiMatrix = ModelFormRenderer.getUIMatrix(context, x1, y1, x2, y2);
 
-            RenderSystem.depthFunc(GL11.GL_LEQUAL);
-            stack.push();
+            // [MC 26.2] RenderSystem.depthFunc removed
+            stack.pushPose();
 
             this.applyTransforms(uiMatrix, context.getTransition());
             PoseStackUtils.multiply(stack, uiMatrix);
             /* Why? I don't know, because fuck you */
-            stack.multiply(RotationAxis.NEGATIVE_Y.rotationDegrees(180F));
-            stack.peek().getNormalMatrix().getScale(Vectors.EMPTY_3F);
-            stack.peek().getNormalMatrix().scale(1F / Vectors.EMPTY_3F.x, -1F / Vectors.EMPTY_3F.y, 1F / Vectors.EMPTY_3F.z);
+            stack.mulPose(Axis.YN.rotationDegrees(180F));
+            stack.last().normal().getScale(Vectors.EMPTY_3F);
+            stack.last().normal().scale(1F / Vectors.EMPTY_3F.x, -1F / Vectors.EMPTY_3F.y, 1F / Vectors.EMPTY_3F.z);
 
             this.renderBodyParts(new FormRenderingContext()
-                .set(FormRenderType.ENTITY, this.entity, stack, LightmapTextureManager.pack(15, 15), 0, context.getTransition())
+                .set(FormRenderType.ENTITY, this.entity, stack, 15728880, 0, context.getTransition())
                 .inUI());
 
-            stack.pop();
-            RenderSystem.depthFunc(GL11.GL_ALWAYS);
+            stack.popPose();
+            // [MC 26.2] RenderSystem.depthFunc removed
         }
     }
 }

@@ -26,6 +26,7 @@ import mchorse.bbs_mod.ui.framework.elements.overlay.UIPromptOverlayPanel;
 import mchorse.bbs_mod.ui.utils.UIUtils;
 import mchorse.bbs_mod.ui.utils.icons.Icons;
 import mchorse.bbs_mod.utils.colors.Colors;
+import com.mojang.authlib.GameProfile;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.PlayerInfo;
 
@@ -111,7 +112,7 @@ public class UIFormCategory extends UIElement
                 {
                     MapType data = FormUtils.toData(this.selected);
                     DataStringifier stringifier = new DataStringifier();
-                    String name = Minecraft.getInstance().player.getGameProfile().getName();
+                    String name = Minecraft.getInstance().player.getName().getString();
 
                     stringifier.jsonLike();
                     stringifier.indent = "";
@@ -119,7 +120,7 @@ public class UIFormCategory extends UIElement
                     Window.setClipboard("/bbs morph " + name + " " + stringifier.toString(data));
                 });
 
-                Collection<PlayerInfo> playerList = Minecraft.getInstance().getNetworkHandler().getPlayerList();
+                Collection<PlayerInfo> playerList = Minecraft.getInstance().getConnection().getOnlinePlayers();
 
                 if (playerList.size() > 1)
                 {
@@ -129,14 +130,14 @@ public class UIFormCategory extends UIElement
                         {
                             for (PlayerInfo entry : playerList)
                             {
-                                if (entry.getProfile().getId().equals(Minecraft.getInstance().player.getGameProfile().getId()))
+                                if (entry.getProfile().id().equals(Minecraft.getInstance().player.getGameProfile().id()))
                                 {
                                     continue;
                                 }
 
-                                newMenu.action(Icons.ARROW_RIGHT, IKey.constant(entry.getProfile().getName()), () ->
+                                newMenu.action(Icons.ARROW_RIGHT, IKey.constant(entry.getProfile().name()), () ->
                                 {
-                                    ClientNetwork.sendSharedForm(this.selected, entry.getProfile().getId());
+                                    ClientNetwork.sendSharedForm(this.selected, entry.getProfile().id());
                                 });
                             }
                         });
@@ -267,12 +268,12 @@ public class UIFormCategory extends UIElement
                 int cy = this.area.y + h;
                 boolean isSelected = this.selected == form;
 
-                context.batcher.clip(cx, cy, CELL_WIDTH, CELL_HEIGHT, context);
+                context.batcher.clip(cx, cy, CELL_WIDTH, CELL_HEIGHT, context.getViewport().w, context.getViewport().h);
 
                 if (isSelected)
                 {
                     context.batcher.box(cx, cy, cx + CELL_WIDTH, cy + CELL_HEIGHT, Colors.A50 | BBSSettings.primaryColor.get());
-                    context.batcher.outline(cx, cy, cx + CELL_WIDTH, cy + CELL_HEIGHT, Colors.A50 | BBSSettings.primaryColor.get(), 2);
+                    context.batcher.outline(cx, cy, cx + CELL_WIDTH, cy + CELL_HEIGHT, Colors.A50 | BBSSettings.primaryColor.get());
                 }
 
                 FormUtilsClient.renderUI(form, context, cx, cy, cx + CELL_WIDTH, cy + CELL_HEIGHT);

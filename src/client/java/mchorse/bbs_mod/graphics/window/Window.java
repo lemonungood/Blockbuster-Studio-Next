@@ -6,7 +6,6 @@ import mchorse.bbs_mod.data.types.ListType;
 import mchorse.bbs_mod.data.types.MapType;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
-// [MC 26.2 REMOVED] import org.lwjgl.glfw.GLFW;
 import org.lwjgl.glfw.GLFW;
 import org.lwjgl.system.MemoryUtil;
 
@@ -20,7 +19,7 @@ public class Window
 
     public static long getWindow()
     {
-        return Minecraft.getInstance().getWindow().getHandle();
+        return Minecraft.getInstance().getWindow().getWindow();
     }
 
     public static void setVerticalScroll(int scroll)
@@ -46,22 +45,37 @@ public class Window
 
     public static boolean isCtrlPressed()
     {
-        return Screen.hasControlDown();
+        return hasControlDown();
     }
 
     public static boolean isShiftPressed()
     {
-        return Screen.hasShiftDown();
+        return hasShiftDown();
     }
 
     public static boolean isAltPressed()
     {
-        return Screen.hasAltDown();
+        return hasAltDown();
+    }
+
+    private static boolean hasControlDown()
+    {
+        return GLFW.glfwGetKey(getWindow(), GLFW.GLFW_KEY_LEFT_CONTROL) == GLFW.GLFW_PRESS || GLFW.glfwGetKey(getWindow(), GLFW.GLFW_KEY_RIGHT_CONTROL) == GLFW.GLFW_PRESS;
+    }
+
+    private static boolean hasShiftDown()
+    {
+        return GLFW.glfwGetKey(getWindow(), GLFW.GLFW_KEY_LEFT_SHIFT) == GLFW.GLFW_PRESS || GLFW.glfwGetKey(getWindow(), GLFW.GLFW_KEY_RIGHT_SHIFT) == GLFW.GLFW_PRESS;
+    }
+
+    private static boolean hasAltDown()
+    {
+        return GLFW.glfwGetKey(getWindow(), GLFW.GLFW_KEY_LEFT_ALT) == GLFW.GLFW_PRESS || GLFW.glfwGetKey(getWindow(), GLFW.GLFW_KEY_RIGHT_ALT) == GLFW.GLFW_PRESS;
     }
 
     public static boolean isKeyPressed(int key)
     {
-        return InputUtil.isKeyPressed(getWindow(), key);
+        return GLFW.glfwGetKey(getWindow(), key) == GLFW.GLFW_PRESS;
     }
 
     public static String getClipboard()

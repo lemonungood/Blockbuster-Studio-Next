@@ -65,7 +65,7 @@ public class GameRendererMixin
 
         if (controller.getCurrent() != null && !BBSRendering.isIrisShadowPass())
         {
-            matrices.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(controller.getRoll()));
+            matrices.mulPose(com.mojang.math.Axis.ZP.rotationDegrees(controller.getRoll()));
 
             info.cancel();
         }
@@ -82,24 +82,24 @@ public class GameRendererMixin
         }
     }
 
-    @Inject(at = @At("HEAD"), method = "renderWorld")
+    @Inject(at = @At("TAIL"), method = "renderLevel")
     private void onWorldRenderBegin(CallbackInfo callbackInfo)
     {
-        BBSRendering.onWorldRenderBegin();
+        BBSRendering.onLevelRenderBegin();
     }
 
-    @Inject(at = @At("RETURN"), method = "renderWorld")
+    @Inject(at = @At("HEAD"), method = "renderLevel")
     private void onWorldRenderEnd(CallbackInfo callbackInfo)
     {
-        BBSRendering.onWorldRenderEnd();
+        BBSRendering.onLevelRenderEnd();
     }
 
-    @Inject(method = "render", at = @At(value = "FIELD", target = "Lnet/minecraft/client/option/GameOptions;hudHidden:Z", opcode = Opcodes.GETFIELD, ordinal = 0))
+    @Inject(method = "render", at = @At(value = "FIELD", target = "Lnet/minecraft/client/options/GameOptions;hideGui:Z", opcode = Opcodes.GETFIELD, ordinal = 0))
     private void onBeforeHudRendering(float tickDelta, long startTime, boolean tick, CallbackInfo info)
     {
         ICameraController current = BBSModClient.getCameraController().getCurrent();
 
-        if (Minecraft.getInstance().options.hudHidden && current == null)
+        if (Minecraft.getInstance().options.hideGui && current == null)
         {
             BBSRendering.onRenderBeforeScreen();
         }

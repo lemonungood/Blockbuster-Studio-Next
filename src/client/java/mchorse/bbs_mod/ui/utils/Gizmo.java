@@ -246,7 +246,7 @@ public class Gizmo
         }
 
         RenderSystem.setShader(GameRenderer::getPositionColorProgram);
-        RenderSystem.disableDepthTest();
+        // disableDepthTest removed;
 
         BufferRenderer.drawWithGlobalProgram(builder.end());
     }

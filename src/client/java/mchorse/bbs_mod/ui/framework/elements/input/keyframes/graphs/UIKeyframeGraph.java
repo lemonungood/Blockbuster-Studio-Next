@@ -522,7 +522,7 @@ public class UIKeyframeGraph implements IUIKeyframeGraph
     protected void renderGraph(UIContext context)
     {
         BufferBuilder builder = Tessellator.getInstance().getBuffer();
-        Matrix4f matrix = context.batcher.getContext().getMatrices().peek().getPositionMatrix();
+        Matrix4f matrix = context.batcher.getContext().pose().last().pose();
 
         UIKeyframeSheet sheet = this.sheet;
         List keyframes = sheet.channel.getKeyframes();
@@ -552,7 +552,7 @@ public class UIKeyframeGraph implements IUIKeyframeGraph
                 if (interp == Interpolations.CONST)
                 {
                     lineBuilder.add(x, py);
-                    lineBuilder.push();
+                    lineBuilder.pushPose();
                 }
                 else if (interp != Interpolations.LINEAR)
                 {
@@ -585,7 +585,7 @@ public class UIKeyframeGraph implements IUIKeyframeGraph
                 int rx = this.keyframes.toGraphX(frame.getTick() + frame.rx);
                 int ry = this.toGraphY(sheet.channel.getFactory().getY(frame.getValue()) + frame.ry);
 
-                lineBuilder.push();
+                lineBuilder.pushPose();
                 lineBuilder.add(x, y);
                 lineBuilder.add(rx, ry);
 
@@ -597,7 +597,7 @@ public class UIKeyframeGraph implements IUIKeyframeGraph
                 int lx = this.keyframes.toGraphX(frame.getTick() - frame.lx);
                 int ly = this.toGraphY(sheet.channel.getFactory().getY(frame.getValue()) + frame.ly);
 
-                lineBuilder.push();
+                lineBuilder.pushPose();
                 lineBuilder.add(x, y);
                 lineBuilder.add(lx, ly);
 
@@ -606,7 +606,7 @@ public class UIKeyframeGraph implements IUIKeyframeGraph
 
             if (add)
             {
-                lineBuilder.push();
+                lineBuilder.pushPose();
                 lineBuilder.add(x, y);
             }
         }

@@ -372,21 +372,22 @@ public class UIFilmPreview extends UIElement
 
     private void renderCursor(UIContext context)
     {
-        net.minecraft.client.Camera mcCamera = Minecraft.getInstance().gameRenderer.getCamera();
-        PoseStack stack = RenderSystem.getModelViewStack();
+        // Camera access via gameRenderer removed in MC 26.2
+        // net.minecraft.client.Camera mcCamera = Minecraft.getInstance().gameRenderer.getCamera();
+        PoseStack stack = new PoseStack();
 
-        stack.push();
+        stack.pushPose();
 
-        stack.multiplyPositionMatrix(context.batcher.getContext().getMatrices().peek().getPositionMatrix());
         stack.translate(area.x + 16, area.ey() - 12, 0F);
-        stack.multiply(RotationAxis.NEGATIVE_X.rotationDegrees(mcCamera.getPitch()));
-        stack.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(mcCamera.getYaw()));
+        // Camera pitch/yaw removed in MC 26.2
+        // stack.multiply(com.mojang.math.Axis.XN.rotationDegrees(mcCamera.getXRot()));
+        // stack.multiply(com.mojang.math.Axis.YP.rotationDegrees(mcCamera.getYRot()));
         stack.scale(-1F, -1F, -1F);
-        RenderSystem.applyModelViewMatrix();
-        RenderSystem.renderCrosshair(10);
+        // applyModelView removed;
+        // renderCrosshair removed(10);
 
-        stack.pop();
-        RenderSystem.applyModelViewMatrix();
+        stack.popPose();
+        // applyModelView removed;
     }
 }
 

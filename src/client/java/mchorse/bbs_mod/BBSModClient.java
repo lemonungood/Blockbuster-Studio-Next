@@ -443,10 +443,7 @@ public class BBSModClient implements ClientModInitializer
         {
             Minecraft mc = Minecraft.getInstance();
 
-            /* screen check removed in MC 26.2 */
-            {
-                screen.update();
-            }
+            /* screen tick removed in MC 26.2 - moved to private in Gui */
 
             cameraController.update();
 
@@ -621,9 +618,9 @@ public class BBSModClient implements ClientModInitializer
     {
         return KeyMappingHelper.registerKeyMapping(new KeyMapping(
             "key." + BBSMod.MOD_ID + "." + id,
-            GLFW.GLFW_KEY_UNKNOWN,
+            com.mojang.blaze3d.platform.InputConstants.Type.KEYSYM,
             key,
-            "category." + BBSMod.MOD_ID + ".main"
+            KeyMapping.Category.MISC
         ));
     }
 
@@ -631,9 +628,9 @@ public class BBSModClient implements ClientModInitializer
     {
         return KeyMappingHelper.registerKeyMapping(new KeyMapping(
             "key." + BBSMod.MOD_ID + "." + id,
-            GLFW.GLFW_KEY_UNKNOWN,
-            -button - 100,
-            "category." + BBSMod.MOD_ID + ".main"
+            com.mojang.blaze3d.platform.InputConstants.Type.MOUSE,
+            button,
+            KeyMapping.Category.MISC
         ));
     }
 
@@ -742,7 +739,7 @@ public class BBSModClient implements ClientModInitializer
     {
         if (key.isEmpty())
         {
-            key = Minecraft.getInstance().options.getLanguage();
+            key = Minecraft.getInstance().options.languageCode;
         }
 
         return key;

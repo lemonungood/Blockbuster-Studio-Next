@@ -342,7 +342,7 @@ public class ModelInstance implements IModelInstance
             }
             else
             {
-                RenderSystem.setShader(program);
+                // RenderSystem.setShader not needed for MC 26.2 - using custom shader pipeline
 
                 ByteBufferBuilder byteBuf = new ByteBufferBuilder(65536);
                 BufferBuilder builder = new BufferBuilder(byteBuf, PrimitiveTopology.TRIANGLES, DefaultVertexFormat.POSITION_COLOR_TEX_LIGHTMAP);

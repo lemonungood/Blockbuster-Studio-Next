@@ -89,8 +89,8 @@ public class CubicCubeRenderer implements ICubicRenderer
         matrix3f.identity().rotateX(MathUtils.toRad(rotation.x));
         normalM.mul(matrix3f);
 
-        stack.peek().getPositionMatrix().mul(modelM);
-        stack.peek().getNormalMatrix().mul(normalM);
+        stack.last().pose().mul(modelM);
+        stack.last().normal().mul(normalM);
     }
 
     public static void moveBackFromPivot(PoseStack stack, Vector3f pivot)
@@ -132,7 +132,7 @@ public class CubicCubeRenderer implements ICubicRenderer
 
     protected void renderCube(BufferBuilder builder, PoseStack stack, ModelGroup group, ModelCube cube)
     {
-        stack.push();
+        stack.pushPose();
         moveToPivot(stack, cube.pivot);
         rotate(stack, cube.rotate);
         moveBackFromPivot(stack, cube.pivot);
@@ -140,7 +140,7 @@ public class CubicCubeRenderer implements ICubicRenderer
         for (ModelQuad quad : cube.quads)
         {
             this.normal.set(quad.normal.x, quad.normal.y, quad.normal.z);
-            stack.peek().getNormalMatrix().transform(this.normal);
+            stack.last().normal().transform(this.normal);
 
             if (quad.vertices.size() == 4)
             {
@@ -153,12 +153,12 @@ public class CubicCubeRenderer implements ICubicRenderer
             }
         }
 
-        stack.pop();
+        stack.popPose();
     }
 
     protected void renderMesh(BufferBuilder builder, PoseStack stack, Model model, ModelGroup group, ModelMesh mesh)
     {
-        stack.push();
+        stack.pushPose();
         moveToPivot(stack, mesh.origin);
         rotate(stack, mesh.rotate);
         moveBackFromPivot(stack, mesh.origin);
@@ -204,22 +204,22 @@ public class CubicCubeRenderer implements ICubicRenderer
 
             /* Write vertices */
             this.normal.set(n1.x, n1.y, n1.z);
-            stack.peek().getNormalMatrix().transform(this.normal);
+            stack.last().normal().transform(this.normal);
             this.modelVertex.set(v1, u1, model);
             this.writeVertex(builder, stack, group, this.modelVertex, this.normal);
 
             this.normal.set(n2.x, n2.y, n2.z);
-            stack.peek().getNormalMatrix().transform(this.normal);
+            stack.last().normal().transform(this.normal);
             this.modelVertex.set(v2, u2, model);
             this.writeVertex(builder, stack, group, this.modelVertex, this.normal);
 
             this.normal.set(n3.x, n3.y, n3.z);
-            stack.peek().getNormalMatrix().transform(this.normal);
+            stack.last().normal().transform(this.normal);
             this.modelVertex.set(v3, u3, model);
             this.writeVertex(builder, stack, group, this.modelVertex, this.normal);
         }
 
-        stack.pop();
+        stack.popPose();
     }
 
     private void relativeShift(Vector3f temp, Vector3f initial, Vector3f current, float x)
@@ -238,26 +238,26 @@ public class CubicCubeRenderer implements ICubicRenderer
     protected void writeVertex(BufferBuilder builder, PoseStack stack, ModelGroup group, ModelVertex vertex, Vector3f normal)
     {
         this.vertex.set(vertex.vertex.x, vertex.vertex.y, vertex.vertex.z, 1);
-        stack.peek().getPositionMatrix().transform(this.vertex);
+        stack.last().pose().transform(this.vertex);
 
-        builder.vertex(this.vertex.x, this.vertex.y, this.vertex.z)
-            .color(this.r * group.color.r, this.g * group.color.g, this.b * group.color.b, this.a * group.color.a)
-            .texture(vertex.uv.x, vertex.uv.y)
-            .overlay(this.overlay);
+        builder.addVertex(this.vertex.x, this.vertex.y, this.vertex.z)
+            .setColor(this.r * group.color.r, this.g * group.color.g, this.b * group.color.b, this.a * group.color.a)
+            .setUv(vertex.uv.x, vertex.uv.y)
+            .setUv1(this.overlay & 0xFFFF, this.overlay >> 16 & 0xFFFF);
 
         if (this.stencilMap != null)
         {
-            builder.light(stencilMap.increment ? group.index : 0, 0);
+            builder.setUv2(stencilMap.increment ? group.index : 0, 0);
         }
         else
         {
-            int u = (int) Lerps.lerp(this.light & '\uffff', LightmapTextureManager.MAX_BLOCK_LIGHT_COORDINATE, MathUtils.clamp(group.lighting, 0F, 1F));
+            int u = (int) Lerps.lerp(this.light & '\uffff', 240, MathUtils.clamp(group.lighting, 0F, 1F));
             int v = this.light >> 16 & '\uffff';
 
-            builder.light(u, v);
+            builder.setUv2(u, v);
         }
 
-        builder.normal(normal.x, normal.y, normal.z).next();
+        builder.setNormal(normal.x, normal.y, normal.z);
     }
 }
 

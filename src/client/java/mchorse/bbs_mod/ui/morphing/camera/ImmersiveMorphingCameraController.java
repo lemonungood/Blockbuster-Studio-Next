@@ -28,10 +28,10 @@ public class ImmersiveMorphingCameraController implements ICameraController
         UIModelRenderer renderer = this.modelRenderer.get();
         LocalPlayer player = Minecraft.getInstance().player;
 
-        float bodyYaw = MathUtils.toRad(Lerps.lerp(player.prevBodyYaw, player.bodyYaw, transition));
+        float bodyYaw = MathUtils.toRad(Lerps.lerp(player.yBodyRotO, player.bodyYaw, transition));
 
         camera.position.set(player.prevX, player.prevY, player.prevZ);
-        camera.position.lerp(new Vector3d(player.getPos().x, player.getPos().y, player.getPos().z), transition);
+        camera.position.lerp(new Vector3d(player.position().x, player.position().y, player.position().z), transition);
         camera.rotation.set(0, bodyYaw, 0);
 
         if (renderer == null)

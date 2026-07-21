@@ -27,7 +27,7 @@ public class UIPresetsOverlayPanel extends UIListOverlayPanel
             }
         };
 
-        this.addValues(controller.manager.getKeys());
+        this.addValues(controller.manager.getAllKeys());
 
         UIIcon save = new UIIcon(Icons.SAVED, (b) ->
         {
@@ -39,7 +39,7 @@ public class UIPresetsOverlayPanel extends UIListOverlayPanel
                 {
                     controller.manager.save(t, type);
                     this.list.list.clear();
-                    this.addValues(controller.manager.getKeys());
+                    this.addValues(controller.manager.getAllKeys());
                 });
 
                 pane.text.filename();
