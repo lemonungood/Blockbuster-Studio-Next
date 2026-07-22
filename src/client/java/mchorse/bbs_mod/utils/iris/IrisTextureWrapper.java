@@ -1,12 +1,9 @@
 package mchorse.bbs_mod.utils.iris;
 
 import mchorse.bbs_mod.BBSModClient;
-import mchorse.bbs_mod.graphics.texture.Texture;
 import mchorse.bbs_mod.resources.Link;
-import mchorse.bbs_mod.utils.CollectionUtils;
 import net.minecraft.client.renderer.texture.AbstractTexture;
 import net.minecraft.server.packs.resources.ResourceManager;
-import org.lwjgl.opengl.GL11;
 
 import java.io.IOException;
 
@@ -33,24 +30,11 @@ public class IrisTextureWrapper extends AbstractTexture
 
     public int getGlId()
     {
-        Texture texture = BBSModClient.getTextures().getTexture(this.texture, GL11.GL_NEAREST, true);
-
-        if (texture == null || texture == BBSModClient.getTextures().getError())
-        {
-            return -1;
-        }
-
-        if (this.index >= 0 && texture.getParent() != null)
-        {
-            Texture frame = CollectionUtils.getSafe(texture.getParent().textures, this.index);
-
-            if (frame != null)
-            {
-                return frame.id;
-            }
-        }
-
-        return texture.id;
+        /* PBR texture bridging is disabled on MC 26.2 because the Iris PBR API
+           changed and GL texture ids no longer exist (GpuTexture). Returning -1
+           signals "no GL texture" so Iris skips the sampler instead of binding a
+           bogus BBS texture handle. */
+        return -1;
     }
 
     @Override

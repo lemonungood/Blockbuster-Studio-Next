@@ -13,7 +13,11 @@
         "LivingEntityMixin",
         "ServerPlayerEntityMixin",
         "LimbAnimatorAccessor",
-        "LevelPropertiesAccessor"
+        "LevelPropertiesAccessor",
+        "client.iris.IrisMixin",
+        "client.iris.JcppProcessorMixin",
+        "client.iris.CustomUniformsBuilderMixin",
+        "client.iris.CustomUniformsAccessor"
     ],
     "injectors": {
         "defaultRequire": 1
