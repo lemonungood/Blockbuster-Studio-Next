@@ -1,45 +1,57 @@
 package mchorse.bbs_mod.utils.iris;
 
-import mchorse.bbs_mod.BBSModClient;
-import mchorse.bbs_mod.resources.Link;
+import mchorse.bbs_mod.graphics.texture.Texture;
 import net.minecraft.client.renderer.texture.AbstractTexture;
 import net.minecraft.server.packs.resources.ResourceManager;
 
 import java.io.IOException;
 
+/**
+ * IrisTextureWrapper - bridges a BBS texture to Iris.
+ *
+ * BBS manages its own OpenGL textures on the 26.2 GL backend
+ * (Texture.id is a real GL texture name, see Texture.bind() ->
+ * GL11.glBindTexture), so the wrapper can hand Iris the actual GL id
+ * of the texture being sampled. Iris 1.11.1 exposes no public API to
+ * inject mod-owned PBR maps, so this wrapper is the supported seam: it
+ * reports the real GL id so that, when a BBS texture is also present in
+ * Iris's PBR atlas (resource-pack driven _n/_s siblings), Iris samples
+ * the correct texture instead of binding a bogus handle.
+ */
 public class IrisTextureWrapper extends AbstractTexture
 {
-    public final Link texture;
-    public final AbstractTexture fallback;
+    public final Texture texture;
     public final int index;
 
-    public IrisTextureWrapper(Link texture, int index)
-    {
-        this(texture, null, index);
-    }
-
-    public IrisTextureWrapper(Link texture, AbstractTexture fallback, int index)
+    public IrisTextureWrapper(Texture texture, int index)
     {
         this.texture = texture;
-        this.fallback = fallback;
         this.index = index;
     }
 
     public void load(ResourceManager manager) throws IOException
     {}
 
+    /**
+     * Returns the real OpenGL texture id BBS uses for this texture.
+     * BBS owns the GL texture lifecycle, so this id is valid for sampling
+     * on the 26.2 GL backend. Returns -1 only when the texture is invalid
+     * (never uploaded / already deleted).
+     */
     public int getGlId()
     {
-        /* PBR texture bridging is disabled on MC 26.2 because the Iris PBR API
-           changed and GL texture ids no longer exist (GpuTexture). Returning -1
-           signals "no GL texture" so Iris skips the sampler instead of binding a
-           bogus BBS texture handle. */
-        return -1;
+        if (this.texture == null || !this.texture.isValid())
+        {
+            return -1;
+        }
+
+        return this.texture.id;
     }
 
     @Override
     public void close()
     {
-        BBSModClient.getTextures().delete(this.texture);
+        /* BBS owns the texture lifecycle (TextureManager.delete), so do not
+           delete it from here. */
     }
 }

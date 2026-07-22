@@ -53,12 +53,31 @@ public class IrisUtils
     }
 
     /**
-     * Registers a BBS texture with Iris for PBR/sampler tracking. The PBR
-     * registration API changed substantially in 26.2, so this is a safe no-op
-     * until the PBR path is re-implemented against the new API.
+     * Tracks a BBS texture so the Iris bridge can report its real GL id. Iris
+     * 1.11.1 has no public API to inject mod-owned PBR maps, so this keeps a
+     * live wrapper around every texture BBS binds (the supported seam) without
+     * touching any Iris internals. Wrappers are cached keyed by the texture.
      */
+    private static final java.util.Map<Texture, IrisTextureWrapper> TRACKED = new java.util.concurrent.ConcurrentHashMap<>();
+
     public static void trackTexture(Texture texture)
-    {}
+    {
+        if (texture == null || !texture.isValid())
+        {
+            return;
+        }
+
+        TRACKED.computeIfAbsent(texture, (t) -> new IrisTextureWrapper(t, -1));
+    }
+
+    /**
+     * Returns the live Iris bridge wrapper for a tracked BBS texture, or null.
+     * Used by code that needs the real GL id of a BBS texture under Iris.
+     */
+    public static IrisTextureWrapper getTrackedTexture(Texture texture)
+    {
+        return TRACKED.get(texture);
+    }
 
     /**
      * Computes tangent vectors for normal mapping. Returns tangents (3 floats
