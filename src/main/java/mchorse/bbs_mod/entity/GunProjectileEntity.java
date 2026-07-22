@@ -11,6 +11,7 @@ import mchorse.bbs_mod.utils.MathUtils;
 import net.fabricmc.fabric.api.networking.v1.PlayerLookup;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerPlayer;
@@ -325,7 +326,7 @@ public class GunProjectileEntity extends Projectile implements IEntityFormProvid
         DamageSource source = this.damageSources().magic();
 
         int fireTicks = entity.getRemainingFireTicks();
-        boolean deflectsArrows = EntityTypeTags.DEFLECTS_PROJECTILES.equals(EntityTypeTags.DEFLECTS_PROJECTILES) && false; // TODO: MC 26.2 - EntityType.is(TagKey)
+        boolean deflectsArrows = entity.is(EntityTypeTags.DEFLECTS_PROJECTILES);
 
         if (this.isOnFire() && !deflectsArrows)
         {
@@ -364,11 +365,9 @@ public class GunProjectileEntity extends Projectile implements IEntityFormProvid
                     }
                 }
 
-                if (owner instanceof LivingEntity)
+                if (owner instanceof LivingEntity livingAttacker)
                 {
-                    // TODO: Fix EnchantmentHelper API for MC 26.2
-                    // EnchantmentHelper.doPostHurtEffects(livingEntity, owner);
-                    // EnchantmentHelper.doPostDamageEffects((LivingEntity)owner, livingEntity);
+                    EnchantmentHelper.doPostAttackEffectsWithItemSource((ServerLevel) this.level(), livingEntity, source, livingAttacker.getMainHandItem());
                 }
 
                 this.onHit(livingEntity);

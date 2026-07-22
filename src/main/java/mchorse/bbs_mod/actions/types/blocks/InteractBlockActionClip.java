@@ -38,9 +38,11 @@ public class InteractBlockActionClip extends ActionClip
         this.applyPositionRotation(player, replay, tick);
 
         BlockHitResult result = this.hit.getHitResult();
+        InteractionHand hand = this.hand.get() ? InteractionHand.MAIN_HAND : InteractionHand.OFF_HAND;
 
-        // TODO: Fix BlockState.use() for MC 26.2
-        // player.level().getBlockState(result.getBlockPos()).use(player.level(), player, this.hand.get() ? InteractionHand.MAIN_HAND : InteractionHand.OFF_HAND, result);
+        // 以玩家手持物 right-click 目标方块：完整交互管线（item on block -> block without item -> item use），
+        // 与真实玩家右键一致；签名同 ServerPlayNetworkHandlerMixin 中录制时使用的 ServerPlayerGameMode.useItemOn。
+        player.gameMode.useItemOn(player, player.level(), player.getItemInHand(hand), hand, result);
     }
 
     @Override

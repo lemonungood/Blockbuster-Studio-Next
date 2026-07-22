@@ -153,7 +153,7 @@ public class UIValueMap
                         textbox.getContext().replaceContextMenu((submenu) ->
                         {
                             File[] files = File.listRoots();
-                            File file = files.length == 0 ? new File("C:\\") : files[0];
+                            File file = files.length > 0 ? files[0] : new File(".");
                             Optional<Path> ffmpeg = FFMpegUtils.findFFMpeg(file.toPath());
 
                             if (ffmpeg.isPresent())

@@ -351,17 +351,13 @@ public class BBSCommands
                     {
                         LevelSettings levelInfo = saveProperties.getLevelSettings();
 
-                        // TODO: Fix LevelSettings constructor for MC 26.2
-                        /*
-                        accessor.bbs$setLevelInfo(new LevelSettings(levelInfo.levelName(),
+                        accessor.bbs$setLevelInfo(new LevelSettings(
+                            levelInfo.levelName(),
                             levelInfo.gameType(),
-                            levelInfo.hardcore(),
-                            levelInfo.difficulty(),
+                            levelInfo.difficultySettings(),
                             enabled,
-                            levelInfo.gameRules(),
-                            levelInfo.gameRules()
+                            levelInfo.dataConfiguration()
                         ));
-                        */
 
                         for (ServerPlayer serverPlayerEntity : server.getPlayerList().getPlayers())
                         {

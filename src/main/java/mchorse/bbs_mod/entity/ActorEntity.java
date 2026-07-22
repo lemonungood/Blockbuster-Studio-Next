@@ -146,8 +146,7 @@ public class ActorEntity extends LivingEntity implements IEntityFormProvider
 
                 if (!entity.isRemoved() && !itemEntity.hasPickUpDelay())
                 {
-                    // TODO: Fix broadcast API for MC 26.2
-                    // ((ServerLevel) this.level()).getChunkSource().broadcast(entity, new ClientboundTakeItemEntityPacket(entity.getId(), this.getId(), i));
+                    ((ServerLevel) this.level()).getChunkSource().sendToTrackingPlayers(entity, new ClientboundTakeItemEntityPacket(entity.getId(), this.getId(), i));
                     entity.discard();
                 }
             }

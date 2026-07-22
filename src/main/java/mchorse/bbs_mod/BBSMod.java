@@ -112,13 +112,17 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.gamerules.GameRules;
 import net.minecraft.world.level.gamerules.GameRule;
 import net.minecraft.world.level.gamerules.GameRuleCategory;
-import net.minecraft.world.level.gamerules.GameRuleType;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.storage.LevelResource;
+import net.fabricmc.fabric.api.creativetab.v1.FabricCreativeModeTab;
+import net.fabricmc.fabric.api.gamerule.v1.GameRuleBuilder;
+import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.fabricmc.loader.api.FabricLoader;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -155,9 +159,8 @@ public class BBSMod implements ModInitializer
     private static MapFactory<Clip, ClipFactoryData> factoryCameraClips;
     private static MapFactory<Clip, ClipFactoryData> factoryActionClips;
 
-    // TODO: Fix EntityType.Builder API for MC 26.2
-    public static final EntityType<ActorEntity> ACTOR_ENTITY = null;
-    public static final EntityType<GunProjectileEntity> GUN_PROJECTILE_ENTITY = null;
+    public static EntityType<ActorEntity> ACTOR_ENTITY;
+    public static EntityType<GunProjectileEntity> GUN_PROJECTILE_ENTITY;
 
     public static final Block MODEL_BLOCK = new ModelBlock(BlockBehaviour.Properties.of()
         .noOcclusion()
@@ -182,14 +185,11 @@ public class BBSMod implements ModInitializer
     public static final BlockItem CHROMA_BLACK_BLOCK_ITEM = new BlockItem(CHROMA_BLACK_BLOCK, new Item.Properties());
     public static final BlockItem CHROMA_WHITE_BLOCK_ITEM = new BlockItem(CHROMA_WHITE_BLOCK, new Item.Properties());
 
-    // TODO: Re-enable when GameRules API is confirmed for 26.2
-    // public static final GameRule<Boolean> BBS_EDITING_RULE = GameRules.register("bbsEditing", GameRuleCategory.MISC, GameRuleType.BOOLEAN_VALUE);
+    public static GameRule BBS_EDITING_RULE;
 
-    // TODO: Fix BlockEntityType.Builder API for MC 26.2
-    public static final BlockEntityType<ModelBlockEntity> MODEL_BLOCK_ENTITY = null;
+    public static BlockEntityType<ModelBlockEntity> MODEL_BLOCK_ENTITY;
 
-    // TODO: Fix CreativeModeTab.builder() for MC 26.2
-    public static final CreativeModeTab ITEM_GROUP = null;
+    public static CreativeModeTab ITEM_GROUP;
 
     public static final SoundEvent CLICK = registerSound("click");
 
@@ -201,6 +201,53 @@ public class BBSMod implements ModInitializer
     }
 
     private static File worldFolder;
+
+    private static EntityType registerActor()
+    {
+        ResourceKey<EntityType<?>> key = ResourceKey.create(Registries.ENTITY_TYPE, Identifier.parse(MOD_ID + ":actor"));
+
+        return Registry.register(BuiltInRegistries.ENTITY_TYPE, key,
+            EntityType.Builder.of(ActorEntity::new, MobCategory.MISC)
+                .sized(0.6F, 1.8F)
+                .build(key));
+    }
+
+    private static EntityType registerGunProjectile()
+    {
+        ResourceKey<EntityType<?>> key = ResourceKey.create(Registries.ENTITY_TYPE, Identifier.parse(MOD_ID + ":gun_projectile"));
+
+        return Registry.register(BuiltInRegistries.ENTITY_TYPE, key,
+            EntityType.Builder.of(GunProjectileEntity::new, MobCategory.MISC)
+                .sized(0.25F, 0.25F)
+                .build(key));
+    }
+
+    private static BlockEntityType<ModelBlockEntity> registerModelBlockEntity()
+    {
+        return Registry.register(BuiltInRegistries.BLOCK_ENTITY_TYPE, Identifier.parse(MOD_ID + ":model"),
+            FabricBlockEntityTypeBuilder.create(ModelBlockEntity::new, MODEL_BLOCK).build());
+    }
+
+    private static CreativeModeTab registerItemGroup()
+    {
+        return FabricCreativeModeTab.builder()
+            .icon(() -> new ItemStack(MODEL_BLOCK_ITEM))
+            .title(Component.translatable("itemGroup.bbs.main"))
+            .displayItems((context, entries) ->
+            {
+                entries.accept(MODEL_BLOCK_ITEM);
+                entries.accept(CHROMA_RED_BLOCK_ITEM);
+                entries.accept(CHROMA_GREEN_BLOCK_ITEM);
+                entries.accept(CHROMA_BLUE_BLOCK_ITEM);
+                entries.accept(CHROMA_CYAN_BLOCK_ITEM);
+                entries.accept(CHROMA_MAGENTA_BLOCK_ITEM);
+                entries.accept(CHROMA_YELLOW_BLOCK_ITEM);
+                entries.accept(CHROMA_BLACK_BLOCK_ITEM);
+                entries.accept(CHROMA_WHITE_BLOCK_ITEM);
+                entries.accept(GUN_ITEM);
+            })
+            .build();
+    }
 
     private static Block createChromaBlock()
     {
@@ -439,6 +486,15 @@ public class BBSMod implements ModInitializer
 
         /* Event listener */
         registerEvents();
+
+        /* Registries */
+        ACTOR_ENTITY = registerActor();
+        GUN_PROJECTILE_ENTITY = registerGunProjectile();
+        MODEL_BLOCK_ENTITY = registerModelBlockEntity();
+        BBS_EDITING_RULE = GameRuleBuilder.forBoolean(false)
+            .category(GameRuleCategory.MISC)
+            .buildAndRegister(Identifier.parse(MOD_ID + ":bbs_editing"));
+        ITEM_GROUP = registerItemGroup();
 
         /* Entities */
         net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry.register(ACTOR_ENTITY, ActorEntity.createActorAttributes());

@@ -238,8 +238,7 @@ public abstract class Form extends ValueGroup
             entity.setHealth(hp);
         }
         if (speed != 0.1F) entity.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(speed);
-        // TODO: Fix setMaxUpStep for MC 26.2
-        // if (stepHeight != 0.5F) entity.setMaxUpStep(stepHeight);
+        if (stepHeight != 0.5F) entity.getAttribute(Attributes.STEP_HEIGHT).setBaseValue(stepHeight);
     }
 
     public void onDemorph(LivingEntity entity)
@@ -247,8 +246,7 @@ public abstract class Form extends ValueGroup
         entity.getAttribute(Attributes.MAX_HEALTH).setBaseValue(20F);
         entity.setHealth(20F);
         entity.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(0.1F);
-        // TODO: Fix setMaxUpStep for MC 26.2
-        // entity.setMaxUpStep(0.5F);
+        entity.getAttribute(Attributes.STEP_HEIGHT).setBaseValue(0.5F);
     }
 
     /* ID and display name */
